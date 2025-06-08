@@ -1,0 +1,11 @@
+---
+const { label = "Dialog Title", children } = Astro.props;
+---
+
+<sl-dialog label={label}>
+  <div class="dialog-body">
+    {children}
+  </div>
+
+  <sl-button slot="footer" variant="primary" onclick="this.closest('sl-dialog').hide()"> Close </sl-button>
+</sl-dialog>
