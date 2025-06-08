@@ -1,31 +1,15 @@
-<!doctype html>
-<html lang="en">
+---
+const { title = "Kickstart" } = Astro.props;
+---
+
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-
-    <script type="module" src="/src/main.js"></script>
-
-    <!-- Shoelace JS (ESM) -->
-    <script type="module">
-      import { setBasePath } from "@shoelace-style/shoelace/dist/utilities/base-path.js";
-      setBasePath("/shoelace");
-    </script>
-
-    <title>Astro Basics</title>
+    <title>{title}</title>
   </head>
   <body>
     <slot />
+
+    <!-- Main JS entry -->
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>

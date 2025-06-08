@@ -1,6 +1,7 @@
-import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js';
+// Import just the dialog component for now
+import '@shoelace-style/shoelace/dist/components/dialog/dialog.js'
 
-setBasePath('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/dist');
+// Optional: base path if serving from subdirectory
+import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js'
 
-import '@shoelace-style/shoelace/dist/shoelace/shoelace.esm.js';
-import '@shoelace-style/shoelace/dist/themes/light.css';
+setBasePath('/node_modules/@shoelace-style/shoelace/dist/')
