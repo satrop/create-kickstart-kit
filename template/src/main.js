@@ -1,7 +1,13 @@
-// Import just the dialog component for now
-import '@shoelace-style/shoelace/dist/components/dialog/dialog.js'
+import '@shoelace-style/shoelace/dist/shoelace.js'
+import initDialog from './components/initDialog.js'
+// Add other imports like initAlert, initTabs etc when needed
 
-// Optional: base path if serving from subdirectory
-import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js'
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM loaded, initializing components...')
 
-setBasePath('/node_modules/@shoelace-style/shoelace/dist/')
+  initDialog()
+
+  // Add other initializers here
+  // initAlert()
+  // initTabs()
+})
