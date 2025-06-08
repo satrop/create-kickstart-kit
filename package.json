@@ -1,0 +1,21 @@
+{
+  "name": "create-kickstart",
+  "version": "0.1.1",
+  "description": "CLI to scaffold Astro-based front-end starter projects",
+  "bin": {
+    "create-kickstart": "./index.js"
+  },
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "astro",
+    "starter",
+    "scaffold",
+    "pnpm",
+    "create"
+  ],
+  "author": "SteveP"
+}
