@@ -1,0 +1,110 @@
+// ==========================================================================
+// Color Utilities
+// ==========================================================================
+
+@use "../abstracts/variables" as vars;
+
+// ==========================================================================
+// Text Color Utilities
+// ==========================================================================
+
+// Primary Colors
+.text-warm-red {
+  color: var(--red-300);
+}
+.text-warm-black {
+  color: var(--neutral-800);
+}
+
+// Accent Colors
+.text-accent-brown {
+  color: var(--neutral-600);
+}
+.text-accent-red {
+  color: var(--red-400);
+}
+.text-accent-deep-red {
+  color: var(--red-500);
+}
+.text-accent-peach {
+  color: var(--peach-300);
+}
+.text-accent-yellow {
+  color: var(--yellow-300);
+}
+.text-accent-gold {
+  color: var(--yellow-500);
+}
+.text-accent-gray {
+  color: var(--slate-300);
+}
+.text-accent-white {
+  color: var(--neutral-0);
+}
+
+// ==========================================================================
+// Background Color Utilities
+// ==========================================================================
+
+// Primary Colors
+.bg-warm-red {
+  background-color: var(--red-300);
+}
+.bg-warm-black {
+  background-color: var(--neutral-800);
+}
+
+// Accent Colors
+.bg-yellow {
+  background-color: var(--color-bg-yellow);
+}
+.bg-peach {
+  background-color: var(--color-bg-peach);
+}
+.bg-gold {
+  background-color: var(--color-bg-gold);
+}
+.bg-gray {
+  background-color: var(--color-bg-gray);
+}
+.bg-white {
+  background-color: var(--color-bg-white);
+}
+
+// ==========================================================================
+// Border Color Utilities
+// ==========================================================================
+
+// Primary Colors
+.border-primary-warm-red {
+  border-color: var(--red-300);
+}
+.border-primary-warm-black {
+  border-color: var(--neutral-800);
+}
+
+// Accent Colors
+.border-accent-brown {
+  border-color: var(--neutral-600);
+}
+.border-accent-red {
+  border-color: var(--red-400);
+}
+.border-accent-deep-red {
+  border-color: var(--red-500);
+}
+.border-accent-peach {
+  border-color: var(--peach-300);
+}
+.border-accent-yellow {
+  border-color: var(--yellow-300);
+}
+.border-accent-gold {
+  border-color: var(--yellow-500);
+}
+.border-accent-gray {
+  border-color: var(--slate-300);
+}
+.border-accent-white {
+  border-color: var(--neutral-0);
+}

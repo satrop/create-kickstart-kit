@@ -1,13 +1,11 @@
 const initDialog = async () => {
-  // Wait for custom element definition (good for Shoelace)
-  await customElements.whenDefined('sl-dialog')
-
+  // Wait for DOM to be ready
   const button = document.querySelector('#open-dialog')
   const dialog = document.querySelector('#my-dialog')
 
   if (button && dialog) {
     button.addEventListener('click', () => {
-      dialog.show()
+      dialog.showModal()
     })
   } else {
     console.warn('Dialog or button not found in DOM.')

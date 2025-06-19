@@ -1,0 +1,287 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// ==========================================================================
+// Spacing Variables
+// ==========================================================================
+:root {
+  --spacing: 4px;
+
+  @media (min-width: $md) {
+    --spacing: 6px;
+  }
+
+  @media (min-width: $lg) {
+    --spacing: 8px;
+  }
+}
+
+// Form group - contains label, input, and optional message
+.form-group {
+  position: relative;
+
+  @include spacing(margin-bottom, $spacing-24);
+}
+
+// Form label
+.form-label {
+  color: var(--color-text-primary);
+  display: block;
+}
+
+// Optional help text or error message
+.form-text {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+
+  &.error,
+  &.helper {
+    font-size: var(--p-xsmall);
+    letter-spacing: -0.5px;
+  }
+
+  &.error {
+    color: var(--red-500);
+  }
+
+  &.helper {
+    color: var(--neutral-600);
+  }
+}
+
+// ==========================================================================
+// Base input styles
+// ==========================================================================
+.form-control {
+  margin-top: var(--spacing);
+  color: var(--color-text-primary);
+  border: 1px solid var(--neutral-600);
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: transparent;
+  background-clip: padding-box;
+  transition: border-color var(--anim);
+
+  &:focus {
+    outline: 0;
+  }
+
+  &::placeholder {
+    color: var(--graphite-300);
+    opacity: 0.7;
+  }
+
+  &:disabled,
+  &[readonly] {
+    background-color: rgba(0, 0, 0, 0.05);
+    opacity: 0.7;
+  }
+
+  &.is-invalid {
+    border-color: var(--red-500);
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(209, 21, 21, 0.25);
+    }
+  }
+}
+
+// ==========================================================================
+// Textarea specific styles
+// ==========================================================================
+textarea.form-control {
+  height: auto;
+  min-height: 100px;
+  resize: none;
+}
+
+// ==========================================================================
+// Select styling
+// ==========================================================================
+select.form-control {
+  padding-right: 2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231c1615' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1em;
+  appearance: none;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+// ==========================================================================
+// Modern select with selectcontent
+// ==========================================================================
+.select-container {
+  position: relative;
+  width: 100%;
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 100%;
+    background-color: var(--red-300);
+    border: 1px solid var(--red-500);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none'%3E%3Cpath fill='%23fff' fill-rule='evenodd' d='M13.25 2.2 8.129 7.322l-.254.253-1.246 1.247-1.247-1.247-.253-.253L.007 2.2 2.13.08l3 3 1.5 1.312 1.5-1.313 3-3L13.25 2.2Z' clip-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 14px 9px;
+    background-position: center;
+    pointer-events: none;
+  }
+
+  select {
+    width: 100%;
+  }
+}
+
+// ==========================================================================
+// Custom checkbox and radio styles
+// ==========================================================================
+.checkbox-options,
+.radio-options {
+  margin-top: var(--spacing);
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+
+  @include spacing(gap, $spacing-16);
+
+  input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    cursor: pointer;
+
+    &:focus ~ .checkmark {
+      box-shadow: 0 0 0 0.2rem rgba(224, 23, 23, 0.25);
+    }
+  }
+
+  .checkmark {
+    height: 24px;
+    width: 24px;
+    display: grid;
+    place-content: center;
+    background-color: transparent;
+    border: 1px solid var(--red-500);
+    transition: all 0.2s ease;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      opacity: 0;
+      transform: scale(0);
+      transition:
+        opacity var(--anim),
+        transform var(--anim);
+    }
+  }
+
+  input:checked ~ .checkmark svg {
+    opacity: 1;
+    // Scale up the checkmark icon an extra .1 for visual centering
+    transform: scale(1.1);
+  }
+
+  // Radio button styles
+  &.radio {
+    .checkmark {
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-content: center;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--red-500);
+        transform: scale(0);
+        transition: transform var(--anim);
+      }
+    }
+
+    input:checked ~ .checkmark:after {
+      transform: scale(1);
+    }
+  }
+}
+
+// ==========================================================================
+// File input styling
+// ==========================================================================
+.file-input {
+  position: relative;
+  display: inline-block;
+
+  input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    overflow: hidden;
+  }
+
+  .file-label {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--slate-300);
+    color: var(--color-text-primary);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    // &:hover {
+    //   background-color: darken(#c0d6d9, 5%);
+    // }
+  }
+
+  .file-name {
+    display: inline-block;
+    margin-left: 0.75rem;
+    font-size: 0.875rem;
+  }
+}
+
+// ==========================================================================
+// Form validation states
+// ==========================================================================
+.is-valid {
+  border-color: #28a745;
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+  }
+}
+
+.is-invalid {
+  border-color: var(--red-500);
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(209, 21, 21, 0.25);
+  }
+}
+
+.required {
+  color: var(--red-500);
+  margin-left: 0.25rem;
+}

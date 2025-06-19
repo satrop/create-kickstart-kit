@@ -1,5 +1,4 @@
-import '@shoelace-style/shoelace/dist/shoelace.js'
-import initDialog from './components/initDialog.js'
+import initDialog from '../pages/js/components/dialog.js'
 // Add other imports like initAlert, initTabs etc when needed
 
 document.addEventListener('DOMContentLoaded', () => {
