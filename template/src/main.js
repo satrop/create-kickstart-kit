@@ -1,10 +1,10 @@
-import initDialog from '../pages/js/components/dialog.js'
+// import initDialog from '../pages/js/components/dialog.js'
 // Add other imports like initAlert, initTabs etc when needed
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM loaded, initializing components...')
 
-  initDialog()
+  // initDialog()
 
   // Add other initializers here
   // initAlert()

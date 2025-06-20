@@ -1,77 +1,45 @@
-<dialog id="my-dialog" class="dialog">
-  <div class="dialog-header">
-    <h3>Hello Steve!</h3>
-    <button class="close-button" onclick="this.closest('dialog').close()">&times;</button>
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Home Page">
+  <div class="site">
+    <header class="container-wide">
+      <div class="section-grid demo-blue">
+        <div class="col-full">Nav</div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="section-grid demo-green">
+        <div class="col-full">Main Content</div>
+      </div>
+    </main>
+
+    <section class="container-breakout-right">
+      <div class="section-grid demo-orange">
+        <div class="col-full">Breakout Right</div>
+      </div>
+    </section>
+
+    <section class="container-breakout-left">
+      <div class="section-grid demo-blue">
+        <div class="col-full">Breakout Left</div>
+      </div>
+    </section>
+
+    <section class="container-breakout-both">
+      <div class="section-grid demo-pink">
+        <div class="col-full">Full Bleed (within 1700px)</div>
+      </div>
+    </section>
+
+    <footer class="container-wide">
+      <div class="section-grid demo-purple">
+        <div class="col-full">Footer</div>
+      </div>
+    </footer>
   </div>
-  <div class="dialog-body">
-    <p>This is a standard HTML dialog component.</p>
-  </div>
-  <div class="dialog-footer">
-    <button class="primary-button" onclick="this.closest('dialog').close()">Close</button>
-  </div>
-</dialog>
+</Layout>
 
-<button id="open-dialog" class="primary-button">Open Dialog</button>
-
-<style>
-  .dialog {
-    border: none;
-    border-radius: 8px;
-    padding: 0;
-    min-width: 300px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  }
-
-  .dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .dialog-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #e0e0e0;
-  }
-
-  .dialog-header h3 {
-    margin: 0;
-  }
-
-  .close-button {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .dialog-body {
-    padding: 1rem;
-  }
-
-  .dialog-footer {
-    padding: 1rem;
-    border-top: 1px solid #e0e0e0;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .primary-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .primary-button:hover {
-    background-color: #0056b3;
-  }
-</style>
+<style lang="scss"></style>

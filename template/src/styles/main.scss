@@ -9,13 +9,13 @@
 
 /* Base styles */
 // @import "base/_fonts";
-@import "base/reset";
+@use "base/reset";
 
 /* Layout styles */
-@import "layout/grid";
-@import "layout/layout";
+@use "layout/grid";
+@use "layout/layout";
 
 /* Utility styles */
-@import "utilities/colors";
-@import "utilities/typography";
-@import "utilities/forms";
+@use "utilities/colors";
+@use "utilities/typography";
+@use "utilities/forms";
