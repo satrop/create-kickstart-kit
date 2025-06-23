@@ -1,0 +1,39 @@
+@use "sass:map";
+@use "../abstracts/grid-config" as *;
+@use "../abstracts/mixins" as *;
+
+.site-debug {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    pointer-events: none;
+
+    display: grid;
+    grid-template-columns: repeat(#{map.get($grid-columns, sm)}, 1fr);
+    gap: map.get($grid-gaps, sm);
+    background-image: repeating-linear-gradient(
+      to right,
+      rgba(255, 0, 0, 0.15),
+      rgba(255, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 100%
+    );
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(#{map.get($grid-columns, md)}, 1fr);
+      gap: map.get($grid-gaps, md);
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(#{map.get($grid-columns, lg)}, 1fr);
+      gap: map.get($grid-gaps, lg);
+    }
+  }
+}

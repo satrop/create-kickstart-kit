@@ -218,23 +218,11 @@ h5,
 // Navigation
 // ==========================================================================
 :root {
-  --takeover-nav-link: clamp(
-    2.375rem,
-    1.304rem + 2.857vw,
-    3.875rem
-  ); // 38 -> 62px
+  --takeover-nav-link: clamp(2.375rem, 1.304rem + 2.857vw, 3.875rem); // 38 -> 62px
 
-  --takeover-nav-description: clamp(
-    0.813rem,
-    0.589rem + 0.595vw,
-    1.125rem
-  ); // 13 -> 18px
+  --takeover-nav-description: clamp(0.813rem, 0.589rem + 0.595vw, 1.125rem); // 13 -> 18px
 
-  --takeover-nav-hidden-links: clamp(
-    1.125rem,
-    0.768rem + 0.952vw,
-    1.625rem
-  ); // 18 -> 26px
+  --takeover-nav-hidden-links: clamp(1.125rem, 0.768rem + 0.952vw, 1.625rem); // 18 -> 26px
 }
 
 // ==========================================================================

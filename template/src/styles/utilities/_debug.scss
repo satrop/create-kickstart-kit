@@ -1,0 +1,28 @@
+@use "sass:color";
+
+$demo-colors: (
+  "blue": #e3f2fd,
+  "green": #e8f5e9,
+  "orange": #fff3e0,
+  "pink": #fce4ec,
+  "purple": #f3e5f5,
+  "red": #ffebee,
+);
+
+@each $name, $color in $demo-colors {
+  .box-outline-#{$name} {
+    background-color: $color;
+    color: #333;
+    border: 2px solid color.adjust($color, $lightness: -10%);
+    border-radius: 4px;
+    padding: 0.5rem;
+  }
+
+  .box-#{$name} {
+    background-color: color.adjust($color, $lightness: -20%);
+    color: #333;
+    border: 2px solid color.adjust($color, $lightness: -30%);
+    border-radius: 4px;
+    padding: 0.5rem;
+  }
+}

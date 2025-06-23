@@ -4,10 +4,22 @@
 
 @use "sass:map";
 @use "variables" as *;
+@use "breakpoints" as *;
+
+// ==========================================================================
+// Breakpoints Mixin
+// ==========================================================================
+@mixin respond-to($bp) {
+  @if map.has-key($breakpoints, $bp) {
+    @media (min-width: map.get($breakpoints, $bp)) {
+      @content;
+    }
+  }
+}
 
 // ==========================================================================
 // Responsive Spacing Mixin
-// ==========================================================================s
+// ==========================================================================
 @mixin spacing($property, $spacing-map, $negative: false) {
   @if map.has-key($spacing-map, sm) {
     & {

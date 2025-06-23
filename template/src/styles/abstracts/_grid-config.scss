@@ -1,0 +1,43 @@
+@use "sass:map";
+
+// ==================================================
+// Grid System Configuration
+// ==================================================
+
+// Max widths for major layout containers
+$site-max-width: 2000px; // Full bleed content (e.g. backgrounds)
+$container-wide-width: 1900px; // Used for layout-wide
+$container-main-width: 1440px; // Used for layout-main
+
+// Grid column counts for inner grids
+$grid-columns: (
+  sm: 4,
+  md: 8,
+  lg: 12,
+);
+
+// Gutter spacing between columns
+$grid-gaps: (
+  sm: 20px,
+  md: 25px,
+  lg: 30px,
+);
+
+// Padding on sides of layout-wide containers
+$row-padding: (
+  sm: 24px,
+  md: 24px,
+  lg: 24px,
+);
+
+// ==================================================
+// Public Variables
+// ==================================================
+
+// So you can use these in other files via: `grid.$site-max-width`
+$site-max-width: $site-max-width;
+$container-wide-width: $container-wide-width;
+$container-main-width: $container-main-width;
+$grid-columns: $grid-columns;
+$grid-gaps: $grid-gaps;
+$row-padding: $row-padding;

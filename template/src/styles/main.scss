@@ -1,21 +1,12 @@
-/* ==========================================================================
-   Main Styles Entry Point
-   ========================================================================== */
+// ==========================================================================
+// Main Styles Entry Point
+// ==========================================================================
 
-/* Forward all variables and mixins so they can be used by components */
-@forward "abstracts/variables";
-@forward "abstracts/mixins";
-@forward "abstracts/functions";
+@use "abstracts" as *;
+@use "utilities" as *;
 
-/* Base styles */
-// @import "base/_fonts";
-@use "base/reset";
+@use "layout/site-grid";
+@use "layout/section-grid";
+@use "layout/column-utilities";
 
-/* Layout styles */
-@use "layout/grid";
-@use "layout/layout";
-
-/* Utility styles */
-@use "utilities/colors";
-@use "utilities/typography";
-@use "utilities/forms";
+@use "utilities/debug";

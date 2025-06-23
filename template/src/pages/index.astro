@@ -3,43 +3,43 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Home Page">
-  <div class="site">
-    <header class="container-wide">
-      <div class="section-grid demo-blue">
-        <div class="col-full">Nav</div>
+  <section class="layout-wide">
+    <div class="section-grid">
+      <div class="col-full box-outline-green">
+        This is inside <code>.layout-wide</code> - max-width: 1900px
       </div>
-    </header>
+    </div>
+  </section>
 
-    <main class="container">
-      <div class="section-grid demo-green">
-        <div class="col-full">Main Content</div>
+  <section class="layout-main">
+    <div class="section-grid">
+      <div class="col-full box-outline-blue">
+        This is inside <code>.layout-main</code> - max-width: 1440px
       </div>
-    </main>
+    </div>
+  </section>
 
-    <section class="container-breakout-right">
-      <div class="section-grid demo-orange">
-        <div class="col-full">Breakout Right</div>
+  <section class="layout-full">
+    <div class="section-grid">
+      <div class="col-full box-outline-red">
+        This is inside <code>.layout-full</code> - full-width container
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="container-breakout-left">
-      <div class="section-grid demo-blue">
-        <div class="col-full">Breakout Left</div>
+  <section class="layout-breakout-left">
+    <div class="section-grid">
+      <div class="col-full box-outline-purple">
+        This breaks out to the left of <code>.layout-main</code> but still ends aligned with it.
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="container-breakout-both">
-      <div class="section-grid demo-pink">
-        <div class="col-full">Full Bleed (within 1700px)</div>
+  <section class="layout-breakout-right">
+    <div class="section-grid">
+      <div class="col-full box-outline-orange">
+        This breaks out to the right of <code>.layout-main</code> but starts aligned with it.
       </div>
-    </section>
-
-    <footer class="container-wide">
-      <div class="section-grid demo-purple">
-        <div class="col-full">Footer</div>
-      </div>
-    </footer>
-  </div>
+    </div>
+  </section>
 </Layout>
-
-<style lang="scss"></style>
