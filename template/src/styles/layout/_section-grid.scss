@@ -11,16 +11,16 @@
 .section-grid {
   display: grid;
   width: 100%;
-  gap: map.get(grid.$grid-gaps, sm);
+  column-gap: map.get(grid.$grid-gaps, sm);
   grid-template-columns: repeat(#{map.get(grid.$grid-columns, sm)}, 1fr);
 
   @include bp.respond-to(md) {
-    gap: map.get(grid.$grid-gaps, md);
+    column-gap: map.get(grid.$grid-gaps, md);
     grid-template-columns: repeat(#{map.get(grid.$grid-columns, md)}, 1fr);
   }
 
   @include bp.respond-to(lg) {
-    gap: map.get(grid.$grid-gaps, lg);
+    column-gap: map.get(grid.$grid-gaps, lg);
     grid-template-columns: repeat(#{map.get(grid.$grid-columns, lg)}, 1fr);
   }
 }

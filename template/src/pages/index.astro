@@ -4,10 +4,13 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Home Page">
   <section class="layout-wide">
-    <div class="section-grid">
+    <div class="section-grid my-component">
       <div class="col-full box-outline-green">
         This is inside <code>.layout-wide</code> - max-width: 1900px
       </div>
+      <div class="col-full bg-red-300">Dope</div>
+      <div class="col-full bg-yellow-300">Dope</div>
+      <div class="col-full bg-peach-300 text-gray-300">Dope</div>
     </div>
   </section>
 
@@ -43,3 +46,11 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </section>
 </Layout>
+
+<style lang="scss">
+  @use "../styles/abstracts" as *;
+
+  .my-component {
+    @include stack(16);
+  }
+</style>

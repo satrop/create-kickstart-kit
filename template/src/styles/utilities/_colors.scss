@@ -2,109 +2,57 @@
 // Color Utilities
 // ==========================================================================
 
-@use "../abstracts/variables" as vars;
+// Color map for use in stylesheets
+$colors: (
+  "red": (
+    300: #ea3d3d,
+    400: #e01717,
+    500: #d11515,
+  ),
+  "yellow": (
+    300: #fff4c7,
+    500: #eeca75,
+  ),
+  "peach": (
+    300: #fbc7a7,
+  ),
+  "slate": (
+    300: #c0d6d9,
+  ),
+  "gray": (
+    300: #353535,
+  ),
+);
 
-// ==========================================================================
-// Text Color Utilities
-// ==========================================================================
-
-// Primary Colors
-.text-warm-red {
-  color: var(--red-300);
-}
-.text-warm-black {
-  color: var(--neutral-800);
-}
-
-// Accent Colors
-.text-accent-brown {
-  color: var(--neutral-600);
-}
-.text-accent-red {
-  color: var(--red-400);
-}
-.text-accent-deep-red {
-  color: var(--red-500);
-}
-.text-accent-peach {
-  color: var(--peach-300);
-}
-.text-accent-yellow {
-  color: var(--yellow-300);
-}
-.text-accent-gold {
-  color: var(--yellow-500);
-}
-.text-accent-gray {
-  color: var(--slate-300);
-}
-.text-accent-white {
-  color: var(--neutral-0);
+// Generate CSS variables for each color shade
+:root {
+  @each $group, $shades in $colors {
+    @each $shade, $value in $shades {
+      --#{$group}-#{$shade}: #{$value};
+    }
+  }
 }
 
-// ==========================================================================
-// Background Color Utilities
-// ==========================================================================
+// Generate utility classes for background and text colors
+@each $group, $shades in $colors {
+  @each $shade, $value in $shades {
+    .bg-#{$group}-#{$shade} {
+      background-color: var(--#{$group}-#{$shade});
+    }
 
-// Primary Colors
-.bg-warm-red {
-  background-color: var(--red-300);
-}
-.bg-warm-black {
-  background-color: var(--neutral-800);
-}
-
-// Accent Colors
-.bg-yellow {
-  background-color: var(--color-bg-yellow);
-}
-.bg-peach {
-  background-color: var(--color-bg-peach);
-}
-.bg-gold {
-  background-color: var(--color-bg-gold);
-}
-.bg-gray {
-  background-color: var(--color-bg-gray);
-}
-.bg-white {
-  background-color: var(--color-bg-white);
+    .text-#{$group}-#{$shade} {
+      color: var(--#{$group}-#{$shade});
+    }
+  }
 }
 
-// ==========================================================================
-// Border Color Utilities
-// ==========================================================================
+// CSS Example
+// .bg-red-300 {
+//   background-color: var(--red-300);
+// }
+// .text-yellow-500 {
+//   color: var(--yellow-500);
+// }
 
-// Primary Colors
-.border-primary-warm-red {
-  border-color: var(--red-300);
-}
-.border-primary-warm-black {
-  border-color: var(--neutral-800);
-}
-
-// Accent Colors
-.border-accent-brown {
-  border-color: var(--neutral-600);
-}
-.border-accent-red {
-  border-color: var(--red-400);
-}
-.border-accent-deep-red {
-  border-color: var(--red-500);
-}
-.border-accent-peach {
-  border-color: var(--peach-300);
-}
-.border-accent-yellow {
-  border-color: var(--yellow-300);
-}
-.border-accent-gold {
-  border-color: var(--yellow-500);
-}
-.border-accent-gray {
-  border-color: var(--slate-300);
-}
-.border-accent-white {
-  border-color: var(--neutral-0);
-}
+// HTML Example
+// <div class="bg-red-300 text-yellow-500">This is a red background with yellow text.</div>

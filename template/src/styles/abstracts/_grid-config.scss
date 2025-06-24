@@ -29,15 +29,3 @@ $row-padding: (
   md: 24px,
   lg: 24px,
 );
-
-// ==================================================
-// Public Variables
-// ==================================================
-
-// So you can use these in other files via: `grid.$site-max-width`
-$site-max-width: $site-max-width;
-$container-wide-width: $container-wide-width;
-$container-main-width: $container-main-width;
-$grid-columns: $grid-columns;
-$grid-gaps: $grid-gaps;
-$row-padding: $row-padding;

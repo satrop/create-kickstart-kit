@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "../abstracts/breakpoints" as bp;
+@use "breakpoints" as bp;
 
 // =============================================
 // Spacing Utilities
@@ -43,7 +43,7 @@ $spacing-scale: (
   ),
 );
 
-@mixin spacing($property, $size-key) {
+@mixin responsive-spacing($property, $size-key) {
   $size-map: map.get($spacing-scale, $size-key);
 
   @if $size-map {
@@ -59,7 +59,7 @@ $spacing-scale: (
   }
 }
 
-// Example usage for margin and padding
-// .my-component {
-//   @include spacing(margin-bottom, 24);
+// Example usage:
+// .example {
+//   @include responsive-spacing(margin, 16);
 // }
