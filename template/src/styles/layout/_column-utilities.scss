@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "../abstracts/grid-config" as grid;
+@use "./section-grid" as sg;
 @use "../abstracts/breakpoints" as bp;
 
 // Generally you should not need to modify this file.
@@ -9,7 +9,7 @@
 // =============================================
 
 // Start + Span utils (e.g. .col-start-2, .md\:col-4)
-@each $breakpoint, $columns in grid.$grid-columns {
+@each $breakpoint, $columns in sg.$grid-columns {
   $is-sm: $breakpoint == sm;
   $prefix: if($is-sm, "", "#{$breakpoint}\\:");
 
@@ -38,7 +38,7 @@
 
 // Full-width utility (e.g. .col-full)
 .col-full {
-  @each $bp, $cols in grid.$grid-columns {
+  @each $bp, $cols in sg.$grid-columns {
     @if $bp == sm {
       grid-column: span #{$cols} / span #{$cols};
     } @else {
@@ -50,7 +50,7 @@
 }
 
 // Combined start+span classes (e.g. .lg\:col-start-3-span-6)
-@each $breakpoint, $columns in grid.$grid-columns {
+@each $breakpoint, $columns in sg.$grid-columns {
   $is-sm: $breakpoint == sm;
   $prefix: if($is-sm, "", "#{$breakpoint}\\:");
 

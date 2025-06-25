@@ -1,31 +1,13 @@
-@use "sass:map";
-
 // ==================================================
 // Grid System Configuration
 // ==================================================
 
 // Max widths for major layout containers
-$site-max-width: 2000px; // Full bleed content (e.g. backgrounds)
-$container-wide-width: 1900px; // Used for layout-wide
+$site-max-width: 2000px;
+$container-wide-width: 1900px; // Mostly used for the nav and footer
 $container-main-width: 1440px; // Used for layout-main
+$row-margin-fluid: clamp(2.75rem, -1.714rem + 11.905vw, 9rem);
 
-// Grid column counts for inner grids
-$grid-columns: (
-  sm: 4,
-  md: 8,
-  lg: 12,
-);
-
-// Gutter spacing between columns
-$grid-gaps: (
-  sm: 20px,
-  md: 25px,
-  lg: 30px,
-);
-
-// Padding on sides of layout-wide containers
-$row-padding: (
-  sm: 24px,
-  md: 24px,
-  lg: 24px,
-);
+// Do not modify these unless you know what you're doing
+$container-main-width-total: calc(#{$container-main-width} + (2 * #{$row-margin-fluid}));
+$container-wide-width-total: calc(#{$container-wide-width} + (2 * #{$row-margin-fluid}));

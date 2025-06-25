@@ -5,45 +5,51 @@
 // Generally you should not need to modify this file.
 
 // =============================================
-// Site Grid (Single Master Grid)
+// Base Site Grid Setup
 // =============================================
 
 .site {
   display: grid;
-  max-width: grid.$site-max-width;
+  max-width: grid.$container-main-width-total;
   margin-inline: auto;
   justify-content: center;
 
-  $gutter-wide: calc((#{grid.$container-wide-width} - #{grid.$container-main-width}) / 2);
+  grid-template-columns:
+    [full-start] minmax(0, #{grid.$row-margin-fluid})
+    [main-start] minmax(0, #{grid.$container-main-width-total})
+    [main-end] minmax(0, #{grid.$row-margin-fluid})
+    [full-end];
+}
+
+// Optional: Wider grid (used for layout-wide wrapper if needed)
+.site-wide {
+  display: grid;
+  max-width: grid.$container-wide-width-total;
+  margin-inline: auto;
+  justify-content: center;
 
   grid-template-columns:
-    [full-start] 1fr
-    [wide-start] minmax(0, #{$gutter-wide})
-    [main-start] minmax(0, #{grid.$container-main-width})
-    [main-end] minmax(0, #{$gutter-wide})
-    [wide-end] 1fr
+    [full-start] minmax(0, #{grid.$row-margin-fluid})
+    [main-start] minmax(0, #{grid.$container-wide-width-total})
+    [main-end] minmax(0, #{grid.$row-margin-fluid})
     [full-end];
 }
 
 // =============================================
-// Layout Utilities
+// Layout Width Classes
+// =============================================
+
+// Optional layout-wide wrapper that sets max-width without grid
+.layout-wide {
+  grid-column: main-start / main-end;
+}
+
+// =============================================
+// Grid Column Utilities
 // =============================================
 
 .layout-full {
   grid-column: full-start / full-end;
-}
-
-.layout-wide {
-  grid-column: wide-start / wide-end;
-  padding-inline: map.get(grid.$row-padding, sm);
-
-  @include bp.respond-to(md) {
-    padding-inline: map.get(grid.$row-padding, md);
-  }
-
-  @include bp.respond-to(lg) {
-    padding-inline: map.get(grid.$row-padding, lg);
-  }
 }
 
 .layout-main {

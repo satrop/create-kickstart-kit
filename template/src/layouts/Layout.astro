@@ -3,14 +3,32 @@ const { title = "Kickstart" } = Astro.props;
 import "../styles/main.scss";
 ---
 
-<html>
+<!doctype html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
   </head>
-  <body class="site site-debug">
-    <slot />
+  <body>
+    <div>
+      <header class="site-wide" aria-label="Site header">
+        <slot name="header" />
+      </header>
 
-    <!-- Main JS entry -->
+      <nav class="site-wide" aria-label="Main navigation"></nav>
+
+      <main>
+        <div class="site">
+          <slot name="main" />
+        </div>
+      </main>
+
+      <footer class="site-wide" aria-label="Site footer">
+        <slot name="footer" />
+      </footer>
+    </div>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

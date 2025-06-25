@@ -3,54 +3,65 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Home Page">
-  <section class="layout-wide">
-    <div class="section-grid my-component">
-      <div class="col-full box-outline-green">
-        This is inside <code>.layout-wide</code> - max-width: 1900px
+  <Fragment slot="header">
+    <section class="layout-wide box-outline-purple">
+      <div class="section-grid">
+        <div class="col-full">
+          <p>Header - Layout Wide</p>
+        </div>
       </div>
-      <div class="col-full bg-red-300">Dope</div>
-      <div class="col-full bg-yellow-300">Dope</div>
-      <div class="col-full bg-peach-300 text-gray-300">Dope</div>
-    </div>
-  </section>
+    </section>
+  </Fragment>
 
-  <section class="layout-main">
-    <div class="section-grid">
-      <div class="col-full box-outline-blue">
-        This is inside <code>.layout-main</code> - max-width: 1440px
-      </div>
-    </div>
-  </section>
+  <Fragment slot="main">
+    <section class="layout-main box-outline-red">
+      <div class="section-grid stack-16">
+        <div class="col-full">
+          <p>Main - Layout main</p>
+        </div>
+        <div class="col-4 md:col-8 lg:col-4 bg-red-300">
+          <code>col-4 md:col-8 lg:col-4 bg-red-300</code>
+        </div>
+        <div class="col-4 md:col-8 lg:col-8 bg-yellow-300">
+          <code>col-4 md:col-8 lg:col-8 bg-yellow-300</code>
+        </div>
+        <div class="col-4 md:col-8 lg:col-start-5-span-8 bg-peach-300 text-gray-300">
+          <code>col-4 md:col-8 lg:col-start-5-span-8 bg-peach-300 text-gray-300</code>
+        </div>
 
-  <section class="layout-full">
-    <div class="section-grid">
-      <div class="col-full box-outline-red">
-        This is inside <code>.layout-full</code> - full-width container
+        <div class="col-4 md:col-4 lg:col-4 bg-red-300">
+          <code>col-4 md:col-8 lg:col-4 bg-red-300</code>
+        </div>
+        <div class="col-4 md:col-4 lg:col-8 bg-yellow-300">
+          <code>col-4 md:col-8 lg:col-8 bg-yellow-300</code>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="layout-breakout-left">
-    <div class="section-grid">
-      <div class="col-full box-outline-purple">
-        This breaks out to the left of <code>.layout-main</code> but still ends aligned with it.
-      </div>
-    </div>
-  </section>
+    <section class="layout-breakout-left box-outline-blue">Breakout Left</section>
 
-  <section class="layout-breakout-right">
-    <div class="section-grid">
-      <div class="col-full box-outline-orange">
-        This breaks out to the right of <code>.layout-main</code> but starts aligned with it.
+    <section class="layout-main box-outline-red">Main - Layout main</section>
+
+    <section class="layout-breakout-right box-outline-orange">Breakout Right</section>
+
+    <section class="layout-full box-outline-green">Layout Full</section>
+  </Fragment>
+
+  <!-- <Fragment slot="footer">
+    <section class="layout-wide box-outline-purple">
+      <div class="section-grid">
+        <div class="col-full">
+          <p>Footer - Layout Wide</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </Fragment> -->
+
+  <style lang="scss">
+    @use "../styles/abstracts" as *;
+
+    .stack-16 {
+      @include stack(16);
+    }
+  </style>
 </Layout>
-
-<style lang="scss">
-  @use "../styles/abstracts" as *;
-
-  .my-component {
-    @include stack(16);
-  }
-</style>

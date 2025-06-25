@@ -1,5 +1,4 @@
 @use "sass:map";
-@use "../abstracts/grid-config" as grid;
 @use "../abstracts/breakpoints" as bp;
 
 // Generally you should not need to modify this file.
@@ -8,19 +7,33 @@
 // Section Grid (Nested Inner Grid)
 // =============================================
 
+// Grid column counts for inner grids
+$grid-columns: (
+  sm: 4,
+  md: 8,
+  lg: 12,
+);
+
+// Gutter spacing between columns
+$grid-gaps: (
+  sm: 20px,
+  md: 25px,
+  lg: 30px,
+);
+
 .section-grid {
   display: grid;
   width: 100%;
-  column-gap: map.get(grid.$grid-gaps, sm);
-  grid-template-columns: repeat(#{map.get(grid.$grid-columns, sm)}, 1fr);
+  column-gap: map.get($grid-gaps, sm);
+  grid-template-columns: repeat(#{map.get($grid-columns, sm)}, 1fr);
 
   @include bp.respond-to(md) {
-    column-gap: map.get(grid.$grid-gaps, md);
-    grid-template-columns: repeat(#{map.get(grid.$grid-columns, md)}, 1fr);
+    column-gap: map.get($grid-gaps, md);
+    grid-template-columns: repeat(#{map.get($grid-columns, md)}, 1fr);
   }
 
   @include bp.respond-to(lg) {
-    column-gap: map.get(grid.$grid-gaps, lg);
-    grid-template-columns: repeat(#{map.get(grid.$grid-columns, lg)}, 1fr);
+    column-gap: map.get($grid-gaps, lg);
+    grid-template-columns: repeat(#{map.get($grid-columns, lg)}, 1fr);
   }
 }
