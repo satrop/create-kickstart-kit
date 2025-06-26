@@ -1,13 +1,48 @@
+@use "../abstracts/breakpoints" as bp;
+
 // ==================================================
 // Grid System Configuration
 // ==================================================
 
-// Max widths for major layout containers
-$site-max-width: 2000px;
-$container-wide-width: 1900px; // Mostly used for the nav and footer
-$container-main-width: 1440px; // Used for layout-main
-$row-margin-fluid: clamp(2.75rem, -1.714rem + 11.905vw, 9rem);
+// Max widths
+:root {
+  --site-max-width: 2000px;
+  --container-main-width: 1440px;
+  --container-wide-width: 1770px;
+}
 
-// Do not modify these unless you know what you're doing
-$container-main-width-total: calc(#{$container-main-width} + (2 * #{$row-margin-fluid}));
-$container-wide-width-total: calc(#{$container-wide-width} + (2 * #{$row-margin-fluid}));
+$main-margins: (
+  sm: 40px,
+  lg: 50px,
+  xl: 165px,
+);
+
+$outer-margins: (
+  sm: 40px,
+  md: 0,
+);
+
+// ==================================================
+// Do not modify below this line
+// ==================================================
+
+@each $breakpoint, $value in $main-margins {
+  @include bp.respond-to(#{$breakpoint}) {
+    :root {
+      --main-margins: #{$value};
+    }
+  }
+}
+
+@each $breakpoint, $value in $outer-margins {
+  @include bp.respond-to(#{$breakpoint}) {
+    :root {
+      --outer-margins: #{$value};
+    }
+  }
+}
+
+:root {
+  --container-main-width-total: calc(var(--container-main-width) + 2 * var(--main-margins));
+  --container-wide-width-total: calc(var(--container-wide-width) + 2 * var(--outer-margins));
+}

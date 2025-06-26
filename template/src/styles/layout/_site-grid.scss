@@ -8,58 +8,56 @@
 // Base Site Grid Setup
 // =============================================
 
-.site {
+.site-wrapper {
   display: grid;
-  max-width: grid.$container-main-width-total;
+  max-width: var(--site-max-width);
   margin-inline: auto;
   justify-content: center;
 
   grid-template-columns:
-    [full-start] minmax(0, #{grid.$row-margin-fluid})
-    [main-start] minmax(0, #{grid.$container-main-width-total})
-    [main-end] minmax(0, #{grid.$row-margin-fluid})
-    [full-end];
-}
-
-// Optional: Wider grid (used for layout-wide wrapper if needed)
-.site-wide {
-  display: grid;
-  max-width: grid.$container-wide-width-total;
-  margin-inline: auto;
-  justify-content: center;
-
-  grid-template-columns:
-    [full-start] minmax(0, #{grid.$row-margin-fluid})
-    [main-start] minmax(0, #{grid.$container-wide-width-total})
-    [main-end] minmax(0, #{grid.$row-margin-fluid})
-    [full-end];
-}
-
-// =============================================
-// Layout Width Classes
-// =============================================
-
-// Optional layout-wide wrapper that sets max-width without grid
-.layout-wide {
-  grid-column: main-start / main-end;
+    [outer-start] minmax(0, var(--outer-margins))
+    [wide-start] minmax(0, var(--main-margins))
+    [main-start] minmax(0, var(--container-main-width))
+    [main-end] minmax(0, var(--main-margins))
+    [wide-end] minmax(0, var(--outer-margins))
+    [outer-end];
 }
 
 // =============================================
 // Grid Column Utilities
 // =============================================
+.layout-wide {
+  grid-column: outer-start / outer-end;
+
+  @include bp.respond-to(md) {
+    grid-column: wide-start / wide-end;
+  }
+}
 
 .layout-full {
-  grid-column: full-start / full-end;
+  grid-column: outer-start / outer-end;
 }
 
 .layout-main {
-  grid-column: main-start / main-end;
+  grid-column: wide-start / wide-end;
+
+  @include bp.respond-to(md) {
+    grid-column: main-start / main-end;
+  }
 }
 
 .layout-breakout-left {
-  grid-column: full-start / main-end;
+  grid-column: outer-start / wide-end;
+
+  @include bp.respond-to(md) {
+    grid-column: outer-start / main-end;
+  }
 }
 
 .layout-breakout-right {
-  grid-column: main-start / full-end;
+  grid-column: wide-start / outer-end;
+
+  @include bp.respond-to(md) {
+    grid-column: main-start / outer-end;
+  }
 }

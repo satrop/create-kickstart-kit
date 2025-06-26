@@ -4,6 +4,72 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Home Page">
   <Fragment slot="header">
+    <section class="box-outline-purple">
+      <p>Layout Wide - Used for Navigation and Footer</p>
+    </section>
+  </Fragment>
+
+  <Fragment slot="main">
+    <main class="layout-main" aria-label="Main content">
+      <section class="box-outline-red">
+        <div class="section-grid stack-16">
+          <div class="col-full">
+            <p>Main - Layout main</p>
+          </div>
+
+          <div class="col-4 md:col-4 lg:col-4 box-blue"><code>col-4 md:col-4 lg:col-4 box-blue</code></div>
+          <div class="col-4 md:col-4 lg:col-8 box-blue"><code>col-4 md:col-4 lg:col-8 box-blue</code></div>
+
+          <div class="col-4 md:col-4 lg:col-8 box-blue"><code>col-4 md:col-4 lg:col-8 box-blue</code></div>
+          <div class="col-4 md:col-4 lg:col-4 box-blue"><code>col-4 md:col-4 lg:col-4 box-blue</code></div>
+
+          <div class="col-4 md:col-4 lg:col-4 box-blue"><code>col-4 md:col-4 lg:col-4 box-blue</code></div>
+          <div class="col-4 md:col-4 lg:col-4 box-blue"><code>col-4 md:col-4 lg:col-4 box-blue</code></div>
+          <div class="col-4 md:col-4 lg:col-4 box-blue"><code>col-4 md:col-4 lg:col-4 box-blue</code></div>
+
+          <div class="col-4 md:col-4 lg:col-start-5-span-4 box-blue">
+            <code>col-4 md:col-4 lg:col-start-5-span-4 box-blue</code>
+          </div>
+
+          <div class="col-4 md:col-4 lg:col-start-5-span-4 box-blue">
+            <code>col-4 md:col-4 lg:col-start-5-span-4 box-blue</code>
+          </div>
+          <div class="col-4 md:col-4 lg:col-4 box-blue"><code>col-4 md:col-4 lg:col-4 box-blue</code></div>
+        </div>
+      </section>
+    </main>
+
+    <section class="layout-breakout-left box-outline-blue"><p>Breakout Left</p></section>
+
+    <section class="layout-breakout-right box-outline-blue">Breakout Right</section>
+
+    <section class="layout-full box-outline-green">Layout Full</section>
+  </Fragment>
+
+  <Fragment slot="footer">
+    <section class="layout-wide box-outline-purple">
+      <div class="section-grid">
+        <div class="col-full">
+          <p>Layout Wide - Used for Navigation and Footer</p>
+        </div>
+      </div>
+    </section>
+  </Fragment>
+  <!-- <Fragment slot="test">
+    <section class="layout-full box-outline-purple">Layout Full</section>
+
+    <section class="layout-wide box-outline-orange">Layout Wide</section>
+
+    <section class="layout-main box-outline-green">Layout Main</section>
+
+    <section class="layout-breakout-right box-outline-blue">Breakout Right</section>
+
+    <section class="layout-breakout-left box-outline-blue">Breakout Left</section>
+
+    <section class="layout-wide box-outline-orange">Layout Wide</section>
+  </Fragment> -->
+
+  <!-- <Fragment slot="header">
     <section class="layout-wide box-outline-purple">
       <div class="section-grid">
         <div class="col-full">
@@ -19,35 +85,38 @@ import Layout from "../layouts/Layout.astro";
         <div class="col-full">
           <p>Main - Layout main</p>
         </div>
-        <div class="col-4 md:col-8 lg:col-4 bg-red-300">
-          <code>col-4 md:col-8 lg:col-4 bg-red-300</code>
-        </div>
-        <div class="col-4 md:col-8 lg:col-8 bg-yellow-300">
-          <code>col-4 md:col-8 lg:col-8 bg-yellow-300</code>
-        </div>
-        <div class="col-4 md:col-8 lg:col-start-5-span-8 bg-peach-300 text-gray-300">
-          <code>col-4 md:col-8 lg:col-start-5-span-8 bg-peach-300 text-gray-300</code>
+
+        <div class="col-4 md:col-4 lg:col-4 box-blue"><code>col-4 md:col-4 lg:col-4 box-blue</code></div>
+        <div class="col-4 md:col-4 lg:col-8 box-blue"><code>col-4 md:col-4 lg:col-8 box-blue</code></div>
+
+        <div class="col-4 md:col-4 lg:col-8 box-blue"><code>col-4 md:col-4 lg:col-8 box-blue</code></div>
+        <div class="col-4 md:col-4 lg:col-4 box-blue"><code>col-4 md:col-4 lg:col-4 box-blue</code></div>
+
+        <div class="col-4 md:col-4 lg:col-4 box-blue"><code>col-4 md:col-4 lg:col-4 box-blue</code></div>
+        <div class="col-4 md:col-4 lg:col-4 box-blue"><code>col-4 md:col-4 lg:col-4 box-blue</code></div>
+        <div class="col-4 md:col-4 lg:col-4 box-blue"><code>col-4 md:col-4 lg:col-4 box-blue</code></div>
+
+        <div class="col-4 md:col-4 lg:col-start-5-span-4 box-blue">
+          <code>col-4 md:col-4 lg:col-start-5-span-4 box-blue</code>
         </div>
 
-        <div class="col-4 md:col-4 lg:col-4 bg-red-300">
-          <code>col-4 md:col-8 lg:col-4 bg-red-300</code>
+        <div class="col-4 md:col-4 lg:col-start-5-span-4 box-blue">
+          <code>col-4 md:col-4 lg:col-start-5-span-4 box-blue</code>
         </div>
-        <div class="col-4 md:col-4 lg:col-8 bg-yellow-300">
-          <code>col-4 md:col-8 lg:col-8 bg-yellow-300</code>
-        </div>
+        <div class="col-4 md:col-4 lg:col-4 box-blue"><code>col-4 md:col-4 lg:col-4 box-blue</code></div>
       </div>
     </section>
 
     <section class="layout-breakout-left box-outline-blue">Breakout Left</section>
 
-    <section class="layout-main box-outline-red">Main - Layout main</section>
+    <section class="layout-main box-outline-orange">Main - Layout main</section>
 
-    <section class="layout-breakout-right box-outline-orange">Breakout Right</section>
+    <section class="layout-breakout-right box-outline-pink">Breakout Right</section>
 
     <section class="layout-full box-outline-green">Layout Full</section>
   </Fragment>
 
-  <!-- <Fragment slot="footer">
+  <Fragment slot="footer">
     <section class="layout-wide box-outline-purple">
       <div class="section-grid">
         <div class="col-full">
@@ -62,6 +131,10 @@ import Layout from "../layouts/Layout.astro";
 
     .stack-16 {
       @include stack(16);
+    }
+
+    section {
+      margin-bottom: 30px;
     }
   </style>
 </Layout>
