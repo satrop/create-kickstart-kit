@@ -28,17 +28,17 @@ export default defineConfig({
       assetsDir: '',
       rollupOptions: {
         output: {
-          entryFileNames: '_js/[name].[hash].js',
-          chunkFileNames: '_js/[name].[hash].js',
+          entryFileNames: '_js/[name].js',
+          chunkFileNames: '_js/[name].js',
           assetFileNames: (assetInfo) => {
             if (!assetInfo.name) return '_assets/[name].[ext]'
             if (assetInfo.name.endsWith('.css')) {
-              return '_css/[name].[hash].css'
+              return '_css/style.css'
             }
             if (/\.(woff2?|eot|ttf|otf)$/.test(assetInfo.name)) {
               return '_fonts/[name][extname]'
             }
-            return '_assets/[name].[hash][extname]'
+            return '_assets/[name][extname]'
           }
         }
       }
