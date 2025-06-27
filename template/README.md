@@ -1,42 +1,84 @@
-# Astro Starter Kit: Basics
-
-```sh
-pnpm create astro@latest -- --template basics
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+# Astriata Kickstart Kit: Basics
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside of your Kickstart kit, you'll see the following folders and files:
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+template
+    ├── astro.config.mjs
+    ├── dist
+    │   ├── _css
+    │   │   └── style.css
+    │   ├── _js
+    │   │   ├── astro
+    │   │   │   ├── server.js
+    │   │   │   └── server.js.map
+    │   │   ├── astro.js
+    │   │   └── astro.js.map
+    │   ├── favicon.svg
+    │   └── index.html
+    ├── node_modules
+    │   ├── @astrojs
+    │   │   └── check -> ../.pnpm/@astrojs+check@0.9.4_typescript@5.8.3/node_modules/@astrojs/check
+    │   ├── astro -> .pnpm/astro@5.10.0_@types+node@24.0.3_rollup@4.44.0_sass-embedded@1.89.2_typescript@5.8.3_yaml@2.8.0/node_modules/astro
+    │   ├── sass-embedded -> .pnpm/sass-embedded@1.89.2/node_modules/sass-embedded
+    │   └── typescript -> .pnpm/typescript@5.8.3/node_modules/typescript
+    ├── package.json
+    ├── pnpm-lock.yaml
+    ├── public
+    │   ├── _fonts
+    │   ├── _icons
+    │   ├── _images
+    │   └── favicon.svg
+    ├── README.md
+    ├── src
+    │   ├── assets
+    │   │   ├── astro.svg
+    │   │   └── background.svg
+    │   ├── components
+    │   │   ├── Dialog.astro
+    │   │   └── Welcome.astro
+    │   ├── layouts
+    │   │   └── Layout.astro
+    │   ├── main.js
+    │   ├── pages
+    │   │   └── index.astro
+    │   └── styles
+    │       ├── base
+    │       │   ├── _fonts.scss
+    │       │   ├── _normalize.scss
+    │       │   └── _typography.scss
+    │       ├── core
+    │       │   ├── _breakpoint.core.scss
+    │       │   ├── _colors.core.scss
+    │       │   ├── _column.core.scss
+    │       │   ├── _debug.core.scss
+    │       │   ├── _grid.core.scss
+    │       │   ├── _spacing.core.scss
+    │       │   └── readme.md
+    │       ├── main.scss
+    │       └── tokens
+    │           ├── colors
+    │           │   └── index.scss
+    │           ├── grid
+    │           │   ├── _grid-vars.scss
+    │           │   └── index.scss
+    │           ├── index.scss
+    │           ├── spacing
+    │           │   ├── _spacing.scss
+    │           │   └── index.scss
+    │           └── typography
+    │               └── index.scss
 ```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
+| Command                | Action                                           |
+| :--------------------- | :----------------------------------------------- |
+| `pnpm install`         | Installs dependencies                            |
 | `pnpm dev`             | Starts local dev server at `localhost:4321`      |
 | `pnpm build`           | Build your production site to `./dist/`          |
 | `pnpm preview`         | Preview your build locally, before deploying     |
@@ -44,5 +86,3 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm astro -- --help` | Get help using the Astro CLI                     |
 
 ## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
