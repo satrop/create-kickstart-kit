@@ -2,13 +2,18 @@
 // Main Styles Entry Point
 // ==========================================================================
 
-@use "base/reset";
+// Import tokens
+@use "./tokens";
 
-@use "abstracts" as *;
-@use "utilities" as *;
+// Import base
+@use "./base/fonts";
+@use "./base/normalize";
 
-@use "layout/site-grid";
-@use "layout/section-grid";
-@use "layout/column-utilities";
-
-@use "utilities/debug";
+// The imports below are not to be modified.
+// Import core styles
+@use "./core/breakpoint.core";
+@use "./core/colors.core";
+@use "./core/column.core";
+@use "./core/debug.core";
+@use "./core/grid.core";
+@use "./core/spacing.core";

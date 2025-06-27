@@ -1,0 +1,38 @@
+@use "sass:map";
+
+// ==================================================
+// Grid System Configuration
+// ==================================================
+
+:root {
+  --site-max-width: 2000px;
+  --container-main-width: 1440px;
+  --container-wide-width: 1770px;
+}
+
+// Main margins for the container
+$main-margins: (
+  sm: 40px,
+  lg: 50px,
+  xl: 165px,
+);
+
+// Outer margins for the grid sections
+$outer-margins: (
+  sm: 40px,
+  md: 0,
+);
+
+// Grid column counts for inner grids
+$grid-columns: (
+  sm: 4,
+  md: 8,
+  lg: 12,
+);
+
+// Gutter spacing between columns
+$grid-gaps: (
+  sm: 20px,
+  md: 25px,
+  lg: 30px,
+);

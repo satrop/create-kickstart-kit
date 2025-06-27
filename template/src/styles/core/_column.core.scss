@@ -1,6 +1,7 @@
 @use "sass:map";
-@use "./section-grid" as sg;
-@use "../abstracts/breakpoints" as bp;
+@use "./grid.core" as *;
+@use "./breakpoint.core" as *;
+@use "../tokens/grid/grid-vars" as *;
 
 // Generally you should not need to modify this file.
 
@@ -9,7 +10,7 @@
 // =============================================
 
 // Start + Span utils (e.g. .col-start-2, .md\:col-4)
-@each $breakpoint, $columns in sg.$grid-columns {
+@each $breakpoint, $columns in $grid-columns {
   $is-sm: $breakpoint == sm;
   $prefix: if($is-sm, "", "#{$breakpoint}\\:");
 
@@ -18,7 +19,7 @@
       @if $is-sm {
         grid-column-start: #{$i};
       } @else {
-        @include bp.respond-to($breakpoint) {
+        @include respond-to($breakpoint) {
           grid-column-start: #{$i};
         }
       }
@@ -28,7 +29,7 @@
       @if $is-sm {
         grid-column: span #{$i} / span #{$i};
       } @else {
-        @include bp.respond-to($breakpoint) {
+        @include respond-to($breakpoint) {
           grid-column: span #{$i} / span #{$i};
         }
       }
@@ -38,11 +39,11 @@
 
 // Full-width utility (e.g. .col-full)
 .col-full {
-  @each $bp, $cols in sg.$grid-columns {
+  @each $bp, $cols in $grid-columns {
     @if $bp == sm {
       grid-column: span #{$cols} / span #{$cols};
     } @else {
-      @include bp.respond-to($bp) {
+      @include respond-to($bp) {
         grid-column: span #{$cols} / span #{$cols};
       }
     }
@@ -50,7 +51,7 @@
 }
 
 // Combined start+span classes (e.g. .lg\:col-start-3-span-6)
-@each $breakpoint, $columns in sg.$grid-columns {
+@each $breakpoint, $columns in $grid-columns {
   $is-sm: $breakpoint == sm;
   $prefix: if($is-sm, "", "#{$breakpoint}\\:");
 
@@ -60,7 +61,7 @@
         @if $is-sm {
           grid-column: #{$start} / span #{$span};
         } @else {
-          @include bp.respond-to($breakpoint) {
+          @include respond-to($breakpoint) {
             grid-column: #{$start} / span #{$span};
           }
         }

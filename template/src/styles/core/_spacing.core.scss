@@ -1,0 +1,33 @@
+@use "../tokens/spacing/spacing" as *;
+@use "./breakpoint.core" as *;
+
+@mixin spacing($property, $token, $negative: false) {
+  $map: map-get($spacing, $token);
+
+  @if not $map {
+    @error "Spacing token `#{$token}` not found in $spacing map.";
+  }
+
+  @each $breakpoint, $value in $map {
+    @include respond-to(#{$breakpoint}) {
+      #{$property}: if($negative, -1 * $value, $value);
+    }
+  }
+}
+
+// Optional: Generate CSS custom properties for use in components or utilities
+@each $token, $breakpoints in $spacing {
+  @each $breakpoint, $value in $breakpoints {
+    @include respond-to(#{$breakpoint}) {
+      :root {
+        --spacing-#{$token}-#{$breakpoint}: #{$value};
+      }
+    }
+  }
+}
+
+// Example usage in a component
+// .example {
+//   @include spacing(margin, 32); // Applies margin based on the 32 spacing token
+//   @include spacing(padding, 48, true); // Applies negative padding
+// }

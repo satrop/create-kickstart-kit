@@ -1,7 +1,45 @@
 @use "sass:map";
-@use "../abstracts/breakpoints" as bp;
+@use "./breakpoint.core" as *;
+@use "../tokens/grid/grid-vars" as *;
 
-// Generally you should not need to modify this file.
+@each $breakpoint, $value in $main-margins {
+  @include respond-to(#{$breakpoint}) {
+    :root {
+      --main-margins: #{$value};
+    }
+  }
+}
+
+@each $breakpoint, $value in $outer-margins {
+  @include respond-to(#{$breakpoint}) {
+    :root {
+      --outer-margins: #{$value};
+    }
+  }
+}
+
+:root {
+  --container-main-width-total: calc(var(--container-main-width) + 2 * var(--main-margins));
+  --container-wide-width-total: calc(var(--container-wide-width) + 2 * var(--outer-margins));
+}
+
+// 4, 8, 12 column grid system
+.section-grid {
+  display: grid;
+  width: 100%;
+  column-gap: map.get($grid-gaps, sm);
+  grid-template-columns: repeat(#{map.get($grid-columns, sm)}, 1fr);
+
+  @include respond-to(md) {
+    column-gap: map.get($grid-gaps, md);
+    grid-template-columns: repeat(#{map.get($grid-columns, md)}, 1fr);
+  }
+
+  @include respond-to(lg) {
+    column-gap: map.get($grid-gaps, lg);
+    grid-template-columns: repeat(#{map.get($grid-columns, lg)}, 1fr);
+  }
+}
 
 // =============================================
 // Base Site Grid Setup
@@ -28,7 +66,7 @@
 .layout-wide {
   grid-column: outer-start / outer-end;
 
-  @include bp.respond-to(md) {
+  @include respond-to(md) {
     grid-column: wide-start / wide-end;
   }
 }
@@ -40,7 +78,7 @@
 .layout-main {
   grid-column: wide-start / wide-end;
 
-  @include bp.respond-to(md) {
+  @include respond-to(md) {
     grid-column: main-start / main-end;
   }
 }
@@ -48,7 +86,7 @@
 .layout-breakout-left {
   grid-column: outer-start / wide-end;
 
-  @include bp.respond-to(md) {
+  @include respond-to(md) {
     grid-column: outer-start / main-end;
   }
 }
@@ -56,7 +94,7 @@
 .layout-breakout-right {
   grid-column: wide-start / outer-end;
 
-  @include bp.respond-to(md) {
+  @include respond-to(md) {
     grid-column: main-start / outer-end;
   }
 }
