@@ -9,6 +9,7 @@ interface Props {
 
 const { title = "Kickstart" } = Astro.props as Props;
 import "../styles/main.scss";
+import "../styles/swiper.css";
 ---
 
 <!doctype html>
@@ -16,6 +17,7 @@ import "../styles/main.scss";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
@@ -48,10 +50,13 @@ import "../styles/main.scss";
         </footer>
       )
     }
-
-    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
+
+<script>
+  // Import component JavaScript on the client side
+  import "../main.js";
+</script>
 
 <style lang="scss">
   // Skip Link Styles

@@ -31,9 +31,9 @@ export default defineConfig({
           entryFileNames: '_js/[name].js',
           chunkFileNames: '_js/[name].js',
           assetFileNames: (assetInfo) => {
-            if (!assetInfo.name) return '_assets/[name].[ext]'
+            if (!assetInfo.name) return '_assets/[name][extname]'
             if (assetInfo.name.endsWith('.css')) {
-              return '_css/style.css'
+              return '[name][extname]' // Keep CSS next to HTML
             }
             if (/\.(woff2?|eot|ttf|otf)$/.test(assetInfo.name)) {
               return '_fonts/[name][extname]'
