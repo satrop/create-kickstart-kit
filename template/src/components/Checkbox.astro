@@ -1,0 +1,201 @@
+---
+export interface Props {
+  name: string;
+  value?: string;
+  checked?: boolean;
+  disabled?: boolean;
+  required?: boolean;
+  label: string;
+  helpText?: string;
+  error?: string;
+}
+
+const { name, value, checked = false, disabled = false, required = false, label, helpText, error } = Astro.props;
+
+const id = `checkbox-${name}-${value || "default"}`;
+---
+
+<div class="checkbox-field">
+  <div class="checkbox-field__wrapper">
+    <input
+      type="checkbox"
+      id={id}
+      name={name}
+      value={value}
+      checked={checked}
+      disabled={disabled}
+      required={required}
+      class="checkbox-field__input"
+      aria-describedby={helpText || error ? `${id}-description` : undefined}
+      aria-invalid={error ? "true" : "false"}
+    />
+
+    <label for={id} class="checkbox-field__label">
+      <span class="checkbox-field__box" aria-hidden="true">
+        <svg class="checkbox-field__checkmark" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M13.5 4.5L6 12L2.5 8.5"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </span>
+      <span class="checkbox-field__text">
+        {label}
+        {required && <span class="checkbox-field__required">*</span>}
+      </span>
+    </label>
+  </div>
+
+  {
+    helpText && (
+      <div id={`${id}-description`} class="checkbox-field__help">
+        {helpText}
+      </div>
+    )
+  }
+
+  {
+    error && (
+      <div id={`${id}-description`} class="checkbox-field__error" role="alert">
+        {error}
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .checkbox-field {
+    margin-bottom: 1rem;
+  }
+
+  .checkbox-field__wrapper {
+    position: relative;
+  }
+
+  .checkbox-field__input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  .checkbox-field__label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+
+    &:hover .checkbox-field__box {
+      border-color: #007bff;
+      background-color: #f8f9fa;
+    }
+  }
+
+  .checkbox-field__box {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin-top: 0.125rem; /* Align with first line of text */
+  }
+
+  .checkbox-field__checkmark {
+    width: 0.875rem;
+    height: 0.875rem;
+    color: white;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.2s ease;
+  }
+
+  .checkbox-field__text {
+    flex: 1;
+  }
+
+  .checkbox-field__required {
+    color: #dc3545;
+    margin-left: 0.25rem;
+  }
+
+  .checkbox-field__help {
+    margin-top: 0.25rem;
+    margin-left: 2rem; /* Align with text, not checkbox */
+    font-size: 0.875rem;
+    color: #6c757d;
+  }
+
+  .checkbox-field__error {
+    margin-top: 0.25rem;
+    margin-left: 2rem; /* Align with text, not checkbox */
+    font-size: 0.875rem;
+    color: #dc3545;
+  }
+
+  /* Checked state */
+  .checkbox-field__input:checked + .checkbox-field__label .checkbox-field__box {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .checkbox-field__input:checked + .checkbox-field__label .checkbox-field__checkmark {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Focus state */
+  .checkbox-field__input:focus + .checkbox-field__label .checkbox-field__box {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+  }
+
+  /* Disabled state */
+  .checkbox-field__input:disabled + .checkbox-field__label {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .checkbox-field__input:disabled + .checkbox-field__label .checkbox-field__box {
+    background-color: #f8f9fa;
+    border-color: #e0e0e0;
+  }
+
+  /* Error state */
+  .checkbox-field__input[aria-invalid="true"] + .checkbox-field__label .checkbox-field__box {
+    border-color: #dc3545;
+  }
+
+  .checkbox-field__input[aria-invalid="true"]:focus + .checkbox-field__label .checkbox-field__box {
+    outline-color: #dc3545;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .checkbox-field__input:focus + .checkbox-field__label .checkbox-field__box {
+      outline: 3px solid;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .checkbox-field__box,
+    .checkbox-field__checkmark {
+      transition: none;
+    }
+  }
+</style>

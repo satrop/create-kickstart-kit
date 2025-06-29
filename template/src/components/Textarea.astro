@@ -1,0 +1,160 @@
+---
+export interface Props {
+  label: string;
+  name: string;
+  placeholder?: string;
+  required?: boolean;
+  disabled?: boolean;
+  error?: string;
+  helpText?: string;
+  rows?: number;
+  maxlength?: number;
+  resize?: "none" | "vertical" | "horizontal" | "both";
+}
+
+const {
+  label,
+  name,
+  placeholder,
+  required = false,
+  disabled = false,
+  error,
+  helpText,
+  rows = 4,
+  maxlength,
+  resize = "vertical",
+} = Astro.props;
+---
+
+<div class="textarea-field">
+  <label for={name} class="textarea-field__label">
+    {label}
+    {required && <span class="textarea-field__required">*</span>}
+  </label>
+
+  <textarea
+    id={name}
+    name={name}
+    placeholder={placeholder}
+    required={required}
+    disabled={disabled}
+    rows={rows}
+    maxlength={maxlength}
+    class={`textarea-field__textarea textarea-field__textarea--${resize} ${error ? "textarea-field__textarea--error" : ""}`}
+    aria-describedby={helpText || error ? `${name}-description` : undefined}
+    aria-invalid={error ? "true" : "false"}></textarea>
+
+  {
+    helpText && (
+      <div id={`${name}-description`} class="textarea-field__help">
+        {helpText}
+      </div>
+    )
+  }
+
+  {
+    error && (
+      <div id={`${name}-description`} class="textarea-field__error" role="alert">
+        {error}
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .textarea-field {
+    margin-bottom: 1rem;
+  }
+
+  .textarea-field__label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .textarea-field__required {
+    color: #dc3545;
+  }
+
+  .textarea-field__textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    line-height: 1.5;
+    transition: border-color 0.2s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    }
+
+    &:disabled {
+      background-color: #f8f9fa;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    &--error {
+      border-color: #dc3545;
+
+      &:focus {
+        border-color: #dc3545;
+        box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+      }
+    }
+
+    &::placeholder {
+      color: #6c757d;
+      opacity: 1;
+    }
+  }
+
+  /* Resize options */
+  .textarea-field__textarea--none {
+    resize: none;
+  }
+
+  .textarea-field__textarea--vertical {
+    resize: vertical;
+  }
+
+  .textarea-field__textarea--horizontal {
+    resize: horizontal;
+  }
+
+  .textarea-field__textarea--both {
+    resize: both;
+  }
+
+  .textarea-field__help {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: #6c757d;
+  }
+
+  .textarea-field__error {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: #dc3545;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .textarea-field__textarea:focus {
+      outline: 3px solid;
+      box-shadow: none;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .textarea-field__textarea {
+      transition: none;
+    }
+  }
+</style>

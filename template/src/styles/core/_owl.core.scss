@@ -1,0 +1,31 @@
+@use "../tokens/spacing/spacing" as *;
+@use "./breakpoint.core" as *;
+
+@mixin owl($property, $token, $negative: false) {
+  $map: map-get($spacing, $token);
+
+  @if not $map {
+    @error "Spacing token `#{$token}` not found in $spacing map.";
+  }
+
+  > * + * {
+    @each $breakpoint, $value in $map {
+      @include respond-to(#{$breakpoint}) {
+        #{$property}: if($negative, -1 * $value, $value);
+      }
+    }
+  }
+}
+
+// Example usage in a component
+// .example {
+//   @include owl(margin, 32); // Applies margin based on the 32 spacing token
+//   @include owl(padding, 48, true); // Applies negative padding
+// }
+
+// Generating CSS custom properties for use in components or utilities
+@each $token, $breakpoints in $spacing {
+  .owl-#{$token} {
+    @include owl(margin-bottom, $token);
+  }
+}

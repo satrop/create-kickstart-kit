@@ -1,0 +1,720 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import Alert from "../components/Alert.astro";
+import FormField from "../components/FormField.astro";
+import Checkbox from "../components/Checkbox.astro";
+import RadioGroup from "../components/RadioGroup.astro";
+import Select from "../components/Select.astro";
+import Textarea from "../components/Textarea.astro";
+import Card from "../components/Card.astro";
+// import Navigation from "../components/Navigation.astro";
+import Accordion from "../components/Accordion.astro";
+import FiftyFifty from "../components/FiftyFifty.astro";
+import Swiper from "../components/Swiper.astro";
+
+const navItems = [
+  { label: "Home", href: "/", active: true },
+  { label: "About", href: "/about" },
+  { label: "Components", href: "/components" },
+  { label: "Contact", href: "/contact" },
+];
+
+const accordionItems = [
+  {
+    id: "item1",
+    title: "What is this starter template?",
+    content:
+      "This is a minimal Astro starter template with essential components designed for easy customization. It includes a flexible grid system, typography, and common UI components.",
+  },
+  {
+    id: "item2",
+    title: "How do I customize the components?",
+    content:
+      "Each component uses predictable class names and minimal styling. You can override styles in your main stylesheet, use CSS custom properties, or create new variant classes.",
+  },
+  {
+    id: "item3",
+    title: "Are the components accessible?",
+    content:
+      "Yes! All components follow WCAG guidelines and include proper ARIA attributes, semantic HTML, keyboard navigation support, and focus management.",
+  },
+  {
+    id: "item4",
+    title: "Can I remove unused components?",
+    content:
+      "Absolutely! Each component is self-contained with no dependencies on other components. Simply delete the component files you don't need.",
+  },
+];
+
+const faqItems = [
+  {
+    id: "faq1",
+    title: "Installation & Setup",
+    htmlContent:
+      "<p>Clone the repository, run <code>npm install</code>, and start the development server with <code>npm run dev</code>.</p><p>The template includes all necessary dependencies and configurations.</p>",
+  },
+  {
+    id: "faq2",
+    title: "Browser Support",
+    content:
+      "This template supports all modern browsers including Chrome, Firefox, Safari, and Edge. Internet Explorer is not supported.",
+  },
+  {
+    id: "faq3",
+    title: "Performance Considerations",
+    htmlContent:
+      "<p>The template is optimized for performance with:</p><ul><li>Minimal CSS footprint</li><li>Tree-shaking support</li><li>Efficient component architecture</li><li>Scoped styles to prevent conflicts</li></ul>",
+  },
+];
+
+const paymentOptions = [
+  { value: "credit", label: "Credit Card" },
+  { value: "debit", label: "Debit Card" },
+  { value: "paypal", label: "PayPal" },
+  { value: "bank", label: "Bank Transfer", disabled: true },
+];
+
+const sizeOptions = [
+  { value: "xs", label: "Extra Small" },
+  { value: "s", label: "Small" },
+  { value: "m", label: "Medium" },
+  { value: "l", label: "Large" },
+  { value: "xl", label: "Extra Large" },
+];
+
+const countryOptions = [
+  { value: "us", label: "United States" },
+  { value: "ca", label: "Canada" },
+  { value: "uk", label: "United Kingdom" },
+  { value: "de", label: "Germany" },
+  { value: "fr", label: "France" },
+  { value: "jp", label: "Japan" },
+  { value: "au", label: "Australia" },
+  { value: "other", label: "Other", disabled: true },
+];
+
+const categoryOptions = [
+  { value: "tech", label: "Technology" },
+  { value: "design", label: "Design" },
+  { value: "marketing", label: "Marketing" },
+  { value: "sales", label: "Sales" },
+  { value: "support", label: "Customer Support" },
+];
+
+// Sample slides for Swiper examples
+const sampleSlides = [
+  {
+    id: "slide1",
+    content: `<h3>Modern Design</h3><p>Clean, minimal interface that focuses on your content and user experience.</p>`,
+    image: "/_images/image1.jpg",
+    alt: "Modern design showcase",
+  },
+  {
+    id: "slide2",
+    content: `<h3>Fully Responsive</h3><p>Looks great on desktop, tablet, and mobile devices with adaptive layouts.</p>`,
+    image: "/_images/image2.jpg",
+    alt: "Responsive design showcase",
+  },
+  {
+    id: "slide3",
+    content: `<h3>Easy to Customize</h3><p>Flexible components that can be styled and modified to match your brand.</p>`,
+    image: "/_images/image3.jpg",
+    alt: "Customization showcase",
+  },
+  {
+    id: "slide4",
+    content: `<h3>Built for Performance</h3><p>Optimized for speed with modern build tools and best practices.</p>`,
+    image: "/_images/image4.jpg",
+    alt: "Performance showcase",
+  },
+  {
+    id: "slide5",
+    content: `<h3>Developer Friendly</h3><p>Clean code structure with TypeScript support and great documentation.</p>`,
+    image: "/_images/image1.jpg",
+    alt: "Developer experience showcase",
+  },
+];
+
+const textOnlySlides = [
+  {
+    id: "text1",
+    content: `<h3>🚀 Fast Development</h3><p>Get up and running quickly with pre-built components and utilities.</p>`,
+  },
+  {
+    id: "text2",
+    content: `<h3>🎨 Beautiful Design</h3><p>Thoughtfully designed components that look professional out of the box.</p>`,
+  },
+  {
+    id: "text3",
+    content: `<h3>📱 Mobile First</h3><p>Responsive design that works perfectly on all screen sizes and devices.</p>`,
+  },
+];
+---
+
+<Layout title="Component Showcase">
+  <Fragment slot="header">
+    <!-- <Navigation items={navItems} /> -->
+  </Fragment>
+
+  <Fragment slot="main">
+    <div class="showcase">
+      <div class="showcase__intro">
+        <h1>Component Showcase</h1>
+        <p>
+          This page demonstrates the basic components included in this starter template. Each component is designed with
+          minimal styling to make customization easy.
+        </p>
+      </div>
+
+      <!-- Buttons Section -->
+      <section class="showcase__section">
+        <h2>Buttons</h2>
+        <p>Flexible button component with variants and sizes.</p>
+
+        <div class="showcase__demo">
+          <h3>Variants</h3>
+          <div class="showcase__group">
+            <Button>Primary Button</Button>
+            <Button variant="secondary">Secondary Button</Button>
+            <Button variant="outline">Outline Button</Button>
+            <Button disabled>Disabled Button</Button>
+          </div>
+
+          <h3>Sizes</h3>
+          <div class="showcase__group">
+            <Button size="small">Small</Button>
+            <Button size="medium">Medium</Button>
+            <Button size="large">Large</Button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alerts Section -->
+      <section class="showcase__section">
+        <h2>Alerts</h2>
+        <p>Alert messages for different contexts.</p>
+
+        <div class="showcase__demo">
+          <Alert type="info">This is an info alert with useful information.</Alert>
+          <Alert type="success">Success! Your action was completed successfully.</Alert>
+          <Alert type="warning">Warning: Please review your input.</Alert>
+          <Alert type="error">Error: Something went wrong.</Alert>
+          <Alert type="info" dismissible>This alert can be dismissed by clicking the × button.</Alert>
+        </div>
+      </section>
+
+      <!-- Form Fields Section -->
+      <section class="showcase__section">
+        <h2>Form Fields</h2>
+        <p>Complete collection of form inputs with labels, validation, and help text.</p>
+
+        <div class="showcase__demo">
+          <h3>Text Inputs</h3>
+          <FormField
+            label="Email Address"
+            name="email"
+            type="email"
+            placeholder="Enter your email"
+            required
+            helpText="We'll never share your email with anyone else."
+          />
+
+          <FormField label="Password" name="password" type="password" placeholder="Enter your password" required />
+
+          <FormField
+            label="Phone Number"
+            name="phone"
+            type="tel"
+            placeholder="(555) 123-4567"
+            error="Please enter a valid phone number"
+          />
+
+          <FormField label="Website URL" name="website" type="url" placeholder="https://example.com" />
+
+          <FormField label="Age" name="age" type="number" placeholder="18" />
+
+          <FormField label="Disabled Field" name="disabled" placeholder="This field is disabled" disabled />
+
+          <h3>Select Dropdowns</h3>
+          <Select
+            label="Country"
+            name="country"
+            options={countryOptions}
+            placeholder="Choose your country"
+            required
+            helpText="Select your primary country of residence."
+          />
+
+          <Select label="Department" name="department" options={categoryOptions} value="tech" />
+
+          <Select
+            label="Skills (Multiple)"
+            name="skills"
+            options={categoryOptions}
+            helpText="Hold Ctrl/Cmd to select multiple options."
+          />
+
+          <Select
+            label="Priority Level"
+            name="priority"
+            options={[
+              { value: "low", label: "Low Priority" },
+              { value: "medium", label: "Medium Priority" },
+              { value: "high", label: "High Priority" },
+              { value: "urgent", label: "Urgent" },
+            ]}
+            error="Please select a priority level"
+          />
+
+          <h3>Textarea</h3>
+          <Textarea
+            label="Message"
+            name="message"
+            placeholder="Enter your message here..."
+            rows={4}
+            required
+            helpText="Please provide as much detail as possible."
+          />
+
+          <Textarea
+            label="Comments"
+            name="comments"
+            placeholder="Additional comments..."
+            rows={3}
+            maxlength={500}
+            resize="none"
+          />
+
+          <Textarea
+            label="Description"
+            name="description"
+            placeholder="Describe your project..."
+            error="Description is required and must be at least 50 characters."
+            rows={6}
+          />
+
+          <h3>Checkboxes</h3>
+          <Checkbox
+            name="newsletter"
+            label="Subscribe to our newsletter"
+            helpText="Get updates about new features and releases."
+          />
+
+          <Checkbox name="terms" label="I agree to the terms and conditions" required />
+
+          <Checkbox name="marketing" label="Send me marketing emails" checked />
+
+          <Checkbox name="disabled" label="This option is disabled" disabled />
+
+          <Checkbox
+            name="error-example"
+            label="This checkbox has an error"
+            error="You must check this box to continue"
+          />
+
+          <h3>Radio Groups</h3>
+          <RadioGroup
+            name="payment"
+            label="Payment Method"
+            options={paymentOptions}
+            value="credit"
+            helpText="Choose your preferred payment method."
+          />
+
+          <RadioGroup name="size" label="Size" options={sizeOptions} orientation="horizontal" required />
+
+          <RadioGroup
+            name="shipping"
+            label="Shipping Options"
+            options={[
+              { value: "standard", label: "Standard Shipping (5-7 days)" },
+              { value: "express", label: "Express Shipping (2-3 days)" },
+              { value: "overnight", label: "Overnight Shipping" },
+            ]}
+            error="Please select a shipping option"
+          />
+        </div>
+      </section>
+
+      <!-- Cards Section -->
+      <section class="showcase__section">
+        <h2>Cards</h2>
+        <p>Flexible card containers with optional header and footer.</p>
+
+        <div class="showcase__demo">
+          <div class="cards-grid">
+            <Card>
+              <h3>Default Card</h3>
+              <p>This is a basic card with default styling.</p>
+            </Card>
+
+            <Card variant="bordered">
+              <Fragment slot="header">
+                <h3>Bordered Card</h3>
+              </Fragment>
+              <p>This card has a border and a header section.</p>
+              <Fragment slot="footer">
+                <Button size="small">Action</Button>
+              </Fragment>
+            </Card>
+
+            <Card variant="elevated" padding="large">
+              <Fragment slot="header">
+                <h3>Elevated Card</h3>
+              </Fragment>
+              <p>This card has a shadow and larger padding for a more prominent appearance.</p>
+              <Fragment slot="footer">
+                <div style="display: flex; gap: 0.5rem;">
+                  <Button variant="outline" size="small">Cancel</Button>
+                  <Button size="small">Confirm</Button>
+                </div>
+              </Fragment>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navigation Section -->
+      <!-- <section class="showcase__section">
+        <h2>Navigation</h2>
+        <p>Horizontal and vertical navigation components.</p>
+
+        <div class="showcase__demo">
+          <h3>Horizontal Navigation</h3>
+          <Navigation items={navItems} />
+
+          <h3>Vertical Navigation</h3>
+          <Navigation items={navItems} orientation="vertical" />
+        </div>
+      </section> -->
+
+      <!-- Accordion Section -->
+      <section class="showcase__section">
+        <h2>Accordion</h2>
+        <p>Fully accessible accordion component with keyboard navigation and ARIA support.</p>
+
+        <div class="showcase__demo">
+          <h3>Default Accordion (Single Open)</h3>
+          <Accordion items={accordionItems} />
+
+          <h3>Multiple Open Accordion</h3>
+          <Accordion items={faqItems} allowMultiple variant="bordered" />
+
+          <h3>Flush Variant</h3>
+          <Accordion items={accordionItems.slice(0, 2)} variant="flush" />
+        </div>
+      </section>
+
+      <!-- Fifty Fifty Section -->
+      <section class="showcase__section">
+        <h2>50/50 Layout</h2>
+        <p>
+          Flexible two-column layout component using your grid utility classes. Perfect for hero sections and feature
+          highlights.
+        </p>
+
+        <div class="showcase__demo">
+          <h3>Image Left (Default)</h3>
+          <FiftyFifty
+            imageSrc="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop&crop=faces"
+            imageAlt="Team collaboration"
+            title="Build Something Amazing"
+            subtitle="Get Started">
+            <p>
+              Create beautiful, responsive layouts with our flexible 50/50 component. Perfect for showcasing features,
+              testimonials, or any content that benefits from a balanced visual hierarchy.
+            </p>
+            <p>
+              The component automatically adapts to your grid system and provides options for image positioning and
+              content alignment.
+            </p>
+
+            <Fragment slot="actions">
+              <Button>Get Started</Button>
+              <Button variant="outline">Learn More</Button>
+            </Fragment>
+          </FiftyFifty>
+
+          <h3>Image Right</h3>
+          <FiftyFifty
+            imageSrc="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&crop=center"
+            imageAlt="Analytics dashboard"
+            imagePosition="right"
+            title="Data-Driven Insights"
+            subtitle="Analytics"
+            alignment="left">
+            <p>
+              Make informed decisions with comprehensive analytics and reporting. Our dashboard provides real-time
+              insights into your most important metrics.
+            </p>
+
+            <Fragment slot="actions">
+              <Button variant="secondary">View Dashboard</Button>
+            </Fragment>
+          </FiftyFifty>
+
+          <h3>Centered Content</h3>
+          <FiftyFifty
+            imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop&crop=faces"
+            imageAlt="Customer support team"
+            title="24/7 Support"
+            subtitle="We're Here to Help"
+            alignment="center"
+            variant="contained">
+            <p>
+              Get help whenever you need it with our dedicated support team. We're available around the clock to ensure
+              your success.
+            </p>
+
+            <Fragment slot="actions">
+              <Button>Contact Support</Button>
+            </Fragment>
+          </FiftyFifty>
+        </div>
+      </section>
+
+      <!-- Swiper/Carousel -->
+      <section class="showcase__section">
+        <div class="component-showcase">
+          <h3>Swiper/Carousel</h3>
+
+          <div class="example-group">
+            <h4>Basic Carousel with Images</h4>
+            <Swiper
+              slides={sampleSlides}
+              slidesPerView={1}
+              spaceBetween={20}
+              navigation={true}
+              pagination={true}
+              autoplay={{ delay: 4000 }}
+            />
+          </div>
+
+          <div class="example-group">
+            <h4>Multi-slide Carousel</h4>
+            <Swiper
+              slides={sampleSlides}
+              slidesPerView={3}
+              spaceBetween={30}
+              navigation={true}
+              pagination={true}
+              breakpoints={{
+                640: { slidesPerView: 1, spaceBetween: 20 },
+                768: { slidesPerView: 2, spaceBetween: 25 },
+                1024: { slidesPerView: 3, spaceBetween: 30 },
+              }}
+            />
+          </div>
+
+          <div class="example-group">
+            <h4>Text-only Carousel</h4>
+            <Swiper
+              slides={textOnlySlides}
+              slidesPerView={1}
+              spaceBetween={0}
+              navigation={true}
+              pagination={true}
+              centeredSlides={true}
+              loop={true}
+            />
+          </div>
+
+          <div class="example-group">
+            <h4>Minimal Carousel (No Navigation)</h4>
+            <Swiper
+              slides={textOnlySlides}
+              slidesPerView={1}
+              spaceBetween={20}
+              navigation={false}
+              pagination={true}
+              autoplay={{ delay: 3000 }}
+              loop={true}
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Usage Instructions -->
+      <section class="showcase__section">
+        <h2>Customization Guide</h2>
+        <div class="usage-guide">
+          <Card variant="bordered">
+            <Fragment slot="header">
+              <h3>How to Customize Components</h3>
+            </Fragment>
+            <div class="usage-content">
+              <p>Each component is designed with minimal, functional styling that's easy to override:</p>
+              <ul>
+                <li><strong>CSS Custom Properties:</strong> Override color and spacing variables</li>
+                <li><strong>Class-based Styling:</strong> Each component uses predictable class names</li>
+                <li><strong>Scoped Styles:</strong> Component styles won't leak to other elements</li>
+                <li><strong>Variant System:</strong> Built-in variants for common use cases</li>
+                <li>
+                  <strong>Accessibility First:</strong> All components include ARIA attributes and keyboard navigation
+                </li>
+                <li><strong>Progressive Enhancement:</strong> Components work without JavaScript when possible</li>
+              </ul>
+              <p>
+                To customize, simply override the component styles in your main stylesheet or create new variant
+                classes. All interactive components include proper focus management and keyboard navigation.
+              </p>
+            </div>
+          </Card>
+        </div>
+      </section>
+    </div>
+  </Fragment>
+</Layout>
+
+<style lang="scss">
+  .showcase {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .showcase__intro {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    p {
+      font-size: 1.125rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .showcase__section {
+    margin-bottom: 4rem;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    > p {
+      color: #666;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .showcase__demo {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+
+    h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      color: #495057;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .showcase__group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .component-showcase {
+    margin-bottom: 2rem;
+
+    h3 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .example-group {
+      margin-bottom: 2rem;
+
+      h4 {
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+        color: #495057;
+      }
+    }
+  }
+
+  .usage-guide {
+    .usage-content {
+      ul {
+        margin: 1rem 0;
+        padding-left: 1.5rem;
+
+        li {
+          margin-bottom: 0.5rem;
+          line-height: 1.6;
+
+          strong {
+            color: #007bff;
+          }
+        }
+      }
+
+      p {
+        line-height: 1.6;
+        margin-bottom: 1rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .showcase {
+      padding: 1rem;
+    }
+
+    .showcase__intro h1 {
+      font-size: 2rem;
+    }
+
+    .showcase__demo {
+      padding: 1rem;
+    }
+
+    .showcase__group {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

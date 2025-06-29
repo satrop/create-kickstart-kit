@@ -1,0 +1,87 @@
+---
+export interface Props {
+  variant?: "default" | "bordered" | "elevated";
+  padding?: "none" | "small" | "medium" | "large";
+}
+
+const { variant = "default", padding = "medium" } = Astro.props;
+---
+
+<div class={`card card--${variant} card--padding-${padding}`}>
+  {
+    Astro.slots.has("header") && (
+      <div class="card__header">
+        <slot name="header" />
+      </div>
+    )
+  }
+
+  <div class="card__content">
+    <slot />
+  </div>
+
+  {
+    Astro.slots.has("footer") && (
+      <div class="card__footer">
+        <slot name="footer" />
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .card--default {
+    /* Minimal default card */
+  }
+
+  .card--bordered {
+    border: 1px solid #e0e0e0;
+  }
+
+  .card--elevated {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card__header {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .card__content {
+    /* Content area */
+  }
+
+  .card__footer {
+    border-top: 1px solid #e0e0e0;
+  }
+
+  /* Padding variants */
+  .card--padding-none .card__header,
+  .card--padding-none .card__content,
+  .card--padding-none .card__footer {
+    padding: 0;
+  }
+
+  .card--padding-small .card__header,
+  .card--padding-small .card__content,
+  .card--padding-small .card__footer {
+    padding: 0.75rem;
+  }
+
+  .card--padding-medium .card__header,
+  .card--padding-medium .card__content,
+  .card--padding-medium .card__footer {
+    padding: 1rem;
+  }
+
+  .card--padding-large .card__header,
+  .card--padding-large .card__content,
+  .card--padding-large .card__footer {
+    padding: 1.5rem;
+  }
+</style>

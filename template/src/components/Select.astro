@@ -1,0 +1,136 @@
+---
+export interface SelectOption {
+  value: string;
+  label: string;
+  disabled?: boolean;
+}
+
+export interface Props {
+  label?: string;
+  name: string;
+  options: SelectOption[];
+  value?: string;
+  placeholder?: string;
+  required?: boolean;
+  disabled?: boolean;
+  error?: string;
+  helpText?: string;
+  class?: string;
+}
+
+const {
+  label,
+  name,
+  options,
+  value,
+  placeholder,
+  required = false,
+  disabled = false,
+  error,
+  helpText,
+  class: className = "",
+} = Astro.props;
+---
+
+{
+  label && (
+    <label for={name}>
+      {label}
+      {required && <span style="color: #dc3545;">*</span>}
+    </label>
+  )
+}
+
+<select
+  id={name}
+  name={name}
+  required={required}
+  disabled={disabled}
+  class={`select ${error ? "select--error" : ""} ${className}`}
+  aria-describedby={helpText || error ? `${name}-description` : undefined}
+  aria-invalid={error ? "true" : "false"}>
+  {
+    placeholder && (
+      <option value="" disabled selected={!value}>
+        {placeholder}
+      </option>
+    )
+  }
+  {
+    options.map((option) => (
+      <option value={option.value} disabled={option.disabled} selected={value === option.value}>
+        {option.label}
+      </option>
+    ))
+  }
+</select>
+
+{
+  helpText && (
+    <div id={`${name}-description`} class="help-text">
+      {helpText}
+    </div>
+  )
+}
+
+{
+  error && (
+    <div id={`${name}-description`} class="error-text" role="alert">
+      {error}
+    </div>
+  )
+}
+
+<style>
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .select {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: white;
+    color: #333;
+  }
+
+  .select:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+  }
+
+  .select:disabled {
+    background-color: #f8f9fa;
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .select--error {
+    border-color: #dc3545;
+  }
+
+  .select--error:focus {
+    outline-color: #dc3545;
+  }
+
+  .help-text {
+    margin-top: -0.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: #6c757d;
+  }
+
+  .error-text {
+    margin-top: -0.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: #dc3545;
+  }
+</style>

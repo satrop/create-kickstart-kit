@@ -1,0 +1,99 @@
+---
+export interface Props {
+  orientation?: "horizontal" | "vertical";
+  items: Array<{
+    label: string;
+    href: string;
+    active?: boolean;
+  }>;
+}
+
+const { orientation = "horizontal", items } = Astro.props;
+---
+
+<nav class={`nav nav--${orientation}`} aria-label="Navigation">
+  <ul class="nav__list">
+    {
+      items.map((item) => (
+        <li class="nav__item">
+          <a
+            href={item.href}
+            class={`nav__link ${item.active ? "nav__link--active" : ""}`}
+            aria-current={item.active ? "page" : undefined}>
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  .nav--horizontal .nav__list {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .nav--vertical .nav__list {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav__item {
+    /* Base item styles */
+  }
+
+  .nav__link {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: #f8f9fa;
+      color: #007bff;
+    }
+
+    &:focus {
+      outline: 2px solid #007bff;
+      outline-offset: 2px;
+    }
+
+    &--active {
+      background-color: #007bff;
+      color: white;
+
+      &:hover {
+        background-color: #0056b3;
+        color: white;
+      }
+
+      &:focus {
+        outline-color: white;
+      }
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .nav__link:focus {
+      outline: 3px solid;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .nav__link {
+      transition: none;
+    }
+  }
+</style>

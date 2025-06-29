@@ -10,27 +10,27 @@ import "../styles/main.scss";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
   </head>
-  <body class="site-wrapper">
-    <slot name="test" />
-
-    <header class="layout-wide" aria-label="Site header">
-      <slot name="header" />
-    </header>
+  <body class="site-wrapper owl-32">
+    {
+      Astro.slots.has("header") && (
+        <header class="layout-wide" aria-label="Site header">
+          <slot name="header" />
+        </header>
+      )
+    }
 
     <slot name="main" />
 
-    <footer class="layout-wide" aria-label="Site footer">
-      <slot name="footer" />
-    </footer>
+    {
+      Astro.slots.has("footer") && (
+        <footer class="layout-wide" aria-label="Site footer">
+          <slot name="footer" />
+        </footer>
+      )
+    }
 
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
 
-<style lang="scss">
-  // @use "../styles/abstracts" as *;
-
-  // .stack-16 {
-  //   @include stack(16);
-  // }
-</style>
+<style lang="scss"></style>

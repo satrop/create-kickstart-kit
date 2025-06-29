@@ -1,0 +1,86 @@
+---
+export interface Props {
+  type?: "info" | "success" | "warning" | "error";
+  dismissible?: boolean;
+}
+
+const { type = "info", dismissible = false } = Astro.props;
+---
+
+<div class={`alert alert--${type}`} role="alert">
+  <slot />
+  {
+    dismissible && (
+      <button class="alert__close" aria-label="Close alert">
+        ×
+      </button>
+    )
+  }
+</div>
+
+<style>
+  .alert {
+    /* Base alert styles */
+    padding: 0.75rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .alert__close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  /* Alert type variants */
+  .alert--info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+  }
+
+  .alert--success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+  }
+
+  .alert--warning {
+    background-color: #fff3cd;
+    border-color: #ffeaa7;
+    color: #856404;
+  }
+
+  .alert--error {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+  }
+</style>
+
+<script>
+  // Add dismiss functionality
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".alert__close").forEach((button) => {
+      button.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement;
+        const alert = target?.closest(".alert");
+        if (alert) {
+          alert.remove();
+        }
+      });
+    });
+  });
+</script>

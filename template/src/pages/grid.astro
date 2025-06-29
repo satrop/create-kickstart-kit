@@ -1,0 +1,454 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Grid System">
+  <Fragment slot="header">
+    <section class="grid-demo-box grid-demo-box--accent">
+      <code>layout-wide</code>
+      <p>Layout Wide - Used for Navigation and Footer</p>
+    </section>
+  </Fragment>
+
+  <Fragment slot="main">
+    <main class="layout-main owl-32" aria-label="Main content">
+      <div class="section-grid">
+        <div class="col-full">
+          <div class="page-intro">
+            <h1>Grid System</h1>
+            <p>
+              A flexible, responsive grid system built with CSS Grid. The system provides a 12-column layout with
+              breakpoint-specific classes for mobile-first responsive design.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Basic Grid Section -->
+      <div class="section-grid owl-32">
+        <div class="col-full">
+          <h2>Basic Grid Layout</h2>
+          <p>The grid system uses a 12-column layout with responsive breakpoints.</p>
+        </div>
+
+        <div class="col-full">
+          <div class="grid-demo-box">
+            <code>col-full</code>
+            <p>Full width column spanning all 12 columns</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column Sizes Section -->
+      <div class="section-grid owl-32">
+        <div class="col-full">
+          <h2>Column Sizes</h2>
+          <p>Columns can span different widths from 1 to 12 columns.</p>
+        </div>
+
+        <div class="col-4 md:col-4 lg:col-4">
+          <div class="grid-demo-box">
+            <code>col-4 md:col-4 lg:col-4</code>
+          </div>
+        </div>
+        <div class="col-4 md:col-4 lg:col-8">
+          <div class="grid-demo-box">
+            <code>col-4 md:col-4 lg:col-8</code>
+          </div>
+        </div>
+
+        <div class="col-4 md:col-4 lg:col-8">
+          <div class="grid-demo-box">
+            <code>col-4 md:col-4 lg:col-8</code>
+          </div>
+        </div>
+        <div class="col-4 md:col-4 lg:col-4">
+          <div class="grid-demo-box">
+            <code>col-4 md:col-4 lg:col-4</code>
+          </div>
+        </div>
+
+        <div class="col-4 md:col-4 lg:col-4">
+          <div class="grid-demo-box">
+            <code>col-4 md:col-4 lg:col-4</code>
+          </div>
+        </div>
+        <div class="col-4 md:col-4 lg:col-4">
+          <div class="grid-demo-box">
+            <code>col-4 md:col-4 lg:col-4</code>
+          </div>
+        </div>
+        <div class="col-4 md:col-4 lg:col-4">
+          <div class="grid-demo-box">
+            <code>col-4 md:col-4 lg:col-4</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Positioning Section -->
+      <div class="section-grid owl-32">
+        <div class="col-full">
+          <h2>Grid Positioning</h2>
+          <p>Use start and span classes to position columns precisely within the grid.</p>
+        </div>
+
+        <div class="col-4 md:col-4 lg:col-start-5-span-4">
+          <div class="grid-demo-box">
+            <code>col-4 md:col-4 lg:col-start-5-span-4</code>
+            <p>Starts at column 5 and spans 4 columns</p>
+          </div>
+        </div>
+
+        <div class="col-4 md:col-4 lg:col-start-5-span-4">
+          <div class="grid-demo-box">
+            <code>col-4 md:col-4 lg:col-start-5-span-4</code>
+            <p>Centered column placement</p>
+          </div>
+        </div>
+        <div class="col-4 md:col-4 lg:col-4">
+          <div class="grid-demo-box">
+            <code>col-4 md:col-4 lg:col-4</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layout Variations Section -->
+      <div class="section-grid owl-32">
+        <div class="col-full">
+          <h2>Layout Variations</h2>
+          <p>Different layout containers for various content widths and positioning.</p>
+        </div>
+
+        <div class="col-full">
+          <h3>Standard Container</h3>
+        </div>
+
+        <div class="col-full">
+          <div class="grid-demo-box grid-demo-box--outline">
+            <code>section-grid</code>
+            <p>Standard grid container with max-width constraints</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-grid owl-32">
+        <div class="col-full">
+          <h3>Breakout Layouts</h3>
+        </div>
+      </div>
+    </main>
+
+    <section class="layout-breakout-left">
+      <div class="grid-demo-box grid-demo-box--accent">
+        <code>layout-breakout-left</code>
+        <p>Breaks out to the left edge of the viewport</p>
+      </div>
+    </section>
+
+    <section class="layout-breakout-right">
+      <div class="grid-demo-box grid-demo-box--accent">
+        <code>layout-breakout-right</code>
+        <p>Breaks out to the right edge with grid content</p>
+      </div>
+    </section>
+
+    <div class="section-grid">
+      <div class="col-full">
+        <h3>Full Width</h3>
+      </div>
+    </div>
+
+    <section class="layout-full">
+      <div class="grid-demo-box grid-demo-box--full">
+        <code>layout-full</code>
+        <p>Full viewport width layout</p>
+      </div>
+    </section>
+
+    <section class="layout-main owl-32">
+      <!-- Responsive Behavior Section -->
+      <div class="section-grid owl-32">
+        <div class="col-full">
+          <h2>Responsive Behavior</h2>
+          <p>The grid system adapts to different screen sizes using mobile-first responsive classes.</p>
+        </div>
+
+        <div class="col-4 md:col-4 lg:col-6">
+          <div class="responsive-info">
+            <h3>Breakpoints</h3>
+            <ul>
+              <li><strong>Mobile (default):</strong> 4-column grid</li>
+              <li><strong>md (768px+):</strong> 8-column grid</li>
+              <li><strong>lg (1024px+):</strong> 12-column grid</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-4 md:col-4 lg:col-6">
+          <div class="responsive-info">
+            <h3>Class Structure</h3>
+            <div class="code-example">
+              <code>col-&#123;mobile&#125; md:col-&#123;tablet&#125; lg:col-&#123;desktop&#125;</code>
+            </div>
+            <p>Each breakpoint can have different column spans for optimal responsive behavior.</p>
+          </div>
+        </div>
+
+        <div class="col-full">
+          <h3>Responsive Example</h3>
+        </div>
+
+        <div class="col-4 md:col-4 lg:col-3">
+          <div class="grid-demo-box">
+            <code>col-4 md:col-4 lg:col-3</code>
+            <p>Full width on mobile, half on tablet, quarter on desktop</p>
+          </div>
+        </div>
+        <div class="col-4 md:col-4 lg:col-3">
+          <div class="grid-demo-box">
+            <code>col-4 md:col-4 lg:col-3</code>
+            <p>Responsive column sizing</p>
+          </div>
+        </div>
+        <div class="col-4 md:col-4 lg:col-3">
+          <div class="grid-demo-box">
+            <code>col-4 md:col-4 lg:col-3</code>
+            <p>Adapts to screen size</p>
+          </div>
+        </div>
+        <div class="col-4 md:col-4 lg:col-3">
+          <div class="grid-demo-box">
+            <code>col-4 md:col-4 lg:col-3</code>
+            <p>Mobile-first approach</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Usage Instructions -->
+      <div class="section-grid owl-32">
+        <div class="col-4 md:col-4 lg:col-start-3-span-8">
+          <div class="grid-demo-box grid-demo-box--info">
+            <h2>Usage Guide</h2>
+            <h3>How to Use the Grid System</h3>
+            <div class="usage-content">
+              <p>The grid system is designed to be intuitive and flexible:</p>
+              <ul>
+                <li><strong>Container:</strong> Wrap content in <code>section-grid</code> for the main grid</li>
+                <li><strong>Columns:</strong> Use <code>col-&#123;span&#125;</code> classes for column sizing</li>
+                <li>
+                  <strong>Responsive:</strong> Add breakpoint prefixes like <code>md:</code> and <code>lg:</code>
+                </li>
+                <li>
+                  <strong>Positioning:</strong> Use <code>col-start-&#123;n&#125;-span-&#123;x&#125;</code> for precise placement
+                </li>
+                <li>
+                  <strong>Spacing:</strong> Add <code>stack-&#123;size&#125;</code> for vertical spacing between rows
+                </li>
+                <li><strong>Layout Types:</strong> Choose from standard, breakout, or full-width layouts</li>
+              </ul>
+              <p>
+                The system is built with CSS Grid and provides excellent browser support while maintaining flexibility
+                for custom layouts.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- </div> -->
+  </Fragment>
+</Layout>
+
+<style lang="scss">
+  .page-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    p {
+      font-size: 1.125rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    margin-top: 3rem;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    color: #495057;
+    margin: 2rem 0 1rem 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .grid-demo-box {
+    background-color: #e3f2fd;
+    border: 2px solid #2196f3;
+    border-radius: 4px;
+    padding: 1rem;
+    text-align: center;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    code {
+      background-color: #1976d2;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      font-family: "Courier New", monospace;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: #666;
+    }
+
+    &--outline {
+      background-color: transparent;
+      border: 2px dashed #9c27b0;
+
+      code {
+        background-color: #9c27b0;
+      }
+    }
+
+    &--accent {
+      background-color: #f3e5f5;
+      border-color: #9c27b0;
+
+      code {
+        background-color: #9c27b0;
+      }
+    }
+
+    &--full {
+      background-color: #e8f5e8;
+      border-color: #4caf50;
+
+      code {
+        background-color: #4caf50;
+      }
+    }
+
+    &--info {
+      background-color: #fff3e0;
+      border-color: #ff9800;
+      text-align: left;
+
+      h2,
+      h3 {
+        margin-top: 0;
+        color: #e65100;
+      }
+
+      code {
+        background-color: #ff9800;
+        color: white;
+      }
+    }
+  }
+
+  .responsive-info {
+    ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+
+      li {
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+
+        strong {
+          color: #007bff;
+        }
+      }
+    }
+
+    .code-example {
+      background-color: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      padding: 1rem;
+      margin: 1rem 0;
+
+      code {
+        background-color: transparent;
+        color: #e83e8c;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .usage-content {
+    ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+
+      li {
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+
+        strong {
+          color: #007bff;
+        }
+
+        code {
+          background-color: #f8f9fa;
+          color: #e83e8c;
+          padding: 0.125rem 0.25rem;
+          border-radius: 3px;
+          font-size: 0.875rem;
+        }
+      }
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .page-intro h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
