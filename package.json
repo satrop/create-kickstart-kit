@@ -1,6 +1,6 @@
 {
   "name": "create-kickstart-kit",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "CLI to scaffold Astro-based front-end starter projects",
   "bin": {
     "create-kickstart-kit": "./index.js"
