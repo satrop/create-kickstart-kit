@@ -1,299 +1,285 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card";
 ---
 
-<Layout title="Astro Kickstart">
+<Layout title="Welcome to Your New Project">
   <Fragment slot="main">
-    <main class="layout-main" aria-label="Main content">
-      <div class="homepage">
+    <main id="main" class="layout-main" aria-label="Main content">
+      <div class="welcome-page">
         <section class="hero">
           <div class="section-grid">
             <div class="col-full">
               <div class="hero__content">
-                <h1>Astro Kickstart</h1>
+                <h1>Welcome to Your New Project</h1>
                 <p class="hero__subtitle">
-                  A minimal, accessible, and highly customizable Astro starter template with a focus on utility-first
-                  styling and reusable components.
+                  This is your new Astro project built with the Kickstart template. Replace this page with your own
+                  content to get started.
                 </p>
                 <div class="hero__actions">
-                  <a href="/components" class="btn btn--primary btn--medium">View Components</a>
-                  <a href="/grid" class="btn btn--outline btn--medium">Explore Grid System</a>
-                  <a href="/colors" class="btn btn--outline btn--medium">Color System</a>
-                  <a href="/typography" class="btn btn--outline btn--medium">Typography</a>
+                  <a href="/demo/homepage-demo" class="btn btn--primary btn--medium">View Template Demo</a>
+                  <a href="/demo/components" class="btn btn--outline btn--medium">Browse Components</a>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="features">
+        <!-- <section class="quick-start">
           <div class="section-grid">
             <div class="col-full">
-              <h2 class="features__title">Features</h2>
-            </div>
-
-            <div class="col-4 md:col-4 lg:col-4">
-              <Card variant="bordered">
-                <Fragment slot="header">
-                  <h3>🎨 Minimal Design</h3>
-                </Fragment>
-                <p>
-                  Clean, minimal styling that's easy to customize. Each component uses predictable class names and
-                  minimal CSS for maximum flexibility.
-                </p>
-              </Card>
-            </div>
-
-            <div class="col-4 md:col-4 lg:col-4">
-              <Card variant="bordered">
-                <Fragment slot="header">
-                  <h3>♿ Accessible First</h3>
-                </Fragment>
-                <p>
-                  All components follow WCAG guidelines with proper ARIA attributes, semantic HTML, keyboard navigation,
-                  and focus management built-in.
-                </p>
-              </Card>
-            </div>
-
-            <div class="col-4 md:col-4 lg:col-4">
-              <Card variant="bordered">
-                <Fragment slot="header">
-                  <h3>📱 Responsive Grid</h3>
-                </Fragment>
-                <p>
-                  Flexible 12-column CSS Grid system with mobile-first responsive design. Supports complex layouts with
-                  easy-to-use utility classes.
-                </p>
-              </Card>
-            </div>
-
-            <div class="col-4 md:col-4 lg:col-4">
-              <Card variant="bordered">
-                <Fragment slot="header">
-                  <h3>🧩 Modular Components</h3>
-                </Fragment>
-                <p>
-                  Self-contained components with no dependencies. Use what you need, remove what you don't. Each
-                  component is designed for easy customization.
-                </p>
-              </Card>
-            </div>
-
-            <div class="col-4 md:col-4 lg:col-4">
-              <Card variant="bordered">
-                <Fragment slot="header">
-                  <h3>⚡ Performance Focused</h3>
-                </Fragment>
-                <p>
-                  Optimized for speed with minimal CSS footprint, tree-shaking support, and efficient component
-                  architecture that scales with your project.
-                </p>
-              </Card>
-            </div>
-
-            <div class="col-4 md:col-4 lg:col-4">
-              <Card variant="bordered">
-                <Fragment slot="header">
-                  <h3>🛠️ Developer Friendly</h3>
-                </Fragment>
-                <p>
-                  TypeScript support, clear documentation, and intuitive APIs. Built with modern best practices and
-                  developer experience in mind.
-                </p>
-              </Card>
+              <h2>Quick Start Guide</h2>
+              <div class="quick-start__grid">
+                <div class="quick-start__item">
+                  <h3>1. Explore the Demo</h3>
+                  <p>
+                    Check out the <a href="/demo/homepage-demo">demo pages</a> to see all available components and features.
+                  </p>
+                </div>
+                <div class="quick-start__item">
+                  <h3>2. Customize Your Design</h3>
+                  <p>Edit the styles in <code>src/styles/</code> to match your brand and design requirements.</p>
+                </div>
+                <div class="quick-start__item">
+                  <h3>3. Build Your Pages</h3>
+                  <p>Replace this page and create your own pages in <code>src/pages/</code>.</p>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
+        </section> -->
 
-        <section class="getting-started">
+        <section class="resources">
           <div class="section-grid">
-            <div class="col-full lg:col-start-3-span-8">
-              <Card variant="elevated" padding="large">
-                <Fragment slot="header">
-                  <h2>Getting Started</h2>
-                </Fragment>
-                <div class="getting-started__content">
-                  <p>
-                    Explore the component library and grid system to see what's included. Each component is designed to
-                    be easily customizable while maintaining accessibility and performance.
-                  </p>
-                  <div class="getting-started__links">
-                    <a href="/components" class="btn btn--primary btn--medium">Browse Components</a>
-                    <a href="/grid" class="btn btn--outline btn--medium">Grid Documentation</a>
-                  </div>
-                </div>
-              </Card>
+            <div class="col-full">
+              <h2>Template Resources</h2>
+              <div class="resources__grid">
+                <a href="/demo/components" class="resources__item">
+                  <h3>📋 Components</h3>
+                  <p>Explore all available UI components with usage examples.</p>
+                </a>
+                <a href="/demo/colors" class="resources__item">
+                  <h3>🎨 Colors</h3>
+                  <p>View the color system and customization options.</p>
+                </a>
+                <a href="/demo/grid" class="resources__item">
+                  <h3>📐 Grid System</h3>
+                  <p>Learn about the responsive grid system and layout utilities.</p>
+                </a>
+                <a href="/demo/typography" class="resources__item">
+                  <h3>🆎 Typography</h3>
+                  <p>Typography system with font sizes, weights, and utility classes.</p>
+                </a>
+              </div>
             </div>
           </div>
         </section>
       </div>
     </main>
-  </Fragment>
 
-  <style lang="scss">
-    @import "../styles/core/owl.core";
-    @import "../styles/core/spacing.core";
-
-    .homepage {
-      min-height: 100vh;
-    }
-
-    /* Button styles for anchor links */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid transparent;
-      border-radius: 4px;
-      cursor: pointer;
-      font-family: inherit;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      padding: 0.75rem 1.5rem;
-
-      &:focus {
-        outline: 2px solid #007bff;
-        outline-offset: 2px;
+    <style lang="scss">
+      .welcome-page {
+        min-height: 100vh;
       }
 
-      &--primary {
-        background-color: #007bff;
-        border-color: #007bff;
-        color: white;
-
-        &:hover {
-          background-color: #0056b3;
-          border-color: #0056b3;
-        }
-      }
-
-      &--outline {
-        background-color: transparent;
-        border-color: #007bff;
-        color: #007bff;
-
-        &:hover {
-          background-color: #007bff;
-          color: white;
-        }
-      }
-
-      &--medium {
+      /* Button styles for anchor links */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: inherit;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
         padding: 0.75rem 1.5rem;
-        font-size: 1rem;
-      }
-    }
 
-    .hero {
-      padding: 4rem 0;
-      text-align: center;
+        &:focus {
+          outline: 2px solid #007bff;
+          outline-offset: 2px;
+        }
 
-      &__content {
-        max-width: 800px;
-        margin: 0 auto;
-      }
+        &--primary {
+          background-color: #007bff;
+          border-color: #007bff;
+          color: white;
 
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: #333;
-        font-weight: 700;
-      }
+          &:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+          }
+        }
 
-      &__subtitle {
-        font-size: 1.25rem;
-        color: #666;
-        margin-bottom: 2rem;
-        line-height: 1.6;
-      }
+        &--outline {
+          background-color: transparent;
+          border-color: #007bff;
+          color: #007bff;
 
-      &__actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-    }
+          &:hover {
+            background-color: #007bff;
+            color: white;
+          }
+        }
 
-    .features {
-      padding: 4rem 0;
-      background-color: #f8f9fa;
-
-      @include spacing(padding, 32);
-
-      &__title {
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
-        color: #333;
-      }
-
-      .section-grid {
-        @include owl(margin-bottom, 32);
-      }
-    }
-
-    .getting-started {
-      padding: 4rem 0;
-
-      &__content {
-        text-align: center;
-
-        p {
-          font-size: 1.125rem;
-          line-height: 1.6;
-          margin-bottom: 2rem;
-          color: #666;
+        &--medium {
+          padding: 0.75rem 1.5rem;
+          font-size: 1rem;
         }
       }
 
-      &__links {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
       .hero {
-        padding: 2rem 0;
+        padding: 4rem 0;
+        text-align: center;
+
+        &__content {
+          max-width: 800px;
+          margin: 0 auto;
+        }
 
         h1 {
-          font-size: 2rem;
+          font-size: 3rem;
+          margin-bottom: 1rem;
+          color: #333;
+          font-weight: 700;
         }
 
         &__subtitle {
-          font-size: 1.125rem;
+          font-size: 1.25rem;
+          color: #666;
+          margin-bottom: 2rem;
+          line-height: 1.6;
         }
 
         &__actions {
-          flex-direction: column;
-          align-items: center;
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          flex-wrap: wrap;
         }
       }
 
-      .features {
-        padding: 2rem 0;
+      .quick-start {
+        padding: 4rem 0;
+        background-color: #f8f9fa;
 
-        &__title {
-          font-size: 2rem;
-          margin-bottom: 2rem;
+        h2 {
+          text-align: center;
+          font-size: 2.5rem;
+          margin-bottom: 3rem;
+          color: #333;
+        }
+
+        &__grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+        }
+
+        &__item {
+          h3 {
+            color: #007bff;
+            margin-bottom: 1rem;
+          }
+
+          p {
+            line-height: 1.6;
+            color: #666;
+          }
+
+          code {
+            background: #e9ecef;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 0.9em;
+          }
         }
       }
 
-      .getting-started {
-        padding: 2rem 0;
+      .resources {
+        padding: 4rem 0;
 
-        &__links {
-          flex-direction: column;
-          align-items: center;
+        h2 {
+          text-align: center;
+          font-size: 2.5rem;
+          margin-bottom: 3rem;
+          color: #333;
+        }
+
+        &__grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+        }
+
+        &__item {
+          text-decoration: none;
+          text-align: center;
+          padding: 2rem;
+          border: 1px solid #e9ecef;
+          border-radius: 8px;
+          transition: box-shadow 0.2s ease;
+
+          &:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          }
+
+          h3 {
+            margin-bottom: 1rem;
+            color: #333;
+
+            a {
+              color: inherit;
+              text-decoration: none;
+
+              &:hover {
+                color: #007bff;
+              }
+            }
+          }
+
+          p {
+            line-height: 1.6;
+            color: #666;
+            margin: 0;
+          }
         }
       }
-    }
-  </style>
-</Layout>
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .hero {
+          padding: 2rem 0;
+
+          h1 {
+            font-size: 2rem;
+          }
+
+          &__subtitle {
+            font-size: 1.125rem;
+          }
+
+          &__actions {
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+
+        .quick-start,
+        .resources {
+          padding: 2rem 0;
+
+          h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+          }
+
+          &__grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+        }
+      }
+    </style>
+  </Fragment></Layout
+>

@@ -39,15 +39,25 @@ $font-stacks: (
 );
 
 // Font weights
+// Using numeric values for cleaner variable naming
+// --font-weight-100, --font-weight-300, etc.
 $font-weights: (
-  "thin": 100,
-  "light": 300,
-  "normal": 400,
-  "medium": 500,
-  "semibold": 600,
-  "bold": 700,
-  "extrabold": 800,
-  "black": 900,
+  "100": 100,
+  // Thin
+  "300": 300,
+  // Light
+  "400": 400,
+  // Normal
+  "500": 500,
+  // Medium
+  "600": 600,
+  // Semibold
+  "700": 700,
+  // Bold
+  "800": 800,
+  // Extra Bold
+  "900": 900,
+  // Black
 );
 
 // Font sizes (fluid typography using clamp)
@@ -121,9 +131,14 @@ $letter-spacings: (
   <small class="text-sm">Small text</small>
   
   <!-- Font Weights -->
-  <span class="font-light">Light text</span>
-  <span class="font-normal">Normal text</span>
-  <span class="font-bold">Bold text</span>
+  <span class="font-100">Thin text</span>
+  <span class="font-300">Light text</span>
+  <span class="font-400">Normal text</span>
+  <span class="font-500">Medium text</span>
+  <span class="font-600">Semibold text</span>
+  <span class="font-700">Bold text</span>
+  <span class="font-800">Extra bold text</span>
+  <span class="font-900">Black text</span>
   
   <!-- Line Heights -->
   <p class="leading-tight">Tight line height</p>
@@ -136,7 +151,7 @@ $letter-spacings: (
   <span class="tracking-wide">Wide letter spacing</span>
   
   <!-- Combinations -->
-  <h1 class="font-display text-4xl font-bold leading-tight tracking-tight">
+  <h1 class="font-display text-4xl font-700 leading-tight tracking-tight">
     Complete heading style
   </h1>
   
@@ -152,7 +167,7 @@ $letter-spacings: (
   .my-custom-heading {
     font-family: var(--font-display);
     font-size: var(--font-size-4xl);
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-700);
     line-height: var(--line-height-tight);
     letter-spacing: var(--letter-spacing-tight);
   }

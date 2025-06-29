@@ -1,11 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card";
 ---
 
 <Layout title="Typography System - Astro Kickstart">
   <Fragment slot="main">
-    <main class="layout-main" aria-label="Main content">
+    <main id="main" class="layout-main" aria-label="Main content">
       <div class="typography-page">
         <section class="page-header">
           <div class="section-grid">
@@ -30,13 +30,13 @@ import Card from "../components/Card";
               <p>Four font stacks are available for different use cases:</p>
             </div>
 
-            <div class="col-3 lg:col-3">
+            <div class="col-3 md:col-4 lg:col-3">
               <Card variant="bordered">
                 <Fragment slot="header">
                   <h3>Sans Serif</h3>
                 </Fragment>
                 <div class="font-example">
-                  <div class="font-sans text-4xl font-normal">The quick brown fox jumps over the lazy dog</div>
+                  <div class="font-sans text-4xl font-400">The quick brown fox jumps over the lazy dog</div>
                   <div class="font-details">
                     <p><strong>Class:</strong> <code>.font-sans</code></p>
                     <p><strong>Stack:</strong> Inter, system-ui, sans-serif</p>
@@ -46,13 +46,13 @@ import Card from "../components/Card";
               </Card>
             </div>
 
-            <div class="col-3 lg:col-3">
+            <div class="col-3 md:col-4 lg:col-3">
               <Card variant="bordered">
                 <Fragment slot="header">
                   <h3>Display</h3>
                 </Fragment>
                 <div class="font-example">
-                  <div class="font-display text-4xl font-normal">The quick brown fox jumps over the lazy dog</div>
+                  <div class="font-display text-4xl font-400">The quick brown fox jumps over the lazy dog</div>
                   <div class="font-details">
                     <p><strong>Class:</strong> <code>.font-display</code></p>
                     <p><strong>Stack:</strong> Cabin, system-ui, sans-serif</p>
@@ -62,13 +62,13 @@ import Card from "../components/Card";
               </Card>
             </div>
 
-            <div class="col-3 lg:col-3">
+            <div class="col-3 md:col-4 lg:col-3">
               <Card variant="bordered">
                 <Fragment slot="header">
                   <h3>Serif</h3>
                 </Fragment>
                 <div class="font-example">
-                  <div class="font-serif text-4xl font-normal">The quick brown fox jumps over the lazy dog</div>
+                  <div class="font-serif text-4xl font-400">The quick brown fox jumps over the lazy dog</div>
                   <div class="font-details">
                     <p><strong>Class:</strong> <code>.font-serif</code></p>
                     <p><strong>Stack:</strong> Georgia, Times New Roman, serif</p>
@@ -78,13 +78,13 @@ import Card from "../components/Card";
               </Card>
             </div>
 
-            <div class="col-3 lg:col-3">
+            <div class="col-3 md:col-4 lg:col-3">
               <Card variant="bordered">
                 <Fragment slot="header">
                   <h3>Monospace</h3>
                 </Fragment>
                 <div class="font-example">
-                  <div class="font-mono text-2xl font-normal">The quick brown fox jumps over the lazy dog</div>
+                  <div class="font-mono text-2xl font-400">The quick brown fox jumps over the lazy dog</div>
                   <div class="font-details">
                     <p><strong>Class:</strong> <code>.font-mono</code></p>
                     <p><strong>Stack:</strong> JetBrains Mono, Consolas, monospace</p>
@@ -138,7 +138,7 @@ import Card from "../components/Card";
 
         <!-- Font Weights -->
         <section class="font-weights">
-          <div class="section-grid">
+          <div class="section-grid owl-32">
             <div class="col-full">
               <h2>Font Weights</h2>
             </div>
@@ -149,14 +149,14 @@ import Card from "../components/Card";
                   <h3>Available Weights</h3>
                 </Fragment>
                 <div class="weight-examples">
-                  <div class="text-2xl font-thin">Thin (100) - .font-thin</div>
-                  <div class="text-2xl font-light">Light (300) - .font-light</div>
-                  <div class="text-2xl font-normal">Normal (400) - .font-normal</div>
-                  <div class="text-2xl font-medium">Medium (500) - .font-medium</div>
-                  <div class="text-2xl font-semibold">Semibold (600) - .font-semibold</div>
-                  <div class="text-2xl font-bold">Bold (700) - .font-bold</div>
-                  <div class="text-2xl font-extrabold">Extra Bold (800) - .font-extrabold</div>
-                  <div class="text-2xl font-black">Black (900) - .font-black</div>
+                  <div class="text-2xl font-100">Thin (100) - .font-100</div>
+                  <div class="text-2xl font-300">Light (300) - .font-300</div>
+                  <div class="text-2xl font-400">Normal (400) - .font-400</div>
+                  <div class="text-2xl font-500">Medium (500) - .font-500</div>
+                  <div class="text-2xl font-600">Semibold (600) - .font-600</div>
+                  <div class="text-2xl font-700">Bold (700) - .font-700</div>
+                  <div class="text-2xl font-800">Extra Bold (800) - .font-800</div>
+                  <div class="text-2xl font-900">Black (900) - .font-900</div>
                 </div>
               </Card>
             </div>
@@ -191,7 +191,7 @@ import Card from "../components/Card";
 
         <!-- Predefined Text Styles -->
         <section class="text-styles">
-          <div class="section-grid">
+          <div class="section-grid owl-32">
             <div class="col-full">
               <h2>Predefined Text Styles</h2>
               <p>Ready-to-use text styles for common content types:</p>
@@ -258,7 +258,7 @@ import Card from "../components/Card";
 
         <!-- Utility Classes -->
         <section class="utility-classes">
-          <div class="section-grid">
+          <div class="section-grid owl-32">
             <div class="col-full">
               <h2>Utility Classes</h2>
             </div>
@@ -321,7 +321,7 @@ import Card from "../components/Card";
                   <pre><code class="code">{`.my-heading {
   font-family: var(--font-sans);
   font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-700);
   line-height: var(--line-height-tight);
 }
 
@@ -341,7 +341,7 @@ import Card from "../components/Card";
 </Layout>
 
 <style lang="scss">
-  @use "../styles/core/owl.core";
+  @use "../../styles/core/owl.core";
 
   .typography-page {
     padding: 2rem 0;

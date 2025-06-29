@@ -4,7 +4,7 @@
  */
 
 import Swiper from "swiper";
-import { Navigation, Pagination, Autoplay, Lazy, Mousewheel, Keyboard, EffectFade } from "swiper/modules";
+import { Navigation, Pagination, Autoplay, Mousewheel, Keyboard, EffectFade } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
@@ -84,7 +84,6 @@ class SwiperComponent {
       autoplay: this.getAutoplayConfig(),
       navigation: this.getNavigationConfig(hasNavigation, id),
       pagination: this.getPaginationConfig(hasPagination, id, slideElements.length),
-      lazy: this.getLazyConfig(),
       mousewheel: this.getMousewheelConfig(),
       keyboard: this.getKeyboardConfig(),
       breakpoints: this.config.breakpoints || this.getDefaultBreakpoints(slideElements.length, this.config.slidesPerView),
@@ -120,7 +119,6 @@ class SwiperComponent {
     if (this.config.effect === 'fade') modules.push(EffectFade);
     if (hasNavigation) modules.push(Navigation);
     if (hasPagination) modules.push(Pagination);
-    if (this.config.lazy) modules.push(Lazy);
     if (this.config.mousewheel) modules.push(Mousewheel);
     if (this.config.keyboard) modules.push(Keyboard);
     
@@ -150,13 +148,6 @@ class SwiperComponent {
       clickable: true,
       dynamicBullets: slideCount > 10,
       dynamicMainBullets: 3,
-    } : false;
-  }
-
-  getLazyConfig() {
-    return this.config.lazy ? {
-      loadPrevNext: true,
-      loadOnTransitionStart: true,
     } : false;
   }
 

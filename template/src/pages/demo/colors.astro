@@ -1,6 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card";
 import {
   getColorEntries,
   getColorName,
@@ -8,7 +8,7 @@ import {
   getTextExamples,
   getExampleColor,
   getCSSExampleColors,
-} from "../styles/core/colors-data.core";
+} from "../../styles/core/colors-data.core";
 
 const colorEntries = getColorEntries();
 const backgroundExamples = getBackgroundExamples();
@@ -19,7 +19,7 @@ const cssExamples = getCSSExampleColors();
 
 <Layout title="Color System - Astro Kickstart">
   <Fragment slot="main">
-    <main class="layout-main owl-32" aria-label="Main content">
+    <main id="main" class="layout-main owl-32" aria-label="Main content">
       <div class="colors-page">
         <section class="page-header">
           <div class="section-grid">
@@ -149,7 +149,7 @@ const cssExamples = getCSSExampleColors();
 </Layout>
 
 <style lang="scss">
-  @use "../styles/core/owl.core";
+  @use "../../styles/core/owl.core";
 
   .colors-page {
     padding: 2rem 0;

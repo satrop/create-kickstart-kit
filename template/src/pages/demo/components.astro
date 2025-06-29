@@ -1,18 +1,18 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Button from "../components/Button/Button.astro";
-import Alert from "../components/Alert/Alert.astro";
-import FormField from "../components/FormField/FormField.astro";
-import Checkbox from "../components/Checkbox/Checkbox.astro";
-import RadioGroup from "../components/RadioGroup";
-import Select from "../components/Select";
-import Textarea from "../components/Textarea";
-import Card from "../components/Card";
-// import Navigation from "../components/Navigation.astro";
-import Accordion from "../components/Accordion/Accordion.astro";
-import FiftyFifty from "../components/FiftyFifty/FiftyFifty.astro";
-import Swiper from "../components/Swiper.astro";
-import Dialog from "../components/Dialog/Dialog.astro";
+import Layout from "../../layouts/Layout.astro";
+import Button from "../../components/Button/Button.astro";
+import Alert from "../../components/Alert/Alert.astro";
+import FormField from "../../components/FormField/FormField.astro";
+import Checkbox from "../../components/Checkbox/Checkbox.astro";
+import RadioGroup from "../../components/RadioGroup";
+import Select from "../../components/Select";
+import Textarea from "../../components/Textarea";
+import Card from "../../components/Card";
+// import Navigation from "../../components/Navigation.astro";
+import Accordion from "../../components/Accordion/Accordion.astro";
+import FiftyFifty from "../../components/FiftyFifty/FiftyFifty.astro";
+import Swiper from "../../components/Swiper.astro";
+import Dialog from "../../components/Dialog/Dialog.astro";
 
 const navItems = [
   { label: "Home", href: "/", active: true },
@@ -159,7 +159,7 @@ const textOnlySlides = [
   </Fragment>
 
   <Fragment slot="main">
-    <main class="layout-main" aria-label="Main content">
+    <main id="main" class="layout-main" aria-label="Main content">
       <div class="showcase">
         <div class="showcase__intro">
           <h1>Component Showcase</h1>
@@ -477,105 +477,8 @@ const textOnlySlides = [
           </div>
         </section>
 
-        <!-- Swiper/Carousel -->
-        <section class="showcase__section">
-          <div class="component-showcase">
-            <h3>Swiper/Carousel</h3>
-
-            <div class="example-group">
-              <h4>Basic Carousel with Images</h4>
-              <Swiper
-                slides={sampleSlides}
-                slidesPerView={1}
-                spaceBetween={20}
-                navigation={true}
-                pagination={true}
-                autoplay={{ delay: 4000 }}
-                loop={false}
-              />
-            </div>
-
-            <div class="example-group">
-              <h4>Multi-slide Carousel</h4>
-              <Swiper
-                slides={sampleSlides}
-                slidesPerView={3}
-                spaceBetween={30}
-                navigation={true}
-                pagination={true}
-                loop={false}
-                breakpoints={{
-                  640: { slidesPerView: 1, spaceBetween: 20 },
-                  768: { slidesPerView: 2, spaceBetween: 25 },
-                  1024: { slidesPerView: 3, spaceBetween: 30 },
-                }}
-              />
-            </div>
-
-            <div class="example-group">
-              <h4>Text-only Carousel</h4>
-              <Swiper
-                slides={textOnlySlides}
-                slidesPerView={1}
-                spaceBetween={0}
-                navigation={true}
-                pagination={true}
-                centeredSlides={true}
-                loop={false}
-              />
-            </div>
-
-            <div class="example-group">
-              <h4>Minimal Carousel (No Navigation)</h4>
-              <Swiper
-                slides={textOnlySlides}
-                slidesPerView={1}
-                spaceBetween={20}
-                navigation={false}
-                pagination={true}
-                autoplay={{ delay: 3000 }}
-                loop={false}
-                breakpoints={{
-                  320: { slidesPerView: 1, spaceBetween: 20 },
-                  768: { slidesPerView: 1, spaceBetween: 20 },
-                  1024: { slidesPerView: 1, spaceBetween: 20 },
-                }}
-              />
-            </div>
-          </div>
-        </section>
-
-        <!-- Usage Instructions -->
-        <section class="showcase__section">
-          <h2>Customization Guide</h2>
-          <div class="usage-guide">
-            <Card variant="bordered">
-              <Fragment slot="header">
-                <h3>How to Customize Components</h3>
-              </Fragment>
-              <div class="usage-content">
-                <p>Each component is designed with minimal, functional styling that's easy to override:</p>
-                <ul>
-                  <li><strong>CSS Custom Properties:</strong> Override color and spacing variables</li>
-                  <li><strong>Class-based Styling:</strong> Each component uses predictable class names</li>
-                  <li><strong>Scoped Styles:</strong> Component styles won't leak to other elements</li>
-                  <li><strong>Variant System:</strong> Built-in variants for common use cases</li>
-                  <li>
-                    <strong>Accessibility First:</strong> All components include ARIA attributes and keyboard navigation
-                  </li>
-                  <li><strong>Progressive Enhancement:</strong> Components work without JavaScript when possible</li>
-                </ul>
-                <p>
-                  To customize, simply override the component styles in your main stylesheet or create new variant
-                  classes. All interactive components include proper focus management and keyboard navigation.
-                </p>
-              </div>
-            </Card>
-          </div>
-        </section>
-
         <!-- Dialog Component -->
-        <section class="showcase__section">
+        <section class="showcase__section owl-32">
           <h2>Dialog Component</h2>
           <p>Accessible modal dialogs with focus management, keyboard navigation, and smooth animations.</p>
 
@@ -614,7 +517,7 @@ const textOnlySlides = [
           <!-- Usage Guide -->
           <Card variant="elevated" padding="large">
             <div slot="header">
-              <h3>Usage Guide</h3>
+              <h3>Dialog Component Usage Guide</h3>
             </div>
             <div class="usage-guide">
               <div class="usage-content">
@@ -784,12 +687,111 @@ const textOnlySlides = [
             <Button type="submit" variant="primary">Send Message</Button>
           </Fragment>
         </Dialog>
+
+        <!-- Swiper/Carousel -->
+        <section class="showcase__section">
+          <div class="component-showcase">
+            <h3>Swiper/Carousel</h3>
+
+            <div class="example-group">
+              <h4>Basic Carousel with Images</h4>
+              <Swiper
+                slides={sampleSlides}
+                slidesPerView={1}
+                spaceBetween={20}
+                navigation={true}
+                pagination={true}
+                autoplay={{ delay: 4000 }}
+                loop={false}
+              />
+            </div>
+
+            <div class="example-group">
+              <h4>Multi-slide Carousel</h4>
+              <Swiper
+                slides={sampleSlides}
+                slidesPerView={3}
+                spaceBetween={30}
+                navigation={true}
+                pagination={true}
+                loop={false}
+                breakpoints={{
+                  640: { slidesPerView: 1, spaceBetween: 20 },
+                  768: { slidesPerView: 2, spaceBetween: 25 },
+                  1024: { slidesPerView: 3, spaceBetween: 30 },
+                }}
+              />
+            </div>
+
+            <div class="example-group">
+              <h4>Text-only Carousel</h4>
+              <Swiper
+                slides={textOnlySlides}
+                slidesPerView={1}
+                spaceBetween={0}
+                navigation={true}
+                pagination={true}
+                centeredSlides={true}
+                loop={false}
+              />
+            </div>
+
+            <div class="example-group">
+              <h4>Minimal Carousel (No Navigation)</h4>
+              <Swiper
+                slides={textOnlySlides}
+                slidesPerView={1}
+                spaceBetween={20}
+                navigation={false}
+                pagination={true}
+                autoplay={{ delay: 3000 }}
+                loop={false}
+                breakpoints={{
+                  320: { slidesPerView: 1, spaceBetween: 20 },
+                  768: { slidesPerView: 1, spaceBetween: 20 },
+                  1024: { slidesPerView: 1, spaceBetween: 20 },
+                }}
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Usage Instructions -->
+        <section class="showcase__section">
+          <h2>Customization Guide</h2>
+          <div class="usage-guide">
+            <Card variant="bordered">
+              <Fragment slot="header">
+                <h3>How to Customize Components</h3>
+              </Fragment>
+              <div class="usage-content">
+                <p>Each component is designed with minimal, functional styling that's easy to override:</p>
+                <ul>
+                  <li><strong>CSS Custom Properties:</strong> Override color and spacing variables</li>
+                  <li><strong>Class-based Styling:</strong> Each component uses predictable class names</li>
+                  <li><strong>Scoped Styles:</strong> Component styles won't leak to other elements</li>
+                  <li><strong>Variant System:</strong> Built-in variants for common use cases</li>
+                  <li>
+                    <strong>Accessibility First:</strong> All components include ARIA attributes and keyboard navigation
+                  </li>
+                  <li><strong>Progressive Enhancement:</strong> Components work without JavaScript when possible</li>
+                </ul>
+                <p>
+                  To customize, simply override the component styles in your main stylesheet or create new variant
+                  classes. All interactive components include proper focus management and keyboard navigation.
+                </p>
+              </div>
+            </Card>
+          </div>
+        </section>
       </div>
     </main>
   </Fragment>
 </Layout>
 
 <style lang="scss">
+  @use "../../styles/core/owl.core";
+
   .showcase {
     margin: 0 auto;
     padding-block: 2rem;
