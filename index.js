@@ -33,7 +33,13 @@ const copyDir = async (src, dest) => {
 
   for (const entry of entries) {
     const srcPath = join(src, entry.name)
-    const destPath = join(dest, entry.name)
+
+    // Rename _gitignore or .npmignore to .gitignore
+    const destName = entry.name === '_gitignore' || entry.name === '.npmignore'
+      ? '.gitignore'
+      : entry.name
+
+    const destPath = join(dest, destName)
 
     if (entry.isDirectory()) {
       await copyDir(srcPath, destPath)
