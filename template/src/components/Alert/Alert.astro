@@ -1,0 +1,27 @@
+---
+export interface Props {
+  type?: "info" | "success" | "warning" | "error";
+  dismissible?: boolean;
+}
+
+const { type = "info", dismissible = false } = Astro.props;
+---
+
+<div class={`alert alert--${type}`} role="alert">
+  <slot />
+  {
+    dismissible && (
+      <button class="alert__close" aria-label="Close alert">
+        ×
+      </button>
+    )
+  }
+</div>
+
+<style lang="scss">
+  @use "./Alert.scss";
+</style>
+
+<script>
+  import "./Alert.js";
+</script>

@@ -1,0 +1,130 @@
+---
+export interface SelectOption {
+  value: string;
+  label: string;
+  disabled?: boolean;
+}
+
+export interface Props {
+  label?: string;
+  name: string;
+  options: SelectOption[];
+  value?: string;
+  placeholder?: string;
+  required?: boolean;
+  disabled?: boolean;
+  error?: string;
+  helpText?: string;
+  class?: string;
+  multiple?: boolean;
+  searchable?: boolean;
+  clearable?: boolean;
+}
+
+const {
+  label,
+  name,
+  options,
+  value,
+  placeholder,
+  required = false,
+  disabled = false,
+  error,
+  helpText,
+  class: className = "",
+  multiple = false,
+  searchable = false,
+  clearable = false,
+} = Astro.props;
+
+const selectId = name;
+const descriptionId = `${name}-description`;
+---
+
+<div class={`select-field ${error ? "select-field--error" : ""} ${className}`} data-component="select">
+  {
+    label && (
+      <label for={selectId} class="select-field__label">
+        {label}
+        {required && <span class="select-field__required">*</span>}
+      </label>
+    )
+  }
+
+  <div class={`select-field__wrapper ${multiple ? "select-field__wrapper--multiple" : ""}`}>
+    <select
+      id={selectId}
+      name={name}
+      required={required}
+      disabled={disabled}
+      {...multiple && { multiple: true }}
+      class="select-field__input"
+      aria-describedby={helpText || error ? descriptionId : undefined}
+      aria-invalid={error ? "true" : "false"}
+      data-searchable={searchable}
+      data-clearable={clearable}>
+      {
+        placeholder && !multiple && (
+          <option value="" disabled selected={!value}>
+            {placeholder}
+          </option>
+        )
+      }
+      {
+        options.map((option) => (
+          <option
+            value={option.value}
+            disabled={option.disabled}
+            selected={
+              multiple ? (Array.isArray(value) ? value.includes(option.value) : false) : value === option.value
+            }>
+            {option.label}
+          </option>
+        ))
+      }
+    </select>
+
+    {
+      clearable && !disabled && (
+        <button type="button" class="select-field__clear" aria-label="Clear selection">
+          <span class="select-field__clear-icon">×</span>
+        </button>
+      )
+    }
+
+    {/* Only show arrow for single selects */}
+    {
+      !multiple && (
+        <div class="select-field__arrow" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.23 8.29a.75.75 0 01.02-1.06z" />
+          </svg>
+        </div>
+      )
+    }
+  </div>
+
+  {
+    helpText && (
+      <div id={descriptionId} class="select-field__help">
+        {helpText}
+      </div>
+    )
+  }
+
+  {
+    error && (
+      <div id={descriptionId} class="select-field__error" role="alert">
+        {error}
+      </div>
+    )
+  }
+</div>
+
+<style lang="scss">
+  @use "./Select.scss";
+</style>
+
+<script>
+  import "./Select.js";
+</script>

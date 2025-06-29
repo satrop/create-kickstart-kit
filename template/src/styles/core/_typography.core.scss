@@ -1,0 +1,188 @@
+@use "../tokens/typography/typography-vars" as *;
+
+// Generate CSS custom properties
+:root {
+  // Font families
+  @each $name, $stack in $font-stacks {
+    --font-#{$name}: #{$stack};
+  }
+
+  // Font weights
+  @each $name, $weight in $font-weights {
+    --font-weight-#{$name}: #{$weight};
+  }
+
+  // Font sizes
+  @each $name, $size in $font-sizes {
+    --font-size-#{$name}: #{$size};
+  }
+
+  // Line heights
+  @each $name, $height in $line-heights {
+    --line-height-#{$name}: #{$height};
+  }
+
+  // Letter spacing
+  @each $name, $spacing in $letter-spacings {
+    --letter-spacing-#{$name}: #{$spacing};
+  }
+}
+
+// Generate utility classes
+// Font family utilities
+@each $name, $stack in $font-stacks {
+  .font-#{$name} {
+    font-family: var(--font-#{$name});
+  }
+}
+
+// Font weight utilities
+@each $name, $weight in $font-weights {
+  .font-#{$name} {
+    font-weight: var(--font-weight-#{$name});
+  }
+}
+
+// Font size utilities
+@each $name, $size in $font-sizes {
+  .text-#{$name} {
+    font-size: var(--font-size-#{$name});
+  }
+}
+
+// Line height utilities
+@each $name, $height in $line-heights {
+  .leading-#{$name} {
+    line-height: var(--line-height-#{$name});
+  }
+}
+
+// Letter spacing utilities
+@each $name, $spacing in $letter-spacings {
+  .tracking-#{$name} {
+    letter-spacing: var(--letter-spacing-#{$spacing});
+  }
+}
+
+// Text alignment utilities
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-justify {
+  text-align: justify;
+}
+
+// Text transform utilities
+.uppercase {
+  text-transform: uppercase;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+.normal-case {
+  text-transform: none;
+}
+
+// Text decoration utilities
+.underline {
+  text-decoration: underline;
+}
+.line-through {
+  text-decoration: line-through;
+}
+.no-underline {
+  text-decoration: none;
+}
+
+// Font style utilities
+.italic {
+  font-style: italic;
+}
+.not-italic {
+  font-style: normal;
+}
+
+// Predefined text styles for common use cases
+.heading-1 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.heading-2 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.heading-3 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+}
+
+.heading-4 {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+}
+
+.heading-5 {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
+
+.heading-6 {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
+
+.body-large {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+}
+
+.body-normal {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+.body-small {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.caption {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-tight);
+  color: #666;
+}
+
+.code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}

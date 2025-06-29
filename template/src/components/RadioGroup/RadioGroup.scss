@@ -1,0 +1,159 @@
+/**
+ * RadioGroup Component Styles
+ * A fully accessible radio button group with customizable styling
+ */
+
+.radio-group {
+  margin-bottom: 1rem;
+  border: none;
+  padding: 0;
+
+  &__legend {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.75rem;
+    padding: 0;
+  }
+
+  &__required {
+    color: #dc3545;
+    margin-left: 0.25rem;
+  }
+
+  &__options {
+    display: flex;
+    gap: 1rem;
+
+    &--vertical {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    &--horizontal {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+  }
+
+  &__help {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #6c757d;
+  }
+
+  &__error {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #dc3545;
+  }
+}
+
+.radio-field {
+  position: relative;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+
+    // Checked state
+    &:checked + .radio-field__label .radio-field__button {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    &:checked + .radio-field__label .radio-field__dot {
+      transform: scale(1);
+    }
+
+    // Focus state
+    &:focus + .radio-field__label .radio-field__button {
+      outline: 2px solid #007bff;
+      outline-offset: 2px;
+    }
+
+    // Disabled state
+    &:disabled + .radio-field__label {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    &:disabled + .radio-field__label .radio-field__button {
+      background-color: #f8f9fa;
+      border-color: #e0e0e0;
+    }
+
+    // Error state
+    &[aria-invalid="true"] + .radio-field__label .radio-field__button {
+      border-color: #dc3545;
+    }
+
+    &[aria-invalid="true"]:focus + .radio-field__label .radio-field__button {
+      outline-color: #dc3545;
+    }
+  }
+
+  &__label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+
+    &:hover .radio-field__button {
+      border-color: #007bff;
+      background-color: #f8f9fa;
+    }
+  }
+
+  &__button {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin-top: 0.125rem; // Align with first line of text
+  }
+
+  &__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: white;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: all 0.2s ease;
+  }
+
+  &__text {
+    flex: 1;
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .radio-field__input:focus + .radio-field__label .radio-field__button {
+    outline: 3px solid;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .radio-field__button,
+  .radio-field__dot {
+    transition: none;
+  }
+}

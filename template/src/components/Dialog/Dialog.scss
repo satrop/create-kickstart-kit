@@ -1,0 +1,349 @@
+/* Dialog Component Styles with Advanced Animations */
+
+.dialog-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  /* Hide by default */
+  opacity: 0;
+  visibility: hidden;
+
+  /* Advanced animation properties with fallbacks */
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    backdrop-filter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Modern browsers with animation support */
+  @supports (animation-timeline: view()) {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Prevent body scroll when dialog is open */
+  body:has(&[aria-hidden="false"]) {
+    overflow: hidden;
+
+    /* For browsers that don't support :has() */
+    @supports not (selector(:has(*))) {
+      &.dialog-open {
+        overflow: hidden;
+      }
+    }
+  }
+
+  /* Show state */
+  &[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 0.15s;
+    backdrop-filter: none;
+  }
+}
+
+.dialog {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  max-height: 90vh;
+  max-width: 90vw;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  /* Advanced animation with spring-like effect */
+  transform: scale(0.95) translateY(10px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+
+  /* Modern browsers with advanced animation support */
+  @supports (animation-timeline: view()) {
+    transform: scale(0.9) translateY(20px);
+    transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Show state animation */
+  .dialog-backdrop[aria-hidden="false"] & {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+  /* Sizes */
+  &--small {
+    max-width: 400px;
+  }
+
+  &--medium {
+    max-width: 600px;
+  }
+
+  &--large {
+    max-width: 800px;
+  }
+
+  &--fullscreen {
+    max-width: 95vw;
+    max-height: 95vh;
+    width: 95vw;
+    height: 95vh;
+  }
+
+  /* Variants */
+  &--alert {
+    border-left: 4px solid var(--color-warning, #f59e0b);
+
+    .dialog__header {
+      color: var(--color-warning-dark, #92400e);
+    }
+  }
+
+  &--confirmation {
+    border-left: 4px solid var(--color-danger, #ef4444);
+
+    .dialog__header {
+      color: var(--color-danger-dark, #991b1b);
+    }
+  }
+
+  /* Focus management */
+  &:focus {
+    outline: none;
+  }
+
+  /* Reduced motion fallback */
+  @media (prefers-reduced-motion: reduce) {
+    transform: none;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+
+    .dialog-backdrop[aria-hidden="false"] & {
+      transform: none;
+    }
+  }
+}
+
+.dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  border-bottom: 1px solid var(--color-gray-200, #e5e7eb);
+  margin-bottom: 1rem;
+
+  /* Smooth header animation */
+  animation: slideInFromTop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.dialog__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-gray-900, #111827);
+  line-height: 1.4;
+}
+
+.dialog__close {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  margin: -0.5rem -0.5rem -0.5rem 1rem;
+  border-radius: 6px;
+  color: var(--color-gray-500, #6b7280);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    color: var(--color-gray-700, #374151);
+    background-color: var(--color-gray-100, #f3f4f6);
+    transform: scale(1.05);
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-primary, #3b82f6);
+    outline-offset: 2px;
+    color: var(--color-gray-700, #374151);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 0.1s;
+
+    &:hover,
+    &:active {
+      transform: none;
+    }
+  }
+}
+
+.dialog__content {
+  padding: 0 1.5rem;
+  overflow-y: auto;
+  flex-grow: 1;
+
+  /* Smooth content animation */
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  animation-delay: 0.1s;
+  animation-fill-mode: both;
+
+  /* Custom scrollbar for webkit browsers */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-gray-300, #d1d5db);
+    border-radius: 4px;
+
+    &:hover {
+      background: var(--color-gray-400, #9ca3af);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.dialog__actions {
+  padding: 1rem 1.5rem 1.5rem;
+  border-top: 1px solid var(--color-gray-200, #e5e7eb);
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+
+  /* Smooth actions animation */
+  animation: slideInFromBottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+
+  /* Stack buttons on mobile */
+  @media (max-width: 480px) {
+    flex-direction: column-reverse;
+
+    .button {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+/* Advanced keyframe animations with spring-like easing */
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .dialog {
+    border: 2px solid;
+  }
+
+  .dialog__close {
+    border: 1px solid;
+  }
+}
+
+/* Dark mode support (if implemented) */
+// @media (prefers-color-scheme: dark) {
+//   .dialog {
+//     background: var(--color-gray-800, #1f2937);
+//     color: var(--color-gray-100, #f3f4f6);
+//     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+//   }
+
+//   .dialog__title {
+//     color: var(--color-gray-100, #f3f4f6);
+//   }
+
+//   .dialog__header,
+//   .dialog__actions {
+//     border-color: var(--color-gray-700, #374151);
+//   }
+
+//   .dialog__close {
+//     color: var(--color-gray-400, #9ca3af);
+
+//     &:hover {
+//       color: var(--color-gray-200, #e5e7eb);
+//       background-color: var(--color-gray-700, #374151);
+//     }
+//   }
+// }
+
+/* Container queries for advanced responsive behavior */
+@container (max-width: 500px) {
+  .dialog {
+    border-radius: 0;
+    max-height: 100vh;
+    max-width: 100vw;
+
+    &--fullscreen {
+      width: 100vw;
+      height: 100vh;
+    }
+  }
+}

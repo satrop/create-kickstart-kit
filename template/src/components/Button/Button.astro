@@ -1,0 +1,18 @@
+---
+export interface Props {
+  variant?: "primary" | "secondary" | "outline";
+  size?: "small" | "medium" | "large";
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset";
+}
+
+const { variant = "primary", size = "medium", disabled = false, type = "button" } = Astro.props;
+---
+
+<button class={`btn btn--${variant} btn--${size}`} {disabled} {type} {...Astro.props}>
+  <slot />
+</button>
+
+<style lang="scss">
+  @use "./Button.scss";
+</style>

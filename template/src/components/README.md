@@ -16,19 +16,31 @@ These components follow a "functional-first" approach:
 
 ### Button
 
+**✅ REFACTORED TO MODULAR STRUCTURE**
+
 Flexible button component with variants and sizes.
 
-- Variants: `primary`, `secondary`, `outline`
-- Sizes: `small`, `medium`, `large`
-- Supports all native button attributes
+- **Structure**: `components/Button/` with Button.astro, Button.scss, Button.js, index.js, README.md
+- **Variants**: `primary`, `secondary`, `outline`
+- **Sizes**: `small`, `medium`, `large`
+- **Features**: Loading states, click debouncing, accessibility enhancements
+- **JavaScript API**: ButtonComponent class for programmatic control
+- **Data attributes**: `data-loading-text`, `data-confirm`
+- **Import**: `import Button from '@components/Button/Button.astro'`
 
 ### Alert
 
+**✅ REFACTORED TO MODULAR STRUCTURE**
+
 Alert messages for different contexts.
 
-- Types: `info`, `success`, `warning`, `error`
-- Optional dismiss functionality
-- ARIA compliant
+- **Structure**: `components/Alert/` with Alert.astro, Alert.scss, Alert.js, index.js, README.md
+- **Types**: `info`, `success`, `warning`, `error`
+- **Features**: Dismissible alerts, auto-dismiss, smooth animations
+- **JavaScript API**: AlertComponent class and AlertManager for programmatic control
+- **Data attributes**: `data-auto-dismiss`, `data-focus`
+- **Events**: Custom `alert:dismiss` event
+- **Import**: `import Alert from '@components/Alert/Alert.astro'`
 
 ### FormField
 
@@ -40,16 +52,19 @@ Input field wrapper with label, validation, and help text.
 - Focus and error states
 - Full accessibility with ARIA attributes
 
+**Structure**: Located in `FormField/` folder with separate files for markup, styles, and functionality.
+
 ### Select
 
-Styled select dropdown component with custom appearance.
+Styled select dropdown component with enhanced features and accessibility.
 
-- Single and multiple selection modes
-- Custom dropdown arrow styling
-- Placeholder support
-- Individual option disable support
-- Error states and validation
-- Full keyboard navigation
+- **Structure**: `Select/` folder with `.astro`, `.scss`, `.js`, `index.js`, `README.md`
+- **Features**: Single/multi-select, searchable, clearable, custom styling
+- **Accessibility**: WCAG 2.1 AA compliant with proper ARIA attributes
+- **Functionality**: Type-ahead search, keyboard navigation, validation
+- **API**: JavaScript API for programmatic control
+- **Styling**: Custom dropdown appearance with native fallback
+- **Import**: `import Select from '@components/Select'`
 
 ### Textarea
 
@@ -64,31 +79,45 @@ Multi-line text input component.
 
 ### Checkbox
 
+**✅ REFACTORED TO MODULAR STRUCTURE**
+
 Styled checkbox component with custom appearance.
 
-- Custom styled checkbox with smooth animations
-- Label association and help text support
-- Error states and validation
-- Disabled states
-- Full keyboard and screen reader support
+- **Structure**: `components/Checkbox/` with Checkbox.astro, Checkbox.scss, Checkbox.js, index.js, README.md
+- **Features**: Custom styling, indeterminate states, loading states, validation
+- **Group management**: Select all functionality, bulk operations
+- **JavaScript API**: CheckboxComponent and CheckboxGroupManager classes
+- **Size variants**: small, medium, large
+- **Data attributes**: `data-indeterminate`, `data-loading`, `data-select-all`
+- **Events**: Custom checkbox change and group events
+- **Import**: `import Checkbox from '@components/Checkbox/Checkbox.astro'`
 
 ### RadioGroup
 
-Radio button group with fieldset/legend structure.
+Radio button group with fieldset/legend structure and enhanced accessibility.
 
-- Horizontal and vertical orientations
-- Proper fieldset/legend accessibility
-- Individual option disable support
-- Error states and validation
-- Keyboard navigation between options
+- **Structure**: `RadioGroup/` folder with `.astro`, `.scss`, `.js`, `index.js`, `README.md`
+- **Features**: Enhanced keyboard navigation, ARIA support, custom styling
+- **Layout**: Horizontal and vertical orientations
+- **Accessibility**: WCAG 2.1 AA compliant with proper fieldset/legend structure
+- **States**: Error states, disabled options, validation
+- **API**: JavaScript API for programmatic control
+- **Import**: `import RadioGroup from '@components/RadioGroup'`
 
 ### Card
 
+**✅ REFACTORED TO MODULAR STRUCTURE**
+
 Flexible container with optional header and footer.
 
-- Variants: `default`, `bordered`, `elevated`
-- Padding options: `none`, `small`, `medium`, `large`
-- Slot-based content areas
+- **Structure**: `components/Card/` with Card.astro, Card.scss, Card.js, index.js, README.md
+- **Variants**: `default`, `bordered`, `elevated`
+- **Padding options**: `none`, `small`, `medium`, `large`
+- **Features**: Interactive states, clickable cards (href), ripple effects
+- **JavaScript API**: CardComponent class for programmatic control
+- **Events**: Custom card interaction events and analytics integration
+- **Slots**: header, content (default), footer
+- **Import**: `import Card from '@components/Card/Card.astro'`
 
 ### Navigation
 
@@ -109,16 +138,52 @@ Fully accessible accordion/collapsible content component.
 - ARIA expanded states and proper labeling
 - Smooth animations with reduced motion support
 
+### Dialog
+
+Fully accessible modal dialog component with advanced features.
+
+- Sizes: `small`, `medium`, `large`, `fullscreen`
+- Variants: `default`, `alert`, `confirmation`
+- Advanced accessibility features:
+  - Focus trap and restoration
+  - Keyboard navigation (ESC to close, Tab cycling)
+  - Screen reader announcements
+  - ARIA roles and properties
+- Background scroll prevention
+- Smooth animations with spring-like easing
+- Reduced motion support
+- Click outside to close (configurable)
+- Custom close buttons and actions
+- JavaScript API for programmatic control
+
 ### FiftyFifty
+
+**✅ REFACTORED TO MODULAR STRUCTURE**
 
 Two-column layout component using your grid utility classes.
 
-- Image positioning: `left` or `right`
-- Content alignment: `left` or `center`
-- Variants: `default`, `contained`, `full-bleed`
-- Responsive behavior with mobile-first approach
-- Action slot for buttons and CTAs
-- Uses your existing grid classes (`col-4 md:col-4 lg:col-6`)
+- **Structure**: `components/FiftyFifty/` with FiftyFifty.astro, FiftyFifty.scss, FiftyFifty.js, index.js, README.md
+- **Image positioning**: `left` or `right` with responsive reordering
+- **Content alignment**: `left` or `center`
+- **Variants**: `default`, `contained`, `full-bleed`
+- **Features**: Scroll animations, parallax effects, lazy loading with error handling
+- **JavaScript API**: FiftyFiftyComponent class for dynamic updates
+- **Data attributes**: `data-animate`, `data-parallax`
+- **Events**: Intersection observer, image load/error events
+- **Import**: `import FiftyFifty from '@components/FiftyFifty/FiftyFifty.astro'`
+
+### Dialog
+
+Fully accessible modal dialog component with advanced animations and focus management.
+
+- Sizes: `small`, `medium`, `large`, `fullscreen`
+- Variants: `default`, `alert`, `confirmation`
+- Complete accessibility: focus trapping, keyboard navigation, screen reader support
+- Advanced animations with reduced motion support
+- Background scroll prevention
+- Progressive enhancement with fallbacks
+
+**Structure**: Located in `Dialog/` folder with separate files for markup, styles, and functionality.
 
 ## Customization
 

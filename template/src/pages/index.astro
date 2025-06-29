@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Button from "../components/Button.astro";
-import Card from "../components/Card.astro";
+import Card from "../components/Card";
 ---
 
 <Layout title="Astro Kickstart">
@@ -20,6 +19,8 @@ import Card from "../components/Card.astro";
                 <div class="hero__actions">
                   <a href="/components" class="btn btn--primary btn--medium">View Components</a>
                   <a href="/grid" class="btn btn--outline btn--medium">Explore Grid System</a>
+                  <a href="/colors" class="btn btn--outline btn--medium">Color System</a>
+                  <a href="/typography" class="btn btn--outline btn--medium">Typography</a>
                 </div>
               </div>
             </div>
@@ -218,10 +219,10 @@ import Card from "../components/Card.astro";
     }
 
     .features {
-      @include spacing(padding, 32);
-
       padding: 4rem 0;
       background-color: #f8f9fa;
+
+      @include spacing(padding, 32);
 
       &__title {
         text-align: center;

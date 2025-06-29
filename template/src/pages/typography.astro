@@ -1,0 +1,537 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card";
+---
+
+<Layout title="Typography System - Astro Kickstart">
+  <Fragment slot="main">
+    <main class="layout-main" aria-label="Main content">
+      <div class="typography-page">
+        <section class="page-header">
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="page-intro">
+                <h1>Typography System</h1>
+                <p>
+                  Explore the typography system with font families, sizes, weights, and utility classes. The system
+                  provides consistent text styling throughout your project with utility-first classes and CSS custom
+                  properties.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Font Families -->
+        <section class="font-families">
+          <div class="section-grid owl-32">
+            <div class="col-full">
+              <h2>Font Families</h2>
+              <p>Four font stacks are available for different use cases:</p>
+            </div>
+
+            <div class="col-3 lg:col-3">
+              <Card variant="bordered">
+                <Fragment slot="header">
+                  <h3>Sans Serif</h3>
+                </Fragment>
+                <div class="font-example">
+                  <div class="font-sans text-4xl font-normal">The quick brown fox jumps over the lazy dog</div>
+                  <div class="font-details">
+                    <p><strong>Class:</strong> <code>.font-sans</code></p>
+                    <p><strong>Stack:</strong> Inter, system-ui, sans-serif</p>
+                    <p><strong>Use:</strong> Body text, headings, UI elements</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div class="col-3 lg:col-3">
+              <Card variant="bordered">
+                <Fragment slot="header">
+                  <h3>Display</h3>
+                </Fragment>
+                <div class="font-example">
+                  <div class="font-display text-4xl font-normal">The quick brown fox jumps over the lazy dog</div>
+                  <div class="font-details">
+                    <p><strong>Class:</strong> <code>.font-display</code></p>
+                    <p><strong>Stack:</strong> Cabin, system-ui, sans-serif</p>
+                    <p><strong>Use:</strong> Hero headings, featured content, branding</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div class="col-3 lg:col-3">
+              <Card variant="bordered">
+                <Fragment slot="header">
+                  <h3>Serif</h3>
+                </Fragment>
+                <div class="font-example">
+                  <div class="font-serif text-4xl font-normal">The quick brown fox jumps over the lazy dog</div>
+                  <div class="font-details">
+                    <p><strong>Class:</strong> <code>.font-serif</code></p>
+                    <p><strong>Stack:</strong> Georgia, Times New Roman, serif</p>
+                    <p><strong>Use:</strong> Elegant headings, articles, quotes</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div class="col-3 lg:col-3">
+              <Card variant="bordered">
+                <Fragment slot="header">
+                  <h3>Monospace</h3>
+                </Fragment>
+                <div class="font-example">
+                  <div class="font-mono text-2xl font-normal">The quick brown fox jumps over the lazy dog</div>
+                  <div class="font-details">
+                    <p><strong>Class:</strong> <code>.font-mono</code></p>
+                    <p><strong>Stack:</strong> JetBrains Mono, Consolas, monospace</p>
+                    <p><strong>Use:</strong> Code blocks, technical content</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <!-- Font Sizes -->
+        <section class="font-sizes">
+          <div class="section-grid owl-32">
+            <div class="col-full">
+              <h2>Font Sizes</h2>
+              <p>A modular scale provides consistent sizing from <code>.text-xs</code> to <code>.text-9xl</code>:</p>
+            </div>
+
+            <div class="col-4 lg:col-6">
+              <Card variant="bordered">
+                <Fragment slot="header">
+                  <h3>Small to Medium Sizes</h3>
+                </Fragment>
+                <div class="size-examples">
+                  <div class="text-xs">Extra Small (12px) - .text-xs</div>
+                  <div class="text-sm">Small (14px) - .text-sm</div>
+                  <div class="text-base">Base (16px) - .text-base</div>
+                  <div class="text-lg">Large (18px) - .text-lg</div>
+                  <div class="text-xl">Extra Large (20px) - .text-xl</div>
+                  <div class="text-2xl">2X Large (24px) - .text-2xl</div>
+                </div>
+              </Card>
+            </div>
+
+            <div class="col-4 lg:col-6">
+              <Card variant="bordered">
+                <Fragment slot="header">
+                  <h3>Large Display Sizes</h3>
+                </Fragment>
+                <div class="size-examples">
+                  <div class="text-3xl">3X Large (30px) - .text-3xl</div>
+                  <div class="text-4xl">4X Large (36px) - .text-4xl</div>
+                  <div class="text-5xl">5X Large (48px) - .text-5xl</div>
+                  <div class="text-6xl">6X Large (60px) - .text-6xl</div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <!-- Font Weights -->
+        <section class="font-weights">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Font Weights</h2>
+            </div>
+
+            <div class="col-4 lg:col-6">
+              <Card variant="bordered">
+                <Fragment slot="header">
+                  <h3>Available Weights</h3>
+                </Fragment>
+                <div class="weight-examples">
+                  <div class="text-2xl font-thin">Thin (100) - .font-thin</div>
+                  <div class="text-2xl font-light">Light (300) - .font-light</div>
+                  <div class="text-2xl font-normal">Normal (400) - .font-normal</div>
+                  <div class="text-2xl font-medium">Medium (500) - .font-medium</div>
+                  <div class="text-2xl font-semibold">Semibold (600) - .font-semibold</div>
+                  <div class="text-2xl font-bold">Bold (700) - .font-bold</div>
+                  <div class="text-2xl font-extrabold">Extra Bold (800) - .font-extrabold</div>
+                  <div class="text-2xl font-black">Black (900) - .font-black</div>
+                </div>
+              </Card>
+            </div>
+
+            <div class="col-4 lg:col-6">
+              <Card variant="bordered">
+                <Fragment slot="header">
+                  <h3>Line Heights</h3>
+                </Fragment>
+                <div class="line-height-examples">
+                  <div class="leading-none">
+                    Leading None (1.0) - .leading-none<br />
+                    This text has tight line spacing for compact layouts.
+                  </div>
+                  <div class="leading-tight">
+                    Leading Tight (1.25) - .leading-tight<br />
+                    This text has slightly tighter line spacing.
+                  </div>
+                  <div class="leading-normal">
+                    Leading Normal (1.5) - .leading-normal<br />
+                    This text uses the standard line height for readability.
+                  </div>
+                  <div class="leading-relaxed">
+                    Leading Relaxed (1.625) - .leading-relaxed<br />
+                    This text has more generous line spacing for better readability.
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <!-- Predefined Text Styles -->
+        <section class="text-styles">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Predefined Text Styles</h2>
+              <p>Ready-to-use text styles for common content types:</p>
+            </div>
+
+            <div class="col-4 lg:col-6">
+              <Card variant="bordered">
+                <Fragment slot="header">
+                  <h3>Headings</h3>
+                </Fragment>
+                <div class="heading-examples">
+                  <h1 class="heading-1">Heading 1 Style</h1>
+                  <h2 class="heading-2">Heading 2 Style</h2>
+                  <h3 class="heading-3">Heading 3 Style</h3>
+                  <h4 class="heading-4">Heading 4 Style</h4>
+                  <h5 class="heading-5">Heading 5 Style</h5>
+                  <h6 class="heading-6">Heading 6 Style</h6>
+                </div>
+              </Card>
+            </div>
+
+            <div class="col-4 lg:col-6">
+              <Card variant="bordered">
+                <Fragment slot="header">
+                  <h3>Body Text</h3>
+                </Fragment>
+                <div class="body-examples">
+                  <p class="body-large">
+                    <strong>Large Body (.body-large)</strong><br />
+                    This is large body text, perfect for introductory paragraphs or emphasis. It provides excellent readability
+                    while maintaining hierarchy.
+                  </p>
+                  <p class="body-normal">
+                    <strong>Normal Body (.body-normal)</strong><br />
+                    This is the standard body text size used for most content. It balances readability with efficient use
+                    of space.
+                  </p>
+                  <p class="body-small">
+                    <strong>Small Body (.body-small)</strong><br />
+                    This is small body text, useful for secondary information, captions, or compact layouts.
+                  </p>
+                  <p class="caption">Caption text (.caption) - Used for image captions, footnotes, and fine print.</p>
+                </div>
+              </Card>
+            </div>
+
+            <div class="col-full">
+              <Card variant="bordered">
+                <Fragment slot="header">
+                  <h3>Code and Technical Text</h3>
+                </Fragment>
+                <div class="code-examples">
+                  <p>Inline code: <code class="code">const greeting = "Hello, World!";</code></p>
+                  <pre
+                    class="code bg-slate-300"
+                    style="padding: 1rem; border-radius: 6px; margin-top: 1rem;">{`function calculateTotal(items) {
+  return items.reduce((sum, item) => sum + item.price, 0);
+}`}</pre>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <!-- Utility Classes -->
+        <section class="utility-classes">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Utility Classes</h2>
+            </div>
+
+            <div class="col-4 lg:col-4">
+              <Card variant="bordered">
+                <Fragment slot="header">
+                  <h3>Text Alignment</h3>
+                </Fragment>
+                <div class="utility-examples">
+                  <p class="text-left">Left aligned text (.text-left)</p>
+                  <p class="text-center">Center aligned text (.text-center)</p>
+                  <p class="text-right">Right aligned text (.text-right)</p>
+                </div>
+              </Card>
+            </div>
+
+            <div class="col-4 lg:col-4">
+              <Card variant="bordered">
+                <Fragment slot="header">
+                  <h3>Text Transform</h3>
+                </Fragment>
+                <div class="utility-examples">
+                  <p class="uppercase">Uppercase text (.uppercase)</p>
+                  <p class="lowercase">LOWERCASE TEXT (.lowercase)</p>
+                  <p class="capitalize">capitalized text (.capitalize)</p>
+                </div>
+              </Card>
+            </div>
+
+            <div class="col-4 lg:col-4">
+              <Card variant="bordered">
+                <Fragment slot="header">
+                  <h3>Text Decoration</h3>
+                </Fragment>
+                <div class="utility-examples">
+                  <p class="underline">Underlined text (.underline)</p>
+                  <p class="line-through">Strikethrough text (.line-through)</p>
+                  <p class="italic">Italic text (.italic)</p>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <!-- Usage Examples -->
+        <section class="usage-examples">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Usage Examples</h2>
+            </div>
+
+            <div class="col-full">
+              <Card variant="elevated" padding="large">
+                <Fragment slot="header">
+                  <h3>CSS Custom Properties</h3>
+                </Fragment>
+                <div class="code-example">
+                  <p>Use CSS custom properties in your stylesheets:</p>
+                  <pre><code class="code">{`.my-heading {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.my-body-text {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}`}</code></pre>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </Fragment>
+</Layout>
+
+<style lang="scss">
+  @use "../styles/core/owl.core";
+
+  .typography-page {
+    padding: 2rem 0;
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .page-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #333;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.25rem;
+      color: #666;
+      line-height: 1.6;
+    }
+  }
+
+  section {
+    margin-bottom: 4rem;
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    p {
+      margin-bottom: 2rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    code {
+      background-color: #f5f5f5;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-family: "Courier New", monospace;
+      font-size: 0.9rem;
+    }
+  }
+
+  .font-example {
+    .font-details {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e0e0e0;
+
+      p {
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .size-examples,
+  .weight-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    > div {
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  .line-height-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    > div {
+      padding: 1rem;
+      background-color: #f8f9fa;
+      border-radius: 6px;
+      border-left: 4px solid #007bff;
+    }
+  }
+
+  .heading-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+    }
+  }
+
+  .body-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .code-examples {
+    code {
+      background-color: #f0f0f0;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+
+    pre {
+      margin: 0;
+    }
+  }
+
+  .utility-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    p {
+      margin: 0;
+      padding: 0.5rem;
+      background-color: #f8f9fa;
+      border-radius: 4px;
+    }
+  }
+
+  .code-example {
+    pre {
+      background-color: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-top: 1rem;
+
+      code {
+        background: none;
+        padding: 0;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: #333;
+      }
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .page-intro {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.125rem;
+      }
+    }
+
+    section {
+      h2 {
+        font-size: 2rem;
+      }
+    }
+
+    .font-example {
+      > div:first-child {
+        font-size: 1.5rem !important;
+      }
+    }
+
+    .size-examples {
+      .text-6xl,
+      .text-5xl,
+      .text-4xl {
+        font-size: 1.5rem !important;
+      }
+    }
+  }
+</style>

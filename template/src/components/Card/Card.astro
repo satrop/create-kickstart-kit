@@ -1,0 +1,51 @@
+---
+export interface Props {
+  variant?: "default" | "bordered" | "elevated";
+  padding?: "none" | "small" | "medium" | "large";
+  interactive?: boolean;
+  href?: string;
+}
+
+const { variant = "default", padding = "medium", interactive = false, href } = Astro.props;
+
+const Tag = href ? "a" : "div";
+const cardClasses = [
+  "card",
+  `card--${variant}`,
+  `card--padding-${padding}`,
+  interactive ? "card--interactive" : "",
+  href ? "card--clickable" : "",
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<Tag class={cardClasses} href={href} {...Astro.props}>
+  {
+    Astro.slots.has("header") && (
+      <div class="card__header">
+        <slot name="header" />
+      </div>
+    )
+  }
+
+  <div class="card__content">
+    <slot />
+  </div>
+
+  {
+    Astro.slots.has("footer") && (
+      <div class="card__footer">
+        <slot name="footer" />
+      </div>
+    )
+  }
+</Tag>
+
+<style lang="scss">
+  @use "./Card.scss";
+</style>
+
+<script>
+  import "./Card.js";
+</script>

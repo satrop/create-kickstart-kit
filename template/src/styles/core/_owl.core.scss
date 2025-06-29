@@ -1,8 +1,9 @@
+@use "sass:map";
 @use "../tokens/spacing/spacing" as *;
 @use "./breakpoint.core" as *;
 
 @mixin owl($property, $token, $negative: false) {
-  $map: map-get($spacing, $token);
+  $map: map.get($spacing, $token);
 
   @if not $map {
     @error "Spacing token `#{$token}` not found in $spacing map.";

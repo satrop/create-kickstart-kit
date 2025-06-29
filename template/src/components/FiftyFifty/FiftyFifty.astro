@@ -1,0 +1,69 @@
+---
+export interface Props {
+  imagePosition?: "left" | "right";
+  imageAlt: string;
+  imageSrc: string;
+  title: string;
+  subtitle?: string;
+  alignment?: "left" | "center";
+  variant?: "default" | "contained" | "full-bleed";
+  lazy?: boolean;
+  priority?: boolean;
+}
+
+const {
+  imagePosition = "left",
+  imageAlt,
+  imageSrc,
+  title,
+  subtitle,
+  alignment = "left",
+  variant = "default",
+  lazy = true,
+  priority = false,
+} = Astro.props;
+
+const contentOrder = imagePosition === "left" ? "order-2" : "order-1";
+const imageOrder = imagePosition === "left" ? "order-1" : "order-2";
+---
+
+<section class={`fifty-fifty fifty-fifty--${variant}`}>
+  <div class="section-grid">
+    <div class={`col-4 md:col-4 lg:col-6 fifty-fifty__image ${imageOrder}`}>
+      <div class="fifty-fifty__image-wrapper">
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          class="fifty-fifty__img"
+          loading={priority ? "eager" : lazy ? "lazy" : undefined}
+          decoding="async"
+        />
+      </div>
+    </div>
+
+    <div class={`col-4 md:col-4 lg:col-6 fifty-fifty__content fifty-fifty__content--${alignment} ${contentOrder}`}>
+      <div class="fifty-fifty__content-wrapper">
+        {subtitle && <p class="fifty-fifty__subtitle">{subtitle}</p>}
+        <h2 class="fifty-fifty__title">{title}</h2>
+        <div class="fifty-fifty__body">
+          <slot />
+        </div>
+        {
+          Astro.slots.has("actions") && (
+            <div class="fifty-fifty__actions">
+              <slot name="actions" />
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "./FiftyFifty.scss";
+</style>
+
+<script>
+  import "./FiftyFifty.js";
+</script>

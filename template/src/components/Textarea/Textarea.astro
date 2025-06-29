@@ -1,0 +1,112 @@
+---
+export interface TextareaProps {
+  label: string;
+  name: string;
+  placeholder?: string;
+  value?: string;
+  required?: boolean;
+  disabled?: boolean;
+  readonly?: boolean;
+  error?: string;
+  helpText?: string;
+  rows?: number;
+  cols?: number;
+  maxlength?: number;
+  minlength?: number;
+  resize?: "none" | "vertical" | "horizontal" | "both";
+  class?: string;
+  autocomplete?: string;
+  spellcheck?: boolean;
+}
+
+export interface Props extends TextareaProps {}
+
+const {
+  label,
+  name,
+  placeholder,
+  value,
+  required = false,
+  disabled = false,
+  readonly = false,
+  error,
+  helpText,
+  rows = 4,
+  cols,
+  maxlength,
+  minlength,
+  resize = "vertical",
+  class: className = "",
+  autocomplete,
+  spellcheck,
+} = Astro.props;
+
+const textareaId = name;
+const descriptionId = `${name}-description`;
+const errorId = `${name}-error`;
+---
+
+<div class={`textarea-field ${error ? "textarea-field--error" : ""} ${className}`} data-component="textarea">
+  <label for={textareaId} class="textarea-field__label">
+    {label}
+    {
+      required && (
+        <span class="textarea-field__required" aria-label="required">
+          *
+        </span>
+      )
+    }
+  </label>
+
+  <textarea
+    id={textareaId}
+    name={name}
+    placeholder={placeholder}
+    value={value}
+    required={required}
+    disabled={disabled}
+    readonly={readonly}
+    rows={rows}
+    cols={cols}
+    maxlength={maxlength}
+    minlength={minlength}
+    autocomplete={autocomplete}
+    spellcheck={spellcheck}
+    class={`textarea-field__textarea textarea-field__textarea--${resize}`}
+    aria-describedby={[helpText ? descriptionId : null, error ? errorId : null].filter(Boolean).join(" ") || undefined}
+    aria-invalid={error ? "true" : "false"}></textarea>
+
+  {
+    maxlength && (
+      <div class="textarea-field__counter" aria-live="polite">
+        <span class="textarea-field__counter-current">0</span>
+        <span class="textarea-field__counter-separator">/</span>
+        <span class="textarea-field__counter-max">{maxlength}</span>
+      </div>
+    )
+  }
+
+  {
+    helpText && (
+      <div id={descriptionId} class="textarea-field__help">
+        {helpText}
+      </div>
+    )
+  }
+
+  {
+    error && (
+      <div id={errorId} class="textarea-field__error" role="alert">
+        {error}
+      </div>
+    )
+  }
+</div>
+
+<style lang="scss">
+  @use "./Textarea.scss";
+</style>
+
+<script>
+  import "./Textarea.js";
+</script>

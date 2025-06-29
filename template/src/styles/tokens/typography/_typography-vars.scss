@@ -1,0 +1,184 @@
+// Typography System Configuration
+// ==========================================================================
+
+// Font stacks
+$font-stacks: (
+  "sans": (
+    "Inter",
+    "system-ui",
+    "-apple-system",
+    "BlinkMacSystemFont",
+    "Segoe UI",
+    "Roboto",
+    "Helvetica Neue",
+    "Arial",
+    "sans-serif",
+  ),
+  "serif": (
+    "Georgia",
+    "Times New Roman",
+    "Times",
+    "serif",
+  ),
+  "mono": (
+    "JetBrains Mono",
+    "Fira Code",
+    "Monaco",
+    "Consolas",
+    "Liberation Mono",
+    "Courier New",
+    "monospace",
+  ),
+  "display": (
+    "Cabin",
+    "Inter",
+    "system-ui",
+    "-apple-system",
+    "sans-serif",
+  ),
+);
+
+// Font weights
+$font-weights: (
+  "thin": 100,
+  "light": 300,
+  "normal": 400,
+  "medium": 500,
+  "semibold": 600,
+  "bold": 700,
+  "extrabold": 800,
+  "black": 900,
+);
+
+// Font sizes (fluid typography using clamp)
+// Format: clamp(min-size, preferred-size, max-size)
+$font-sizes: (
+  "xs": clamp(0.625rem, 0.65rem + 0.1vw, 0.75rem),
+  // ~10px -> 12px
+  "sm": clamp(0.75rem, 0.8rem + 0.15vw, 0.875rem),
+  // ~12px -> 14px
+  "base": clamp(0.875rem, 0.9rem + 0.2vw, 1rem),
+  // ~14px -> 16px
+  "lg": clamp(1rem, 1.05rem + 0.25vw, 1.125rem),
+  // ~16px -> 18px
+  "xl": clamp(1.125rem, 1.15rem + 0.3vw, 1.25rem),
+  // ~18px -> 20px
+  "2xl": clamp(1.25rem, 1.3rem + 0.5vw, 1.5rem),
+  // ~20px -> 24px
+  "3xl": clamp(1.5rem, 1.6rem + 0.75vw, 1.875rem),
+  // ~24px -> 30px
+  "4xl": clamp(1.875rem, 2rem + 1vw, 2.25rem),
+  // ~30px -> 36px
+  "5xl": clamp(2.25rem, 2.5rem + 1.5vw, 3rem),
+  // ~36px -> 48px
+  "6xl": clamp(3rem, 3.25rem + 2vw, 3.75rem),
+  // ~48px -> 60px
+  "7xl": clamp(3.75rem, 4rem + 2.5vw, 4.5rem),
+  // ~60px -> 72px
+  "8xl": clamp(4.5rem, 5rem + 3vw, 6rem),
+  // ~72px -> 96px
+  "9xl": clamp(6rem, 7rem + 4vw, 8rem),
+  // ~96px -> 128px
+);
+
+// Line heights
+$line-heights: (
+  "none": 1,
+  "tight": 1.25,
+  "snug": 1.375,
+  "normal": 1.5,
+  "relaxed": 1.625,
+  "loose": 2,
+);
+
+// Letter spacing
+$letter-spacings: (
+  "tighter": -0.05em,
+  "tight": -0.025em,
+  "normal": 0,
+  "wide": 0.025em,
+  "wider": 0.05em,
+  "widest": 0.1em,
+);
+
+// ==========================================================================
+// Usage Examples
+// ==========================================================================
+
+/*
+  HTML Usage Examples:
+  
+  <!-- Font Families -->
+  <h1 class="font-sans">System font heading</h1>
+  <h2 class="font-display">Display font (Cabin) heading</h2>
+  <p class="font-serif">Serif body text</p>
+  <code class="font-mono">Monospace code</code>
+  
+  <!-- Font Sizes (fluid, responsive) -->
+  <h1 class="text-5xl">Large heading</h1>
+  <h2 class="text-3xl">Medium heading</h2>
+  <p class="text-base">Body text</p>
+  <small class="text-sm">Small text</small>
+  
+  <!-- Font Weights -->
+  <span class="font-light">Light text</span>
+  <span class="font-normal">Normal text</span>
+  <span class="font-bold">Bold text</span>
+  
+  <!-- Line Heights -->
+  <p class="leading-tight">Tight line height</p>
+  <p class="leading-normal">Normal line height</p>
+  <p class="leading-relaxed">Relaxed line height</p>
+  
+  <!-- Letter Spacing -->
+  <h1 class="tracking-tight">Tight letter spacing</h1>
+  <p class="tracking-normal">Normal letter spacing</p>
+  <span class="tracking-wide">Wide letter spacing</span>
+  
+  <!-- Combinations -->
+  <h1 class="font-display text-4xl font-bold leading-tight tracking-tight">
+    Complete heading style
+  </h1>
+  
+  <!-- Predefined Styles -->
+  <h1 class="heading-1">Styled heading</h1>
+  <p class="body-normal">Styled body text</p>
+  <small class="caption">Styled caption</small>
+*/
+
+/*
+  CSS Custom Properties Usage:
+  
+  .my-custom-heading {
+    font-family: var(--font-display);
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+  
+  .my-body-text {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    letter-spacing: var(--letter-spacing-normal);
+  }
+  
+  .my-code-block {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-snug);
+  }
+*/
+
+/*
+  Google Font Setup:
+  Add this to your HTML <head> or import in CSS:
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&display=swap" rel="stylesheet">
+  
+  Or in CSS:
+  @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&display=swap');
+*/
