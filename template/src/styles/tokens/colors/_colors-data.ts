@@ -7,10 +7,6 @@ export const colors = {
     400: "#e01717", 
     500: "#d11515",
   },
-  yellow: {
-    300: "#fff4c7",
-    500: "#eeca75",
-  },
   peach: {
     300: "#fbc7a7",
   },
@@ -24,5 +20,11 @@ export const colors = {
     300: "#60a5fa",
     500: "#3b82f6",
     700: "#1d4ed8",
+  },
+  neutral: {
+    "0-30": "#ffffff4d",
+  },
+  yellow: {
+    "100-75": "#ffbd2fbf",
   },
 } as const;

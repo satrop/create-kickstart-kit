@@ -2,14 +2,13 @@
 import { defineConfig } from 'astro/config'
 
 export default defineConfig({
-  base: '',
+  base: process.env.NODE_ENV === 'production' ? '/html_templates/ksp/' : '/',
   publicDir: './public',
   trailingSlash: 'never',
   compressHTML: false,
   build: {
     format: 'file',
-    assets: '_assets',
-    assetsPrefix: '.'
+    assets: '_assets'
   },
   vite: {
     resolve: {
