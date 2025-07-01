@@ -6,12 +6,12 @@
 import Swiper from "swiper";
 import { Navigation, Pagination, Autoplay, Mousewheel, Keyboard, EffectFade } from "swiper/modules";
 
-// Import Swiper styles - temporarily commented out to test
-// import "swiper/css";
-// import "swiper/css/navigation";
-// import "swiper/css/pagination";
-// import "swiper/css/autoplay";
-// import "swiper/css/effect-fade";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+import "swiper/css/effect-fade";
 
 class SwiperComponent {
   constructor(element) {

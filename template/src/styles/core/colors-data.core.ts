@@ -1,6 +1,6 @@
 // Core color data utilities - DO NOT MODIFY
 // These functions provide data manipulation for the color system
-import { colors } from "../tokens/colors/_colors-data";
+import { colors } from "./_colors-data";
 
 // Helper function to get color name with proper capitalization
 export function getColorName(colorKey: string): string {

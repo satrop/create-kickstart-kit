@@ -31,3 +31,22 @@
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+// Float utilities
+.clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.contain-floats {
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

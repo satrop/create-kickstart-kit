@@ -119,28 +119,33 @@
   position: relative;
   z-index: 2;
 
-  // Better image loading experience
+  // Better image loading experience with global image handler
   &[loading="lazy"] {
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.6s ease;
 
-    &.fifty-fifty__img--loaded {
+    &.img--loaded {
       opacity: 1;
     }
   }
 
-  // Error state
-  &.fifty-fifty__img--error {
-    background-color: #f8f9fa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #6c757d;
-    font-size: 0.875rem;
+  // Loading state from global handler
+  &.img--loading {
+    opacity: 0.6;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading-shimmer 1.5s infinite;
+  }
 
-    &::after {
-      content: "Image failed to load";
-    }
+  // Loaded state from global handler
+  &.img--loaded {
+    opacity: 1;
+  }
+
+  // Error state from global handler
+  &.img--error {
+    opacity: 0.5;
+    filter: grayscale(100%);
   }
 }
 
@@ -461,3 +466,13 @@
 //     }
 //   }
 // }
+
+// Loading animation keyframes
+@keyframes loading-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

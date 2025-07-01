@@ -3,19 +3,29 @@
   "version": "1.2.0",
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "pnpm run colors:sync && concurrently \"pnpm run colors:watch\" \"astro dev\" --names \"colors,astro\" --prefix-colors \"green,blue\"",
+    "dev:astro": "astro dev",
     "build": "NODE_ENV=production astro build",
     "build:local": "NODE_ENV=development astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "icons:clean": "node scripts/clean-optimized.js",
+    "icons:optimize": "pnpm run icons:clean && svgo -f public/_icons/raw -o public/_icons/optimized",
+    "icons:build": "webfont ./public/_icons/optimized/*.svg --config ./webfont.config.json",
+    "icons:update-page": "node scripts/update-icons-page.js",
+    "icons": "pnpm run icons:optimize && pnpm run icons:build && pnpm run icons:update-page",
+    "colors:sync": "node scripts/sync-colors.js",
+    "colors:watch": "chokidar 'src/styles/tokens/colors/_colors.scss' -c 'pnpm run colors:sync'"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "astro": "^5.9.1",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^9.2.0",
+    "sass-embedded": "^1.89.2",
+    "svgo": "^4.0.0",
     "swiper": "^11.2.9",
-    "typescript": "^5.8.3"
-  },
-  "devDependencies": {
-    "sass-embedded": "^1.89.2"
+    "typescript": "^5.8.3",
+    "webfont": "11.2.26"
   }
 }

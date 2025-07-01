@@ -1,0 +1,461 @@
+// Demo Page Shared Styles
+// This stylesheet contains all the common styles for component demo pages
+
+.demo-page {
+  min-height: 100vh;
+  padding-block: 4rem;
+}
+
+.component-demo {
+  padding: 2rem 0;
+}
+
+.demo-header {
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 2rem;
+}
+
+.demo-nav {
+  margin-bottom: 1rem;
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    background-color: transparent;
+    border-color: #64748b;
+    color: #64748b;
+
+    &:hover {
+      background-color: #64748b;
+      color: white;
+    }
+
+    &--outline {
+      background-color: transparent;
+      border-color: #64748b;
+      color: #64748b;
+
+      &:hover {
+        background-color: #64748b;
+        color: white;
+      }
+    }
+
+    &--small {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+    }
+  }
+}
+
+.demo-subtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+}
+
+.demo-section {
+  margin-bottom: 4rem;
+
+  h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+    color: #444;
+    margin: 2rem 0 1rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .section-intro {
+    font-size: 1.125rem;
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+}
+
+.demo-example {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+}
+
+.demo-preview {
+  padding: 2rem;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.demo-content {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.demo-form {
+  max-width: 600px;
+
+  &--complete {
+    max-width: none;
+  }
+}
+
+.form-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e2e8f0;
+
+  &:last-of-type {
+    border-bottom: none;
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #374151;
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
+}
+
+.demo-code {
+  padding: 1rem;
+  background: #1e293b;
+
+  pre {
+    margin: 0;
+
+    code {
+      color: #e2e8f0;
+      font-family: "Monaco", "Menlo", monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+.props-table {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  th,
+  td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: #374151;
+  }
+
+  code {
+    background: #f1f5f9;
+    padding: 0.125rem 0.25rem;
+    border-radius: 3px;
+    font-size: 0.875rem;
+    color: #1e293b;
+  }
+}
+
+// Accessibility Features Grid
+.accessibility-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.accessibility-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  h4 {
+    color: #667eea;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    line-height: 1.6;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  kbd {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 3px;
+    padding: 0.1em 0.4em;
+    font-size: 0.875em;
+    font-family: monospace;
+  }
+
+  code {
+    background: #f1f5f9;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.875em;
+    font-family: monospace;
+  }
+}
+
+// Design Guidelines Grid
+.guidelines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.guideline-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  h4 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+
+    &:first-child {
+      color: #059669; // Green for "Do"
+    }
+
+    &:nth-child(1):contains("❌") {
+      color: #dc2626; // Red for "Don't"
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    line-height: 1.6;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    color: #666;
+  }
+}
+
+// Code blocks
+pre {
+  background: #2d3748;
+  color: #e2e8f0;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1rem 0;
+
+  code {
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+// Legacy support for old CSS classes (can be removed once all pages are updated)
+.accessibility-info,
+.guidelines {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.guidelines {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.guideline h3 {
+  color: #374151;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.guideline ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.guideline li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+// Component-specific styles
+.variants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.variant-demo {
+  h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #374151;
+  }
+}
+
+.checkbox-grid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.checkbox-fieldset {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+
+  &__legend {
+    font-weight: 600;
+    color: #374151;
+    padding: 0 0.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .demo-page {
+    padding-block: 2rem;
+  }
+
+  .component-demo {
+    padding: 1rem 0;
+  }
+
+  .demo-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .demo-subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  .demo-preview {
+    padding: 1rem;
+  }
+
+  .demo-content {
+    padding: 1.5rem;
+  }
+
+  .demo-section {
+    margin-bottom: 3rem;
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .demo-form {
+    max-width: none;
+  }
+
+  .guidelines {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .variants-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .accessibility-grid,
+  .guidelines-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .props-table {
+    font-size: 0.8rem;
+  }
+
+  .props-table th,
+  .props-table td {
+    padding: 0.5rem;
+  }
+}

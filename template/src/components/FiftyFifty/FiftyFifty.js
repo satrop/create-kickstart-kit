@@ -1,7 +1,9 @@
 /**
  * FiftyFifty JavaScript functionality
- * Simple enhancements for image loading and basic interactions
+ * Enhanced with global image handling and animation support
  */
+
+import { GlobalImageHandler } from '../../utils/imageHandler.js';
 
 class FiftyFiftyComponent {
   constructor(element) {
@@ -11,26 +13,36 @@ class FiftyFiftyComponent {
   }
 
   init() {
-    this.setupImageLoading();
+    this.setupImageHandling();
+    this.setupAnimations();
   }
 
-  setupImageLoading() {
+  setupImageHandling() {
     if (!this.image) return;
+    
+    // Add data-enhanced attribute for global image handler
+    this.image.setAttribute('data-enhanced', '');
+    
+    // Let the global image handler manage loading states
+    // The global handler will add img--loading, img--loaded, img--error classes
+  }
 
-    // Handle image load for better UX
-    this.image.addEventListener('load', () => {
-      this.image.classList.add('fifty-fifty__img--loaded');
-    });
+  setupAnimations() {
+    // Setup intersection observer for animations if data-animate is present
+    if (this.element.dataset.animate === 'true' && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fifty-fifty--in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
 
-    // Handle image error
-    this.image.addEventListener('error', () => {
-      this.image.classList.add('fifty-fifty__img--error');
-      console.warn('Failed to load image:', this.image.src);
-    });
-
-    // Check if image is already loaded (cached)
-    if (this.image.complete && this.image.naturalHeight !== 0) {
-      this.image.classList.add('fifty-fifty__img--loaded');
+      observer.observe(this.element);
     }
   }
 }

@@ -1,0 +1,596 @@
+---
+import "../../styles/swiper.css";
+import "../../styles/demo.scss";
+
+import Layout from "../../layouts/Layout.astro";
+import SwiperComponent from "../../components/Swiper/Swiper.astro";
+
+// Sample slide data
+const imageSlides = [
+  {
+    id: "image1",
+    image: "/images/image1.jpg",
+    alt: "Nature landscape",
+    title: "Beautiful Nature",
+    content: "Explore the stunning landscapes and natural wonders.",
+  },
+  {
+    id: "image2",
+    image: "/images/image2.jpg",
+    alt: "City skyline",
+    title: "Urban Views",
+    content: "Discover the beauty of modern architecture and city life.",
+  },
+  {
+    id: "image3",
+    image: "/images/image3.jpg",
+    alt: "Mountain vista",
+    title: "Mountain Peaks",
+    content: "Experience the majesty of towering mountain ranges.",
+  },
+  {
+    id: "image4",
+    image: "/images/image4.jpg",
+    alt: "Ocean waves",
+    title: "Ocean Waves",
+    content: "Feel the power and tranquility of the ocean.",
+  },
+  {
+    id: "image5",
+    image: "/images/image5.jpg",
+    alt: "Forest path",
+    title: "Forest Trail",
+    content: "Walk through peaceful forest paths and green spaces.",
+  },
+];
+
+const textSlides = [
+  {
+    id: "text1",
+    title: "Welcome",
+    content:
+      "<p>This is a text-only slide with rich content. It demonstrates how the Swiper component can handle pure text content without images.</p>",
+  },
+  {
+    id: "text2",
+    title: "Features",
+    content:
+      "<p>The Swiper component supports multiple transition effects, autoplay, navigation controls, and responsive breakpoints.</p>",
+  },
+  {
+    id: "text3",
+    title: "Accessibility",
+    content:
+      "<p>Full keyboard navigation, ARIA labels, and screen reader support make this component accessible to all users.</p>",
+  },
+];
+
+const productSlides = [
+  {
+    id: "product1",
+    image: "/images/image1.jpg",
+    alt: "Product showcase",
+    title: "Product One",
+    content:
+      "<p>Premium quality product with exceptional features and modern design.</p><p><strong>Price: $99.99</strong></p>",
+  },
+  {
+    id: "product2",
+    image: "/images/image2.jpg",
+    alt: "Product showcase",
+    title: "Product Two",
+    content:
+      "<p>Innovative solution for your daily needs with cutting-edge technology.</p><p><strong>Price: $149.99</strong></p>",
+  },
+  {
+    id: "product3",
+    image: "/images/image3.jpg",
+    alt: "Product showcase",
+    title: "Product Three",
+    content:
+      "<p>Elegant design meets functionality in this versatile product.</p><p><strong>Price: $199.99</strong></p>",
+  },
+  {
+    id: "product4",
+    image: "/images/image4.jpg",
+    alt: "Product showcase",
+    title: "Product Four",
+    content: "<p>Professional-grade quality for demanding applications.</p><p><strong>Price: $299.99</strong></p>",
+  },
+];
+
+const testimonialSlides = [
+  {
+    id: "testimonial1",
+    title: "Sarah Johnson",
+    content:
+      '<p>"This product has completely transformed our workflow. The team loves using it every day."</p><p><em>CEO, Tech Solutions Inc.</em></p>',
+  },
+  {
+    id: "testimonial2",
+    title: "Mike Chen",
+    content:
+      '<p>"Outstanding quality and customer service. I would highly recommend this to anyone."</p><p><em>Marketing Director, Creative Agency</em></p>',
+  },
+  {
+    id: "testimonial3",
+    title: "Emma Williams",
+    content:
+      '<p>"The best investment we have made for our business. Results exceeded our expectations."</p><p><em>Founder, StartupCo</em></p>',
+  },
+];
+
+const singleSlide = [
+  {
+    id: "single1",
+    image: "/images/image1.jpg",
+    alt: "Single slide example",
+    title: "Single Slide",
+    content: "This example shows how the Swiper component handles a single slide gracefully.",
+  },
+];
+---
+
+<Layout title="Swiper Component - Demo">
+  <Fragment slot="main">
+    <main id="main" class="layout-main" aria-label="Main content">
+      <div class="demo-page">
+        <header class="demo-header">
+          <div class="section-grid">
+            <div class="col-full">
+              <nav class="demo-nav">
+                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
+              </nav>
+              <h1>Swiper Component</h1>
+              <p class="lead">A flexible and accessible carousel/slider component built with Swiper.js</p>
+            </div>
+          </div>
+        </header>
+
+        <!-- Multi-slide Responsive -->
+        <section class="demo-section">
+          <div class="demo-section-header">
+            <h2>Multi-slide Responsive</h2>
+            <p>Shows multiple slides with responsive breakpoints</p>
+          </div>
+
+          <div class="demo-example">
+            <SwiperComponent
+              slides={productSlides}
+              slidesPerView={3}
+              spaceBetween={30}
+              navigation={true}
+              pagination={true}
+              breakpoints={{
+                320: { slidesPerView: 1, spaceBetween: 10 },
+                768: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 30 },
+              }}
+              height="350px"
+            />
+          </div>
+
+          <div class="demo-code">
+            <pre><code>&lt;SwiperComponent
+  slides=&#123;productSlides&#125;
+  slidesPerView=&#123;3&#125;
+  spaceBetween=&#123;30&#125;
+  navigation=&#123;true&#125;
+  pagination=&#123;true&#125;
+  breakpoints=&#123;&#123;
+    320: &#123; slidesPerView: 1, spaceBetween: 10 &#125;,
+    768: &#123; slidesPerView: 2, spaceBetween: 20 &#125;,
+    1024: &#123; slidesPerView: 3, spaceBetween: 30 &#125;
+  &#125;&#125;
+  height="350px"
+/&gt;</code></pre>
+          </div>
+        </section>
+
+        <!-- Text-only Carousel -->
+        <section class="demo-section">
+          <div class="demo-section-header">
+            <h2>Text-only Carousel</h2>
+            <p>Perfect for testimonials or content blocks</p>
+          </div>
+
+          <div class="demo-example">
+            <SwiperComponent
+              slides={testimonialSlides}
+              slidesPerView={1}
+              spaceBetween={0}
+              autoplay={{ delay: 4000 }}
+              navigation={false}
+              pagination={true}
+              effect="fade"
+              centeredSlides={true}
+              height="280px"
+              class="testimonial-swiper"
+            />
+          </div>
+
+          <div class="demo-code">
+            <pre><code>&lt;SwiperComponent
+  slides=&#123;testimonialSlides&#125;
+  slidesPerView=&#123;1&#125;
+  spaceBetween=&#123;20&#125;
+  autoplay=&#123;&#123; delay: 4000 &#125;&#125;
+  navigation=&#123;false&#125;
+  pagination=&#123;true&#125;
+  effect="fade"
+  height="280px"
+  class="testimonial-swiper"
+/&gt;</code></pre>
+          </div>
+        </section>
+
+        <!-- Minimal Navigation -->
+        <section class="demo-section">
+          <div class="demo-section-header">
+            <h2>Minimal Navigation</h2>
+            <p>Navigation only, no pagination dots</p>
+          </div>
+
+          <div class="demo-example">
+            <SwiperComponent
+              slides={imageSlides.slice(0, 3)}
+              slidesPerView={1}
+              spaceBetween={20}
+              navigation={true}
+              pagination={false}
+              height="300px"
+            />
+          </div>
+
+          <div class="demo-code">
+            <pre><code>&lt;SwiperComponent
+  slides=&#123;imageSlides&#125;
+  slidesPerView=&#123;1&#125;
+  spaceBetween=&#123;20&#125;
+  navigation=&#123;true&#125;
+  pagination=&#123;false&#125;
+  height="300px"
+/&gt;</code></pre>
+          </div>
+        </section>
+
+        <!-- Pagination Only -->
+        <section class="demo-section">
+          <div class="demo-section-header">
+            <h2>Pagination Only</h2>
+            <p>Pagination dots only, no navigation arrows</p>
+          </div>
+
+          <div class="demo-example">
+            <SwiperComponent
+              slides={productSlides}
+              slidesPerView={1}
+              spaceBetween={30}
+              navigation={false}
+              pagination={true}
+              height="350px"
+              class="pagination-only-swiper"
+            />
+          </div>
+
+          <div class="demo-code">
+            <pre><code>&lt;SwiperComponent
+  slides=&#123;productSlides&#125;
+  slidesPerView=&#123;1&#125;
+  spaceBetween=&#123;30&#125;
+  navigation=&#123;false&#125;
+  pagination=&#123;true&#125;
+  height="350px"
+  class="pagination-only-swiper"
+/&gt;</code></pre>
+          </div>
+        </section>
+
+        <!-- Single Slide -->
+        <section class="demo-section">
+          <div class="demo-section-header">
+            <h2>Single Slide</h2>
+            <p>How the component handles a single slide gracefully</p>
+          </div>
+
+          <div class="demo-example">
+            <SwiperComponent
+              slides={singleSlide}
+              slidesPerView={1}
+              spaceBetween={20}
+              navigation={true}
+              pagination={true}
+              height="300px"
+            />
+          </div>
+
+          <div class="demo-code">
+            <pre><code>&lt;SwiperComponent
+  slides=&#123;singleSlide&#125;
+  slidesPerView=&#123;1&#125;
+  spaceBetween=&#123;20&#125;
+  navigation=&#123;true&#125;
+  pagination=&#123;true&#125;
+  height="300px"
+/&gt;</code></pre>
+          </div>
+        </section>
+
+        <!-- Props Documentation -->
+        <section class="demo-section">
+          <div class="demo-section-header">
+            <h2>Props</h2>
+            <p>Complete list of available props and their usage</p>
+          </div>
+
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Prop</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>slides</code></td>
+                  <td><code>SwiperSlide[]</code></td>
+                  <td>required</td>
+                  <td>Array of slide objects</td>
+                </tr>
+                <tr>
+                  <td><code>slidesPerView</code></td>
+                  <td><code>number</code></td>
+                  <td><code>1</code></td>
+                  <td>Number of slides visible at once</td>
+                </tr>
+                <tr>
+                  <td><code>spaceBetween</code></td>
+                  <td><code>number</code></td>
+                  <td><code>20</code></td>
+                  <td>Space between slides in pixels</td>
+                </tr>
+                <tr>
+                  <td><code>navigation</code></td>
+                  <td><code>boolean</code></td>
+                  <td><code>true</code></td>
+                  <td>Show prev/next buttons</td>
+                </tr>
+                <tr>
+                  <td><code>pagination</code></td>
+                  <td><code>boolean</code></td>
+                  <td><code>true</code></td>
+                  <td>Show pagination dots</td>
+                </tr>
+                <tr>
+                  <td><code>autoplay</code></td>
+                  <td><code>boolean | SwiperAutoplay</code></td>
+                  <td><code>false</code></td>
+                  <td>Auto-advance slides</td>
+                </tr>
+                <tr>
+                  <td><code>effect</code></td>
+                  <td><code>"slide" | "fade"</code></td>
+                  <td><code>"slide"</code></td>
+                  <td>Transition effect</td>
+                </tr>
+                <tr>
+                  <td><code>speed</code></td>
+                  <td><code>number</code></td>
+                  <td><code>300</code></td>
+                  <td>Transition speed in ms</td>
+                </tr>
+                <tr>
+                  <td><code>height</code></td>
+                  <td><code>string</code></td>
+                  <td><code>"auto"</code></td>
+                  <td>Container height</td>
+                </tr>
+                <tr>
+                  <td><code>breakpoints</code></td>
+                  <td><code>Record&lt;number, SwiperBreakpoint&gt;</code></td>
+                  <td>responsive defaults</td>
+                  <td>Custom responsive breakpoints</td>
+                </tr>
+                <tr>
+                  <td><code>class</code></td>
+                  <td><code>string</code></td>
+                  <td><code>""</code></td>
+                  <td>Additional CSS classes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Slide Object Structure -->
+        <section class="demo-section">
+          <div class="demo-section-header">
+            <h2>Slide Object Structure</h2>
+            <p>Structure of individual slide objects</p>
+          </div>
+
+          <div class="demo-code">
+            <pre><code>interface SwiperSlide &#123;
+  id: string;        // Unique identifier (required)
+  content: string;   // HTML content for the slide
+  image?: string;    // Optional image URL
+  alt?: string;      // Image alt text
+  title?: string;    // Optional slide title
+&#125;</code></pre>
+          </div>
+        </section>
+
+        <!-- Autoplay Configuration -->
+        <section class="demo-section">
+          <div class="demo-section-header">
+            <h2>Autoplay Configuration</h2>
+            <p>Advanced autoplay options</p>
+          </div>
+
+          <div class="demo-code">
+            <pre><code>// Simple autoplay
+autoplay=&#123;true&#125;
+
+// Advanced autoplay configuration
+autoplay=&#123;&#123;
+  delay: 3000,                    // Delay between slides (ms)
+  disableOnInteraction: false,    // Keep autoplay after user interaction
+  pauseOnMouseEnter: true,        // Pause on hover
+  reverseDirection: false         // Reverse autoplay direction
+&#125;&#125;</code></pre>
+          </div>
+        </section>
+
+        <!-- Accessibility Features -->
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Accessibility Features</h2>
+              <p class="section-intro">Built-in accessibility support for inclusive user experiences.</p>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="accessibility-grid">
+                <div class="accessibility-item">
+                  <h4>Keyboard Navigation</h4>
+                  <ul>
+                    <li><kbd>Arrow Keys</kbd> - Navigate between slides</li>
+                    <li><kbd>Tab</kbd> - Focus navigation controls</li>
+                    <li><kbd>Enter</kbd> / <kbd>Space</kbd> - Activate controls</li>
+                    <li>Autoplay pause on focus or hover</li>
+                  </ul>
+                </div>
+
+                <div class="accessibility-item">
+                  <h4>Screen Reader Support</h4>
+                  <ul>
+                    <li>Proper ARIA labels and roles</li>
+                    <li>Slide announcements with context</li>
+                    <li>Navigation control descriptions</li>
+                    <li>Current slide position indicators</li>
+                  </ul>
+                </div>
+
+                <div class="accessibility-item">
+                  <h4>Visual Indicators</h4>
+                  <ul>
+                    <li>Clear focus indicators on controls</li>
+                    <li>High contrast mode support</li>
+                    <li>Motion preference respect</li>
+                    <li>Consistent visual hierarchy</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Design Guidelines -->
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Design Guidelines</h2>
+              <p class="section-intro">Best practices for using swiper components in your interface.</p>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="guidelines-grid">
+                <div class="guideline-item">
+                  <h4>✅ Do</h4>
+                  <ul>
+                    <li>Provide meaningful alt text for images</li>
+                    <li>Use consistent slide heights for better UX</li>
+                    <li>Enable autoplay pause on hover/focus</li>
+                    <li>Use pagination for navigation context</li>
+                    <li>Test with keyboard navigation</li>
+                    <li>Consider mobile swipe gestures</li>
+                  </ul>
+                </div>
+
+                <div class="guideline-item">
+                  <h4>❌ Don't</h4>
+                  <ul>
+                    <li>Use too fast autoplay (less than 3 seconds)</li>
+                    <li>Disable all navigation options</li>
+                    <li>Forget to test on mobile devices</li>
+                    <li>Use loop mode with too few slides</li>
+                    <li>Overload with too many slides at once</li>
+                    <li>Ignore motion preferences</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Known Issues -->
+        <section class="demo-section">
+          <div class="demo-section-header">
+            <h2>Known Issues</h2>
+            <p>Common warnings and how to handle them</p>
+          </div>
+
+          <div class="known-issues">
+            <div class="issue-item">
+              <h3>Swiper Loop Warning</h3>
+              <p>
+                You may see a console warning about loop mode when you have fewer slides than <code>slidesPerView</code
+                >. This is expected behavior and doesn't affect functionality since loop mode is disabled by default.
+              </p>
+              <p>
+                <strong>Solution:</strong> This warning can be safely ignored. The carousel works perfectly regardless of
+                this warning.
+              </p>
+            </div>
+
+            <div class="issue-item">
+              <h3>Performance with Many Slides</h3>
+              <p>Large numbers of slides (50+) may impact initial load performance.</p>
+              <p>
+                <strong>Solution:</strong> Consider pagination, lazy loading, or virtual scrolling for large datasets.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </Fragment>
+</Layout>
+
+<script>
+  import "../../components/Swiper/Swiper.js";
+
+  // Fix testimonial swiper initialization issue
+  document.addEventListener("DOMContentLoaded", () => {
+    // Multiple attempts to fix the positioning
+    const fixSwiperPositioning = () => {
+      const testimonialSwipers = document.querySelectorAll(".testimonial-swiper .swiper");
+      testimonialSwipers.forEach((swiperEl) => {
+        const swiperInstance = (swiperEl as any).swiper;
+        if (swiperEl && swiperInstance) {
+          // Force reset transform and recalculate
+          swiperInstance.setTranslate(0);
+          swiperInstance.update();
+          swiperInstance.updateSize();
+          swiperInstance.updateSlides();
+          swiperInstance.slideTo(0, 0); // Go to first slide with no animation
+        }
+      });
+    };
+
+    // Try multiple times with different delays
+    setTimeout(fixSwiperPositioning, 50);
+    setTimeout(fixSwiperPositioning, 100);
+    setTimeout(fixSwiperPositioning, 200);
+
+    // Also fix on window load
+    window.addEventListener("load", fixSwiperPositioning);
+  });
+</script>

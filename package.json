@@ -17,5 +17,8 @@
     "pnpm",
     "create"
   ],
-  "author": "SteveP"
+  "author": "SteveP",
+  "devDependencies": {
+    "webfont": "^11.2.26"
+  }
 }

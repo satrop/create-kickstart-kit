@@ -1,4 +1,6 @@
 ---
+import { asset } from "../../utils/assets";
+
 export interface Props {
   imagePosition?: "left" | "right";
   imageAlt: string;
@@ -32,11 +34,12 @@ const imageOrder = imagePosition === "left" ? "order-1" : "order-2";
     <div class={`col-4 md:col-4 lg:col-6 fifty-fifty__image ${imageOrder}`}>
       <div class="fifty-fifty__image-wrapper">
         <img
-          src={imageSrc}
+          src={asset(imageSrc)}
           alt={imageAlt}
           class="fifty-fifty__img"
           loading={priority ? "eager" : lazy ? "lazy" : undefined}
           decoding="async"
+          data-enhanced=""
         />
       </div>
     </div>

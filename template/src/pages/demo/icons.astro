@@ -1,0 +1,405 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Icon Font Demo - Kickstart">
+  <Fragment slot="main">
+    <main id="main" class="layout-main" aria-label="Main content">
+      <div class="showcase">
+        <div class="showcase__intro">
+          <h1>Icon Font Showcase</h1>
+          <p>
+            Custom icon font generated from SVG files. These icons are scalable, lightweight, and can be styled with CSS
+            just like regular text.
+          </p>
+        </div>
+
+        <!-- Available Icons -->
+        <section class="showcase__section">
+          <h2>Available Icons</h2>
+          <div class="icon-grid">
+            <div class="icon-item">
+              <i class="icon icon-adjustments-horizontal"></i>
+              <h3>Adjustments Horizontal</h3>
+              <code>.icon-adjustments-horizontal</code>
+            </div>
+            <div class="icon-item">
+              <i class="icon icon-arrow-down"></i>
+              <h3>Arrow Down</h3>
+              <code>.icon-arrow-down</code>
+            </div>
+            <div class="icon-item">
+              <i class="icon icon-arrow-left-circle"></i>
+              <h3>Arrow Left Circle</h3>
+              <code>.icon-arrow-left-circle</code>
+            </div>
+            <div class="icon-item">
+              <i class="icon icon-download"></i>
+              <h3>Download</h3>
+              <code>.icon-download</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- Size Variations -->
+        <section class="showcase__section">
+          <h2>Size Variations</h2>
+          <div class="size-demo">
+            <div class="size-row">
+              <span class="size-label">Normal:</span>
+              <i class="icon icon-adjustments-horizontal"></i>
+              <i class="icon icon-arrow-down"></i>
+              <i class="icon icon-arrow-left-circle"></i>
+              <i class="icon icon-download"></i>
+            </div>
+            <div class="size-row">
+              <span class="size-label">Large (2x):</span>
+              <i class="icon icon-adjustments-horizontal icon-2x"></i>
+              <i class="icon icon-arrow-down icon-2x"></i>
+              <i class="icon icon-arrow-left-circle icon-2x"></i>
+              <i class="icon icon-download icon-2x"></i>
+            </div>
+            <div class="size-row">
+              <span class="size-label">Extra Large (3x):</span>
+              <i class="icon icon-adjustments-horizontal icon-3x"></i>
+              <i class="icon icon-arrow-down icon-3x"></i>
+              <i class="icon icon-arrow-left-circle icon-3x"></i>
+              <i class="icon icon-download icon-3x"></i>
+            </div>
+            <div class="size-row">
+              <span class="size-label">Huge (4x):</span>
+              <i class="icon icon-adjustments-horizontal icon-4x"></i>
+              <i class="icon icon-arrow-down icon-4x"></i>
+              <i class="icon icon-arrow-left-circle icon-4x"></i>
+              <i class="icon icon-download icon-4x"></i>
+            </div>
+          </div>
+        </section>
+
+        <!-- Color Styling -->
+        <section class="showcase__section">
+          <h2>Color Styling</h2>
+          <div class="color-demo">
+            <i class="icon icon-download icon-2x" style="color: #007bff;"></i>
+            <i class="icon icon-download icon-2x" style="color: #28a745;"></i>
+            <i class="icon icon-download icon-2x" style="color: #dc3545;"></i>
+            <i class="icon icon-download icon-2x" style="color: #ffc107;"></i>
+            <i class="icon icon-download icon-2x" style="color: #6f42c1;"></i>
+          </div>
+        </section>
+
+        <!-- Usage Examples -->
+        <section class="showcase__section">
+          <h2>Usage Examples</h2>
+
+          <div class="usage-demo">
+            <h3>In Buttons</h3>
+            <div class="button-examples">
+              <button class="btn btn-primary">
+                <i class="icon icon-adjustments-horizontal"></i>
+                Download File
+              </button>
+              <button class="btn btn-secondary">
+                <i class="icon icon-arrow-down"></i>
+                Settings
+              </button>
+              <button class="btn btn-outline">
+                <i class="icon icon-arrow-left-circle"></i>
+                Go Back
+              </button>
+            </div>
+
+            <h3>In Text</h3>
+            <p>
+              Click the <i class="icon icon-download"></i> icon to download your report, use <i
+                class="icon icon-adjustments-horizontal"></i> to adjust settings, or <i
+                class="icon icon-arrow-left-circle"></i> to go back to the previous page.
+            </p>
+
+            <h3>As List Items</h3>
+            <ul class="icon-list">
+              <li><i class="icon icon-adjustments-horizontal"></i> Adjustments Horizontal</li>
+              <li><i class="icon icon-arrow-down"></i> Arrow Down</li>
+              <li><i class="icon icon-arrow-left-circle"></i> Arrow Left Circle</li>
+              <li><i class="icon icon-download"></i> Download</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Code Examples -->
+        <section class="showcase__section">
+          <h2>Code Examples</h2>
+
+          <div class="code-examples">
+            <h3>Basic Usage</h3>
+            <pre><code>&lt;i class="icon icon-adjustments-horizontal"&gt;&lt;/i&gt;
+&lt;i class="icon icon-arrow-down"&gt;&lt;/i&gt;
+&lt;i class="icon icon-arrow-left-circle"&gt;&lt;/i&gt;
+&lt;i class="icon icon-download"&gt;&lt;/i&gt;</code></pre>
+
+            <h3>With Sizes</h3>
+            <pre><code>&lt;i class="icon icon-download icon-2x"&gt;&lt;/i&gt;
+&lt;i class="icon icon-download icon-3x"&gt;&lt;/i&gt;
+&lt;i class="icon icon-download icon-4x"&gt;&lt;/i&gt;</code></pre>
+
+            <h3>With Custom Styling</h3>
+            <pre><code>&lt;i class="icon icon-download" style="color: #007bff;"&gt;&lt;/i&gt;
+&lt;i class="icon icon-adjustments-horizontal icon-2x" style="color: red;"&gt;&lt;/i&gt;</code></pre>
+          </div>
+        </section>
+
+        <!-- Technical Info -->
+        <section class="showcase__section">
+          <h2>Technical Information</h2>
+          <div class="tech-info">
+            <div class="info-grid">
+              <div class="info-item">
+                <h4>Font Family</h4>
+                <code>ksk-icons</code>
+              </div>
+              <div class="info-item">
+                <h4>Formats</h4>
+                <code>WOFF2, WOFF</code>
+              </div>
+              <div class="info-item">
+                <h4>Base Class</h4>
+                <code>.icon</code>
+              </div>
+              <div class="info-item">
+                <h4>CSS File</h4>
+                <code>/_icons/font/ksk-icons.css</code>
+              </div>
+            </div>
+
+            <h4>Adding New Icons</h4>
+            <ol>
+              <li>Add your SVG files to <code>public/_icons/raw/</code></li>
+              <li>Run <code>pnpm run icons</code> to regenerate the font</li>
+              <li>The new icons will be available as <code>.icon-your-filename</code></li>
+            </ol>
+          </div>
+        </section>
+      </div>
+    </main>
+  </Fragment>
+</Layout>
+
+<style>
+  .showcase {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .showcase__intro {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .showcase__section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .showcase__section:last-child {
+    border-bottom: none;
+  }
+
+  /* Icon Grid */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .icon-item {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+  }
+
+  .icon-item i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    color: #333;
+  }
+
+  .icon-item h3 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+  }
+
+  .icon-item code {
+    background: #e9ecef;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+
+  /* Size Demo */
+  .size-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .size-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .size-label {
+    font-weight: bold;
+    min-width: 120px;
+  }
+
+  /* Color Demo */
+  .color-demo {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* Usage Demo */
+  .usage-demo h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .button-examples {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: #007bff;
+    color: white;
+  }
+
+  .btn-secondary {
+    background: #6c757d;
+    color: white;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
+  }
+
+  .icon-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .icon-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Code Examples */
+  .code-examples h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .code-examples pre {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+
+  .code-examples code {
+    font-family: "Courier New", monospace;
+    font-size: 0.9rem;
+  }
+
+  /* Technical Info */
+  .tech-info h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .info-item {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+  }
+
+  .info-item h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .info-item code {
+    background: #e9ecef;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .tech-info ol {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
+
+  .tech-info li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .showcase {
+      padding: 1rem;
+    }
+
+    .icon-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .size-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .color-demo {
+      justify-content: center;
+    }
+
+    .button-examples {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

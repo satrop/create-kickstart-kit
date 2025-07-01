@@ -1,14 +1,37 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
+import siteConfig from './site.config.js'
+
+// Determine base path from configuration
+const getBasePath = () => {
+  // Allow environment variable override for advanced use cases
+  if (process.env.ASTRO_BASE_URL) {
+    return process.env.ASTRO_BASE_URL
+  }
+  
+  // Use site.config.js settings
+  if (typeof siteConfig.basePath === 'object') {
+    // Environment-specific paths - check for production build
+    const isProduction = process.env.NODE_ENV === 'production' || process.argv.includes('build')
+    return isProduction 
+      ? siteConfig.basePath.production 
+      : siteConfig.basePath.development
+  } else {
+    // Single path for all environments
+    return siteConfig.basePath
+  }
+}
+
+const basePath = getBasePath()
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/html_templates/ksp/' : '/',
+  base: basePath,
   publicDir: './public',
   trailingSlash: 'never',
   compressHTML: false,
   build: {
     format: 'file',
-    assets: '_assets'
+    assets: 'assets'
   },
   vite: {
     resolve: {
@@ -27,17 +50,17 @@ export default defineConfig({
       assetsDir: '',
       rollupOptions: {
         output: {
-          entryFileNames: '_js/[name].js',
-          chunkFileNames: '_js/[name].js',
+          entryFileNames: 'js/[name].js',
+          chunkFileNames: 'js/[name].js',
           assetFileNames: (assetInfo) => {
-            if (!assetInfo.name) return '_assets/[name][extname]'
+            if (!assetInfo.name) return 'assets/[name][extname]'
             if (assetInfo.name.endsWith('.css')) {
               return '[name][extname]' // Keep CSS next to HTML
             }
             if (/\.(woff2?|eot|ttf|otf)$/.test(assetInfo.name)) {
-              return '_fonts/[name][extname]'
+              return 'fonts/[name][extname]'
             }
-            return '_assets/[name][extname]'
+            return 'assets/[name][extname]'
           }
         }
       }

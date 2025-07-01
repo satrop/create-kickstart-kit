@@ -3,16 +3,16 @@
 The color system uses two files that need to be kept in sync:
 
 1. **`src/styles/tokens/colors/_colors.scss`** - The Sass color map used for generating CSS utilities
-2. **`src/styles/tokens/colors/_colors-data.ts`** - The TypeScript color data used for the dynamic showcase page
+2. **`src/styles/core/_colors-data.ts`** - The TypeScript color data used for the dynamic showcase page
 
 ## File Organization
 
-- **`src/styles/tokens/colors/_colors-data.ts`** - ✅ **SAFE TO MODIFY** - Contains color definitions
+- **`src/styles/core/_colors-data.ts`** - ✅ **SAFE TO MODIFY** - Contains color definitions
 - **`src/styles/core/colors-data.core.ts`** - ❌ **DO NOT MODIFY** - Contains utility functions
 
 ## Adding New Colors
 
-When adding new colors, you need to update **both** files in the tokens folder:
+When adding new colors, you need to update **both** files:
 
 ### 1. Update the Sass file (`_colors.scss`)
 
@@ -34,7 +34,7 @@ $colors: (
 );
 ```
 
-### 2. Update the TypeScript file (`_colors-data.ts`)
+### 2. Update the TypeScript file (`src/styles/core/_colors-data.ts`)
 
 ```typescript
 export const colors = {
@@ -66,9 +66,9 @@ export const colors = {
 ```
 src/styles/
 ├── tokens/colors/
-│   ├── _colors.scss          # Sass color map (SAFE TO MODIFY)
-│   └── _colors-data.ts       # TypeScript color data (SAFE TO MODIFY)
+│   └── _colors.scss          # Sass color map (SAFE TO MODIFY)
 └── core/
+    ├── _colors-data.ts       # TypeScript color data (SAFE TO MODIFY)
     └── colors-data.core.ts   # Utility functions (DO NOT MODIFY)
 ```
 
@@ -76,7 +76,7 @@ src/styles/
 
 - Color names must match exactly between both files
 - Hex values must match exactly between both files
-- The showcase page will automatically show all colors defined in `_colors-data.ts`
+- The showcase page will automatically show all colors defined in `src/styles/core/_colors-data.ts`
 - CSS utility classes are generated from the Sass file
 - Background and text examples automatically use appropriate shades for contrast
 - Only modify files in the `tokens` folder - files in `core` contain system utilities

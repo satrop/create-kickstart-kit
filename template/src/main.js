@@ -3,6 +3,9 @@
  * Imports and initializes all interactive components
  */
 
+// Import utilities
+import './utils/imageHandler.js';
+
 // Import component JavaScript
 import './components/Dialog/Dialog.js';
 import './components/Accordion/Accordion.js';

@@ -1,0 +1,330 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CheckboxComponent from "../../components/Checkbox/Checkbox.astro";
+import "../../styles/demo.scss";
+---
+
+<Layout title="Checkbox Component Demo">
+  <Fragment slot="main">
+    <main id="main" class="layout-main" aria-label="Main content">
+      <div class="demo-page">
+        <header class="demo-header">
+          <div class="section-grid">
+            <div class="col-full">
+              <nav class="demo-nav">
+                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
+              </nav>
+              <h1>Checkbox Component</h1>
+              <p class="demo-subtitle">
+                Accessible checkbox component with labels, help text, error states, and full keyboard navigation
+                support.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <!-- Basic Checkboxes -->
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Basic Checkboxes</h2>
+              <p class="section-intro">Simple checkboxes with labels for basic form interactions.</p>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="demo-content">
+                <div class="checkbox-grid">
+                  <CheckboxComponent name="basic1" label="Default checkbox" />
+                  <CheckboxComponent name="basic2" label="Checked checkbox" checked={true} />
+                  <CheckboxComponent name="basic3" label="Disabled checkbox" disabled={true} />
+                  <CheckboxComponent name="basic4" label="Disabled checked" checked={true} disabled={true} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Required Checkboxes -->
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Required Checkboxes</h2>
+              <p class="section-intro">Checkboxes with required indicators for form validation.</p>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="demo-content">
+                <div class="checkbox-grid">
+                  <CheckboxComponent name="required1" label="Accept terms and conditions" required={true} />
+                  <CheckboxComponent name="required2" label="Subscribe to newsletter" required={true} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Checkboxes with Help Text -->
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Checkboxes with Help Text</h2>
+              <p class="section-intro">Providing additional context and guidance to users.</p>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="demo-content">
+                <div class="checkbox-grid">
+                  <CheckboxComponent
+                    name="help1"
+                    label="Enable notifications"
+                    helpText="You'll receive updates about your account and new features."
+                  />
+                  <CheckboxComponent
+                    name="help2"
+                    label="Two-factor authentication"
+                    helpText="Add an extra layer of security to your account using SMS or authenticator apps."
+                    required={true}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Error States -->
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Error States</h2>
+              <p class="section-intro">Checkboxes showing validation errors and feedback.</p>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="demo-content">
+                <div class="checkbox-grid">
+                  <CheckboxComponent
+                    name="error1"
+                    label="Accept privacy policy"
+                    required={true}
+                    error="You must accept the privacy policy to continue."
+                  />
+                  <CheckboxComponent
+                    name="error2"
+                    label="Confirm your age"
+                    required={true}
+                    error="Please confirm you are 18 years or older."
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Checkbox Groups -->
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Checkbox Groups</h2>
+              <p class="section-intro">Multiple related checkboxes for selecting multiple options.</p>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="demo-content">
+                <fieldset class="checkbox-fieldset">
+                  <legend class="checkbox-fieldset__legend">Select your interests:</legend>
+                  <div class="checkbox-grid">
+                    <CheckboxComponent name="interests" value="technology" label="Technology" />
+                    <CheckboxComponent name="interests" value="design" label="Design" />
+                    <CheckboxComponent name="interests" value="business" label="Business" />
+                    <CheckboxComponent name="interests" value="marketing" label="Marketing" />
+                  </div>
+                </fieldset>
+
+                <fieldset class="checkbox-fieldset">
+                  <legend class="checkbox-fieldset__legend">Account preferences:</legend>
+                  <div class="checkbox-grid">
+                    <CheckboxComponent
+                      name="preferences"
+                      value="email-updates"
+                      label="Email updates"
+                      helpText="Receive weekly digest emails"
+                    />
+                    <CheckboxComponent
+                      name="preferences"
+                      value="sms-alerts"
+                      label="SMS alerts"
+                      helpText="Get important notifications via text"
+                    />
+                    <CheckboxComponent
+                      name="preferences"
+                      value="push-notifications"
+                      label="Push notifications"
+                      helpText="Browser and mobile app notifications"
+                      checked={true}
+                    />
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Usage Examples -->
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Usage Examples</h2>
+              <p class="section-intro">Code examples for implementing the Checkbox component.</p>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <h3>Basic Usage</h3>
+              <pre><code>&lt;CheckboxComponent
+  name="terms"
+  label="I agree to the terms and conditions"
+  required={true}
+/&gt;</code></pre>
+
+              <h3>With Help Text</h3>
+              <pre><code>&lt;CheckboxComponent
+  name="notifications"
+  label="Enable email notifications"
+  helpText="You can change this setting later in your preferences."
+/&gt;</code></pre>
+
+              <h3>With Error State</h3>
+              <pre><code>&lt;CheckboxComponent
+  name="privacy"
+  label="Accept privacy policy"
+  required={true}
+  error="You must accept the privacy policy to continue."
+/&gt;</code></pre>
+
+              <h3>Checkbox Group</h3>
+              <pre><code>&lt;fieldset&gt;
+  &lt;legend&gt;Select your interests:&lt;/legend&gt;
+  &lt;CheckboxComponent
+    name="interests"
+    value="technology"
+    label="Technology"
+  /&gt;
+  &lt;CheckboxComponent
+    name="interests"
+    value="design"
+    label="Design"
+  /&gt;
+&lt;/fieldset&gt;</code></pre>
+
+              <h3>Props Interface</h3>
+              <pre><code>interface Props {'{'}
+  name: string;           // Input name attribute
+  value?: string;         // Input value (for groups)
+  checked?: boolean;      // Initial checked state
+  disabled?: boolean;     // Disable the checkbox
+  required?: boolean;     // Mark as required
+  label: string;          // Checkbox label text
+  helpText?: string;      // Optional help text
+  error?: string;         // Error message
+{'}'}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Accessibility Features -->
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Accessibility Features</h2>
+              <p class="section-intro">Built-in accessibility support for inclusive user experiences.</p>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="accessibility-grid">
+                <div class="accessibility-item">
+                  <h4>Keyboard Navigation</h4>
+                  <ul>
+                    <li><kbd>Tab</kbd> - Move focus to checkbox</li>
+                    <li><kbd>Space</kbd> - Toggle checkbox state</li>
+                    <li><kbd>Shift + Tab</kbd> - Move focus backwards</li>
+                  </ul>
+                </div>
+
+                <div class="accessibility-item">
+                  <h4>Screen Reader Support</h4>
+                  <ul>
+                    <li>Proper labeling with <code>label</code> elements</li>
+                    <li>Required state announced</li>
+                    <li>Error messages linked with <code>aria-describedby</code></li>
+                    <li>Invalid state indicated with <code>aria-invalid</code></li>
+                  </ul>
+                </div>
+
+                <div class="accessibility-item">
+                  <h4>Visual Indicators</h4>
+                  <ul>
+                    <li>Focus outline for keyboard navigation</li>
+                    <li>Clear checked/unchecked states</li>
+                    <li>Disabled state styling</li>
+                    <li>Error state visual feedback</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Design Guidelines -->
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Design Guidelines</h2>
+              <p class="section-intro">Best practices for using checkboxes in your interface.</p>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="guidelines-grid">
+                <div class="guideline-item">
+                  <h4>✅ Do</h4>
+                  <ul>
+                    <li>Use clear, descriptive labels</li>
+                    <li>Group related checkboxes with fieldsets</li>
+                    <li>Provide help text for complex options</li>
+                    <li>Show validation errors clearly</li>
+                    <li>Use consistent spacing and alignment</li>
+                  </ul>
+                </div>
+
+                <div class="guideline-item">
+                  <h4>❌ Don't</h4>
+                  <ul>
+                    <li>Use checkboxes for mutually exclusive options (use radio buttons)</li>
+                    <li>Make labels too long or complex</li>
+                    <li>Hide important information in help text</li>
+                    <li>Use unclear or negative language</li>
+                    <li>Disable checkboxes without explanation</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </Fragment>
+</Layout>

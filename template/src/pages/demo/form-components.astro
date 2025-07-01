@@ -1,0 +1,539 @@
+---
+import "../../styles/demo.scss";
+
+import Layout from "../../layouts/Layout.astro";
+import FormField from "../../components/FormField/FormField.astro";
+import Checkbox from "../../components/Checkbox/Checkbox.astro";
+import Textarea from "../../components/Textarea/Textarea.astro";
+import RadioGroupComponent from "../../components/RadioGroup";
+import SelectComponent from "../../components/Select";
+import { Button } from "../../components/Button";
+---
+
+<Layout title="Form Components">
+  <Fragment slot="main">
+    <main id="main" class="layout-main" aria-label="Main content">
+      <div class="component-demo">
+        <header class="demo-header">
+          <div class="section-grid">
+            <div class="col-full">
+              <nav class="demo-nav">
+                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
+              </nav>
+              <h1>Form Components</h1>
+              <p class="demo-subtitle">
+                A comprehensive collection of accessible form components including inputs, textareas, checkboxes, radio
+                groups, and select menus with validation and help text support.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Form Fields</h2>
+              <p>
+                The FormField component provides a consistent wrapper for text inputs with labels, validation, and help
+                text.
+              </p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <form class="demo-form">
+                    <FormField
+                      label="Full Name"
+                      name="fullname"
+                      type="text"
+                      placeholder="Enter your full name"
+                      required={true}
+                      helpText="This will be displayed on your profile"
+                    />
+
+                    <FormField
+                      label="Email Address"
+                      name="email"
+                      type="email"
+                      placeholder="you@example.com"
+                      required={true}
+                    />
+
+                    <FormField
+                      label="Phone Number"
+                      name="phone"
+                      type="tel"
+                      placeholder="+1 (555) 123-4567"
+                      helpText="Include country code for international numbers"
+                    />
+                  </form>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;FormField 
+  label="Full Name"
+  name="fullname"
+  type="text"
+  placeholder="Enter your full name"
+  required={'{'}true{'}'}
+  helpText="This will be displayed on your profile"
+/&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Textarea</h2>
+              <p>Multi-line text input with auto-resize capabilities and character counting.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <form class="demo-form">
+                    <Textarea
+                      label="Project Description"
+                      name="description"
+                      placeholder="Describe your project in detail..."
+                      rows={4}
+                      maxlength={500}
+                      helpText="Provide a clear description of your project goals and requirements"
+                    />
+                  </form>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;Textarea 
+  label="Project Description"
+  name="description"
+  placeholder="Describe your project in detail..."
+  rows={'{'}4{'}'}
+  maxlength={'{'}500{'}'}
+  helpText="Provide a clear description of your project goals"
+/&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Checkboxes</h2>
+              <p>Custom checkbox components with enhanced styling and accessibility features.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <form class="demo-form">
+                    <fieldset class="form-fieldset">
+                      <legend>Preferences</legend>
+
+                      <Checkbox
+                        name="preferences"
+                        value="newsletter"
+                        label="Subscribe to newsletter"
+                        helpText="Get weekly updates about new features"
+                      />
+
+                      <Checkbox
+                        name="preferences"
+                        value="notifications"
+                        label="Push notifications"
+                        helpText="Receive real-time alerts"
+                      />
+                    </fieldset>
+
+                    <div class="form-group">
+                      <Checkbox name="terms" value="agreed" label="I agree to the Terms of Service" required={true} />
+                    </div>
+                  </form>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;Checkbox 
+  name="preferences"
+  value="newsletter"
+  label="Subscribe to newsletter"
+  helpText="Get weekly updates about new features"
+/&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Radio Groups</h2>
+              <p>Radio button groups for single-choice selections with customizable orientations.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <form class="demo-form">
+                    <RadioGroupComponent
+                      name="contact-method"
+                      label="Preferred Contact Method"
+                      helpText="Choose your preferred way to be contacted"
+                      options={[
+                        { value: "email", label: "Email" },
+                        { value: "phone", label: "Phone" },
+                        { value: "sms", label: "SMS" },
+                      ]}
+                      value="email"
+                    />
+
+                    <RadioGroupComponent
+                      name="priority"
+                      label="Priority Level"
+                      orientation="horizontal"
+                      options={[
+                        { value: "low", label: "Low" },
+                        { value: "medium", label: "Medium" },
+                        { value: "high", label: "High" },
+                      ]}
+                      value="medium"
+                    />
+                  </form>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;RadioGroupComponent
+  name="contact-method"
+  label="Preferred Contact Method"
+  helpText="Choose your preferred way to be contacted"
+  options={[
+    { value: "email", label: "Email" },
+    { value: "phone", label: "Phone" },
+    { value: "sms", label: "SMS" }
+  ]}
+  value="email"
+/&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Select Menus</h2>
+              <p>Enhanced select dropdown components with support for single and multiple selection.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <form class="demo-form">
+                    <SelectComponent
+                      name="country"
+                      label="Country"
+                      placeholder="Select your country"
+                      options={[
+                        { value: "us", label: "United States" },
+                        { value: "ca", label: "Canada" },
+                        { value: "uk", label: "United Kingdom" },
+                        { value: "au", label: "Australia" },
+                      ]}
+                    />
+
+                    <SelectComponent
+                      name="skills"
+                      label="Technical Skills"
+                      helpText="Select all skills that apply to you"
+                      multiple={true}
+                      options={[
+                        { value: "javascript", label: "JavaScript" },
+                        { value: "typescript", label: "TypeScript" },
+                        { value: "react", label: "React" },
+                        { value: "vue", label: "Vue.js" },
+                      ]}
+                    />
+                  </form>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;SelectComponent
+  name="country"
+  label="Country"
+  placeholder="Select your country"
+  options={[
+    { value: "us", label: "United States" },
+    { value: "ca", label: "Canada" },
+    { value: "uk", label: "United Kingdom" }
+  ]}
+/&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Complete Form Example</h2>
+              <p>A comprehensive example showing all form components working together.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <form class="demo-form demo-form--complete">
+                    <div class="form-section">
+                      <h3>Personal Information</h3>
+
+                      <div class="form-row">
+                        <FormField label="First Name" name="firstname" type="text" required={true} />
+
+                        <FormField label="Last Name" name="lastname" type="text" required={true} />
+                      </div>
+
+                      <FormField label="Email" name="contact-email" type="email" required={true} />
+
+                      <SelectComponent
+                        name="country"
+                        label="Country"
+                        placeholder="Select your country"
+                        required={true}
+                        options={[
+                          { value: "us", label: "United States" },
+                          { value: "ca", label: "Canada" },
+                          { value: "uk", label: "United Kingdom" },
+                        ]}
+                      />
+                    </div>
+
+                    <div class="form-section">
+                      <h3>Project Details</h3>
+
+                      <Textarea
+                        label="Project Description"
+                        name="project-description"
+                        placeholder="Tell us about your project..."
+                        rows={4}
+                        required={true}
+                        helpText="The more details you provide, the better we can help you"
+                      />
+
+                      <RadioGroupComponent
+                        name="priority"
+                        label="Project Priority"
+                        required={true}
+                        options={[
+                          { value: "low", label: "Low Priority" },
+                          { value: "medium", label: "Medium Priority" },
+                          { value: "high", label: "High Priority" },
+                        ]}
+                      />
+                    </div>
+
+                    <div class="form-section">
+                      <h3>Preferences</h3>
+
+                      <SelectComponent
+                        name="technologies"
+                        label="Preferred Technologies"
+                        helpText="Select the technologies you'd like to use"
+                        multiple={true}
+                        options={[
+                          { value: "javascript", label: "JavaScript" },
+                          { value: "typescript", label: "TypeScript" },
+                          { value: "react", label: "React" },
+                          { value: "vue", label: "Vue.js" },
+                        ]}
+                      />
+
+                      <fieldset class="form-fieldset">
+                        <legend>Communication Preferences</legend>
+                        <Checkbox name="communication" value="email" label="Email updates" checked={true} />
+
+                        <Checkbox name="communication" value="sms" label="SMS notifications" />
+                      </fieldset>
+                    </div>
+
+                    <div class="form-actions">
+                      <Button variant="secondary" type="button">Save Draft</Button>
+                      <Button variant="primary" type="submit">Submit Project</Button>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;form&gt;
+  &lt;FormField label="First Name" name="firstname" required /&gt;
+  &lt;Textarea label="Description" name="description" rows={'{'}4{'}'} /&gt;
+  &lt;RadioGroupComponent name="priority" label="Priority" options={[
+    { value: "low", label: "Low Priority" },
+    { value: "medium", label: "Medium Priority" },
+    { value: "high", label: "High Priority" }
+  ]} /&gt;
+  &lt;SelectComponent name="country" label="Country" options={[
+    { value: "us", label: "United States" },
+    { value: "ca", label: "Canada" }
+  ]} /&gt;
+  &lt;Checkbox name="terms" label="I agree to terms" required /&gt;
+  &lt;Button type="submit"&gt;Submit&lt;/Button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Form Validation States</h2>
+              <p>Examples of form components in different validation states.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <form class="demo-form">
+                    <FormField
+                      label="Valid Input"
+                      name="valid-input"
+                      type="text"
+                      helpText="This field has valid data"
+                    />
+
+                    <FormField
+                      label="Invalid Input"
+                      name="invalid-input"
+                      type="email"
+                      error="Please enter a valid email address"
+                    />
+
+                    <RadioGroupComponent
+                      name="validation-radio"
+                      label="Required Selection"
+                      required={true}
+                      error="Please select an option"
+                      options={[
+                        { value: "option1", label: "Option 1" },
+                        { value: "option2", label: "Option 2" },
+                      ]}
+                    />
+
+                    <SelectComponent
+                      name="validation-select"
+                      label="Required Selection"
+                      placeholder="Please select an option"
+                      required={true}
+                      error="This field is required"
+                      options={[
+                        { value: "option1", label: "Option 1" },
+                        { value: "option2", label: "Option 2" },
+                      ]}
+                    />
+                  </form>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;!-- Error state examples --&gt;
+&lt;FormField 
+  label="Invalid Input"
+  name="invalid-input"
+  error="Please enter a valid email address"
+/&gt;
+
+&lt;RadioGroupComponent
+  name="validation-radio"
+  label="Required Selection"
+  required={'{'}true{'}'}
+  error="Please select an option"
+  options={[
+    { value: "option1", label: "Option 1" },
+    { value: "option2", label: "Option 2" }
+  ]}
+/&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Accessibility Features</h2>
+              <p class="section-intro">Built-in accessibility support for inclusive user experiences.</p>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="accessibility-grid">
+                <div class="accessibility-item">
+                  <h4>Semantic Structure</h4>
+                  <ul>
+                    <li>Proper form elements and labels</li>
+                    <li>Fieldset and legend grouping</li>
+                    <li>Logical tab order and focus flow</li>
+                    <li>Associated help and error text</li>
+                  </ul>
+                </div>
+
+                <div class="accessibility-item">
+                  <h4>ARIA Support</h4>
+                  <ul>
+                    <li><code>aria-describedby</code> for help text</li>
+                    <li><code>aria-invalid</code> for error states</li>
+                    <li><code>aria-required</code> for required fields</li>
+                    <li>State announcements for screen readers</li>
+                  </ul>
+                </div>
+
+                <div class="accessibility-item">
+                  <h4>Keyboard Navigation</h4>
+                  <ul>
+                    <li>Full keyboard support across all components</li>
+                    <li><kbd>Tab</kbd> - Move between form fields</li>
+                    <li><kbd>Arrow Keys</kbd> - Navigate options</li>
+                    <li>Clear focus indicators</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Design Guidelines</h2>
+              <p class="section-intro">Best practices for using form components in your interface.</p>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="guidelines-grid">
+                <div class="guideline-item">
+                  <h4>✅ Do</h4>
+                  <ul>
+                    <li>Use clear, descriptive labels for all inputs</li>
+                    <li>Group related fields with clear visual hierarchy</li>
+                    <li>Provide help text for complex requirements</li>
+                    <li>Use consistent spacing between form elements</li>
+                    <li>Validate on blur for better user experience</li>
+                  </ul>
+                </div>
+
+                <div class="guideline-item">
+                  <h4>❌ Don't</h4>
+                  <ul>
+                    <li>Use placeholder text as the only label</li>
+                    <li>Hide required field indicators</li>
+                    <li>Place too many fields on a single screen</li>
+                    <li>Use unclear or technical error messages</li>
+                    <li>Forget to test with keyboard-only navigation</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </Fragment>
+</Layout>

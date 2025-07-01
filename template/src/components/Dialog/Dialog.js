@@ -333,3 +333,8 @@ const dialogManager = new DialogManager();
 
 // Export for use in other scripts
 export default dialogManager;
+
+// Make DialogManager available globally for easy access
+if (typeof window !== 'undefined') {
+  window.DialogManager = DialogManager;
+}

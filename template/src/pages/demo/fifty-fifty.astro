@@ -1,0 +1,535 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import FiftyFiftyComponent from "../../components/FiftyFifty/FiftyFifty.astro";
+import { Button } from "../../components/Button";
+import "../../styles/demo.scss";
+---
+
+<Layout title="FiftyFifty Component">
+  <Fragment slot="main">
+    <main id="main" class="layout-main" aria-label="Main content">
+      <div class="component-demo">
+        <header class="demo-header">
+          <div class="section-grid">
+            <div class="col-full">
+              <nav class="demo-nav">
+                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
+              </nav>
+              <h1>FiftyFifty Component</h1>
+              <p class="demo-subtitle">
+                Flexible 50/50 layout component for combining images with content, supporting multiple layouts,
+                alignments, and variants.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Basic Usage</h2>
+              <p>A simple 50/50 layout with image on the left and content on the right.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <FiftyFiftyComponent
+                    imageSrc="/images/image1.jpg"
+                    imageAlt="Beautiful landscape with mountains and sky"
+                    title="Discover Amazing Places"
+                    subtitle="Travel & Adventure">
+                    <p>
+                      Explore breathtaking destinations around the world. From majestic mountains to pristine beaches,
+                      discover the beauty that awaits your next adventure.
+                    </p>
+                    <p>
+                      Our curated collection of destinations offers something for every traveler, whether you're seeking
+                      relaxation or excitement.
+                    </p>
+                    <Fragment slot="actions">
+                      <Button variant="primary">Explore Destinations</Button>
+                      <Button variant="outline">Learn More</Button>
+                    </Fragment>
+                  </FiftyFiftyComponent>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
+  imageSrc="/images/image1.jpg"
+  imageAlt="Beautiful landscape with mountains and sky"
+  title="Discover Amazing Places"
+  subtitle="Travel &amp; Adventure"
+&gt;
+  &lt;p&gt;Explore breathtaking destinations...&lt;/p&gt;
+  &lt;Fragment slot="actions"&gt;
+    &lt;Button variant="primary"&gt;Explore Destinations&lt;/Button&gt;
+    &lt;Button variant="outline"&gt;Learn More&lt;/Button&gt;
+  &lt;/Fragment&gt;
+&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Image Position Right</h2>
+              <p>Layout with image positioned on the right side.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <FiftyFiftyComponent
+                    imageSrc="/images/image2.jpg"
+                    imageAlt="Modern office workspace with clean design"
+                    imagePosition="right"
+                    title="Modern Workspace Solutions"
+                    subtitle="Productivity & Design">
+                    <p>
+                      Transform your work environment with cutting-edge design solutions that enhance productivity and
+                      inspire creativity.
+                    </p>
+                    <p>
+                      Our workspace solutions combine functionality with aesthetic appeal, creating environments that
+                      foster collaboration and innovation.
+                    </p>
+                    <Fragment slot="actions">
+                      <Button variant="primary">View Solutions</Button>
+                    </Fragment>
+                  </FiftyFiftyComponent>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
+  imageSrc="/images/image2.jpg"
+  imageAlt="Modern office workspace"
+  imagePosition="right"
+  title="Modern Workspace Solutions"
+  subtitle="Productivity &amp; Design"
+&gt;
+  &lt;p&gt;Transform your work environment...&lt;/p&gt;
+  &lt;Fragment slot="actions"&gt;
+    &lt;Button variant="primary"&gt;View Solutions&lt;/Button&gt;
+  &lt;/Fragment&gt;
+&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Center Alignment</h2>
+              <p>Content aligned to the center for a more balanced look.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <FiftyFiftyComponent
+                    imageSrc="/images/image3.jpg"
+                    imageAlt="Team collaboration in modern office"
+                    title="Build Amazing Teams"
+                    subtitle="Collaboration & Growth"
+                    alignment="center">
+                    <p>
+                      Foster collaboration and build high-performing teams that drive innovation and achieve exceptional
+                      results together.
+                    </p>
+                    <Fragment slot="actions">
+                      <Button variant="primary">Join Our Team</Button>
+                      <Button variant="secondary">Learn About Culture</Button>
+                    </Fragment>
+                  </FiftyFiftyComponent>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
+  imageSrc="/images/image3.jpg"
+  imageAlt="Team collaboration"
+  title="Build Amazing Teams"
+  subtitle="Collaboration &amp; Growth"
+  alignment="center"
+&gt;
+  &lt;p&gt;Foster collaboration and build high-performing teams...&lt;/p&gt;
+  &lt;Fragment slot="actions"&gt;
+    &lt;Button variant="primary"&gt;Join Our Team&lt;/Button&gt;
+    &lt;Button variant="secondary"&gt;Learn About Culture&lt;/Button&gt;
+  &lt;/Fragment&gt;
+&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Contained Variant</h2>
+              <p>Contained layout with background and padding for emphasis.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <FiftyFiftyComponent
+                    imageSrc="/images/image4.jpg"
+                    imageAlt="Product showcase with elegant design"
+                    title="Premium Products"
+                    subtitle="Quality & Innovation"
+                    variant="contained"
+                    imagePosition="right"
+                    alignment="center">
+                    <p>
+                      Experience the perfect blend of quality craftsmanship and innovative design in our premium product
+                      collection.
+                    </p>
+                    <p>Every detail is carefully considered to deliver exceptional value and lasting satisfaction.</p>
+                    <Fragment slot="actions">
+                      <Button variant="primary">Shop Now</Button>
+                      <Button variant="outline">View Catalog</Button>
+                    </Fragment>
+                  </FiftyFiftyComponent>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
+  imageSrc="/images/image4.jpg"
+  imageAlt="Product showcase"
+  title="Premium Products"
+  subtitle="Quality &amp; Innovation"
+  variant="contained"
+  imagePosition="right"
+  alignment="center"
+&gt;
+  &lt;p&gt;Experience the perfect blend of quality...&lt;/p&gt;
+  &lt;Fragment slot="actions"&gt;
+    &lt;Button variant="primary"&gt;Shop Now&lt;/Button&gt;
+    &lt;Button variant="outline"&gt;View Catalog&lt;/Button&gt;
+  &lt;/Fragment&gt;
+&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Full-Bleed Variant</h2>
+              <p>Full-width layout that extends beyond the container for dramatic effect.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <FiftyFiftyComponent
+                    imageSrc="/images/image5.jpg"
+                    imageAlt="Stunning architectural design with modern elements"
+                    title="Architectural Excellence"
+                    subtitle="Design & Innovation"
+                    variant="full-bleed">
+                    <p>
+                      Witness the power of exceptional architectural design that transforms spaces and inspires
+                      communities.
+                    </p>
+                    <p>
+                      Our projects push the boundaries of what's possible, creating iconic structures that stand the
+                      test of time.
+                    </p>
+                    <Fragment slot="actions">
+                      <Button variant="primary">View Projects</Button>
+                      <Button variant="outline">Contact Architects</Button>
+                    </Fragment>
+                  </FiftyFiftyComponent>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
+  imageSrc="/images/image5.jpg"
+  imageAlt="Architectural design"
+  title="Architectural Excellence"
+  subtitle="Design &amp; Innovation"
+  variant="full-bleed"
+&gt;
+  &lt;p&gt;Witness the power of exceptional architectural design...&lt;/p&gt;
+  &lt;Fragment slot="actions"&gt;
+    &lt;Button variant="primary"&gt;View Projects&lt;/Button&gt;
+    &lt;Button variant="outline"&gt;Contact Architects&lt;/Button&gt;
+  &lt;/Fragment&gt;
+&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Without Subtitle</h2>
+              <p>Clean layout focusing on the main title and content.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <FiftyFiftyComponent
+                    imageSrc="/images/image6.jpg"
+                    imageAlt="Clean and minimalist interior design"
+                    title="Minimalist Living"
+                    imagePosition="right">
+                    <p>
+                      Embrace the beauty of simplicity with minimalist design principles that create serene and
+                      functional living spaces.
+                    </p>
+                    <p>
+                      Less is more when every element serves a purpose and contributes to the overall harmony of your
+                      home.
+                    </p>
+                    <Fragment slot="actions">
+                      <Button variant="primary">Explore Designs</Button>
+                    </Fragment>
+                  </FiftyFiftyComponent>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
+  imageSrc="/images/image6.jpg"
+  imageAlt="Minimalist interior design"
+  title="Minimalist Living"
+  imagePosition="right"
+&gt;
+  &lt;p&gt;Embrace the beauty of simplicity...&lt;/p&gt;
+  &lt;Fragment slot="actions"&gt;
+    &lt;Button variant="primary"&gt;Explore Designs&lt;/Button&gt;
+  &lt;/Fragment&gt;
+&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Content Only (No Actions)</h2>
+              <p>Simple layout with just text content, no action buttons.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <FiftyFiftyComponent
+                    imageSrc="/images/image7.jpg"
+                    imageAlt="Peaceful nature scene with flowing water"
+                    title="Find Your Peace"
+                    subtitle="Wellness & Mindfulness"
+                    alignment="center">
+                    <p>
+                      Discover tranquility in nature's embrace. Take time to reconnect with yourself and find balance in
+                      life's simple pleasures.
+                    </p>
+                    <p>
+                      Whether through meditation, outdoor adventures, or quiet reflection, peace is always within reach
+                      when you know where to look.
+                    </p>
+                  </FiftyFiftyComponent>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
+  imageSrc="/images/image7.jpg"
+  imageAlt="Peaceful nature scene"
+  title="Find Your Peace"
+  subtitle="Wellness &amp; Mindfulness"
+  alignment="center"
+&gt;
+  &lt;p&gt;Discover tranquility in nature's embrace...&lt;/p&gt;
+  &lt;p&gt;Whether through meditation, outdoor adventures...&lt;/p&gt;
+&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Props Reference</h2>
+
+              <div class="props-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Prop</th>
+                      <th>Type</th>
+                      <th>Default</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>imageSrc</code></td>
+                      <td><code>string</code></td>
+                      <td>Required</td>
+                      <td>Source URL for the image</td>
+                    </tr>
+                    <tr>
+                      <td><code>imageAlt</code></td>
+                      <td><code>string</code></td>
+                      <td>Required</td>
+                      <td>Alt text for the image (accessibility)</td>
+                    </tr>
+                    <tr>
+                      <td><code>title</code></td>
+                      <td><code>string</code></td>
+                      <td>Required</td>
+                      <td>Main heading text</td>
+                    </tr>
+                    <tr>
+                      <td><code>subtitle</code></td>
+                      <td><code>string</code></td>
+                      <td><code>undefined</code></td>
+                      <td>Optional subtitle text</td>
+                    </tr>
+                    <tr>
+                      <td><code>imagePosition</code></td>
+                      <td><code>"left" | "right"</code></td>
+                      <td><code>"left"</code></td>
+                      <td>Position of the image relative to content</td>
+                    </tr>
+                    <tr>
+                      <td><code>alignment</code></td>
+                      <td><code>"left" | "center"</code></td>
+                      <td><code>"left"</code></td>
+                      <td>Text alignment within the content area</td>
+                    </tr>
+                    <tr>
+                      <td><code>variant</code></td>
+                      <td><code>"default" | "contained" | "full-bleed"</code></td>
+                      <td><code>"default"</code></td>
+                      <td>Visual variant of the component</td>
+                    </tr>
+                    <tr>
+                      <td><code>lazy</code></td>
+                      <td><code>boolean</code></td>
+                      <td><code>true</code></td>
+                      <td>Whether to lazy load the image</td>
+                    </tr>
+                    <tr>
+                      <td><code>priority</code></td>
+                      <td><code>boolean</code></td>
+                      <td><code>false</code></td>
+                      <td>Whether to prioritize image loading</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3>Slots</h3>
+              <div class="props-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Slot</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>default</code></td>
+                      <td>Main content area for text, paragraphs, and other elements</td>
+                    </tr>
+                    <tr>
+                      <td><code>actions</code></td>
+                      <td>Optional slot for buttons and call-to-action elements</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Accessibility Features</h2>
+              <p class="section-intro">Built-in accessibility support for inclusive user experiences.</p>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="accessibility-grid">
+                <div class="accessibility-item">
+                  <h4>Image Accessibility</h4>
+                  <ul>
+                    <li>Required alt text for all images</li>
+                    <li>Descriptive alternative text content</li>
+                    <li>Proper image loading optimization</li>
+                    <li>Support for decorative image handling</li>
+                  </ul>
+                </div>
+
+                <div class="accessibility-item">
+                  <h4>Semantic Structure</h4>
+                  <ul>
+                    <li>Proper heading hierarchy</li>
+                    <li>Semantic section elements</li>
+                    <li>Logical reading order preservation</li>
+                    <li>Content landmark identification</li>
+                  </ul>
+                </div>
+
+                <div class="accessibility-item">
+                  <h4>Interactive Elements</h4>
+                  <ul>
+                    <li>Keyboard accessible buttons and links</li>
+                    <li>Clear focus indicators</li>
+                    <li>Touch-friendly target sizes</li>
+                    <li>Logical tab order</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Design Guidelines</h2>
+              <p class="section-intro">Best practices for using fifty-fifty layouts in your interface.</p>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="guidelines-grid">
+                <div class="guideline-item">
+                  <h4>✅ Do</h4>
+                  <ul>
+                    <li>Use high-quality, relevant images</li>
+                    <li>Keep titles concise and impactful</li>
+                    <li>Alternate image position for visual rhythm</li>
+                    <li>Ensure proper contrast for readability</li>
+                    <li>Test layouts at different breakpoints</li>
+                  </ul>
+                </div>
+
+                <div class="guideline-item">
+                  <h4>❌ Don't</h4>
+                  <ul>
+                    <li>Use low-quality or irrelevant imagery</li>
+                    <li>Overcrowd sections with too much content</li>
+                    <li>Use inconsistent image aspect ratios</li>
+                    <li>Place text over complex background images</li>
+                    <li>Ignore mobile layout considerations</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </Fragment>
+</Layout>
