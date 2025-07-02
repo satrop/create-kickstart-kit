@@ -157,6 +157,177 @@
   }
 }
 
+// Card with image variations
+.card--with-image {
+  &.card--image-top {
+    flex-direction: column;
+
+    .card__image {
+      order: -1;
+    }
+
+    .card__body {
+      flex: 1;
+    }
+  }
+
+  &.card--image-left {
+    flex-direction: row;
+
+    .card__image {
+      flex-shrink: 0;
+      width: 150px; // Square width to match height
+      max-width: 150px;
+    }
+
+    .card__body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+
+      .card__image {
+        width: 100%;
+        max-width: none;
+        height: 200px; // Taller on mobile since it's full width
+      }
+    }
+  }
+
+  &.card--image-right {
+    flex-direction: row-reverse;
+
+    .card__image {
+      flex-shrink: 0;
+      width: 150px; // Square width to match height
+      max-width: 150px;
+    }
+
+    .card__body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+
+      .card__image {
+        width: 100%;
+        max-width: none;
+        height: 200px; // Taller on mobile since it's full width
+        order: -1;
+      }
+    }
+  }
+}
+
+// Card image styles
+.card__image {
+  overflow: hidden;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  .card--image-top & {
+    height: 200px;
+  }
+
+  .card--image-left &,
+  .card--image-right & {
+    height: 150px; // Fixed square height for left/right images
+    aspect-ratio: 1; // Ensures square aspect ratio
+  }
+}
+
+.card__image-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+
+  .card--interactive:hover & {
+    transform: scale(1.05);
+  }
+}
+
+// Card body wrapper for image cards
+.card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+// Adjust padding for image cards
+.card--with-image {
+  // Remove padding from main card when image is present
+  &.card--padding-none .card__body {
+    .card__header,
+    .card__content,
+    .card__footer {
+      padding: 0;
+    }
+  }
+
+  &.card--padding-small .card__body {
+    .card__header,
+    .card__content,
+    .card__footer {
+      padding: 0.75rem;
+    }
+  }
+
+  &.card--padding-medium .card__body {
+    .card__header,
+    .card__content,
+    .card__footer {
+      padding: 1rem;
+    }
+  }
+
+  &.card--padding-large .card__body {
+    .card__header,
+    .card__content,
+    .card__footer {
+      padding: 1.5rem;
+    }
+  }
+
+  // Override padding for image position layouts
+  &.card--image-left,
+  &.card--image-right {
+    &.card--padding-none .card__image {
+      margin: 0;
+    }
+
+    &.card--padding-small .card__image {
+      margin: 0.75rem;
+      margin-right: 0.75rem;
+    }
+
+    &.card--padding-medium .card__image {
+      margin: 1rem;
+    }
+
+    &.card--padding-large .card__image {
+      margin: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      &.card--padding-small .card__image,
+      &.card--padding-medium .card__image,
+      &.card--padding-large .card__image {
+        margin: 0;
+      }
+    }
+  }
+}
+
 /* Padding variants */
 .card--padding-none {
   .card__header,

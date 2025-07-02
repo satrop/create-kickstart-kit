@@ -7,7 +7,7 @@ import "../../styles/demo.scss";
 <Layout title="Checkbox Component Demo">
   <Fragment slot="main">
     <main id="main" class="layout-main" aria-label="Main content">
-      <div class="demo-page">
+      <div class="component-demo">
         <header class="demo-header">
           <div class="section-grid">
             <div class="col-full">
@@ -23,221 +23,291 @@ import "../../styles/demo.scss";
           </div>
         </header>
 
-        <!-- Basic Checkboxes -->
         <section class="demo-section">
           <div class="section-grid">
             <div class="col-full">
-              <h2>Basic Checkboxes</h2>
-              <p class="section-intro">Simple checkboxes with labels for basic form interactions.</p>
-            </div>
-          </div>
+              <h2>Basic Usage</h2>
+              <p>Simple checkboxes with labels for basic form interactions.</p>
 
-          <div class="section-grid">
-            <div class="col-full">
-              <div class="demo-content">
-                <div class="checkbox-grid">
-                  <CheckboxComponent name="basic1" label="Default checkbox" />
-                  <CheckboxComponent name="basic2" label="Checked checkbox" checked={true} />
-                  <CheckboxComponent name="basic3" label="Disabled checkbox" disabled={true} />
-                  <CheckboxComponent name="basic4" label="Disabled checked" checked={true} disabled={true} />
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <div class="checkbox-grid">
+                    <CheckboxComponent name="basic1" label="Default checkbox" />
+                    <CheckboxComponent name="basic2" label="Checked checkbox" checked={true} />
+                    <CheckboxComponent name="basic3" label="Disabled checkbox" disabled={true} />
+                    <CheckboxComponent name="basic4" label="Disabled checked" checked={true} disabled={true} />
+                  </div>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;Checkbox name="basic1" label="Default checkbox" /&gt;
+
+&lt;Checkbox name="basic2" label="Checked checkbox" checked={true} /&gt;
+
+&lt;Checkbox name="basic3" label="Disabled checkbox" disabled={true} /&gt;
+
+&lt;Checkbox name="basic4" label="Disabled checked" checked={true} disabled={true} /&gt;</code></pre>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Required Checkboxes -->
         <section class="demo-section">
           <div class="section-grid">
             <div class="col-full">
               <h2>Required Checkboxes</h2>
-              <p class="section-intro">Checkboxes with required indicators for form validation.</p>
-            </div>
-          </div>
+              <p>Checkboxes with required indicators for form validation.</p>
 
-          <div class="section-grid">
-            <div class="col-full">
-              <div class="demo-content">
-                <div class="checkbox-grid">
-                  <CheckboxComponent name="required1" label="Accept terms and conditions" required={true} />
-                  <CheckboxComponent name="required2" label="Subscribe to newsletter" required={true} />
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <div class="checkbox-grid">
+                    <CheckboxComponent name="required1" label="Accept terms and conditions" required={true} />
+                    <CheckboxComponent name="required2" label="Subscribe to newsletter" required={true} />
+                  </div>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;Checkbox name="required1" label="Accept terms and conditions" required={true} /&gt;
+
+&lt;Checkbox name="required2" label="Subscribe to newsletter" required={true} /&gt;</code></pre>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Checkboxes with Help Text -->
         <section class="demo-section">
           <div class="section-grid">
             <div class="col-full">
               <h2>Checkboxes with Help Text</h2>
-              <p class="section-intro">Providing additional context and guidance to users.</p>
-            </div>
-          </div>
+              <p>Providing additional context and guidance to users.</p>
 
-          <div class="section-grid">
-            <div class="col-full">
-              <div class="demo-content">
-                <div class="checkbox-grid">
-                  <CheckboxComponent
-                    name="help1"
-                    label="Enable notifications"
-                    helpText="You'll receive updates about your account and new features."
-                  />
-                  <CheckboxComponent
-                    name="help2"
-                    label="Two-factor authentication"
-                    helpText="Add an extra layer of security to your account using SMS or authenticator apps."
-                    required={true}
-                  />
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <div class="checkbox-grid">
+                    <CheckboxComponent
+                      name="help1"
+                      label="Enable notifications"
+                      helpText="You'll receive updates about your account and new features."
+                    />
+                    <CheckboxComponent
+                      name="help2"
+                      label="Two-factor authentication"
+                      helpText="Add an extra layer of security to your account using SMS or authenticator apps."
+                      required={true}
+                    />
+                  </div>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;Checkbox
+  name="help1"
+  label="Enable notifications"
+  helpText="You'll receive updates about your account and new features."
+/&gt;
+
+&lt;Checkbox
+  name="help2"
+  label="Two-factor authentication"
+  helpText="Add an extra layer of security to your account using SMS or authenticator apps."
+  required={true}
+/&gt;</code></pre>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Error States -->
         <section class="demo-section">
           <div class="section-grid">
             <div class="col-full">
               <h2>Error States</h2>
-              <p class="section-intro">Checkboxes showing validation errors and feedback.</p>
-            </div>
-          </div>
+              <p>Checkboxes showing validation errors and feedback.</p>
 
-          <div class="section-grid">
-            <div class="col-full">
-              <div class="demo-content">
-                <div class="checkbox-grid">
-                  <CheckboxComponent
-                    name="error1"
-                    label="Accept privacy policy"
-                    required={true}
-                    error="You must accept the privacy policy to continue."
-                  />
-                  <CheckboxComponent
-                    name="error2"
-                    label="Confirm your age"
-                    required={true}
-                    error="Please confirm you are 18 years or older."
-                  />
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <div class="checkbox-grid">
+                    <CheckboxComponent
+                      name="error1"
+                      label="Accept privacy policy"
+                      required={true}
+                      error="You must accept the privacy policy to continue."
+                    />
+                    <CheckboxComponent
+                      name="error2"
+                      label="Confirm your age"
+                      required={true}
+                      error="Please confirm you are 18 years or older."
+                    />
+                  </div>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;Checkbox
+  name="error1"
+  label="Accept privacy policy"
+  required={true}
+  error="You must accept the privacy policy to continue."
+/&gt;
+
+&lt;Checkbox
+  name="error2"
+  label="Confirm your age"
+  required={true}
+  error="Please confirm you are 18 years or older."
+/&gt;</code></pre>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Checkbox Groups -->
         <section class="demo-section">
           <div class="section-grid">
             <div class="col-full">
               <h2>Checkbox Groups</h2>
-              <p class="section-intro">Multiple related checkboxes for selecting multiple options.</p>
-            </div>
-          </div>
+              <p>Multiple related checkboxes for selecting multiple options.</p>
 
-          <div class="section-grid">
-            <div class="col-full">
-              <div class="demo-content">
-                <fieldset class="checkbox-fieldset">
-                  <legend class="checkbox-fieldset__legend">Select your interests:</legend>
-                  <div class="checkbox-grid">
-                    <CheckboxComponent name="interests" value="technology" label="Technology" />
-                    <CheckboxComponent name="interests" value="design" label="Design" />
-                    <CheckboxComponent name="interests" value="business" label="Business" />
-                    <CheckboxComponent name="interests" value="marketing" label="Marketing" />
-                  </div>
-                </fieldset>
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <fieldset class="checkbox-fieldset">
+                    <legend class="checkbox-fieldset__legend">Select your interests:</legend>
+                    <div class="checkbox-grid">
+                      <CheckboxComponent name="interests" value="technology" label="Technology" />
+                      <CheckboxComponent name="interests" value="design" label="Design" />
+                      <CheckboxComponent name="interests" value="business" label="Business" />
+                      <CheckboxComponent name="interests" value="marketing" label="Marketing" />
+                    </div>
+                  </fieldset>
 
-                <fieldset class="checkbox-fieldset">
-                  <legend class="checkbox-fieldset__legend">Account preferences:</legend>
-                  <div class="checkbox-grid">
-                    <CheckboxComponent
-                      name="preferences"
-                      value="email-updates"
-                      label="Email updates"
-                      helpText="Receive weekly digest emails"
-                    />
-                    <CheckboxComponent
-                      name="preferences"
-                      value="sms-alerts"
-                      label="SMS alerts"
-                      helpText="Get important notifications via text"
-                    />
-                    <CheckboxComponent
-                      name="preferences"
-                      value="push-notifications"
-                      label="Push notifications"
-                      helpText="Browser and mobile app notifications"
-                      checked={true}
-                    />
-                  </div>
-                </fieldset>
+                  <fieldset class="checkbox-fieldset">
+                    <legend class="checkbox-fieldset__legend">Account preferences:</legend>
+                    <div class="checkbox-grid">
+                      <CheckboxComponent
+                        name="preferences"
+                        value="email-updates"
+                        label="Email updates"
+                        helpText="Receive weekly digest emails"
+                      />
+                      <CheckboxComponent
+                        name="preferences"
+                        value="sms-alerts"
+                        label="SMS alerts"
+                        helpText="Get important notifications via text"
+                      />
+                      <CheckboxComponent
+                        name="preferences"
+                        value="push-notifications"
+                        label="Push notifications"
+                        helpText="Browser and mobile app notifications"
+                        checked={true}
+                      />
+                    </div>
+                  </fieldset>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;fieldset class="checkbox-fieldset"&gt;
+  &lt;legend class="checkbox-fieldset__legend"&gt;Select your interests:&lt;/legend&gt;
+  &lt;div class="checkbox-grid"&gt;
+    &lt;Checkbox name="interests" value="technology" label="Technology" /&gt;
+    &lt;Checkbox name="interests" value="design" label="Design" /&gt;
+    &lt;Checkbox name="interests" value="business" label="Business" /&gt;
+    &lt;Checkbox name="interests" value="marketing" label="Marketing" /&gt;
+  &lt;/div&gt;
+&lt;/fieldset&gt;
+
+&lt;fieldset class="checkbox-fieldset"&gt;
+  &lt;legend class="checkbox-fieldset__legend"&gt;Account preferences:&lt;/legend&gt;
+  &lt;div class="checkbox-grid"&gt;
+    &lt;Checkbox
+      name="preferences"
+      value="email-updates"
+      label="Email updates"
+      helpText="Receive weekly digest emails"
+    /&gt;
+    &lt;Checkbox
+      name="preferences"
+      value="push-notifications"
+      label="Push notifications"
+      helpText="Browser and mobile app notifications"
+      checked={true}
+    /&gt;
+  &lt;/div&gt;
+&lt;/fieldset&gt;</code></pre>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Usage Examples -->
         <section class="demo-section">
           <div class="section-grid">
             <div class="col-full">
-              <h2>Usage Examples</h2>
-              <p class="section-intro">Code examples for implementing the Checkbox component.</p>
-            </div>
-          </div>
-
-          <div class="section-grid">
-            <div class="col-full">
-              <h3>Basic Usage</h3>
-              <pre><code>&lt;CheckboxComponent
-  name="terms"
-  label="I agree to the terms and conditions"
-  required={true}
-/&gt;</code></pre>
-
-              <h3>With Help Text</h3>
-              <pre><code>&lt;CheckboxComponent
-  name="notifications"
-  label="Enable email notifications"
-  helpText="You can change this setting later in your preferences."
-/&gt;</code></pre>
-
-              <h3>With Error State</h3>
-              <pre><code>&lt;CheckboxComponent
-  name="privacy"
-  label="Accept privacy policy"
-  required={true}
-  error="You must accept the privacy policy to continue."
-/&gt;</code></pre>
-
-              <h3>Checkbox Group</h3>
-              <pre><code>&lt;fieldset&gt;
-  &lt;legend&gt;Select your interests:&lt;/legend&gt;
-  &lt;CheckboxComponent
-    name="interests"
-    value="technology"
-    label="Technology"
-  /&gt;
-  &lt;CheckboxComponent
-    name="interests"
-    value="design"
-    label="Design"
-  /&gt;
-&lt;/fieldset&gt;</code></pre>
-
-              <h3>Props Interface</h3>
-              <pre><code>interface Props {'{'}
-  name: string;           // Input name attribute
-  value?: string;         // Input value (for groups)
-  checked?: boolean;      // Initial checked state
-  disabled?: boolean;     // Disable the checkbox
-  required?: boolean;     // Mark as required
-  label: string;          // Checkbox label text
-  helpText?: string;      // Optional help text
-  error?: string;         // Error message
-{'}'}</code></pre>
+              <h2>Props Reference</h2>
+              <div class="props-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Prop</th>
+                      <th>Type</th>
+                      <th>Default</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>name</code></td>
+                      <td><code>string</code></td>
+                      <td>-</td>
+                      <td>Required. Input name attribute for form submission</td>
+                    </tr>
+                    <tr>
+                      <td><code>value</code></td>
+                      <td><code>string</code></td>
+                      <td><code>undefined</code></td>
+                      <td>Input value attribute, useful for checkbox groups</td>
+                    </tr>
+                    <tr>
+                      <td><code>checked</code></td>
+                      <td><code>boolean</code></td>
+                      <td><code>false</code></td>
+                      <td>Whether the checkbox is initially checked</td>
+                    </tr>
+                    <tr>
+                      <td><code>disabled</code></td>
+                      <td><code>boolean</code></td>
+                      <td><code>false</code></td>
+                      <td>Whether the checkbox is disabled and non-interactive</td>
+                    </tr>
+                    <tr>
+                      <td><code>required</code></td>
+                      <td><code>boolean</code></td>
+                      <td><code>false</code></td>
+                      <td>Whether the checkbox is required for form submission</td>
+                    </tr>
+                    <tr>
+                      <td><code>label</code></td>
+                      <td><code>string</code></td>
+                      <td>-</td>
+                      <td>Required. The label text displayed next to the checkbox</td>
+                    </tr>
+                    <tr>
+                      <td><code>helpText</code></td>
+                      <td><code>string</code></td>
+                      <td><code>undefined</code></td>
+                      <td>Optional help text to provide additional context</td>
+                    </tr>
+                    <tr>
+                      <td><code>error</code></td>
+                      <td><code>string</code></td>
+                      <td><code>undefined</code></td>
+                      <td>Error message to display when validation fails</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </section>

@@ -92,7 +92,7 @@ import { Button } from "../../components/Button";
                       requirements.
                     </p>
 
-                    <Fragment slot="actions">
+                    <Fragment slot="footer">
                       <Button variant="secondary" size="small">View Details</Button>
                       <Button variant="primary" size="small">Mark as Read</Button>
                     </Fragment>
@@ -108,7 +108,7 @@ import { Button } from "../../components/Button";
   
   &lt;p&gt;The design system documentation has been updated...&lt;/p&gt;
   
-  &lt;Fragment slot="actions"&gt;
+  &lt;Fragment slot="footer"&gt;
     &lt;Button variant="secondary" size="small"&gt;View Details&lt;/Button&gt;
     &lt;Button variant="primary" size="small"&gt;Mark as Read&lt;/Button&gt;
   &lt;/Fragment&gt;
@@ -203,44 +203,66 @@ import { Button } from "../../components/Button";
         <section class="demo-section">
           <div class="section-grid">
             <div class="col-full">
-              <h2>Props Reference</h2>
-              <div class="props-table">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Prop</th>
-                      <th>Type</th>
-                      <th>Default</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>variant</code></td>
-                      <td><code>"default" | "bordered" | "elevated"</code></td>
-                      <td><code>"default"</code></td>
-                      <td>The visual style variant of the card</td>
-                    </tr>
-                    <tr>
-                      <td><code>padding</code></td>
-                      <td><code>"none" | "small" | "medium" | "large"</code></td>
-                      <td><code>"medium"</code></td>
-                      <td>The internal padding size</td>
-                    </tr>
-                    <tr>
-                      <td><code>interactive</code></td>
-                      <td><code>boolean</code></td>
-                      <td><code>false</code></td>
-                      <td>Whether the card has hover and focus states</td>
-                    </tr>
-                    <tr>
-                      <td><code>href</code></td>
-                      <td><code>string</code></td>
-                      <td><code>undefined</code></td>
-                      <td>If provided, renders the card as a clickable link</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <h2>Cards with Images</h2>
+              <p>Cards can include images positioned at the top, left, or right of the content.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview contain-floats">
+                  <div class="cards-grid">
+                    <CardComponent
+                      variant="bordered"
+                      imageSrc="/images/image1.jpg"
+                      imageAlt="Sample image"
+                      imagePosition="top">
+                      <h3>Top Image Card</h3>
+                      <p>This card displays an image at the top, perfect for featured content or article previews.</p>
+                      <Fragment slot="footer">
+                        <Button variant="primary" size="small">Read More</Button>
+                      </Fragment>
+                    </CardComponent>
+
+                    <CardComponent
+                      variant="elevated"
+                      imageSrc="/images/image2.jpg"
+                      imageAlt="Profile image"
+                      imagePosition="left">
+                      <h3>Left Image Card</h3>
+                      <p>
+                        This layout works well for profiles, product listings, or when you want the image to complement
+                        the text content.
+                      </p>
+                    </CardComponent>
+
+                    <CardComponent
+                      variant="bordered"
+                      imageSrc="/images/image3.jpg"
+                      imageAlt="Featured image"
+                      imagePosition="right">
+                      <h3>Right Image Card</h3>
+                      <p>Right-positioned images create visual interest while maintaining focus on the text content.</p>
+                    </CardComponent>
+                  </div>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;Card variant="bordered" imageSrc="/images/image1.jpg" imageAlt="Sample image" imagePosition="top"&gt;
+  &lt;h3&gt;Top Image Card&lt;/h3&gt;
+  &lt;p&gt;This card displays an image at the top...&lt;/p&gt;
+  &lt;Fragment slot="footer"&gt;
+    &lt;Button variant="primary" size="small"&gt;Read More&lt;/Button&gt;
+  &lt;/Fragment&gt;
+&lt;/Card&gt;
+
+&lt;Card variant="elevated" imageSrc="/images/image2.jpg" imageAlt="Profile image" imagePosition="left"&gt;
+  &lt;h3&gt;Left Image Card&lt;/h3&gt;
+  &lt;p&gt;This layout works well for profiles...&lt;/p&gt;
+&lt;/Card&gt;
+
+&lt;Card variant="bordered" imageSrc="/images/image3.jpg" imageAlt="Featured image" imagePosition="right"&gt;
+  &lt;h3&gt;Right Image Card&lt;/h3&gt;
+  &lt;p&gt;Right-positioned images create visual interest...&lt;/p&gt;
+&lt;/Card&gt;</code></pre>
+                </div>
               </div>
             </div>
           </div>
@@ -249,7 +271,7 @@ import { Button } from "../../components/Button";
         <section class="demo-section">
           <div class="section-grid">
             <div class="col-full">
-              <h2>Slots</h2>
+              <h2>Props Reference</h2>
               <div class="props-table">
                 <table>
                   <thead>
@@ -268,7 +290,7 @@ import { Button } from "../../components/Button";
                       <td>Header area, typically for titles and metadata</td>
                     </tr>
                     <tr>
-                      <td><code>actions</code></td>
+                      <td><code>footer</code></td>
                       <td>Footer area for buttons and action items</td>
                     </tr>
                   </tbody>
@@ -361,20 +383,20 @@ import { Button } from "../../components/Button";
           </div>
         </section>
       </div>
-    </main>
-  </Fragment>
-</Layout>
 
-<style lang="scss">
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
+      <style lang="scss">
+        .cards-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1.5rem;
+        }
 
-  .card-meta {
-    color: #64748b;
-    font-size: 0.875rem;
-    margin-left: auto;
-  }
-</style>
+        .card-meta {
+          color: #64748b;
+          font-size: 0.875rem;
+          margin-left: auto;
+        }
+      </style>
+    </main></Fragment
+  ></Layout
+>

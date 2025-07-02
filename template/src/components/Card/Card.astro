@@ -4,9 +4,20 @@ export interface Props {
   padding?: "none" | "small" | "medium" | "large";
   interactive?: boolean;
   href?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  imagePosition?: "top" | "left" | "right";
 }
 
-const { variant = "default", padding = "medium", interactive = false, href } = Astro.props;
+const {
+  variant = "default",
+  padding = "medium",
+  interactive = false,
+  href,
+  imageSrc,
+  imageAlt = "",
+  imagePosition = "top",
+} = Astro.props;
 
 const Tag = href ? "a" : "div";
 const cardClasses = [
@@ -15,6 +26,7 @@ const cardClasses = [
   `card--padding-${padding}`,
   interactive ? "card--interactive" : "",
   href ? "card--clickable" : "",
+  imageSrc ? `card--with-image card--image-${imagePosition}` : "",
 ]
   .filter(Boolean)
   .join(" ");
@@ -22,24 +34,34 @@ const cardClasses = [
 
 <Tag class={cardClasses} href={href} {...Astro.props}>
   {
-    Astro.slots.has("header") && (
-      <div class="card__header">
-        <slot name="header" />
+    imageSrc && (
+      <div class="card__image">
+        <img src={imageSrc} alt={imageAlt} class="card__image-element" />
       </div>
     )
   }
 
-  <div class="card__content">
-    <slot />
+  <div class="card__body">
+    {
+      Astro.slots.has("header") && (
+        <div class="card__header">
+          <slot name="header" />
+        </div>
+      )
+    }
+
+    <div class="card__content">
+      <slot />
+    </div>
+
+    {
+      Astro.slots.has("footer") && (
+        <div class="card__footer">
+          <slot name="footer" />
+        </div>
+      )
+    }
   </div>
-
-  {
-    Astro.slots.has("footer") && (
-      <div class="card__footer">
-        <slot name="footer" />
-      </div>
-    )
-  }
 </Tag>
 
 <style lang="scss">

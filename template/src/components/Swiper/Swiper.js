@@ -6,12 +6,13 @@
 import Swiper from "swiper";
 import { Navigation, Pagination, Autoplay, Mousewheel, Keyboard, EffectFade } from "swiper/modules";
 
+// TODO: Re-enable tomorrow - Swiper CSS causing build issues
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import "swiper/css/effect-fade";
+// import "swiper/css";
+// import "swiper/css/navigation";
+// import "swiper/css/pagination";
+// import "swiper/css/autoplay";
+// import "swiper/css/effect-fade";
 
 class SwiperComponent {
   constructor(element) {

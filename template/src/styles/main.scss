@@ -2,15 +2,10 @@
 // Main Styles Entry Point
 // ==========================================================================
 
-// Import tokens
+// All @use rules must come first (SCSS requirement)
 @use "./tokens";
-
-// Import base
 @use "./base/fonts";
 @use "./base/normalize";
-
-// The imports below are not to be modified.
-// Import core styles
 @use "./core/breakpoint.core";
 @use "./core/colors.core";
 @use "./core/column.core";

@@ -1,12 +1,13 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import ButtonComponent from "../../components/Button/Button.astro";
+import "../../styles/demo.scss";
 ---
 
-<Layout title="Button Component Demo">
+<Layout title="Button Component">
   <Fragment slot="main">
     <main id="main" class="layout-main" aria-label="Main content">
-      <div class="demo-page">
+      <div class="component-demo">
         <header class="demo-header">
           <div class="section-grid">
             <div class="col-full">
@@ -25,35 +26,47 @@ import ButtonComponent from "../../components/Button/Button.astro";
           <div class="section-grid">
             <div class="col-full">
               <h2>Button Variants</h2>
-              <p class="section-intro">Different visual styles for various use cases and hierarchy levels.</p>
-            </div>
-          </div>
-        </section>
+              <p>Different visual styles for various use cases and hierarchy levels.</p>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h3>Primary Buttons</h3>
-              <div class="demo-content">
-                <div class="component-grid">
-                  <ButtonComponent variant="primary">Primary Button</ButtonComponent>
-                  <ButtonComponent variant="primary" disabled>Disabled Primary</ButtonComponent>
+              <div class="demo-example">
+                <div class="demo-preview">
+                  <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                    <ButtonComponent variant="primary">Primary Button</ButtonComponent>
+                    <ButtonComponent variant="primary" disabled>Disabled Primary</ButtonComponent>
+                  </div>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;Button variant="primary"&gt;Primary Button&lt;/Button&gt;
+&lt;Button variant="primary" disabled&gt;Disabled Primary&lt;/Button&gt;</code></pre>
                 </div>
               </div>
 
-              <h3>Secondary Buttons</h3>
-              <div class="demo-content">
-                <div class="component-grid">
-                  <ButtonComponent variant="secondary">Secondary Button</ButtonComponent>
-                  <ButtonComponent variant="secondary" disabled>Disabled Secondary</ButtonComponent>
+              <div class="demo-example">
+                <div class="demo-preview">
+                  <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                    <ButtonComponent variant="secondary">Secondary Button</ButtonComponent>
+                    <ButtonComponent variant="secondary" disabled>Disabled Secondary</ButtonComponent>
+                  </div>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;Button variant="secondary"&gt;Secondary Button&lt;/Button&gt;
+&lt;Button variant="secondary" disabled&gt;Disabled Secondary&lt;/Button&gt;</code></pre>
                 </div>
               </div>
 
-              <h3>Outline Buttons</h3>
-              <div class="demo-content">
-                <div class="component-grid">
-                  <ButtonComponent variant="outline">Outline Button</ButtonComponent>
-                  <ButtonComponent variant="outline" disabled>Disabled Outline</ButtonComponent>
+              <div class="demo-example">
+                <div class="demo-preview">
+                  <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                    <ButtonComponent variant="outline">Outline Button</ButtonComponent>
+                    <ButtonComponent variant="outline" disabled>Disabled Outline</ButtonComponent>
+                  </div>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;Button variant="outline"&gt;Outline Button&lt;/Button&gt;
+&lt;Button variant="outline" disabled&gt;Disabled Outline&lt;/Button&gt;</code></pre>
                 </div>
               </div>
             </div>
@@ -64,19 +77,21 @@ import ButtonComponent from "../../components/Button/Button.astro";
           <div class="section-grid">
             <div class="col-full">
               <h2>Button Sizes</h2>
-              <p class="section-intro">Multiple size options to fit different contexts and layouts.</p>
-            </div>
-          </div>
-        </section>
+              <p>Multiple size options to fit different contexts and layouts.</p>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <div class="demo-content">
-                <div class="component-grid">
-                  <ButtonComponent variant="primary" size="small">Small Button</ButtonComponent>
-                  <ButtonComponent variant="primary" size="medium">Medium Button</ButtonComponent>
-                  <ButtonComponent variant="primary" size="large">Large Button</ButtonComponent>
+              <div class="demo-example">
+                <div class="demo-preview">
+                  <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                    <ButtonComponent variant="primary" size="small">Small Button</ButtonComponent>
+                    <ButtonComponent variant="primary" size="medium">Medium Button</ButtonComponent>
+                    <ButtonComponent variant="primary" size="large">Large Button</ButtonComponent>
+                  </div>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;Button variant="primary" size="small"&gt;Small Button&lt;/Button&gt;
+&lt;Button variant="primary" size="medium"&gt;Medium Button&lt;/Button&gt;
+&lt;Button variant="primary" size="large"&gt;Large Button&lt;/Button&gt;</code></pre>
                 </div>
               </div>
             </div>
@@ -87,19 +102,21 @@ import ButtonComponent from "../../components/Button/Button.astro";
           <div class="section-grid">
             <div class="col-full">
               <h2>Button Types</h2>
-              <p class="section-intro">Different button types for forms and interactions.</p>
-            </div>
-          </div>
-        </section>
+              <p>Different button types for forms and interactions.</p>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <div class="demo-content">
-                <div class="component-grid">
-                  <ButtonComponent type="button" variant="primary">Button Type</ButtonComponent>
-                  <ButtonComponent type="submit" variant="secondary">Submit Type</ButtonComponent>
-                  <ButtonComponent type="reset" variant="outline">Reset Type</ButtonComponent>
+              <div class="demo-example">
+                <div class="demo-preview">
+                  <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                    <ButtonComponent type="button" variant="primary">Button Type</ButtonComponent>
+                    <ButtonComponent type="submit" variant="secondary">Submit Type</ButtonComponent>
+                    <ButtonComponent type="reset" variant="outline">Reset Type</ButtonComponent>
+                  </div>
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;Button type="button" variant="primary"&gt;Button Type&lt;/Button&gt;
+&lt;Button type="submit" variant="secondary"&gt;Submit Type&lt;/Button&gt;
+&lt;Button type="reset" variant="outline"&gt;Reset Type&lt;/Button&gt;</code></pre>
                 </div>
               </div>
             </div>
@@ -109,39 +126,51 @@ import ButtonComponent from "../../components/Button/Button.astro";
         <section class="demo-section">
           <div class="section-grid">
             <div class="col-full">
-              <h2>Usage Examples</h2>
-              <p class="section-intro">Code examples for implementing the Button component.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h3>Basic Usage</h3>
-              <pre><code>&lt;Button variant="primary"&gt;
-  Click me
-&lt;/Button&gt;</code></pre>
-
-              <h3>With All Props</h3>
-              <pre><code>&lt;Button 
-  variant="primary"
-  size="large"
-  type="submit"
-  disabled={false}
-  class="custom-class"
-&gt;
-  Submit Form
-&lt;/Button&gt;</code></pre>
-
-              <h3>Props Interface</h3>
-              <pre><code>interface Props {'{'}
-  variant?: "primary" | "secondary" | "outline";
-  size?: "small" | "medium" | "large";
-  type?: "button" | "submit" | "reset";
-  disabled?: boolean;
-  class?: string;
-{'}'}</code></pre>
+              <h2>Props Reference</h2>
+              <div class="props-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Prop</th>
+                      <th>Type</th>
+                      <th>Default</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>variant</code></td>
+                      <td><code>"primary" | "secondary" | "outline"</code></td>
+                      <td><code>"primary"</code></td>
+                      <td>The button variant, which determines the visual style and hierarchy</td>
+                    </tr>
+                    <tr>
+                      <td><code>size</code></td>
+                      <td><code>"small" | "medium" | "large"</code></td>
+                      <td><code>"medium"</code></td>
+                      <td>The size of the button, affecting padding and font size</td>
+                    </tr>
+                    <tr>
+                      <td><code>type</code></td>
+                      <td><code>"button" | "submit" | "reset"</code></td>
+                      <td><code>"button"</code></td>
+                      <td>The HTML button type, determines form interaction behavior</td>
+                    </tr>
+                    <tr>
+                      <td><code>disabled</code></td>
+                      <td><code>boolean</code></td>
+                      <td><code>false</code></td>
+                      <td>Whether the button is disabled and non-interactive</td>
+                    </tr>
+                    <tr>
+                      <td><code>class</code></td>
+                      <td><code>string</code></td>
+                      <td><code>undefined</code></td>
+                      <td>Additional CSS classes to apply to the button element</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </section>
@@ -230,251 +259,5 @@ import ButtonComponent from "../../components/Button/Button.astro";
         </section>
       </div>
     </main>
-
-    <style lang="scss">
-      .demo-page {
-        min-height: 100vh;
-        padding-block: 2rem;
-      }
-
-      .demo-header {
-        margin-bottom: 3rem;
-        border-bottom: 1px solid #e2e8f0;
-        padding-bottom: 2rem;
-      }
-
-      .demo-nav {
-        margin-bottom: 1rem;
-      }
-
-      .demo-subtitle {
-        font-size: 1.125rem;
-        color: #64748b;
-        margin-top: 0.5rem;
-      }
-
-      .demo-section {
-        margin-bottom: 4rem;
-
-        h2 {
-          font-size: 2.5rem;
-          color: #333;
-          margin-bottom: 1rem;
-          border-bottom: 3px solid #667eea;
-          padding-bottom: 0.5rem;
-        }
-
-        h3 {
-          font-size: 1.75rem;
-          color: #444;
-          margin: 2rem 0 1rem;
-        }
-
-        h4 {
-          font-size: 1.25rem;
-          color: #555;
-          margin-bottom: 1rem;
-        }
-
-        .section-intro {
-          font-size: 1.125rem;
-          color: #666;
-          margin-bottom: 2rem;
-          line-height: 1.6;
-        }
-      }
-
-      .demo-content {
-        background: #f8f9fa;
-        padding: 2rem;
-        border-radius: 8px;
-        margin-bottom: 2rem;
-      }
-
-      .component-grid {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        align-items: center;
-      }
-
-      .guidelines-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-      }
-
-      .accessibility-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-      }
-
-      .accessibility-item,
-      .guideline-item {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-        h4 {
-          color: #667eea;
-          margin-bottom: 1rem;
-          font-size: 1.1rem;
-        }
-
-        ul {
-          margin: 0;
-          padding-left: 1.5rem;
-          line-height: 1.6;
-        }
-
-        li {
-          margin-bottom: 0.5rem;
-          color: #666;
-        }
-
-        kbd {
-          background: #f1f5f9;
-          border: 1px solid #cbd5e1;
-          border-radius: 3px;
-          padding: 0.1em 0.4em;
-          font-size: 0.875em;
-          font-family: monospace;
-        }
-
-        code {
-          background: #f1f5f9;
-          padding: 0.2em 0.4em;
-          border-radius: 3px;
-          font-size: 0.875em;
-          font-family: monospace;
-        }
-      }
-
-      .guideline-item h4:first-child {
-        &:contains("✅") {
-          color: #059669; // Green for "Do"
-        }
-
-        &:contains("❌") {
-          color: #dc2626; // Red for "Don't"
-        }
-      }
-
-      .guideline-item {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-        h4 {
-          color: #667eea;
-          margin-bottom: 1rem;
-          font-size: 1.1rem;
-        }
-
-        p {
-          line-height: 1.6;
-          color: #666;
-          margin: 0;
-        }
-      }
-
-      pre {
-        background: #2d3748;
-        color: #e2e8f0;
-        padding: 1.5rem;
-        border-radius: 8px;
-        overflow-x: auto;
-        margin: 1rem 0;
-
-        code {
-          font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
-          font-size: 0.9rem;
-          line-height: 1.5;
-        }
-      }
-
-      .demo-nav .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        cursor: pointer;
-        font-family: inherit;
-        font-weight: 500;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        padding: 0.5rem 1rem;
-        font-size: 0.875rem;
-        background-color: transparent;
-        border-color: #64748b;
-        color: #64748b;
-
-        &:hover {
-          background-color: #64748b;
-          color: white;
-        }
-
-        &--outline {
-          background-color: transparent;
-          border-color: #64748b;
-          color: #64748b;
-
-          &:hover {
-            background-color: #64748b;
-            color: white;
-          }
-        }
-
-        &--small {
-          padding: 0.5rem 1rem;
-          font-size: 0.875rem;
-        }
-      }
-
-      // Responsive adjustments
-      @media (max-width: 768px) {
-        .demo-header {
-          padding: 1.5rem 0 2rem;
-
-          h1 {
-            font-size: 2rem;
-          }
-
-          .demo-subtitle {
-            font-size: 1.125rem;
-          }
-        }
-
-        .demo-content {
-          padding: 1.5rem;
-        }
-
-        .component-grid {
-          flex-direction: column;
-          align-items: stretch;
-        }
-
-        .demo-section {
-          h2 {
-            font-size: 2rem;
-          }
-
-          h3 {
-            font-size: 1.5rem;
-          }
-        }
-
-        .accessibility-grid,
-        .guidelines-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
   </Fragment>
 </Layout>
