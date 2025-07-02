@@ -1,15 +1,15 @@
 @font-face {
   font-display: auto;
-  font-family: "ksk-icons";
+  font-family: "font-icons";
   font-style: normal;
   font-weight: 400;
   
-  src: url("./ksk-icons.woff2?1751319238100") format("woff2"), url("./ksk-icons.woff?1751319238100") format("woff"), 
+  src: url("./font-icons.woff2?1751488106131") format("woff2"), url("./font-icons.woff?1751488106131") format("woff"), 
 }
 
 .icon {
   display: inline-block;
-  font-family: "ksk-icons";
+  font-family: "font-icons";
   font-weight: 400;
   font-style: normal;
   font-variant: normal;
@@ -101,19 +101,67 @@
 }
 
 
-.icon-adjustments-horizontal::before {
+.icon-add-user::before {
   content: "\ea01";
 }
 
-.icon-arrow-down::before {
+.icon-book::before {
   content: "\ea02";
 }
 
-.icon-arrow-left-circle::before {
+.icon-documents::before {
   content: "\ea03";
 }
 
 .icon-download::before {
   content: "\ea04";
+}
+
+.icon-facebook::before {
+  content: "\ea05";
+}
+
+.icon-health::before {
+  content: "\ea06";
+}
+
+.icon-instagram::before {
+  content: "\ea07";
+}
+
+.icon-left-arrow::before {
+  content: "\ea08";
+}
+
+.icon-mail::before {
+  content: "\ea09";
+}
+
+.icon-menu-close::before {
+  content: "\ea0a";
+}
+
+.icon-menu-open::before {
+  content: "\ea0b";
+}
+
+.icon-phone::before {
+  content: "\ea0c";
+}
+
+.icon-play::before {
+  content: "\ea0d";
+}
+
+.icon-right-arrow::before {
+  content: "\ea0e";
+}
+
+.icon-search::before {
+  content: "\ea0f";
+}
+
+.icon-youtube::before {
+  content: "\ea10";
 }
 

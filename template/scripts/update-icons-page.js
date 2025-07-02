@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Paths
-const cssPath = path.join(__dirname, '../public/icons/font/ksk-icons.css');
+const cssPath = path.join(__dirname, '../public/icons/font/font-icons.css');
 const iconsPagePath = path.join(__dirname, '../src/pages/demo/icons.astro');
 
 console.log('🔄 Updating icons showcase page...');
