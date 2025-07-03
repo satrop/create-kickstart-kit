@@ -1,4 +1,6 @@
 ---
+import { asset } from "../../utils/assets";
+
 export interface Props {
   variant?: "default" | "bordered" | "elevated";
   padding?: "none" | "small" | "medium" | "large";
@@ -36,7 +38,7 @@ const cardClasses = [
   {
     imageSrc && (
       <div class="card__image">
-        <img src={imageSrc} alt={imageAlt} class="card__image-element" />
+        <img src={asset(imageSrc)} alt={imageAlt} class="card__image-element" />
       </div>
     )
   }

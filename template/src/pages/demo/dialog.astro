@@ -4,6 +4,9 @@ import "../../styles/demo.scss";
 import Layout from "../../layouts/Layout.astro";
 import DialogComponent from "../../components/Dialog/Dialog.astro";
 import { Button } from "../../components/Button";
+import FormField from "../../components/FormField";
+import Textarea from "../../components/Textarea";
+import Select from "../../components/Select";
 ---
 
 <Layout title="Dialog Component">
@@ -208,35 +211,47 @@ import { Button } from "../../components/Button";
 
                       <form class="dialog-form">
                         <div class="form-row">
-                          <div class="form-field">
-                            <label for="first-name">First Name *</label>
-                            <input type="text" id="first-name" name="firstName" required />
-                          </div>
-                          <div class="form-field">
-                            <label for="last-name">Last Name *</label>
-                            <input type="text" id="last-name" name="lastName" required />
-                          </div>
+                          <FormField
+                            label="First Name"
+                            name="firstName"
+                            required={true}
+                            placeholder="Your first name"
+                          />
+                          <FormField label="Last Name" name="lastName" required={true} placeholder="Your last name" />
                         </div>
 
-                        <div class="form-field">
-                          <label for="email">Email Address *</label>
-                          <input type="email" id="email" name="email" required />
-                        </div>
+                        <FormField
+                          label="Email Address"
+                          name="email"
+                          type="email"
+                          required={true}
+                          placeholder="your.email@example.com"
+                          helpText="We'll never share your email with anyone else."
+                        />
 
-                        <div class="form-field">
-                          <label for="company">Company</label>
-                          <input type="text" id="company" name="company" />
-                        </div>
+                        <FormField label="Company" name="company" placeholder="Your organization" />
 
-                        <div class="form-field">
-                          <label for="message">Message *</label>
-                          <textarea
-                            id="message"
-                            name="message"
-                            rows="4"
-                            required
-                            placeholder="Tell us how we can help you..."></textarea>
-                        </div>
+                        <Select
+                          label="Inquiry Type"
+                          name="inquiryType"
+                          required={true}
+                          options={[
+                            { value: "support", label: "Technical Support" },
+                            { value: "sales", label: "Sales Inquiry" },
+                            { value: "feedback", label: "Feedback" },
+                            { value: "other", label: "Other" },
+                          ]}
+                          placeholder="Select an inquiry type"
+                        />
+
+                        <Textarea
+                          label="Message"
+                          name="message"
+                          required={true}
+                          rows={4}
+                          placeholder="Tell us how we can help you..."
+                          helpText="Please be as specific as possible"
+                        />
                       </form>
                     </div>
 
@@ -258,10 +273,19 @@ import { Button } from "../../components/Button";
   size="large"
 &gt;
   &lt;form class="dialog-form"&gt;
-    &lt;div class="form-field"&gt;
-      &lt;label for="email"&gt;Email Address *&lt;/label&gt;
-      &lt;input type="email" id="email" name="email" required /&gt;
-    &lt;/div&gt;
+    &lt;FormField
+      label="Email Address"
+      name="email"
+      type="email"
+      required={true}
+    /&gt;
+    
+    &lt;Textarea
+      label="Message"
+      name="message"
+      required={true}
+      placeholder="Tell us how we can help you..."
+    /&gt;
     &lt;!-- More form fields... --&gt;
   &lt;/form&gt;
   
@@ -271,90 +295,6 @@ import { Button } from "../../components/Button";
     &lt;/Button&gt;
     &lt;Button variant="primary" type="button" data-dialog-close="large-dialog"&gt;
       Send Message
-    &lt;/Button&gt;
-  &lt;/Fragment&gt;
-&lt;/DialogComponent&gt;</code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Fullscreen Dialog</h2>
-              <p>Fullscreen dialog for immersive experiences on mobile devices.</p>
-
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <Button variant="primary" type="button" data-dialog-trigger="fullscreen-dialog">
-                    Open Fullscreen Dialog
-                  </Button>
-
-                  <DialogComponent id="fullscreen-dialog" title="Image Gallery" size="fullscreen">
-                    <div class="gallery-content">
-                      <p>
-                        This fullscreen dialog is perfect for showcasing images, videos, or other immersive content.
-                      </p>
-
-                      <div class="image-grid">
-                        <div class="image-item">
-                          <img src="/images/image1.jpg" alt="Landscape view" />
-                          <p>Beautiful mountain landscape</p>
-                        </div>
-                        <div class="image-item">
-                          <img src="/images/image2.jpg" alt="Modern architecture" />
-                          <p>Contemporary building design</p>
-                        </div>
-                        <div class="image-item">
-                          <img src="/images/image3.jpg" alt="Team collaboration" />
-                          <p>Productive team meeting</p>
-                        </div>
-                        <div class="image-item">
-                          <img src="/images/image4.jpg" alt="Product showcase" />
-                          <p>Premium product display</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <Fragment slot="actions">
-                      <Button variant="outline" type="button" data-dialog-close="fullscreen-dialog">
-                        Close Gallery
-                      </Button>
-                      <Button variant="primary" type="button" data-dialog-close="fullscreen-dialog">
-                        Download Selected
-                      </Button>
-                    </Fragment>
-                  </DialogComponent>
-                </div>
-
-                <div class="demo-code">
-                  <pre><code>&lt;Button variant="primary" data-dialog-trigger="fullscreen-dialog"&gt;
-  Open Fullscreen Dialog
-&lt;/Button&gt;
-
-&lt;DialogComponent
-  id="fullscreen-dialog"
-  title="Image Gallery"
-  size="fullscreen"
-&gt;
-  &lt;div class="gallery-content"&gt;
-    &lt;div class="image-grid"&gt;
-      &lt;div class="image-item"&gt;
-        &lt;img src="/images/image1.jpg" alt="Landscape view" /&gt;
-        &lt;p&gt;Beautiful mountain landscape&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;!-- More images... --&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  
-  &lt;Fragment slot="actions"&gt;
-    &lt;Button variant="outline" type="button" data-dialog-close="fullscreen-dialog"&gt;
-      Close Gallery
-    &lt;/Button&gt;
-    &lt;Button variant="primary" type="button" data-dialog-close="fullscreen-dialog"&gt;
-      Download Selected
     &lt;/Button&gt;
   &lt;/Fragment&gt;
 &lt;/DialogComponent&gt;</code></pre>
