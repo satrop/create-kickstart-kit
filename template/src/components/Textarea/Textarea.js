@@ -166,41 +166,48 @@ class TextareaComponent {
 }
 
 // Auto-initialize all textarea components
-document.addEventListener('DOMContentLoaded', () => {
+// Auto-initialize textareas
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const textareas = document.querySelectorAll('[data-component="textarea"]');
+    textareas.forEach(textarea => {
+      if (!textarea.textareaComponent) {
+        textarea.textareaComponent = new TextareaComponent(textarea);
+      }
+    });
+  });
+
+  // Initialize dynamically added textareas
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === 1) { // Element node
+          const textareas = node.matches('[data-component="textarea"]') 
+            ? [node] 
+            : node.querySelectorAll('[data-component="textarea"]');
+          
+          textareas.forEach(textarea => {
+            if (!textarea.textareaComponent) {
+              textarea.textareaComponent = new TextareaComponent(textarea);
+            }
+          });
+        }
+      });
+    });
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+}
+
+// Auto-init function for manual initialization
+const initTextarea = () => {
   const textareas = document.querySelectorAll('[data-component="textarea"]');
   textareas.forEach(textarea => {
     if (!textarea.textareaComponent) {
       textarea.textareaComponent = new TextareaComponent(textarea);
     }
   });
-});
+};
 
-// Initialize dynamically added textareas
-const observer = new MutationObserver((mutations) => {
-  mutations.forEach((mutation) => {
-    mutation.addedNodes.forEach((node) => {
-      if (node.nodeType === 1) { // Element node
-        const textareas = node.matches('[data-component="textarea"]') 
-          ? [node] 
-          : node.querySelectorAll('[data-component="textarea"]');
-        
-        textareas.forEach(textarea => {
-          if (!textarea.textareaComponent) {
-            textarea.textareaComponent = new TextareaComponent(textarea);
-          }
-        });
-      }
-    });
-  });
-});
-
-observer.observe(document.body, { childList: true, subtree: true });
-
-// Export for module systems
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = TextareaComponent;
-} else if (typeof define === 'function' && define.amd) {
-  define([], () => TextareaComponent);
-} else if (typeof window !== 'undefined') {
-  window.TextareaComponent = TextareaComponent;
-}
+// Export both the class and the init function
+export { TextareaComponent, initTextarea };

@@ -248,15 +248,27 @@ class AccordionInstance {
   }
 }
 
-// Auto-initialize when script loads
-const accordionManager = new AccordionManager();
-
-// Export for module systems
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { AccordionManager, accordionManager };
-} else if (typeof define === 'function' && define.amd) {
-  define([], () => ({ AccordionManager, accordionManager }));
-} else if (typeof window !== 'undefined') {
-  window.AccordionManager = AccordionManager;
-  window.accordionManager = accordionManager;
+// Auto-initialize accordions
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const accordions = document.querySelectorAll('.accordion');
+    accordions.forEach(accordion => {
+      if (!accordion.accordionInstance) {
+        accordion.accordionInstance = new AccordionInstance(accordion);
+      }
+    });
+  });
 }
+
+// Auto-init function for manual initialization
+const initAccordion = () => {
+  const accordions = document.querySelectorAll('.accordion');
+  accordions.forEach(accordion => {
+    if (!accordion.accordionInstance) {
+      accordion.accordionInstance = new AccordionInstance(accordion);
+    }
+  });
+};
+
+// Export both the classes and the init function
+export { AccordionManager, AccordionInstance, initAccordion };

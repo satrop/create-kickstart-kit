@@ -12,7 +12,3 @@ const { variant = "primary", size = "medium", disabled = false, type = "button" 
 <button class={`btn btn--${variant} btn--${size}`} {disabled} {type} {...Astro.props}>
   <slot />
 </button>
-
-<style lang="scss">
-  @use "./Button.scss";
-</style>

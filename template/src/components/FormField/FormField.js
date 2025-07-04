@@ -4,7 +4,7 @@
  * Can be extended for validation, formatting, etc.
  */
 
-export class FormFieldManager {
+class FormFieldManager {
   constructor() {
     this.init();
   }
@@ -51,8 +51,27 @@ export class FormFieldManager {
   }
 }
 
-// Auto-initialize when imported
-const formFieldManager = new FormFieldManager();
+// Auto-initialize form fields
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const formFields = document.querySelectorAll('.form-field');
+    formFields.forEach(field => {
+      if (!field.formFieldManager) {
+        field.formFieldManager = new FormFieldManager();
+      }
+    });
+  });
+}
 
-// Export for use in other scripts
-export default formFieldManager;
+// Auto-init function for manual initialization
+const initFormField = () => {
+  const formFields = document.querySelectorAll('.form-field');
+  formFields.forEach(field => {
+    if (!field.formFieldManager) {
+      field.formFieldManager = new FormFieldManager();
+    }
+  });
+};
+
+// Export both the class and the init function
+export { FormFieldManager, initFormField };

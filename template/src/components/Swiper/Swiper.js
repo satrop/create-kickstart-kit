@@ -362,41 +362,47 @@ class SwiperComponent {
 }
 
 // Auto-initialize all swiper components
-document.addEventListener('DOMContentLoaded', () => {
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const swipers = document.querySelectorAll('[data-component="swiper"]');
+    swipers.forEach(swiper => {
+      if (!swiper.swiperComponent) {
+        swiper.swiperComponent = new SwiperComponent(swiper);
+      }
+    });
+  });
+
+  // Initialize dynamically added swipers
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === 1) { // Element node
+          const swipers = node.matches('[data-component="swiper"]') 
+            ? [node] 
+            : node.querySelectorAll('[data-component="swiper"]');
+          
+          swipers.forEach(swiper => {
+            if (!swiper.swiperComponent) {
+              swiper.swiperComponent = new SwiperComponent(swiper);
+            }
+          });
+        }
+      });
+    });
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+}
+
+// Auto-init function for manual initialization
+const initSwiper = () => {
   const swipers = document.querySelectorAll('[data-component="swiper"]');
   swipers.forEach(swiper => {
     if (!swiper.swiperComponent) {
       swiper.swiperComponent = new SwiperComponent(swiper);
     }
   });
-});
+};
 
-// Initialize dynamically added swipers
-const observer = new MutationObserver((mutations) => {
-  mutations.forEach((mutation) => {
-    mutation.addedNodes.forEach((node) => {
-      if (node.nodeType === 1) { // Element node
-        const swipers = node.matches('[data-component="swiper"]') 
-          ? [node] 
-          : node.querySelectorAll('[data-component="swiper"]');
-        
-        swipers.forEach(swiper => {
-          if (!swiper.swiperComponent) {
-            swiper.swiperComponent = new SwiperComponent(swiper);
-          }
-        });
-      }
-    });
-  });
-});
-
-observer.observe(document.body, { childList: true, subtree: true });
-
-// Export for module systems
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = SwiperComponent;
-} else if (typeof define === 'function' && define.amd) {
-  define([], () => SwiperComponent);
-} else if (typeof window !== 'undefined') {
-  window.SwiperComponent = SwiperComponent;
-}
+// Export both the class and the init function
+export { SwiperComponent, initSwiper };

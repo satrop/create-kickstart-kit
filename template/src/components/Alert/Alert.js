@@ -233,9 +233,15 @@ if (typeof document !== 'undefined') {
   });
 }
 
-// Create global alert manager instance
-const alertManager = new AlertManager();
+// Auto-init function for manual initialization
+const initAlert = () => {
+  const alerts = document.querySelectorAll('.alert');
+  alerts.forEach(alert => {
+    if (!alert.alertComponent) {
+      alert.alertComponent = new AlertComponent(alert);
+    }
+  });
+};
 
-// Export for manual use
-export { AlertComponent, AlertManager };
-export default alertManager;
+// Export both the classes and the init function
+export { AlertComponent, AlertManager, initAlert };

@@ -3,7 +3,7 @@
  * Handles accessibility, focus management, and user interactions
  */
 
-export class DialogManager {
+class DialogManager {
   constructor() {
     this.activeDialog = null;
     this.previousFocus = null;
@@ -328,13 +328,27 @@ export class DialogManager {
   }
 }
 
-// Auto-initialize when imported
-const dialogManager = new DialogManager();
-
-// Export for use in other scripts
-export default dialogManager;
-
-// Make DialogManager available globally for easy access
-if (typeof window !== 'undefined') {
-  window.DialogManager = DialogManager;
+// Auto-initialize dialogs
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const dialogs = document.querySelectorAll('[data-dialog]');
+    dialogs.forEach(dialog => {
+      if (!dialog.dialogManager) {
+        dialog.dialogManager = new DialogManager();
+      }
+    });
+  });
 }
+
+// Auto-init function for manual initialization
+const initDialog = () => {
+  const dialogs = document.querySelectorAll('[data-dialog]');
+  dialogs.forEach(dialog => {
+    if (!dialog.dialogManager) {
+      dialog.dialogManager = new DialogManager();
+    }
+  });
+};
+
+// Export both the class and the init function
+export { DialogManager, initDialog };

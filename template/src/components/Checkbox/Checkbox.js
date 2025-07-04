@@ -426,6 +426,24 @@ if (typeof document !== 'undefined') {
   });
 }
 
-// Export for manual initialization
-export { CheckboxComponent, CheckboxGroupManager };
-export default CheckboxComponent;
+// Auto-init function for manual initialization
+const initCheckbox = () => {
+  // Initialize individual checkboxes
+  const checkboxes = document.querySelectorAll('.checkbox-field');
+  checkboxes.forEach(checkbox => {
+    if (!checkbox.checkboxComponent) {
+      checkbox.checkboxComponent = new CheckboxComponent(checkbox);
+    }
+  });
+
+  // Initialize checkbox groups
+  const groups = document.querySelectorAll('.checkbox-group');
+  groups.forEach(group => {
+    if (!group.checkboxGroupManager) {
+      group.checkboxGroupManager = new CheckboxGroupManager(group);
+    }
+  });
+};
+
+// Export both the classes and the init function
+export { CheckboxComponent, CheckboxGroupManager, initCheckbox };

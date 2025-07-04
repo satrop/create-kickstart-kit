@@ -29,6 +29,7 @@ export default defineConfig({
   publicDir: './public',
   trailingSlash: 'never',
   compressHTML: false,
+  scopedStyleStrategy: 'class',
   build: {
     format: 'file',
     assets: 'assets'

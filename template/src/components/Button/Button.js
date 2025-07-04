@@ -114,6 +114,15 @@ if (typeof document !== 'undefined') {
   });
 }
 
-// Export for manual initialization
-export { ButtonComponent };
-export default ButtonComponent;
+// Auto-init (optional)
+const initButton = () => {
+  const buttons = document.querySelectorAll('.btn');
+  buttons.forEach((el) => {
+    if (!el.buttonComponent) {
+      el.buttonComponent = new ButtonComponent(el);
+    }
+  });
+};
+
+// Export both the class and the init function
+export { ButtonComponent, initButton };

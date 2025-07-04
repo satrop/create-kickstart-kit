@@ -238,9 +238,30 @@ if (typeof document !== 'undefined') {
   });
 }
 
-// Export for manual initialization
-export { CardComponent };
-export default CardComponent;
+// Auto-initialize cards
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      if (!card.cardComponent) {
+        card.cardComponent = new CardComponent(card);
+      }
+    });
+  });
+}
+
+// Auto-init function for manual initialization
+const initCard = () => {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    if (!card.cardComponent) {
+      card.cardComponent = new CardComponent(card);
+    }
+  });
+};
+
+// Export both the class and the init function
+export { CardComponent, initCard };
 
 // Add ripple effect styles
 if (typeof document !== 'undefined') {

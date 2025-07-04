@@ -59,6 +59,15 @@ if (typeof document !== 'undefined') {
   });
 }
 
-// Export for manual initialization
-export { FiftyFiftyComponent };
-export default FiftyFiftyComponent;
+// Auto-init function for manual initialization
+const initFiftyFifty = () => {
+  const fiftyFiftyElements = document.querySelectorAll('.fifty-fifty');
+  fiftyFiftyElements.forEach(element => {
+    if (!element.fiftyFiftyComponent) {
+      element.fiftyFiftyComponent = new FiftyFiftyComponent(element);
+    }
+  });
+};
+
+// Export both the class and the init function
+export { FiftyFiftyComponent, initFiftyFifty };

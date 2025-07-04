@@ -9,6 +9,7 @@ export interface Props {
   imageSrc?: string;
   imageAlt?: string;
   imagePosition?: "top" | "left" | "right";
+  class?: string;
 }
 
 const {
@@ -32,9 +33,13 @@ const cardClasses = [
 ]
   .filter(Boolean)
   .join(" ");
+
+// Extract class from props and merge with cardClasses
+const { class: additionalClasses, ...restProps } = Astro.props;
+const finalClasses = additionalClasses ? `${cardClasses} ${additionalClasses}` : cardClasses;
 ---
 
-<Tag class={cardClasses} href={href} {...Astro.props}>
+<Tag class={finalClasses} href={href} {...restProps}>
   {
     imageSrc && (
       <div class="card__image">
@@ -65,11 +70,3 @@ const cardClasses = [
     }
   </div>
 </Tag>
-
-<style lang="scss">
-  @use "./Card.scss";
-</style>
-
-<script>
-  import "./Card.js";
-</script>

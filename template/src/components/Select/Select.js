@@ -388,5 +388,15 @@ if (typeof document !== 'undefined') {
   });
 }
 
-// Export for manual initialization
-export { SelectComponent };
+// Auto-init function for manual initialization
+const initSelect = () => {
+  const selectElements = document.querySelectorAll('[data-component="select"]');
+  selectElements.forEach(element => {
+    if (!element.selectComponent) {
+      element.selectComponent = new SelectComponent(element);
+    }
+  });
+};
+
+// Export both the class and the init function
+export { SelectComponent, initSelect };

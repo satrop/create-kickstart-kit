@@ -185,5 +185,15 @@ if (typeof document !== 'undefined') {
   });
 }
 
-// Export for manual initialization
-export { RadioGroupComponent };
+// Auto-init function for manual initialization
+const initRadioGroup = () => {
+  const radioGroupElements = document.querySelectorAll('[data-component="radio-group"]');
+  radioGroupElements.forEach(element => {
+    if (!element.radioGroupComponent) {
+      element.radioGroupComponent = new RadioGroupComponent(element);
+    }
+  });
+};
+
+// Export both the class and the init function
+export { RadioGroupComponent, initRadioGroup };
