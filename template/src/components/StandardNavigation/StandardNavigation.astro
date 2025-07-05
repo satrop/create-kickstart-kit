@@ -1,0 +1,191 @@
+---
+import { Image } from 'astro:assets';
+
+export interface NavigationItem {
+  label: string;
+  href: string;
+  children?: NavigationItem[];
+}
+
+export interface Props {
+  items: NavigationItem[];
+  mobileAnimation?: "top" | "left" | "right";
+  logo?: {
+    src: string;
+    alt: string;
+    href?: string;
+  };
+  maxWidth?: string;
+}
+
+const { 
+  items, 
+  mobileAnimation = "left",
+  logo,
+  maxWidth
+} = Astro.props;
+
+const navigationId = `nav-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+
+<nav 
+  class="navigation navigation--standard" 
+  data-mobile-animation={mobileAnimation}
+  data-navigation-id={navigationId}
+  data-navigation-items={JSON.stringify(items)}
+  aria-label="Main navigation"
+  style={maxWidth ? `--nav-max-width: ${maxWidth}` : undefined}
+>
+  <div class="navigation__container">
+    <!-- Logo -->
+    {logo && (
+      <div class="navigation__logo">
+        <a href={logo.href || "/"} class="navigation__logo-link">
+          <Image src={logo.src} alt={logo.alt} class="navigation__logo-image" width={120} height={40} loading="eager" />
+        </a>
+      </div>
+    )}
+
+    <!-- Mobile Menu Toggle -->
+    <button 
+      class="navigation__mobile-toggle"
+      aria-expanded="false"
+      aria-controls={`${navigationId}-menu`}
+      aria-label="Toggle navigation menu"
+      data-nav-toggle
+    >
+      <span class="navigation__toggle-icon">
+        <span class="navigation__toggle-line"></span>
+        <span class="navigation__toggle-line"></span>
+        <span class="navigation__toggle-line"></span>
+      </span>
+      <span class="navigation__toggle-text">Menu</span>
+    </button>
+
+    <!-- Navigation Menu -->
+    <div 
+      class="navigation__menu"
+      id={`${navigationId}-menu`}
+      data-nav-menu
+    >
+      <!-- Mobile Menu Header -->
+      <div class="navigation__mobile-header">
+        {logo && (
+          <div class="navigation__mobile-logo">
+            <a href={logo.href || "/"} class="navigation__logo-link">
+              <Image src={logo.src} alt={logo.alt} class="navigation__logo-image" width={120} height={40} loading="eager" />
+            </a>
+          </div>
+        )}
+        <button 
+          class="navigation__mobile-close"
+          aria-label="Close navigation menu"
+          data-nav-close
+        >
+          <span class="navigation__close-icon">×</span>
+        </button>
+      </div>
+
+      <!-- Menu Items -->
+      <ul class="navigation__list" role="menubar">
+        {items.map((item, index) => (
+          <li class="navigation__item" role="none">
+            {item.children ? (
+              <div class="navigation__dropdown" data-dropdown>
+                <button 
+                  class="navigation__link navigation__dropdown-trigger"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  aria-controls={`${navigationId}-dropdown-${index}`}
+                  role="menuitem"
+                  data-dropdown-trigger
+                >
+                  <span>{item.label}</span>
+                  <span class="navigation__dropdown-arrow" aria-hidden="true">
+                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                      <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </button>
+
+                <!-- Dropdown Content -->
+                <div 
+                  class="navigation__dropdown-content"
+                  id={`${navigationId}-dropdown-${index}`}
+                  role="menu"
+                  aria-label={`${item.label} submenu`}
+                  data-dropdown-content
+                >
+                  <div class="navigation__dropdown-wrapper">
+                    <ul class="navigation__dropdown-list" role="none">
+                    {item.children.map((child, childIndex) => (
+                      <li class="navigation__dropdown-item" role="none">
+                        {child.children ? (
+                          <div class="navigation__submenu" data-submenu>
+                            <button 
+                              class="navigation__dropdown-link navigation__submenu-trigger"
+                              aria-expanded="false"
+                              aria-haspopup="true"
+                              aria-controls={`${navigationId}-submenu-${index}-${childIndex}`}
+                              role="menuitem"
+                              data-submenu-trigger
+                            >
+                              <span>{child.label}</span>
+                              <span class="navigation__submenu-arrow" aria-hidden="true">→</span>
+                            </button>
+                            <ul 
+                              class="navigation__submenu-list"
+                              id={`${navigationId}-submenu-${index}-${childIndex}`}
+                              role="menu"
+                              aria-label={`${child.label} submenu`}
+                              data-submenu-content
+                            >
+                              <div class="navigation__submenu-content">
+                                {child.children.map((grandchild) => (
+                                  <li class="navigation__submenu-item" role="none">
+                                    <a 
+                                      href={grandchild.href} 
+                                      class="navigation__submenu-link"
+                                      role="menuitem"
+                                    >
+                                      {grandchild.label}
+                                    </a>
+                                  </li>
+                                ))}
+                              </div>
+                            </ul>
+                          </div>
+                        ) : (
+                          <a 
+                            href={child.href} 
+                            class="navigation__dropdown-link"
+                            role="menuitem"
+                          >
+                            {child.label}
+                          </a>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <a 
+                href={item.href} 
+                class="navigation__link"
+                role="menuitem"
+              >
+                {item.label}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Overlay for mobile -->
+    <div class="navigation__overlay" data-nav-overlay></div>
+  </div>
+</nav>

@@ -1,0 +1,257 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import MegaNavigationComponent from "../../components/MegaNavigation/MegaNavigation.astro";
+import "../../styles/demo/mega-navigation.scss";
+
+// Complex data structure for mega menu demonstration
+const megaNavData = [
+  { label: "Home", href: "/" },
+  {
+    label: "Products",
+    href: "/products",
+    description:
+      "Comprehensive digital solutions to transform your business and drive growth in the modern marketplace.",
+    image: "/images/image1.jpg",
+    children: [
+      {
+        label: "Web Development",
+        href: "/products/web-development",
+        children: [
+          { label: "Frontend Development", href: "/products/web-development/frontend" },
+          { label: "Backend Development", href: "/products/web-development/backend" },
+          { label: "Full Stack Solutions", href: "/products/web-development/fullstack" },
+          { label: "E-commerce Platforms", href: "/products/web-development/ecommerce" },
+        ],
+      },
+      {
+        label: "Mobile Apps",
+        href: "/products/mobile-apps",
+        children: [
+          { label: "iOS Development", href: "/products/mobile-apps/ios" },
+          { label: "Android Development", href: "/products/mobile-apps/android" },
+          { label: "Cross-platform Apps", href: "/products/mobile-apps/cross-platform" },
+          { label: "Progressive Web Apps", href: "/products/mobile-apps/pwa" },
+        ],
+      },
+      {
+        label: "Design Services",
+        href: "/products/design",
+        children: [
+          { label: "UI/UX Design", href: "/products/design/ui-ux" },
+          { label: "Brand Identity", href: "/products/design/branding" },
+          { label: "Graphic Design", href: "/products/design/graphics" },
+          { label: "Prototyping", href: "/products/design/prototyping" },
+        ],
+      },
+      {
+        label: "Consulting",
+        href: "/products/consulting",
+      },
+    ],
+  },
+  {
+    label: "Solutions",
+    href: "/solutions",
+    description:
+      "Industry-specific solutions designed to meet your unique business challenges and accelerate your success.",
+    image: "/images/image3.jpg",
+    children: [
+      {
+        label: "For Startups",
+        href: "/solutions/startups",
+        children: [
+          { label: "MVP Development", href: "/solutions/startups/mvp" },
+          { label: "Technical Strategy", href: "/solutions/startups/strategy" },
+          { label: "Scalable Architecture", href: "/solutions/startups/architecture" },
+          { label: "Funding Support", href: "/solutions/startups/funding" },
+        ],
+      },
+      {
+        label: "For Enterprises",
+        href: "/solutions/enterprise",
+        children: [
+          { label: "Digital Transformation", href: "/solutions/enterprise/transformation" },
+          { label: "Legacy System Migration", href: "/solutions/enterprise/migration" },
+          { label: "Custom Integrations", href: "/solutions/enterprise/integrations" },
+          { label: "Security Audits", href: "/solutions/enterprise/security" },
+        ],
+      },
+      {
+        label: "For Agencies",
+        href: "/solutions/agencies",
+        children: [
+          { label: "White Label Solutions", href: "/solutions/agencies/white-label" },
+          { label: "Partner Programs", href: "/solutions/agencies/partnerships" },
+          { label: "Resource Augmentation", href: "/solutions/agencies/resources" },
+          { label: "Training & Certification", href: "/solutions/agencies/training" },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Resources",
+    href: "/resources",
+    description: "Explore our comprehensive library of resources, tutorials, and tools to help you succeed.",
+    // No image for this section - shows variety
+    children: [
+      { label: "Blog", href: "/blog" },
+      { label: "Documentation", href: "/docs" },
+      { label: "Tutorials", href: "/tutorials" },
+      { label: "Downloads", href: "/downloads" },
+      { label: "Community", href: "/community" },
+      { label: "Support", href: "/support" },
+    ],
+  },
+  {
+    label: "Company",
+    href: "/company",
+    description: "Learn about our story, meet our team, and discover the passion that drives everything we do.",
+    image: "/images/image5.jpg",
+    children: [
+      { label: "About Us", href: "/about" },
+      { label: "Our Team", href: "/team" },
+      { label: "Careers", href: "/careers" },
+      { label: "News & Press", href: "/press" },
+      { label: "Partners", href: "/partners" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+];
+
+const logo = {
+  src: "/favicon.svg",
+  alt: "Company Logo",
+  href: "/",
+};
+---
+
+<Layout title="Mega Menu Navigation Demo">
+  <!-- Mega Menu Navigation goes in the header slot -->
+  <MegaNavigationComponent slot="header" items={megaNavData} mobileAnimation="left" logo={logo} />
+
+  <!-- Main content
+  <main slot="main" class="mega-nav-demo">
+    <section style="padding: 60px 20px;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h1>🚀 Mega Menu Navigation Demo</h1>
+        <p>This page demonstrates the advanced mega menu navigation variant with rich content areas, images, and complex layouts.</p>
+
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; margin: 30px 0; border-radius: 12px;">
+          <h2>✨ Mega Menu Features</h2>
+          <p>Experience the power of mega menus with grid layouts, content areas, and dynamic interactions.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin: 40px 0;">
+          <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border: 1px solid #e5e5e5;">
+            <h3>🎯 Grid Layout</h3>
+            <ul>
+              <li><strong>1/3 Left Sidebar:</strong> Main navigation items</li>
+              <li><strong>2/3 Content Area:</strong> Rich content and featured items</li>
+              <li><strong>Header Section:</strong> Title, description, and hero image</li>
+              <li><strong>Sub-content:</strong> Dynamic two-column layouts</li>
+              <li><strong>Featured Links:</strong> Highlighted call-to-action items</li>
+            </ul>
+          </div>
+
+          <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border: 1px solid #e5e5e5;">
+            <h3>⚡ Interactive Features</h3>
+            <ul>
+              <li><strong>Hover States:</strong> Smooth transitions and animations</li>
+              <li><strong>Dynamic Content:</strong> Context-aware submenu display</li>
+              <li><strong>Mobile Optimized:</strong> Responsive collapse behavior</li>
+              <li><strong>Keyboard Navigation:</strong> Full accessibility support</li>
+              <li><strong>Screen Reader:</strong> Comprehensive ARIA labeling</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="background: #f8f9ff; padding: 30px; border-radius: 12px; margin: 40px 0; border-left: 4px solid #667eea;">
+          <h3>🧪 How to Test the Mega Menu</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+            <div>
+              <h4>🖥️ Desktop Testing</h4>
+              <ol>
+                <li>Hover over <strong>"Products"</strong> to see the mega menu</li>
+                <li>Notice the 3-column layout with navigation and content</li>
+                <li>Hover over submenu items in the left sidebar</li>
+                <li>Check the featured links in the right section</li>
+                <li>Try <strong>"Solutions"</strong> for different content</li>
+              </ol>
+            </div>
+            
+            <div>
+              <h4>📱 Mobile Testing</h4>
+              <ol>
+                <li>Resize browser to mobile width (&lt; 768px)</li>
+                <li>Click the hamburger menu button</li>
+                <li>Notice the <strong>top slide</strong> animation</li>
+                <li>Navigate through menu levels</li>
+                <li>Test the mobile-specific interactions</li>
+              </ol>
+            </div>
+            
+            <div>
+              <h4>⌨️ Keyboard Testing</h4>
+              <ol>
+                <li>Tab to the navigation area</li>
+                <li>Use <kbd>Enter</kbd> or <kbd>Space</kbd> to activate</li>
+                <li>Navigate with <kbd>Arrow Keys</kbd></li>
+                <li>Press <kbd>Escape</kbd> to close menus</li>
+                <li>Use <kbd>Home</kbd>/<kbd>End</kbd> for quick navigation</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #e8f5e8; padding: 30px; border-radius: 12px; margin: 40px 0;">
+          <h3>💡 Mega Menu Use Cases</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px;">
+            <div>
+              <h4>🛍️ E-commerce Sites</h4>
+              <p>Perfect for product catalogs with categories, subcategories, and featured products. Show promotional content alongside navigation.</p>
+            </div>
+            
+            <div>
+              <h4>🏢 Corporate Websites</h4>
+              <p>Ideal for service-based businesses with multiple offerings. Display service details, case studies, and contact information.</p>
+            </div>
+            
+            <div>
+              <h4>📚 Educational Platforms</h4>
+              <p>Great for course catalogs, learning paths, and resource libraries. Organize content by difficulty, topic, or format.</p>
+            </div>
+            
+            <div>
+              <h4>🎯 SaaS Applications</h4>
+              <p>Excellent for feature showcases, pricing tiers, and solution categories. Include trial links and feature comparisons.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="border: 2px dashed #667eea; padding: 30px; margin: 40px 0; text-align: center; border-radius: 12px;">
+          <h3>🔗 Compare Navigation Types</h3>
+          <p style="margin-bottom: 20px;">See the difference between navigation variants:</p>
+          <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <a href="/demo/navigation" style="background: #667eea; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 500;">
+              📋 Standard Navigation Demo
+            </a>
+            <a href="/demo/mega-navigation" style="background: #764ba2; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 500;">
+              🚀 Mega Menu Demo (Current)
+            </a>
+          </div>
+        </div>
+
+        <div style="background: #fff3cd; padding: 30px; border-radius: 12px; margin: 40px 0; border: 1px solid #ffeaa7;">
+          <h3>⚙️ Implementation Notes</h3>
+          <ul>
+            <li><strong>Data Structure:</strong> Use <code>megaContent</code> property for rich content areas</li>
+            <li><strong>Images:</strong> Provide high-quality images for the mega menu header</li>
+            <li><strong>Performance:</strong> Content is lazy-loaded and cached for smooth interactions</li>
+            <li><strong>Responsive:</strong> Automatically adapts to smaller screens with mobile-first approach</li>
+            <li><strong>Accessibility:</strong> Follows WCAG 2.1 AA guidelines for keyboard and screen reader support</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main> -->
+</Layout>

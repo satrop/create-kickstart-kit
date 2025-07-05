@@ -47,7 +47,15 @@ import "../styles/main.scss";
       )
     }
 
-    <slot name="main" />
+    {
+      Astro.slots.has("main") ? (
+        <slot name="main" />
+      ) : (
+        <main id="main" class="layout-wide">
+          <slot />
+        </main>
+      )
+    }
 
     {
       Astro.slots.has("footer") && (

@@ -1,4 +1,5 @@
 @use "../tokens/colors" as *;
+@use "sass:color";
 
 // ==========================================================================
 // Color Utilities
@@ -9,6 +10,8 @@
   @each $group, $shades in $colors {
     @each $shade, $value in $shades {
       --#{$group}-#{$shade}: #{$value};
+      // Generate RGB values for rgba() usage
+      --#{$group}-#{$shade}-rgb: #{color.red($value)}, #{color.green($value)}, #{color.blue($value)};
     }
   }
 }

@@ -1,0 +1,118 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import StandardNavigation from "../../components/StandardNavigation/StandardNavigation.astro";
+import "../../styles/demo/navigation.scss";
+
+// Simple test data for standard navigation
+const standardNavData = [
+  { label: "Home", href: "/" },
+  {
+    label: "Products",
+    href: "/products",
+    children: [
+      { label: "Web Development", href: "/products/web" },
+      { label: "Mobile Apps", href: "/products/mobile" },
+      { label: "Design Services", href: "/products/design" },
+    ],
+  },
+  {
+    label: "Services",
+    href: "/services",
+    children: [
+      { label: "Consulting", href: "/services/consulting" },
+      { label: "Support", href: "/services/support" },
+    ],
+  },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+
+// More complex data for mega menu
+const megaNavData = [
+  { label: "Home", href: "/" },
+  {
+    label: "Products",
+    href: "/products",
+    children: [
+      {
+        label: "Web Development",
+        href: "/products/web-development",
+        children: [
+          { label: "Frontend Development", href: "/products/web-development/frontend" },
+          { label: "Backend Development", href: "/products/web-development/backend" },
+          { label: "Full Stack Solutions", href: "/products/web-development/fullstack" },
+        ],
+      },
+      {
+        label: "Mobile Apps",
+        href: "/products/mobile-apps",
+        children: [
+          { label: "iOS Development", href: "/products/mobile-apps/ios" },
+          { label: "Android Development", href: "/products/mobile-apps/android" },
+          { label: "Cross-platform Apps", href: "/products/mobile-apps/cross-platform" },
+        ],
+      },
+    ],
+    megaContent: {
+      title: "Our Products & Services",
+      description: "Comprehensive digital solutions to help your business thrive",
+      image: "/images/image1.jpg",
+      featured: [
+        { label: "Popular: React Development", href: "/products/react" },
+        { label: "New: AI Integration", href: "/products/ai" },
+        { label: "Featured: E-commerce", href: "/products/ecommerce" },
+      ],
+    },
+  },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+
+const logo = {
+  src: "/favicon.svg",
+  alt: "Company Logo",
+  href: "/",
+};
+---
+
+<Layout title="Navigation Demo">
+  <main>
+    <!-- Navigation Component -->
+    <StandardNavigation items={standardNavData} mobileAnimation="left" logo={logo} />
+
+    <!-- Demo Content -->
+    <div class="navigation-demo">
+      <div class="demo-container">
+        <header class="demo-header">
+          <h1>Standard Navigation Demo</h1>
+          <p class="demo-description">
+            This page demonstrates the standard dropdown navigation component. Hover over items with children to see the
+            dropdown menus in action.
+          </p>
+        </header>
+
+        <section class="demo-features">
+          <h2>Features</h2>
+          <ul>
+            <li>Simple dropdown menus</li>
+            <li>Mobile-friendly responsive design</li>
+            <li>Keyboard navigation support</li>
+            <li>ARIA accessibility compliance</li>
+            <li>Touch-friendly interface</li>
+            <li>Smooth animations</li>
+          </ul>
+        </section>
+
+        <section class="demo-usage">
+          <h2>How to Test</h2>
+          <ol>
+            <li>Hover over "Products" or "Services" to see the dropdown menus</li>
+            <li>Use keyboard navigation (Tab, Enter, Escape, Arrow keys)</li>
+            <li>Resize the window to test mobile responsiveness</li>
+            <li>Test with screen readers for accessibility</li>
+          </ol>
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>

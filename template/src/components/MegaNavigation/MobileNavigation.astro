@@ -1,0 +1,211 @@
+---
+import { Image } from "astro:assets";
+
+export interface NavigationItem {
+  label: string;
+  href: string;
+  description?: string;
+  image?: string;
+  children?: NavigationItem[];
+}
+
+export interface Props {
+  items: NavigationItem[];
+  mobileAnimation?: "top" | "left" | "right";
+  logo?: {
+    src: string;
+    alt: string;
+    href?: string;
+  };
+}
+
+const { items, mobileAnimation = "left", logo } = Astro.props;
+
+const navigationId = `mobile-nav-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<nav
+  class="mobile-navigation"
+  data-mobile-animation={mobileAnimation}
+  data-navigation-id={navigationId}
+  aria-label="Mobile navigation">
+  <div class="mobile-navigation__container">
+    <!-- Logo -->
+    {
+      logo && (
+        <div class="mobile-navigation__logo">
+          <a href={logo.href || "/"} class="mobile-navigation__logo-link">
+            <Image
+              src={logo.src}
+              alt={logo.alt}
+              class="mobile-navigation__logo-image"
+              width={120}
+              height={40}
+              loading="eager"
+            />
+          </a>
+        </div>
+      )
+    }
+
+    <!-- Mobile Menu Toggle -->
+    <button
+      class="mobile-navigation__toggle"
+      aria-expanded="false"
+      aria-controls={`${navigationId}-menu`}
+      aria-label="Toggle navigation menu"
+      data-mobile-toggle>
+      <span class="mobile-navigation__toggle-icon">
+        <span class="mobile-navigation__toggle-line"></span>
+        <span class="mobile-navigation__toggle-line"></span>
+        <span class="mobile-navigation__toggle-line"></span>
+      </span>
+      <span class="mobile-navigation__toggle-text">Menu</span>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-navigation__menu" id={`${navigationId}-menu`} data-mobile-menu>
+      <!-- Mobile Menu Header -->
+      <div class="mobile-navigation__header">
+        {
+          logo && (
+            <div class="mobile-navigation__header-logo">
+              <a href={logo.href || "/"} class="mobile-navigation__logo-link">
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  class="mobile-navigation__logo-image"
+                  width={120}
+                  height={40}
+                  loading="eager"
+                />
+              </a>
+            </div>
+          )
+        }
+        <button class="mobile-navigation__close" aria-label="Close navigation menu" data-mobile-close>
+          <span class="mobile-navigation__close-icon">×</span>
+        </button>
+      </div>
+
+      <!-- Accordion Menu Items -->
+      <div class="mobile-navigation__content">
+        <ul class="mobile-navigation__list" role="list">
+          {
+            items.map((item, index) => (
+              <li class="mobile-navigation__item" role="listitem">
+                {item.children && item.children.length > 0 ? (
+                  /* Accordion Item with Children */
+                  <div class="mobile-navigation__accordion" data-accordion>
+                    <button
+                      class="mobile-navigation__accordion-trigger"
+                      aria-expanded="false"
+                      aria-controls={`${navigationId}-accordion-${index}`}
+                      data-accordion-trigger>
+                      <span class="mobile-navigation__accordion-label">{item.label}</span>
+                      <span class="mobile-navigation__accordion-arrow" aria-hidden="true">
+                        <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                          <path
+                            d="M1 1.5L6 6.5L11 1.5"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+
+                    <div
+                      class="mobile-navigation__accordion-content"
+                      id={`${navigationId}-accordion-${index}`}
+                      data-accordion-content
+                      inert>
+                      <div class="mobile-navigation__accordion-wrapper">
+                        {/* Add header content if item has description or image */}
+                        {(item.description || item.image) && (
+                          <div class="mobile-navigation__section-header">
+                            {item.image && (
+                              <div class="mobile-navigation__header-image">
+                                <Image
+                                  src={item.image}
+                                  alt={`${item.label} overview`}
+                                  loading="lazy"
+                                  width={200}
+                                  height={150}
+                                />
+                              </div>
+                            )}
+                            <div class="mobile-navigation__header-content">
+                              <h3 class="mobile-navigation__section-title">{item.label}</h3>
+                              {item.description && (
+                                <p class="mobile-navigation__section-description">{item.description}</p>
+                              )}
+                            </div>
+                          </div>
+                        )}
+
+                        <ul class="mobile-navigation__accordion-list" role="list">
+                          {item.children.map((child, childIndex) => (
+                            <li class="mobile-navigation__accordion-item" role="listitem">
+                              {child.children && child.children.length > 0 ? (
+                                /* Nested Accordion for Sub-items */
+                                <div class="mobile-navigation__sub-accordion" data-sub-accordion>
+                                  <button
+                                    class="mobile-navigation__sub-accordion-trigger"
+                                    aria-expanded="false"
+                                    aria-controls={`${navigationId}-sub-accordion-${index}-${childIndex}`}
+                                    data-sub-accordion-trigger>
+                                    <span class="mobile-navigation__sub-accordion-label">{child.label}</span>
+                                    <span class="mobile-navigation__sub-accordion-arrow" aria-hidden="true">
+                                      →
+                                    </span>
+                                  </button>
+
+                                  <div
+                                    class="mobile-navigation__sub-accordion-content"
+                                    id={`${navigationId}-sub-accordion-${index}-${childIndex}`}
+                                    data-sub-accordion-content
+                                    inert>
+                                    <div class="mobile-navigation__sub-accordion-wrapper">
+                                      <ul class="mobile-navigation__sub-accordion-list" role="list">
+                                        {child.children.map((grandchild) => (
+                                          <li class="mobile-navigation__sub-accordion-item" role="listitem">
+                                            <a href={grandchild.href} class="mobile-navigation__sub-link">
+                                              {grandchild.label}
+                                            </a>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : (
+                                /* Simple Link */
+                                <a href={child.href} class="mobile-navigation__link">
+                                  {child.label}
+                                </a>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  /* Simple Top-level Link */
+                  <a href={item.href} class="mobile-navigation__link mobile-navigation__link--top-level">
+                    {item.label}
+                  </a>
+                )}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="mobile-navigation__overlay" data-mobile-overlay></div>
+  </div>
+</nav>

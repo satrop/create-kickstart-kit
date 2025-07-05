@@ -1,5 +1,6 @@
 ---
 import { asset } from "../../utils/assets";
+import { Image } from "astro:assets";
 
 export interface Props {
   src: string;
@@ -59,6 +60,14 @@ const imgAttributes = {
 ---
 
 <div class={wrapperClasses}>
-  <img {...imgAttributes} />
+  <Image
+    src={optimizedSrc}
+    alt={alt}
+    loading={lazy && !priority ? "lazy" : "eager"}
+    class={imgClasses}
+    width={width || 400}
+    height={height || 300}
+    data-enhanced=""
+  />
   {caption && <span class="inline-img__caption">{caption}</span>}
 </div>

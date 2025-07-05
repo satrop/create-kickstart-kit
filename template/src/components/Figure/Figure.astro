@@ -1,5 +1,6 @@
 ---
 import { asset } from "../../utils/assets";
+import { Image } from "astro:assets";
 
 export interface Props {
   src: string;
@@ -63,6 +64,14 @@ const imgAttributes = {
 ---
 
 <figure class={figureClasses}>
-  <img {...imgAttributes} />
+  <Image
+    src={optimizedSrc}
+    alt={alt}
+    loading={lazy && !priority ? "lazy" : "eager"}
+    class={imgClasses}
+    width={width || 800}
+    height={height || 600}
+    data-enhanced=""
+  />
   {caption && <figcaption class={figcaptionClasses}>{caption}</figcaption>}
 </figure>

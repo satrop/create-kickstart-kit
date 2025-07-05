@@ -1,5 +1,6 @@
 ---
 import { asset } from "../../utils/assets";
+import { Image } from "astro:assets";
 
 export interface Props {
   variant?: "default" | "bordered" | "elevated";
@@ -43,7 +44,14 @@ const finalClasses = additionalClasses ? `${cardClasses} ${additionalClasses}` :
   {
     imageSrc && (
       <div class="card__image">
-        <img src={asset(imageSrc)} alt={imageAlt} class="card__image-element" />
+        <Image
+          src={asset(imageSrc)}
+          alt={imageAlt}
+          class="card__image-element"
+          width={400}
+          height={300}
+          loading="lazy"
+        />
       </div>
     )
   }

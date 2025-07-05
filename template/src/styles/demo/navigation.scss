@@ -1,0 +1,78 @@
+/* Demo-specific styles for navigation.astro page */
+
+.navigation-demo {
+  min-height: 100vh;
+  background: var(--color-gray-50, #f9fafb);
+  padding-top: 2rem;
+}
+
+.demo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.demo-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.demo-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--color-gray-900, #111827);
+  font-weight: 700;
+}
+
+.demo-description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-gray-600, #4b5563);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.demo-features,
+.demo-usage {
+  background: var(--color-white, #ffffff);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.demo-features h2,
+.demo-usage h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-gray-900, #111827);
+  font-weight: 600;
+}
+
+.demo-features ul,
+.demo-usage ol {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.demo-features li,
+.demo-usage li {
+  margin-bottom: 0.75rem;
+  color: var(--color-gray-700, #374151);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .demo-header h1 {
+    font-size: 2rem;
+  }
+
+  .demo-description {
+    font-size: 1rem;
+  }
+
+  .demo-features,
+  .demo-usage {
+    padding: 1.5rem;
+  }
+}

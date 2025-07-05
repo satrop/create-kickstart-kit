@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 export interface SwiperSlide {
   id: string;
   content: string;
@@ -41,7 +43,16 @@ const {
       {
         slides.map((slide) => (
           <div class="swiper-slide" data-slide-id={slide.id}>
-            {slide.image && <img src={slide.image} alt={slide.alt || ""} loading="lazy" class="swiper-slide__image" />}
+            {slide.image && (
+              <Image
+                src={slide.image}
+                alt={slide.alt || ""}
+                loading="lazy"
+                class="swiper-slide__image"
+                width={800}
+                height={450}
+              />
+            )}
             <div class="swiper-slide__content" set:html={slide.content} />
           </div>
         ))

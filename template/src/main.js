@@ -12,6 +12,9 @@ import { initCheckbox } from './components/Checkbox/Checkbox.js';
 import { initDialog } from './components/Dialog/Dialog.js';
 import { initFiftyFifty } from './components/FiftyFifty/FiftyFifty.js';
 import { initFormField } from './components/FormField/FormField.js';
+import { initNavigation } from './components/StandardNavigation/Navigation.js';
+import { initMegaNavigation } from './components/MegaNavigation/MegaNavigation.js';
+import { initMobileNavigation } from './components/MegaNavigation/MobileNavigation.js';
 import { initRadioGroup } from './components/RadioGroup/RadioGroup.js';
 import { initSelect } from './components/Select/Select.js';
 import { initSwiper } from './components/Swiper/Swiper.js';
@@ -27,6 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initDialog();
   initFiftyFifty();
   initFormField();
+  initNavigation(); // Standard dropdown navigation
+  initMegaNavigation(); // Mega menu navigation
+  initMobileNavigation(); // Mobile accordion navigation
   initRadioGroup();
   initSelect();
   initSwiper();

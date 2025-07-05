@@ -1,0 +1,301 @@
+---
+import { Image } from 'astro:assets';
+
+export interface NavigationItem {
+  label: string;
+  href: string;
+  description?: string;
+  image?: string;
+  children?: NavigationItem[];
+}
+
+export interface Props {
+  items: NavigationItem[];
+  mobileAnimation?: "top" | "left" | "right";
+  logo?: {
+    src: string;
+    alt: string;
+    href?: string;
+  };
+  maxWidth?: string;
+}
+
+const { items, mobileAnimation = "left", logo, maxWidth } = Astro.props;
+
+const navigationId = `nav-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<nav
+  class="navigation navigation--mega"
+  data-mobile-animation={mobileAnimation}
+  data-navigation-id={navigationId}
+  data-navigation-items={JSON.stringify(items)}
+  aria-label="Main navigation"
+  style={maxWidth ? `--nav-max-width: ${maxWidth}` : undefined}>
+  <div class="navigation__container">
+    <!-- Logo -->
+    {
+      logo && (
+        <div class="navigation__logo">
+          <a href={logo.href || "/"} class="navigation__logo-link">
+            <Image src={logo.src} alt={logo.alt} class="navigation__logo-image" width={120} height={40} loading="eager" />
+          </a>
+        </div>
+      )
+    }
+
+    <!-- Mobile Menu Toggle -->
+    <button
+      class="navigation__mobile-toggle"
+      aria-expanded="false"
+      aria-controls={`${navigationId}-menu`}
+      aria-label="Toggle navigation menu"
+      data-nav-toggle>
+      <span class="navigation__toggle-icon">
+        <span class="navigation__toggle-line"></span>
+        <span class="navigation__toggle-line"></span>
+        <span class="navigation__toggle-line"></span>
+      </span>
+      <span class="navigation__toggle-text">Menu</span>
+    </button>
+
+    <!-- Navigation Menu -->
+    <div class="navigation__menu" id={`${navigationId}-menu`} data-nav-menu>
+      <!-- Mobile Menu Header -->
+      <div class="navigation__mobile-header">
+        {
+          logo && (
+            <div class="navigation__mobile-logo">
+              <a href={logo.href || "/"} class="navigation__logo-link">
+                <Image src={logo.src} alt={logo.alt} class="navigation__logo-image" width={120} height={40} loading="eager" />
+              </a>
+            </div>
+          )
+        }
+        <button class="navigation__mobile-close" aria-label="Close navigation menu" data-nav-close>
+          <span class="navigation__close-icon">×</span>
+        </button>
+      </div>
+
+      <!-- Menu Items -->
+      <ul class="navigation__list" role="menubar">
+        {
+          items.map((item, index) => (
+            <li class="navigation__item" role="none">
+              {index === items.length - 1 ? (
+                /* Last item as an example link */
+                <a href={item.href} class="navigation__link" role="menuitem">
+                  {item.label}
+                </a>
+              ) : (
+                /* All other items are buttons that open mega menu */
+                <button
+                  class="navigation__link navigation__mega-trigger"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  aria-controls={`${navigationId}-mega-menu`}
+                  role="menuitem"
+                  data-main-nav-button
+                  data-mega-trigger={item.label}>
+                  <span>{item.label}</span>
+                  <span class="navigation__dropdown-arrow" aria-hidden="true">
+                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                      <path
+                        d="M1 1.5L6 6.5L11 1.5"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              )}
+            </li>
+          ))
+        }
+
+        <!-- Single Mega Menu Container -->
+        <div
+          class="navigation__mega-menu"
+          id={`${navigationId}-mega-menu`}
+          role="menu"
+          aria-label="Mega menu"
+          data-mega-menu>
+          <div class="navigation__mega-container">
+            <!-- Left Column: Main Navigation Buttons -->
+            <div class="navigation__mega-nav" data-mega-left-column>
+              <ul class="navigation__mega-nav-list" role="none">
+                {
+                  items.slice(0, -1).map((item, index) => (
+                    <li class="navigation__mega-nav-item" role="none">
+                      <button
+                        class="navigation__mega-nav-button"
+                        data-mega-section={item.label.toLowerCase()}
+                        role="menuitem"
+                        aria-controls={`${navigationId}-mega-section-${index}`}>
+                        {item.label}
+                      </button>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+
+            <!-- Right Column: Content Sections -->
+            <div class="navigation__mega-content" data-mega-right-column>
+              {
+                items.slice(0, -1).map((item, index) => (
+                  <div 
+                    class="navigation__mega-section"
+                    id={`${navigationId}-mega-section-${index}`}
+                    data-mega-content={item.label.toLowerCase()}
+                    aria-labelledby={`${navigationId}-mega-section-${index}-title`}>
+                    
+                    {/* Section Header */}
+                    <div class="navigation__mega-section-header">
+                      <div class="navigation__mega-header-content">
+                        <h3 class="navigation__mega-section-title" id={`${navigationId}-mega-section-${index}-title`}>
+                          {item.label}
+                        </h3>
+                        {item.description && (
+                          <p class="navigation__mega-section-description">
+                            {item.description}
+                          </p>
+                        )}
+                      </div>
+                      {item.image && (
+                        <div class="navigation__mega-header-image">
+                          <Image 
+                            src={item.image} 
+                            alt={`${item.label} overview`}
+                            loading="lazy"
+                            width={300}
+                            height={200}
+                          />
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Section Content */}
+                    <div class="navigation__mega-section-content">
+                      {item.children && item.children.length > 0 ? (
+                        // Check if any children have sub-children (sub-navigation scenario)
+                        item.children.some(child => child.children && child.children.length > 0) ? (
+                          /* Sub-Navigation Scenario: Left column shows sub-nav, right shows details */
+                          <div class="navigation__mega-content-columns">
+                            <!-- Left Column: Sub-Navigation -->
+                            <div class="navigation__mega-content-left">
+                              <ul class="navigation__mega-subnav-list" role="none">
+                                {item.children.map((child, childIndex) => (
+                                  <li class="navigation__mega-subnav-item" role="none">
+                                    <button 
+                                      class="navigation__mega-subnav-button"
+                                      data-subnav-trigger={child.label.toLowerCase().replace(/\s+/g, '-')}
+                                      data-child-index={childIndex}
+                                      role="menuitem"
+                                    >
+                                      {child.label}
+                                      {child.children && child.children.length > 0 && (
+                                        <span class="navigation__mega-subnav-arrow" aria-hidden="true">→</span>
+                                      )}
+                                    </button>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            <!-- Right Column: Sub-Navigation Details (Scrollable) -->
+                            <div class="navigation__mega-content-right">
+                              {item.children.map((child, childIndex) => (
+                                <div 
+                                  class="navigation__mega-subnav-content"
+                                  data-subnav-content={child.label.toLowerCase().replace(/\s+/g, '-')}
+                                  data-child-index={childIndex}
+                                >
+                                  <h5 class="navigation__mega-subnav-title">{child.label}</h5>
+                                  {child.children && child.children.length > 0 ? (
+                                    <ul class="navigation__mega-detail-list" role="none">
+                                      {child.children.map((grandchild) => (
+                                        <li class="navigation__mega-detail-item" role="none">
+                                          <a href={grandchild.href} class="navigation__mega-detail-link" role="menuitem">
+                                            {grandchild.label}
+                                          </a>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  ) : (
+                                    <div class="navigation__mega-subnav-single">
+                                      <a href={child.href} class="navigation__mega-detail-link">
+                                        View {child.label}
+                                      </a>
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        ) : (
+                          /* Simple Link Lists Scenario: Two columns of lists */
+                          <div class="navigation__mega-content-columns">
+                            <!-- Split children into two columns -->
+                            {(() => {
+                              const midpoint = Math.ceil(item.children.length / 2);
+                              const leftItems = item.children.slice(0, midpoint);
+                              const rightItems = item.children.slice(midpoint);
+                              
+                              return (
+                                <>
+                                  <div class="navigation__mega-content-left">
+                                    <ul class="navigation__mega-simple-list" role="none">
+                                      {leftItems.map((child) => (
+                                        <li class="navigation__mega-simple-item" role="none">
+                                          <a href={child.href} class="navigation__mega-simple-link" role="menuitem">
+                                            {child.label}
+                                          </a>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                  
+                                  {rightItems.length > 0 && (
+                                    <div class="navigation__mega-content-right">
+                                      <ul class="navigation__mega-simple-list" role="none">
+                                        {rightItems.map((child) => (
+                                          <li class="navigation__mega-simple-item" role="none">
+                                            <a href={child.href} class="navigation__mega-simple-link" role="menuitem">
+                                              {child.label}
+                                            </a>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  )}
+                                </>
+                              );
+                            })()}
+                          </div>
+                        )
+                      ) : (
+                        <div class="navigation__mega-simple">
+                          <a href={item.href} class="navigation__mega-cta">
+                            Learn more about {item.label}
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </ul>
+    </div>
+
+    <!-- Overlay for mobile -->
+    <div class="navigation__overlay" data-nav-overlay></div>
+  </div>
+</nav>
+
+

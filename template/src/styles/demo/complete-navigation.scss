@@ -1,0 +1,220 @@
+// ============================================================================
+// Complete Navigation Demo Page Styles
+// ============================================================================
+// Demo-specific styles that should NOT be included in production builds
+
+@use "../tokens" as *;
+
+// Page Content
+.demo-content {
+  min-height: 100vh;
+  background: var(--color-gray-50, #f9fafb);
+}
+
+.demo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.demo-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding-top: 2rem;
+}
+
+.demo-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-gray-900, #111827);
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.demo-description {
+  font-size: 1.25rem;
+  color: var(--color-gray-600, #4b5563);
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.demo-features,
+.demo-usage,
+.demo-code,
+.demo-test-content {
+  margin-bottom: 4rem;
+}
+
+.demo-features h2,
+.demo-usage h2,
+.demo-code h2,
+.demo-test-content h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-gray-900, #111827);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+// Feature Grid
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background: var(--color-white, #ffffff);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-gray-200, #e5e7eb);
+  transition: all 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-gray-900, #111827);
+  margin-bottom: 1rem;
+}
+
+.feature-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.feature-card li {
+  margin-bottom: 0.5rem;
+  color: var(--color-gray-600, #4b5563);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.feature-card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-green-500, #10b981);
+  font-weight: bold;
+}
+
+// Usage Steps
+.usage-steps {
+  display: grid;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.usage-step {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  background: var(--color-white, #ffffff);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  background: var(--color-primary, #3b82f6);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.step-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-gray-900, #111827);
+  margin-bottom: 0.5rem;
+}
+
+.step-content p {
+  color: var(--color-gray-600, #4b5563);
+  line-height: 1.6;
+  margin: 0;
+}
+
+// Code Block
+.code-block {
+  background: var(--color-gray-900, #111827);
+  color: var(--color-gray-100, #f3f4f6);
+  padding: 2rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  max-width: 100%;
+}
+
+// Test Content
+.test-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.test-card {
+  background: var(--color-white, #ffffff);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid var(--color-primary, #3b82f6);
+}
+
+.test-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-gray-900, #111827);
+  margin-bottom: 1rem;
+}
+
+.test-card p {
+  color: var(--color-gray-600, #4b5563);
+  line-height: 1.6;
+  margin: 0;
+}
+
+// Responsive Adjustments
+@media (max-width: 768px) {
+  .demo-header h1 {
+    font-size: 2rem;
+  }
+
+  .demo-description {
+    font-size: 1.125rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .usage-step {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .step-number {
+    align-self: center;
+  }
+}
