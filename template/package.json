@@ -28,7 +28,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "icons:clean": "node scripts/clean-optimized.js",
-    "icons:optimize": "pnpm run icons:clean && svgo -f public/icons/raw -o public/icons/optimized --config svgo.config.js",
+    "icons:optimize": "pnpm run icons:clean && svgo -f public/icons/raw -o public/icons/optimized --config scripts/svgo.config.js",
     "icons:rename": "node scripts/rename-icon-files.js",
     "icons:build": "webfont ./public/icons/optimized/*.svg",
     "icons:update-page": "node scripts/update-icons-page.js",
