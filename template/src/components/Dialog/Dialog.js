@@ -22,10 +22,15 @@ class DialogManager {
 
   init() {
     if (typeof document !== 'undefined') {
-      // Initialize all dialogs on page load
-      document.addEventListener('DOMContentLoaded', () => {
+      // Initialize all dialogs immediately if DOM is ready, or wait for DOMContentLoaded
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          this.setupDialogs();
+        });
+      } else {
+        // DOM is already loaded, initialize immediately
         this.setupDialogs();
-      });
+      }
 
       // Handle dynamic content
       const observer = new MutationObserver((mutations) => {
@@ -34,21 +39,21 @@ class DialogManager {
             mutation.addedNodes.forEach((node) => {
               if (node.nodeType === Node.ELEMENT_NODE) {
                 if (node.matches('[data-dialog]')) {
-                this.setupDialog(node);
+                  this.setupDialog(node);
+                }
+                // Check for dialogs in added subtree
+                const dialogs = node.querySelectorAll('[data-dialog]');
+                dialogs.forEach(dialog => this.setupDialog(dialog));
               }
-              // Check for dialogs in added subtree
-              const dialogs = node.querySelectorAll('[data-dialog]');
-              dialogs.forEach(dialog => this.setupDialog(dialog));
-            }
-          });
-        }
+            });
+          }
+        });
       });
-    });
 
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
     }
   }
 
@@ -135,11 +140,10 @@ class DialogManager {
     this.previousFocus = document.activeElement;
     
     // Prevent body scroll
-    this.preventBodyScroll(true);
+    this.lockDialog();
     
     // Show the dialog
     backdrop.setAttribute('aria-hidden', 'false');
-    backdrop.style.display = 'flex';
     
     // Set active dialog
     this.activeDialog = dialog;
@@ -166,16 +170,8 @@ class DialogManager {
     // Hide the dialog
     backdrop.setAttribute('aria-hidden', 'true');
     
-    // Use animation end to actually hide
-    const handleAnimationEnd = () => {
-      backdrop.style.display = 'none';
-      backdrop.removeEventListener('transitionend', handleAnimationEnd);
-    };
-    
-    backdrop.addEventListener('transitionend', handleAnimationEnd);
-    
     // Restore body scroll
-    this.preventBodyScroll(false);
+    this.unlockDialog();
     
     // Restore focus
     this.restoreFocus();
@@ -263,25 +259,20 @@ class DialogManager {
     this.previousFocus = null;
   }
 
-  preventBodyScroll(prevent) {
-    if (prevent) {
-      // Store current scroll position
-      const scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      document.body.classList.add('dialog-open');
-    } else {
-      // Restore scroll position
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.body.classList.remove('dialog-open');
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      }
-    }
+  lockDialog() {
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    document.documentElement.classList.add('dialog-open');
+    document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
+    document.documentElement.style.paddingRight = `${scrollbarWidth}px`;
+    document.body.style.overflow = 'hidden';
+  }
+
+  unlockDialog() {
+    document.documentElement.classList.remove('dialog-open');
+    document.documentElement.style.removeProperty('--scrollbar-width');
+    document.documentElement.style.paddingRight = '';
+    document.body.style.overflow = '';
   }
 
   announceDialog(dialog) {
@@ -328,26 +319,12 @@ class DialogManager {
   }
 }
 
-// Auto-initialize dialogs
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    const dialogs = document.querySelectorAll('[data-dialog]');
-    dialogs.forEach(dialog => {
-      if (!dialog.dialogManager) {
-        dialog.dialogManager = new DialogManager();
-      }
-    });
-  });
-}
-
 // Auto-init function for manual initialization
 const initDialog = () => {
-  const dialogs = document.querySelectorAll('[data-dialog]');
-  dialogs.forEach(dialog => {
-    if (!dialog.dialogManager) {
-      dialog.dialogManager = new DialogManager();
-    }
-  });
+  // Create a single global dialog manager instance
+  if (!window.dialogManager) {
+    window.dialogManager = new DialogManager();
+  }
 };
 
 // Export both the class and the init function

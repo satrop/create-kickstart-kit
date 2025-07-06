@@ -40,6 +40,8 @@ export default defineConfig({
         '@components': '/src/components',
         '@layouts': '/src/layouts',
         '@styles': '/src/styles',
+        '/main.js': '/src/assets/main.js',
+        '/components/': '/src/components/'
       }
     },
     css: {
@@ -50,9 +52,10 @@ export default defineConfig({
       cssCodeSplit: false,
       assetsDir: '',
       rollupOptions: {
+        // Don't try to bundle main.js through Vite - let it be handled separately
         output: {
-          entryFileNames: 'js/[name].js',
-          chunkFileNames: 'js/[name].js',
+          entryFileNames: '_astro/[name].js',
+          chunkFileNames: '_astro/[name].js',
           assetFileNames: (assetInfo) => {
             if (!assetInfo.name) return 'assets/[name][extname]'
             if (assetInfo.name.endsWith('.css')) {
