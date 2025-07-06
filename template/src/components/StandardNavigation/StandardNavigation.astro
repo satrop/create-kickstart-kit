@@ -1,4 +1,5 @@
 ---
+import { asset } from "../../utils/assets";
 import { Image } from 'astro:assets';
 
 export interface NavigationItem {
@@ -33,7 +34,6 @@ const navigationId = `nav-${Math.random().toString(36).substr(2, 9)}`;
   class="navigation navigation--standard" 
   data-mobile-animation={mobileAnimation}
   data-navigation-id={navigationId}
-  data-navigation-items={JSON.stringify(items)}
   aria-label="Main navigation"
   style={maxWidth ? `--nav-max-width: ${maxWidth}` : undefined}
 >
@@ -42,7 +42,7 @@ const navigationId = `nav-${Math.random().toString(36).substr(2, 9)}`;
     {logo && (
       <div class="navigation__logo">
         <a href={logo.href || "/"} class="navigation__logo-link">
-          <Image src={logo.src} alt={logo.alt} class="navigation__logo-image" width={120} height={40} loading="eager" />
+          <Image src={asset(logo.src)} alt={logo.alt} class="navigation__logo-image" width={120} height={40} loading="eager" />
         </a>
       </div>
     )}
@@ -74,7 +74,7 @@ const navigationId = `nav-${Math.random().toString(36).substr(2, 9)}`;
         {logo && (
           <div class="navigation__mobile-logo">
             <a href={logo.href || "/"} class="navigation__logo-link">
-              <Image src={logo.src} alt={logo.alt} class="navigation__logo-image" width={120} height={40} loading="eager" />
+              <Image src={asset(logo.src)} alt={logo.alt} class="navigation__logo-image" width={120} height={40} loading="eager" />
             </a>
           </div>
         )}

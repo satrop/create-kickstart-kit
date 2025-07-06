@@ -1,31 +1,28 @@
 import path from 'path'
 import webfont from 'webfont'
+import fs from 'fs/promises'
+import { fileURLToPath } from 'url'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 async function buildIcons() {
   try {
+    // Read webfont config from package.json
+    const packageJsonPath = path.resolve(__dirname, '..', 'package.json')
+    const packageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf8'))
+    const webfontConfig = packageJson.webfont
+
     const result = await webfont({
+      ...webfontConfig,
       files: path.resolve('./public/icons/optimized/*.svg'),
-      fontName: 'font-icons',
-      formats: ['woff2', 'woff'],
-      normalize: true,
-      fontHeight: 1000,
-      centerHorizontally: true,
-      round: 1e13,
-      prependUnicode: true,
-      sort: false,
       glyphTransformFn: (obj) => {
         // Remove double "icon-" prefix if it exists
         obj.name = obj.name.replace(/^icon-/, '')
         return obj
       },
-      template: 'css',
-      templateClassName: 'icon',
-      templateFontPath: './',
     })
 
     // Write font files and CSS to disk
-    // Import fs/promises to write files
-    const fs = await import('fs/promises')
     const dest = path.resolve('./public/icons/font')
 
     // Write each generated file

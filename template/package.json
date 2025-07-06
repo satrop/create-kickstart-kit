@@ -18,7 +18,7 @@
     "templateFontPath": "./",
     "round": 10000000000000,
     "prependUnicode": true,
-    "sort": true
+    "sort": false
   },
   "scripts": {
     "dev": "pnpm run colors:sync && concurrently \"pnpm run colors:watch\" \"astro dev\" --names \"colors,astro\" --prefix-colors \"green,blue\"",
