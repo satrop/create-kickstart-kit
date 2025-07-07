@@ -15,7 +15,7 @@ const rootPackageJson = JSON.parse(await fs.readFile(rootPackageJsonPath, 'utf8'
 
 // Handle --version / -v flags to show CLI version and exit
 if (args.includes('--version') || args.includes('-v')) {
-  console.log(`create-kickstart-kit CLI version: v${rootPackageJson.version}`)
+  console.log(`${rootPackageJson.name} CLI version: v${rootPackageJson.version}`)
   process.exit(0)
 }
 

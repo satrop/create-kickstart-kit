@@ -1,9 +1,9 @@
 {
-  "name": "create-kickstart-kit",
+  "name": "create-ksk",
   "version": "2.4.0",
   "description": "CLI to scaffold Astro-based front-end starter projects",
   "bin": {
-    "create-kickstart-kit": "./index.js"
+    "create-ksk": "./index.js"
   },
   "type": "module",
   "license": "MIT",
