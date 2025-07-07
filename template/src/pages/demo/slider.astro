@@ -1,0 +1,372 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import MainSlider from "../../components/Slider/Slider.astro";
+import SliderItem from "../../components/Slider/SliderItem.astro";
+
+import "../../styles/demo.scss";
+---
+
+<Layout title="Showcase Slider Demo">
+  <Fragment slot="main">
+    <main id="main" class="layout-main" aria-label="Showcase Slider Demo">
+      <div class="component-demo">
+        <header class="demo-header">
+          <div class="section-grid">
+            <div class="col-full">
+              <nav class="demo-nav">
+                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
+              </nav>
+              <h1>Slider Component</h1>
+              <p class="demo-subtitle">
+                This page demonstrates a simple image slider using Swiper.js. The slider uses local images and the same
+                base styling as other demo pages.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Basic Usage</h2>
+              <div class="demo-example">
+                <div class="demo-preview">
+                  <MainSlider loop={false}>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image1.jpg"
+                        imageAlt="Team collaborating in a modern office"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image2.jpg"
+                        imageAlt="Closeup of hands typing on a laptop"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image3.jpg"
+                        imageAlt="Team brainstorming ideas on a whiteboard"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image4.jpg"
+                        imageAlt="Closeup of a smartphone with a graph on the screen"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image5.jpg"
+                        imageAlt="A person holding a tablet with a digital interface"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                  </MainSlider>
+                </div>
+                <div class="demo-code">
+                  <pre><code>{`<MainSlider loop={false}>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image1.jpg\"
+      imageAlt=\"Team collaborating in a modern office\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image2.jpg\"
+      imageAlt=\"Closeup of hands typing on a laptop\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image3.jpg\"
+      imageAlt=\"Team brainstorming ideas on a whiteboard\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image4.jpg\"
+      imageAlt=\"Closeup of a smartphone with a graph on the screen\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image5.jpg\"
+      imageAlt=\"A person holding a tablet with a digital interface\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+</MainSlider>`}</code></pre>
+                </div>
+              </div>
+
+              <h2>Slider Without Pagination</h2>
+              <div class="demo-example">
+                <div class="demo-preview">
+                  <MainSlider showPagination={false}>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image1.jpg"
+                        imageAlt="Team collaborating in a modern office"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image2.jpg"
+                        imageAlt="Closeup of hands typing on a laptop"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image3.jpg"
+                        imageAlt="Team brainstorming ideas on a whiteboard"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image4.jpg"
+                        imageAlt="Closeup of a smartphone with a graph on the screen"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image5.jpg"
+                        imageAlt="A person holding a tablet with a digital interface"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                  </MainSlider>
+                </div>
+                <div class="demo-code">
+                  <pre><code>{`<MainSlider showPagination={false}>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image1.jpg\"
+      imageAlt=\"Team collaborating in a modern office\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image2.jpg\"
+      imageAlt=\"Closeup of hands typing on a laptop\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image3.jpg\"
+      imageAlt=\"Team brainstorming ideas on a whiteboard\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image4.jpg\"
+      imageAlt=\"Closeup of a smartphone with a graph on the screen\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image5.jpg\"
+      imageAlt=\"A person holding a tablet with a digital interface\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+</MainSlider>`}</code></pre>
+                </div>
+              </div>
+
+              <h2>Slider With Pagination Only</h2>
+              <div class="demo-example">
+                <div class="demo-preview">
+                  <MainSlider showControls={false}>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image1.jpg"
+                        imageAlt="Team collaborating in a modern office"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image2.jpg"
+                        imageAlt="Closeup of hands typing on a laptop"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image3.jpg"
+                        imageAlt="Team brainstorming ideas on a whiteboard"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image4.jpg"
+                        imageAlt="Closeup of a smartphone with a graph on the screen"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <SliderItem
+                        imageSrc="/images/image5.jpg"
+                        imageAlt="A person holding a tablet with a digital interface"
+                        width={600}
+                        height={400}
+                        lazy={true}
+                        priority={false}
+                      />
+                    </div>
+                  </MainSlider>
+                </div>
+                <div class="demo-code">
+                  <pre><code>{`<MainSlider showControls={false}>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image1.jpg\"
+      imageAlt=\"Team collaborating in a modern office\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image2.jpg\"
+      imageAlt=\"Closeup of hands typing on a laptop\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image3.jpg\"
+      imageAlt=\"Team brainstorming ideas on a whiteboard\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image4.jpg\"
+      imageAlt=\"Closeup of a smartphone with a graph on the screen\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+  <div class="swiper-slide">
+    <SliderItem
+      imageSrc=\"/images/image5.jpg\"
+      imageAlt=\"A person holding a tablet with a digital interface\"
+      width={600}
+      height={400}
+      lazy={true}
+      priority={false}
+    />
+  </div>
+</MainSlider>`}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </Fragment>
+</Layout>

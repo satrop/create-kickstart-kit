@@ -3,6 +3,8 @@
  * Handles accessibility, keyboard navigation, and expand/collapse functionality
  */
 
+console.log("Accordion Component Loaded");
+
 class AccordionManager {
   constructor() {
     this.init();

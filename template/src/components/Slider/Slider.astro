@@ -1,0 +1,18 @@
+---
+export interface Props {
+  showPagination?: boolean;
+  showControls?: boolean;
+  loop?: boolean;
+}
+
+const { showPagination = true, showControls = true, loop = true } = Astro.props;
+---
+
+<div class="swiper basic-slider" data-loop={loop}>
+  <div class="swiper-wrapper">
+    <slot />
+  </div>
+  {showPagination && <div class="swiper-pagination" />}
+  {showControls && <div class="swiper-button-prev" />}
+  {showControls && <div class="swiper-button-next" />}
+</div>

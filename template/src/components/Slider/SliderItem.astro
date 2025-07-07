@@ -1,0 +1,24 @@
+---
+import { asset } from "../../utils/assets";
+import { Image } from "astro:assets";
+
+export interface Props {
+  imageAlt: string;
+  imageSrc: string;
+  lazy?: boolean;
+  priority?: boolean;
+  width?: number;
+  height?: number;
+}
+
+const { imageAlt, imageSrc, lazy = true, priority = false, width = 600, height = 400 } = Astro.props;
+---
+
+<Image
+  src={asset(imageSrc)}
+  alt={imageAlt}
+  width={600}
+  height={400}
+  loading={lazy ? "lazy" : "eager"}
+  priority={priority}
+/>

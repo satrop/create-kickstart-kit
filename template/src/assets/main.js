@@ -17,6 +17,7 @@ import { initMegaNavigation } from '../components/MegaNavigation/MegaNavigation.
 import { initMobileNavigation } from '../components/MegaNavigation/MobileNavigation.js';
 import { initRadioGroup } from '../components/RadioGroup/RadioGroup.js';
 import { initSelect } from '../components/Select/Select.js';
+import { initMainSlider } from '../components/Slider/Slider.js';
 import { initTextarea } from '../components/Textarea/Textarea.js';
 
 // Initialize all components
@@ -34,6 +35,7 @@ function initializeApp() {
   initMobileNavigation();
   initRadioGroup();
   initSelect();
+  initMainSlider();
   initTextarea();
 }
 
