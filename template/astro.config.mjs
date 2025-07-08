@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
 import siteConfig from './site.config.js'
+import { astPrefixIntegration } from './scripts/ast-prefix-integration.js'
 
 // Determine base path from configuration
 const getBasePath = () => {
@@ -30,11 +31,21 @@ export default defineConfig({
   trailingSlash: 'never',
   compressHTML: false,
   scopedStyleStrategy: 'class',
+  integrations: [
+    astPrefixIntegration({
+      prefix: 'ast-',
+      ignoreClasses: [
+        'swiper-slide',
+        'swiper-wrapper',
+      ]
+    })
+  ],
   build: {
     format: 'file',
     assets: 'assets'
   },
   vite: {
+    plugins: [],
     resolve: {
       alias: {
         '@components': '/src/components',
@@ -48,21 +59,12 @@ export default defineConfig({
       devSourcemap: true
     },
     build: {
-      sourcemap: true,
       cssCodeSplit: false,
-      assetsDir: '',
       rollupOptions: {
-        // Don't try to bundle main.js through Vite - let it be handled separately
         output: {
-          entryFileNames: '_astro/[name].js',
-          chunkFileNames: '_astro/[name].js',
           assetFileNames: (assetInfo) => {
-            if (!assetInfo.name) return 'assets/[name][extname]'
-            if (assetInfo.name.endsWith('.css')) {
-              return '[name][extname]' // Keep CSS next to HTML
-            }
-            if (/\.(woff2?|eot|ttf|otf)$/.test(assetInfo.name)) {
-              return 'fonts/[name][extname]'
+            if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+              return 'main.css' // Force all CSS into one file
             }
             return 'assets/[name][extname]'
           }

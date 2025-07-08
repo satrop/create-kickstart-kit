@@ -13,6 +13,9 @@ interface Props {
 const { title = "Kickstart" } = Astro.props as Props;
 import "../styles/main.scss";
 import "../styles/swiper-imports.css";
+
+// Remove from the final build
+import "../styles/demo.scss";
 ---
 
 <!doctype html>
