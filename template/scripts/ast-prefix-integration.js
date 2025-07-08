@@ -9,6 +9,7 @@ export function astPrefixIntegration(options = {}) {
     ignoreClasses = [ 'swiper',],
     ignorePatterns = [
       /^astro-/, // Astro's own classes
+      /^swiper/, // Swiper classes
       // /^layout-/, // Layout utility classes
       // /^site-/, // Site-wide classes
       // /^demo-/, // Demo page classes
@@ -60,17 +61,77 @@ export function astPrefixIntegration(options = {}) {
 
   // Function to process CSS content
   function processCSS(css) {
-    
     return css.replace(/\.([a-zA-Z][a-zA-Z0-9_-]*)/g, (match, className) => {
       const prefixedClassName = prefixClass(className)
-      const result = `.${prefixedClassName}`
+      return `.${prefixedClassName}`
+    })
+  }
+
+  // Function to process JavaScript content
+  function processJS(js) {
+    console.log('[ast-prefix-integration] Processing JavaScript content...')
+    let result = js
+
+    // Process querySelector and querySelectorAll calls with class selectors
+    // This handles complex selectors like: querySelector('.class1, .class2 h1, .class3')
+    result = result.replace(/(querySelector(?:All)?)\(['"`]([^'"`]*)/g, (match, method, selectorString) => {
+      // Process each class selector in the string
+      const processedSelector = selectorString.replace(/\.([a-zA-Z][a-zA-Z0-9_-]*(?:__[a-zA-Z0-9_-]+)*(?:--[a-zA-Z0-9_-]+)*)/g, (classMatch, className) => {
+        const prefixedClassName = prefixClass(className)
+        return `.${prefixedClassName}`
+      })
       
-      // Log if we made changes
-      if (result !== match) {
+      const newMatch = `${method}('${processedSelector}`
+      
+      if (newMatch !== match) {
+        console.log(`[ast-prefix-integration] JS querySelector: ${selectorString} -> ${processedSelector}`)
       }
       
-      return result
+      return newMatch
     })
+
+    // Handle template literals with querySelector
+    result = result.replace(/(querySelector(?:All)?)\(`([^`]*)/g, (match, method, selectorString) => {
+      const processedSelector = selectorString.replace(/\.([a-zA-Z][a-zA-Z0-9_-]*(?:__[a-zA-Z0-9_-]+)*(?:--[a-zA-Z0-9_-]+)*)/g, (classMatch, className) => {
+        const prefixedClassName = prefixClass(className)
+        return `.${prefixedClassName}`
+      })
+      
+      const newMatch = `${method}(\`${processedSelector}`
+      
+      if (newMatch !== match) {
+        console.log(`[ast-prefix-integration] JS querySelector template: ${selectorString} -> ${processedSelector}`)
+      }
+      
+      return newMatch
+    })
+
+    // Process classList operations (add, remove, toggle, contains)
+    result = result.replace(/(classList\.(add|remove|toggle|contains))\(['"`]([a-zA-Z][a-zA-Z0-9_-]*(?:__[a-zA-Z0-9_-]+)*(?:--[a-zA-Z0-9_-]+)*)/g, (match, method, operation, className) => {
+      const prefixedClassName = prefixClass(className)
+      const newMatch = `${method}('${prefixedClassName}`
+      
+      if (newMatch !== match) {
+        console.log(`[ast-prefix-integration] JS classList: ${match} -> ${newMatch}`)
+      }
+      
+      return newMatch
+    })
+
+    // Process className assignments
+    result = result.replace(/(\.className\s*=\s*['"`])([^'"`]*)/g, (match, prefix, classNames) => {
+      const classes = classNames.split(/\s+/).filter(Boolean)
+      const prefixedClasses = classes.map(prefixClass)
+      const newMatch = `${prefix}${prefixedClasses.join(' ')}`
+      
+      if (newMatch !== match) {
+        console.log(`[ast-prefix-integration] JS className: ${match} -> ${newMatch}`)
+      }
+      
+      return newMatch
+    })
+
+    return result
   }
 
   return {
@@ -138,6 +199,8 @@ export function astPrefixIntegration(options = {}) {
         } catch (error) {
           console.error('[ast-prefix-integration] Error processing CSS files:', error.message)
         }
+        
+        console.log('[ast-prefix-integration] HTML and CSS processing complete')
         
       }
     }

@@ -35,6 +35,7 @@ export default defineConfig({
     astPrefixIntegration({
       prefix: 'ast-',
       ignoreClasses: [
+        'swiper',
         'swiper-slide',
         'swiper-wrapper',
       ]

@@ -8,7 +8,7 @@ export interface Props {
 const { showPagination = true, showControls = true, loop = true } = Astro.props;
 ---
 
-<div class="swiper basic-slider" data-loop={loop}>
+<div class="swiper" data-loop={loop}>
   <div class="swiper-wrapper">
     <slot />
   </div>
