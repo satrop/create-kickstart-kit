@@ -7,7 +7,7 @@ export interface Props {
 const { type = "info", dismissible = false } = Astro.props;
 ---
 
-<div class={`alert alert--${type}`} role="alert">
+<div class={`ast-alert ast-alert--${type}`} role="alert">
   <slot />
   {
     dismissible && (

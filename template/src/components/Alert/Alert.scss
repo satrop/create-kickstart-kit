@@ -1,4 +1,4 @@
-.alert {
+.ast-alert {
   /* Base alert styles */
   padding: 0.75rem 1rem;
   border: 1px solid transparent;
@@ -19,29 +19,29 @@
   }
 
   // Animation for new alerts
-  &.alert--entering {
+  &.ast-alert--entering {
     opacity: 0;
     transform: translateY(-10px);
   }
 
-  &.alert--entered {
+  &.ast-alert--entered {
     opacity: 1;
     transform: translateY(0);
   }
 
   // Animation for dismissing alerts
-  &.alert--exiting {
+  &.ast-alert--exiting {
     opacity: 0;
     transform: translateX(20px);
   }
 }
 
-.alert__content {
+.ast-alert__content {
   flex: 1;
   min-width: 0; // Prevent overflow issues
 }
 
-.alert__close {
+.ast-alert__close {
   position: absolute;
   top: 0.5rem;
   right: 0.75rem;
@@ -67,60 +67,60 @@
   }
 
   // Adjust positioning when alert is dismissible
-  .alert--dismissible & {
+  .ast-alert--dismissible & {
     padding-right: 2.5rem;
   }
 }
 
 /* Alert type variants */
-.alert--info {
+.ast-alert--info {
   background-color: #d1ecf1;
   border-color: #bee5eb;
   color: #0c5460;
 
-  .alert__close:hover {
+  .ast-alert__close:hover {
     background-color: rgba(12, 84, 96, 0.1);
   }
 }
 
-.alert--success {
+.ast-alert--success {
   background-color: #d4edda;
   border-color: #c3e6cb;
   color: #155724;
 
-  .alert__close:hover {
+  .ast-alert__close:hover {
     background-color: rgba(21, 87, 36, 0.1);
   }
 }
 
-.alert--warning {
+.ast-alert--warning {
   background-color: #fff3cd;
   border-color: #ffeaa7;
   color: #856404;
 
-  .alert__close:hover {
+  .ast-alert__close:hover {
     background-color: rgba(133, 100, 4, 0.1);
   }
 }
 
-.alert--error {
+.ast-alert--error {
   background-color: #f8d7da;
   border-color: #f5c6cb;
   color: #721c24;
 
-  .alert__close:hover {
+  .ast-alert__close:hover {
     background-color: rgba(114, 28, 36, 0.1);
   }
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .alert {
+  .ast-alert {
     padding: 0.625rem 0.875rem;
     font-size: 0.8125rem;
   }
 
-  .alert__close {
+  .ast-alert__close {
     top: 0.375rem;
     right: 0.625rem;
     font-size: 1.125rem;
@@ -129,24 +129,24 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .alert {
+  .ast-alert {
     border-width: 2px;
   }
 
-  .alert__close:focus {
+  .ast-alert__close:focus {
     outline: 3px solid;
   }
 }
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .alert {
+  .ast-alert {
     transition: none;
   }
 
-  .alert--entering,
-  .alert--entered,
-  .alert--exiting {
+  .ast-alert--entering,
+  .ast-alert--entered,
+  .ast-alert--exiting {
     opacity: 1;
     transform: none;
   }
