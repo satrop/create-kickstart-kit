@@ -10,25 +10,16 @@
 @use "./core/colors.core";
 @use "./core/column.core";
 @use "./core/grid.core";
+@use "./core/image-loading.core";
 @use "./core/owl.core";
 @use "./core/spacing.core";
 @use "./core/typography.core";
 
+// Base styles
+@use "./base/index";
+
 // Component styles
 @use "../components/main.scss";
-
-// Accessibility utilities
-.sr-only {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
 
 // Float utilities
 .clearfix {

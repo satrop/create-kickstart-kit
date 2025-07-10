@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:list";
 
 // =============================================
 // Breakpoint Map
@@ -13,15 +14,117 @@ $breakpoints: (
 );
 
 // =============================================
-// Media Query Mixin
+// Helper Functions
 // =============================================
 
-@mixin respond-to($bp) {
+@function get-breakpoint($bp) {
   @if map.has-key($breakpoints, $bp) {
-    @media (min-width: map.get($breakpoints, $bp)) {
-      @content;
-    }
+    @return map.get($breakpoints, $bp);
   } @else {
-    @warn "No media query found for `#{$bp}`";
+    @warn "No breakpoint found for `#{$bp}`";
+    @return null;
   }
 }
+
+@function get-max-width($bp) {
+  $value: get-breakpoint($bp);
+  @if $value and $value > 0 {
+    @return $value - 1px;
+  }
+  @return $value;
+}
+
+// =============================================
+// Enhanced Media Query Mixins
+// =============================================
+
+// Basic breakpoint mixin (min-width by default for backwards compatibility)
+@mixin break($bp) {
+  @include break-from($bp) {
+    @content;
+  }
+}
+
+// Min-width media query
+@mixin break-from($bp) {
+  $value: get-breakpoint($bp);
+  @if $value != null {
+    @if $value == 0 {
+      @content;
+    } @else {
+      @media (min-width: $value) {
+        @content;
+      }
+    }
+  }
+}
+
+// Max-width media query
+@mixin break-to($bp) {
+  $value: get-max-width($bp);
+  @if $value != null and $value >= 0 {
+    @media (max-width: $value) {
+      @content;
+    }
+  }
+}
+
+// Range media query (between two breakpoints)
+@mixin break-between($min-bp, $max-bp) {
+  $min-value: get-breakpoint($min-bp);
+  $max-value: get-max-width($max-bp);
+
+  @if $min-value != null and $max-value != null {
+    @if $min-value == 0 {
+      @media (max-width: $max-value) {
+        @content;
+      }
+    } @else {
+      @media (min-width: $min-value) and (max-width: $max-value) {
+        @content;
+      }
+    }
+  }
+}
+
+// Only at specific breakpoint (between current and next breakpoint)
+@mixin break-only($bp) {
+  $breakpoint-names: map.keys($breakpoints);
+  $current-index: list.index($breakpoint-names, $bp);
+
+  @if $current-index {
+    @if $current-index == length($breakpoint-names) {
+      // Last breakpoint, just use min-width
+      @include break-from($bp) {
+        @content;
+      }
+    } @else {
+      // Get next breakpoint
+      $next-bp: list.nth($breakpoint-names, $current-index + 1);
+      @include break-between($bp, $next-bp) {
+        @content;
+      }
+    }
+  }
+}
+
+// =============================================
+// Usage Examples
+// =============================================
+
+/*
+  Basic usage (backwards compatible):
+  @include break(md) { ... }  // min-width: 768px
+
+  Min-width queries:
+  @include break-from(lg) { ... }  // min-width: 1024px
+
+  Max-width queries:
+  @include break-to(lg) { ... }  // max-width: 1023px
+
+  Range queries (between breakpoints):
+  @include break-between(md, xl) { ... }  // min-width: 768px and max-width: 1439px
+
+  Only at specific breakpoint:
+  @include break-only(md) { ... }  // min-width: 768px and max-width: 1023px
+*/

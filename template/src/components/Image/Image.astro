@@ -1,0 +1,64 @@
+---
+import { asset } from "../../utils/assets";
+import { Image as AstroImage } from "astro:assets";
+
+export interface Props {
+  src: string;
+  alt: string;
+  align?: "left" | "right" | "center";
+  size?: "small" | "medium" | "large" | "auto";
+  caption?: string;
+  lazy?: boolean;
+  fallback?: string;
+  placeholder?: boolean;
+  priority?: boolean;
+  width?: number;
+  height?: number;
+  class?: string;
+  wrapperClass?: string;
+}
+
+const {
+  src,
+  alt,
+  align = "left",
+  size = "auto",
+  caption,
+  lazy = true,
+  fallback,
+  placeholder = true,
+  priority = false,
+  width,
+  height,
+  class: className = "",
+  wrapperClass = "",
+} = Astro.props;
+
+const alignClass = `ast-image--${align}`;
+const sizeClass = `ast-image--${size}`;
+
+// Handle asset optimization
+const optimizedSrc = asset(src);
+const fallbackSrc = fallback ? asset(fallback) : undefined;
+
+const imgClasses = ["ast-image__img", className].filter(Boolean).join(" ");
+
+const wrapperClasses = ["ast-image", alignClass, sizeClass, caption ? "ast-image--with-caption" : "", wrapperClass]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<div class={wrapperClasses}>
+  <AstroImage
+    src={optimizedSrc}
+    alt={alt}
+    loading={lazy && !priority ? "lazy" : "eager"}
+    class={imgClasses}
+    width={width || 400}
+    height={height || 300}
+    data-enhanced=""
+    {...fallbackSrc && { "data-fallback": fallbackSrc }}
+    {...placeholder !== undefined && { "data-placeholder": placeholder.toString() }}
+  />
+  {caption && <span class="ast-image__caption">{caption}</span>}
+</div>

@@ -3,6 +3,9 @@
  * Imports and initializes all interactive components
  */
 
+// Import global utilities
+import '../src/utils/imageHandler.js';
+
 // Import component init functions
 import { initButton } from '../components/Button/Button.js';
 import { initAccordion } from '../components/Accordion/Accordion.js';
@@ -37,6 +40,7 @@ function initializeApp() {
   initSelect();
   initMainSlider();
   initTextarea();
+
 }
 
 document.addEventListener('DOMContentLoaded', initializeApp);

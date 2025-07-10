@@ -8,11 +8,9 @@ A responsive image and content layout component for creating engaging two-column
 - **Responsive design** with mobile-first approach
 - **Multiple variants** (default, contained, full-bleed)
 - **Scroll animations** with intersection observer
-- **Parallax effects** for enhanced visual appeal
 - **Lazy loading** with loading states and error handling
 - **Accessibility focused** with proper ARIA attributes
 - **Analytics integration** for interaction tracking
-- **Dark mode support** with automatic theme adaptation
 
 ## Usage
 
@@ -153,7 +151,7 @@ Extends to full viewport width, breaking out of container.
 
 ```javascript
 // Get component instance
-const element = document.querySelector(".fifty-fifty");
+const element = document.querySelector(".ast-fifty-fifty");
 const component = element.fiftyFiftyComponent;
 
 // Methods
@@ -198,23 +196,23 @@ document.addEventListener("fifty-fifty:analytics", (event) => {
 
 The component uses CSS classes that can be customized:
 
-- `.fifty-fifty` - Base component container
-- `.fifty-fifty--default` - Default variant
-- `.fifty-fifty--contained` - Contained variant
-- `.fifty-fifty--full-bleed` - Full bleed variant
-- `.fifty-fifty__image` - Image container
-- `.fifty-fifty__content` - Content container
-- `.fifty-fifty__title` - Main heading
-- `.fifty-fifty__subtitle` - Subtitle/eyebrow text
-- `.fifty-fifty__body` - Main content area
-- `.fifty-fifty__actions` - Action buttons container
+- `.ast-fifty-fifty` - Base component container
+- `.ast-fifty-fifty--default` - Default variant
+- `.ast-fifty-fifty--contained` - Contained variant
+- `.ast-fifty-fifty--full-bleed` - Full bleed variant
+- `.ast-fifty-fifty__image` - Image container
+- `.ast-fifty-fifty__content` - Content container
+- `.ast-fifty-fifty__title` - Main heading
+- `.ast-fifty-fifty__subtitle` - Subtitle/eyebrow text
+- `.ast-fifty-fifty__body` - Main content area
+- `.ast-fifty-fifty__actions` - Action buttons container
 
 ### State Classes
 
-- `.fifty-fifty--in-view` - Applied when component enters viewport
-- `.fifty-fifty__image-wrapper--loading` - Loading state for images
-- `.fifty-fifty__img--loaded` - Applied when image loads successfully
-- `.fifty-fifty__img--error` - Applied when image fails to load
+- `.ast-fifty-fifty--in-view` - Applied when component enters viewport
+- `.ast-fifty-fifty__image-wrapper--loading` - Loading state for images
+- `.ast-fifty-fifty__ast-img--loaded` - Applied when image loads successfully
+- `.ast-fifty-fifty__ast-img--error` - Applied when image fails to load
 
 ## Accessibility
 
@@ -315,7 +313,7 @@ The component uses CSS classes that can be customized:
   title="Immersive Experience"
   data-animate="true"
   data-parallax="true"
-  class="fifty-fifty__image--parallax"
+  class="ast-fifty-fifty__image--parallax"
 >
   <p>Experience smooth parallax scrolling effects that bring your content to life.</p>
 </FiftyFifty>

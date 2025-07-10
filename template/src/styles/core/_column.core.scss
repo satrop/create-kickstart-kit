@@ -19,7 +19,7 @@
       @if $is-sm {
         grid-column-start: #{$i};
       } @else {
-        @include respond-to($breakpoint) {
+        @include break($breakpoint) {
           grid-column-start: #{$i};
         }
       }
@@ -29,7 +29,7 @@
       @if $is-sm {
         grid-column: span #{$i} / span #{$i};
       } @else {
-        @include respond-to($breakpoint) {
+        @include break($breakpoint) {
           grid-column: span #{$i} / span #{$i};
         }
       }
@@ -43,7 +43,7 @@
     @if $bp == sm {
       grid-column: span #{$cols} / span #{$cols};
     } @else {
-      @include respond-to($bp) {
+      @include break($bp) {
         grid-column: span #{$cols} / span #{$cols};
       }
     }
@@ -61,7 +61,7 @@
         @if $is-sm {
           grid-column: #{$start} / span #{$span};
         } @else {
-          @include respond-to($breakpoint) {
+          @include break($breakpoint) {
             grid-column: #{$start} / span #{$span};
           }
         }

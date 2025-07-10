@@ -2,8 +2,7 @@
 import "../../styles/demo.scss";
 
 import Layout from "../../layouts/Layout.astro";
-import InlineImage from "../../components/InlineImage/InlineImage.astro";
-import Figure from "../../components/Figure/Figure.astro";
+import ImageComponent from "../../components/Image/Image.astro";
 ---
 
 <Layout title="Images Demo - Components">
@@ -27,29 +26,55 @@ import Figure from "../../components/Figure/Figure.astro";
         <section class="demo-section">
           <div class="section-grid">
             <div class="col-full">
-              <h2>Inline Images</h2>
-              <p>Inline images are perfect for embedding images within text content with text wrapping around them.</p>
+              <h2>Images</h2>
+              <p>
+                Align images using the <code>align</code> prop:. Images will align left, right, or center. Left is the default
+                alignment.
+              </p>
 
               <div class="demo-example">
                 <div class="demo-preview contain-floats">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    <InlineImage
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor, sit amet consectetur
+                    adipisicing elit. Placeat, odit voluptates! Illum repellendus nam perferendis similique recusandae
+                    veniam corporis incidunt consequatur pariatur. Ipsa, laboriosam, alias nostrum possimus non iusto
+                    necessitatibus quidem, nobis omnis odit quia nemo. Exercitationem, ipsum ea laboriosam maiores illo
+                    quis. Veniam corporis reprehenderit, esse magnam nihil exercitationem illo sequi beatae. Doloremque
+                    ratione excepturi, itaque aut asperiores necessitatibus officiis ipsam nulla ex maxime totam fugiat
+                    reprehenderit esse enim corporis? Molestiae perspiciatis consequuntur ipsum sed ut provident
+                    reprehenderit natus nam dolor suscipit velit cumque sint incidunt rerum officiis deleniti nulla,
+                    accusantium ad nihil? Magnam illo quos deleniti molestias commodi pariatur quidem, dolores non atque
+                    quaerat cum fugiat fugit exercitationem!
+                    <ImageComponent
                       src="/images/image1.jpg"
-                      alt="Sample image 1"
-                      align="left"
+                      alt="Beautiful landscape with mountains and sky"
                       size="small"
-                      caption="Small left-aligned image"
+                      caption="A breathtaking mountain landscape at golden hour"
                     />
                     Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                     exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor, sit amet consectetur
+                    adipisicing elit. Voluptas dolor tempora, perferendis minima ab illo beatae, nostrum aliquid rerum sit
+                    doloremque ipsam numquam laborum dolorem alias vero mollitia odio quis. Dolore eum quo tempore ratione
+                    perspiciatis, itaque quibusdam officiis facere cupiditate odio! Corrupti harum similique consequatur
+                    ratione, non voluptate mollitia fugit commodi molestiae perferendis perspiciatis expedita, cum soluta
+                    pariatur aut quidem repudiandae. Dignissimos nostrum qui dolore repudiandae ipsa ratione dolores quia?
+                    Veniam delectus facere illum voluptatem inventore consequatur, nemo natus expedita dolores iure, dolor,
+                    consequuntur sunt. Ad ipsa expedita vero ipsum ratione voluptatem odio beatae, fugit exercitationem sequi
+                    hic voluptatum.
                   </p>
 
                   <p>
                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                    est laborum.
-                    <InlineImage
+                    est laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa soluta nihil iste
+                    consequatur ullam voluptatum delectus magnam dolorum quisquam in cupiditate esse consectetur
+                    numquam, vitae deleniti laboriosam sed earum ut officia facilis alias rerum? Fuga et, esse unde
+                    rerum eveniet ipsa minima dolorum ullam delectus molestias saepe distinctio aperiam id omnis sed
+                    nobis vel assumenda quidem quas commodi voluptatum iste tempore sint. Repellat mollitia fuga ullam
+                    dolorem deserunt consequuntur commodi doloribus quam at. Ut laboriosam similique sit, provident
+                    veritatis nihil porro minus distinctio harum, exercitationem ex! Nisi provident neque doloribus, aut
+                    omnis nesciunt? Ad, eum quibusdam. Nisi dolor saepe unde.
+                    <ImageComponent
                       src="/images/image2.jpg"
                       alt="Sample image 2"
                       align="right"
@@ -58,34 +83,49 @@ import Figure from "../../components/Figure/Figure.astro";
                     />
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
                     rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                    explicabo.
+                    explicabo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum rem autem et velit ad non vel
+                    in consequuntur quia, illo, quibusdam dolor quos aliquid, accusamus nulla. Sapiente labore eaque, dicta
+                    cum dolore culpa illum adipisci, iste commodi quos esse modi repudiandae, aspernatur ullam? Quidem dolorem
+                    sequi ducimus asperiores nam a, cupiditate soluta error odit incidunt laborum iusto recusandae doloribus
+                    at quia ratione esse nostrum accusamus laudantium deserunt aliquid consequatur voluptates. Vitae officia
+                    itaque molestias numquam earum optio, deleniti voluptatum nihil placeat atque repellat tempora magnam
+                    incidunt quod autem perferendis facilis hic corrupti? Autem, delectus laudantium. Molestias architecto
+                    doloremque accusantium in. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum explicabo
+                    alias maxime totam dolor facilis asperiores, esse sit delectus provident ducimus nisi numquam qui labore
+                    veniam ex beatae repudiandae eum consequatur aspernatur, corporis amet sapiente. Laboriosam omnis harum,
+                    eum quam nesciunt officiis reprehenderit molestiae similique cum! Eligendi debitis deleniti ipsa voluptatum
+                    tenetur veniam unde consequuntur officiis molestias dolore perspiciatis harum, mollitia aperiam culpa
+                    velit rem esse alias adipisci qui tempore eos impedit autem eius animi? Cupiditate velit sequi beatae
+                    praesentium, laborum eum ducimus, eligendi ipsam vero nulla voluptate? Obcaecati corrupti laudantium
+                    voluptates odit quibusdam ipsam tempore aliquid velit cupiditate excepturi molestiae recusandae quaerat
+                    minus sed culpa quia at inventore molestias temporibus quidem perferendis maxime, rerum accusantium?
+                    Qui repellendus blanditiis quaerat porro deleniti possimus deserunt saepe voluptate ab. Neque debitis
+                    illo dolorem dolores error sunt beatae veniam non praesentium modi, possimus porro unde saepe eum repellat.
+                    Commodi asperiores accusamus quibusdam facilis autem? Illo aut tempore adipisci fugit quas est totam
+                    facere cum doloremque dignissimos velit alias eos amet, non ad atque inventore nulla. Iusto dolor, dolorum
+                    ducimus, eveniet perspiciatis illo sunt fugit vero, libero praesentium molestias voluptatum ipsa earum.
+                    Nihil, reprehenderit ab minus in corrupti ut. Ducimus quo accusamus praesentium excepturi.
                   </p>
                 </div>
 
                 <div class="demo-code">
-                  <pre><code>&lt;p&gt;
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  &lt;InlineImage
-    src="/images/image1.jpg"
-    alt="Sample image 1"
-    align="left"
-    size="small"
-    caption="Small left-aligned image"
-  /&gt;
-  Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
-&lt;/p&gt;
+                  <pre><code>
+&lt;ImageComponent
+  src="/images/image1.jpg"
+  alt="Beautiful landscape with mountains and sky"
+  size="small"
+  caption="A breathtaking mountain landscape at golden hour"
+/&gt;
 
-&lt;p&gt;
-  Excepteur sint occaecat cupidatat non proident...
-  &lt;InlineImage
-    src="/images/image2.jpg"
-    alt="Sample image 2"
-    align="right"
-    size="medium"
-    caption="Medium right-aligned image"
-  /&gt;
-  Sed ut perspiciatis unde omnis iste natus error...
-&lt;/p&gt;</code></pre>
+&lt;ImageComponent
+  src="/images/image2.jpg"
+  alt="Sample image 2"
+  align="right"
+  size="medium"
+  caption="Medium right-aligned image"
+/&gt;
+
+</code></pre>
                 </div>
               </div>
             </div>
@@ -95,160 +135,65 @@ import Figure from "../../components/Figure/Figure.astro";
         <section class="demo-section">
           <div class="section-grid">
             <div class="col-full">
-              <h2>Figure Components</h2>
-              <p>Figure components provide semantic markup for standalone images with captions.</p>
+              <h2>Image Sizes</h2>
+              <p>
+                Image sizes can be adjusted using the <code>size</code> prop. Available sizes are <code>small</code>, <code
+                  >medium</code
+                >, and <code>large</code>.
+              </p>
 
               <div class="demo-example">
                 <div class="demo-preview">
-                  <Figure
+                  <ImageComponent
                     src="/images/image5.jpg"
                     alt="Landscape photography example"
                     caption="A beautiful landscape captured during golden hour"
+                    size="small"
+                    align="center"
+                  />
+
+                  <ImageComponent
+                    src="/images/image6.jpg"
+                    alt="Architecture photography"
+                    caption="Modern architecture showcasing clean lines and geometric patterns"
                     size="medium"
                     align="center"
                   />
 
-                  <Figure
-                    src="/images/image6.jpg"
-                    alt="Architecture photography"
-                    caption="Modern architecture showcasing clean lines and geometric patterns"
+                  <ImageComponent
+                    src="/images/image7.jpg"
+                    alt="Landscape photography example"
+                    caption="A beautiful landscape captured during golden hour"
                     size="large"
                     align="center"
                   />
                 </div>
-
                 <div class="demo-code">
-                  <pre><code>&lt;Figure
+                  <pre><code>
+&lt;ImageComponent
   src="/images/image5.jpg"
   alt="Landscape photography example"
   caption="A beautiful landscape captured during golden hour"
+  size="small"
+  align="center"
+/&gt;
+
+&lt;ImageComponent
+  src="/images/image6.jpg"
+  alt="Architecture photography"
+  caption="Modern architecture showcasing clean lines and geometric patterns"
   size="medium"
   align="center"
 /&gt;
 
-&lt;Figure
-  src="/images/image6.jpg"
-  alt="Architecture photography"
-  caption="Modern architecture showcasing clean lines and geometric patterns"
-  size="large"
-  align="center"
-/&gt;</code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Aligned Figures</h2>
-              <p>Figures can be aligned to flow with text content for supporting visuals.</p>
-
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <Figure
-                    src="/images/image1.jpg"
-                    alt="Small figure example"
-                    caption="Small left-aligned figure"
-                    size="small"
-                    align="left"
-                  />
-
-                  <p>
-                    This paragraph demonstrates how content flows around left-aligned figures. The figure floats to the
-                    left while this text content flows naturally around it. This is particularly useful for smaller
-                    images that support the main content without overwhelming it.
-                  </p>
-
-                  <Figure
-                    src="/images/image2.jpg"
-                    alt="Small figure example"
-                    caption="Small right-aligned figure with detailed caption"
-                    size="small"
-                    align="right"
-                  />
-
-                  <p>
-                    Similarly, right-aligned figures work well for supporting images. The text flows around the image
-                    naturally, creating an organic reading experience. This is especially effective for portraits,
-                    icons, or supplementary visual content that enhances the main text.
-                  </p>
-                </div>
-
-                <div class="demo-code">
-                  <pre><code>&lt;Figure
-  src="/images/image1.jpg"
-  alt="Small figure example"
-  caption="Small left-aligned figure"
-  size="small"
-  align="left"
-/&gt;
-
-&lt;p&gt;
-  This paragraph demonstrates how content flows around left-aligned figures...
-&lt;/p&gt;
-
-&lt;Figure
-  src="/images/image2.jpg"
-  alt="Small figure example"
-  caption="Small right-aligned figure with detailed caption"
-  size="small"
-  align="right"
-/&gt;
-
-&lt;p&gt;
-  Similarly, right-aligned figures work well for supporting images...
-&lt;/p&gt;</code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Advanced Features</h2>
-              <p>Rich caption formatting, full-width figures, and loading states.</p>
-
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <Figure
-                    src="/images/image7.jpg"
-                    alt="Team collaboration"
-                    caption="Our development team collaborating on the <em>latest project</em>. Photo by <strong>John Photographer</strong>. <a href='#'>View gallery</a>."
-                    size="large"
-                    align="center"
-                  />
-
-                  <Figure
-                    src="/images/image3.jpg"
-                    alt="Hero image example"
-                    caption="Full-width figure perfect for hero images and impactful visuals"
-                    size="full"
-                    priority={true}
-                    lazy={false}
-                  />
-                </div>
-
-                <div class="demo-code">
-                  <pre><code>&lt;Figure
+&lt;ImageComponent
   src="/images/image7.jpg"
-  alt="Team collaboration"
-  caption="Our development team collaborating on the &lt;em&gt;latest project&lt;/em&gt;. Photo by &lt;strong&gt;John Photographer&lt;/strong&gt;. &lt;a href='#'&gt;View gallery&lt;/a&gt;."
+  alt="Landscape photography example"
+  caption="A beautiful landscape captured during golden hour"
   size="large"
   align="center"
 /&gt;
-
-&lt;Figure
-  src="/images/image3.jpg"
-  alt="Hero image example"
-  caption="Full-width figure perfect for hero images and impactful visuals"
-  size="full"
-  priority={true}
-  lazy={false}
-/&gt;</code></pre>
+                  </code></pre>
                 </div>
               </div>
             </div>
@@ -265,23 +210,21 @@ import Figure from "../../components/Figure/Figure.astro";
                 <div class="demo-preview">
                   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                     <div>
-                      <h4>With Fallback</h4>
-                      <Figure
-                        src="/images/might-not-exist.jpg"
-                        alt="Image with fallback"
-                        fallback="/images/image1.jpg"
-                        caption="This image will fallback to a working image if the primary fails"
-                        size="medium"
+                      <h4>Broken Image</h4>
+                      <ImageComponent
+                        src="/images/broken-image-test.jpg"
+                        alt="Broken image test"
+                        caption="This image is intentionally broken to show error state"
                       />
                     </div>
 
                     <div>
                       <h4>Lazy Loading</h4>
-                      <Figure
+
+                      <ImageComponent
                         src="/images/image4.jpg"
                         alt="Lazy loaded image"
                         caption="This image will load when it comes into view"
-                        size="medium"
                         lazy={true}
                       />
                     </div>
@@ -289,21 +232,20 @@ import Figure from "../../components/Figure/Figure.astro";
                 </div>
 
                 <div class="demo-code">
-                  <pre><code>&lt;Figure
-  src="/images/might-not-exist.jpg"
-  alt="Image with fallback"
-  fallback="/images/image1.jpg"
-  caption="This image will fallback to a working image if the primary fails"
-  size="medium"
+                  <pre><code>
+&lt;ImageComponent
+  src="/images/broken-image-test.jpg"
+  alt="Broken image test"
+  caption="This image is intentionally broken to show error state"
 /&gt;
 
-&lt;Figure
+&lt;ImageComponent
   src="/images/image4.jpg"
   alt="Lazy loaded image"
   caption="This image will load when it comes into view"
-  size="medium"
   lazy={true}
-/&gt;</code></pre>
+/&gt;
+</code></pre>
                 </div>
               </div>
             </div>
@@ -319,7 +261,7 @@ import Figure from "../../components/Figure/Figure.astro";
 
           <div class="section-grid">
             <div class="col-full">
-              <h3>InlineImage Props</h3>
+              <h3>Image Props</h3>
               <div class="props-table">
                 <table>
                   <thead>
@@ -366,76 +308,6 @@ import Figure from "../../components/Figure/Figure.astro";
                       <td><code>boolean</code></td>
                       <td><code>true</code></td>
                       <td>Whether to lazy load the image</td>
-                    </tr>
-                    <tr>
-                      <td><code>fallback</code></td>
-                      <td><code>string</code></td>
-                      <td><code>undefined</code></td>
-                      <td>Fallback image URL if the primary image fails to load</td>
-                    </tr>
-                    <tr>
-                      <td><code>priority</code></td>
-                      <td><code>boolean</code></td>
-                      <td><code>false</code></td>
-                      <td>High priority loading for above-the-fold images</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <h3>Figure Props</h3>
-              <div class="props-table">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Prop</th>
-                      <th>Type</th>
-                      <th>Default</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>src</code></td>
-                      <td><code>string</code></td>
-                      <td><code>required</code></td>
-                      <td>The image source URL or path</td>
-                    </tr>
-                    <tr>
-                      <td><code>alt</code></td>
-                      <td><code>string</code></td>
-                      <td><code>required</code></td>
-                      <td>Alternative text for accessibility</td>
-                    </tr>
-                    <tr>
-                      <td><code>caption</code></td>
-                      <td><code>string</code></td>
-                      <td><code>undefined</code></td>
-                      <td>Figure caption (supports HTML formatting)</td>
-                    </tr>
-                    <tr>
-                      <td><code>size</code></td>
-                      <td><code>"small" | "medium" | "large" | "full"</code></td>
-                      <td><code>"medium"</code></td>
-                      <td>The display size of the figure</td>
-                    </tr>
-                    <tr>
-                      <td><code>align</code></td>
-                      <td><code>"left" | "center" | "right"</code></td>
-                      <td><code>"center"</code></td>
-                      <td>How the figure is aligned within its container</td>
-                    </tr>
-                    <tr>
-                      <td><code>lazy</code></td>
-                      <td><code>boolean</code></td>
-                      <td><code>true</code></td>
-                      <td>Whether to lazy load the image</td>
-                    </tr>
-                    <tr>
-                      <td><code>fallback</code></td>
-                      <td><code>string</code></td>
-                      <td><code>undefined</code></td>
-                      <td>Fallback image URL if the primary image fails to load</td>
                     </tr>
                     <tr>
                       <td><code>priority</code></td>

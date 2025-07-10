@@ -11,7 +11,7 @@
 
   > * + * {
     @each $breakpoint, $value in $map {
-      @include respond-to(#{$breakpoint}) {
+      @include break(#{$breakpoint}) {
         #{$property}: if($negative, -1 * $value, $value);
       }
     }

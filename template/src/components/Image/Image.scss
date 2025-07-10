@@ -1,0 +1,92 @@
+@use "../../styles/core/breakpoint.core" as *;
+
+.ast-image {
+  display: block;
+  margin-block: 1rem;
+  position: relative;
+
+  &--left {
+    float: left;
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &--right {
+    float: right;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &--center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+  }
+
+  &--small {
+    max-width: 200px;
+  }
+
+  &--medium {
+    max-width: 400px;
+  }
+
+  &--large {
+    max-width: 600px;
+  }
+
+  &--auto {
+    max-width: 100%;
+  }
+
+  &--with-caption {
+    margin-bottom: 0.5rem;
+  }
+
+  &:has(.ast-img--error) {
+    width: 100%;
+  }
+}
+
+.ast-image__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.ast-image__caption {
+  display: block;
+  font-size: 0.875rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.4;
+  margin-top: 0.5rem;
+}
+
+/* Responsive behavior */
+@include break-to(md) {
+  .ast-image {
+    &--left,
+    &--right {
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    &--center {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 1rem;
+    }
+  }
+}

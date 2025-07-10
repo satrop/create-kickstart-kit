@@ -12,12 +12,17 @@ class GlobalImageHandler {
   init() {
     this.setupGlobalImageHandling();
     this.setupIntersectionObserver();
+    this.setupMutationObserver();
   }
 
   setupGlobalImageHandling() {
     // Handle all images with data-enhanced attribute
     const images = document.querySelectorAll('img[data-enhanced]');
     images.forEach(img => this.enhanceImage(img));
+    
+    // Handle Astro's image placeholders (for broken images)
+    const placeholders = document.querySelectorAll('.ast-img-placeholder');
+    placeholders.forEach(placeholder => this.handleImagePlaceholder(placeholder));
   }
 
   enhanceImage(img) {
@@ -25,31 +30,31 @@ class GlobalImageHandler {
     this.images.add(img);
 
     // Add loading class initially
-    img.classList.add('img--loading');
+    img.classList.add('ast-img--loading');
 
     // Handle successful load
     img.addEventListener('load', () => {
-      img.classList.remove('img--loading');
-      img.classList.add('img--loaded');
+      img.classList.remove('ast-img--loading');
+      img.classList.add('ast-img--loaded');
       img.removeAttribute('data-loading');
     });
 
     // Handle load error
     img.addEventListener('error', () => {
-      img.classList.remove('img--loading');
-      img.classList.add('img--error');
+      img.classList.remove('ast-img--loading');
+      img.classList.add('ast-img--error');
       img.removeAttribute('data-loading');
       this.handleImageError(img);
     });
 
     // Check if image is already loaded (cached)
     if (img.complete && img.naturalHeight !== 0) {
-      img.classList.remove('img--loading');
-      img.classList.add('img--loaded');
+      img.classList.remove('ast-img--loading');
+      img.classList.add('ast-img--loaded');
     } else if (img.complete) {
       // Image failed to load
-      img.classList.remove('img--loading');
-      img.classList.add('img--error');
+      img.classList.remove('ast-img--loading');
+      img.classList.add('ast-img--error');
       this.handleImageError(img);
     } else {
       img.setAttribute('data-loading', 'true');
@@ -62,8 +67,8 @@ class GlobalImageHandler {
 
     if (fallbackSrc && img.src !== fallbackSrc) {
       img.src = fallbackSrc;
-      img.classList.remove('img--error');
-      img.classList.add('img--loading');
+      img.classList.remove('ast-img--error');
+      img.classList.add('ast-img--loading');
     } else if (showPlaceholder) {
       this.createPlaceholder(img);
     }
@@ -73,7 +78,7 @@ class GlobalImageHandler {
 
   createPlaceholder(img) {
     const placeholder = document.createElement('div');
-    placeholder.className = 'img-placeholder';
+    placeholder.className = 'ast-img-placeholder';
     placeholder.innerHTML = `
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
@@ -86,9 +91,15 @@ class GlobalImageHandler {
     // Copy relevant styles from the original image
     if (img.style.width) placeholder.style.width = img.style.width;
     if (img.style.height) placeholder.style.height = img.style.height;
-    if (img.className) placeholder.className += ' ' + img.className.replace(/img--\w+/g, '');
+    if (img.className) placeholder.className += ' ' + img.className.replace(/ast-img--\w+/g, '');
 
     img.parentNode.replaceChild(placeholder, img);
+  }
+
+  handleImagePlaceholder(placeholder) {
+    // Apply error styling to Astro's image placeholders
+    placeholder.classList.add('ast-img--error');
+    console.warn('Image placeholder detected for failed image');
   }
 
   setupIntersectionObserver() {
@@ -128,6 +139,32 @@ class GlobalImageHandler {
     images.forEach(img => {
       img.setAttribute('data-enhanced', '');
       this.enhanceImage(img);
+    });
+  }
+
+  setupMutationObserver() {
+    // Watch for dynamically added image placeholders
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            // Check if the added node is a placeholder
+            if (node.classList && node.classList.contains('ast-img-placeholder')) {
+              this.handleImagePlaceholder(node);
+            }
+            // Check for placeholders within added nodes
+            const placeholders = node.querySelectorAll && node.querySelectorAll('.ast-img-placeholder');
+            if (placeholders) {
+              placeholders.forEach(placeholder => this.handleImagePlaceholder(placeholder));
+            }
+          }
+        });
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
     });
   }
 }

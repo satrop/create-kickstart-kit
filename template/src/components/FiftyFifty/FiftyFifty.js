@@ -1,30 +1,16 @@
 /**
  * FiftyFifty JavaScript functionality
- * Enhanced with global image handling and animation support
+ * Enhanced with animation support
  */
-
-import { GlobalImageHandler } from '../../utils/imageHandler.js';
 
 class FiftyFiftyComponent {
   constructor(element) {
     this.element = element;
-    this.image = element.querySelector('.fifty-fifty__img');
     this.init();
   }
 
   init() {
-    this.setupImageHandling();
     this.setupAnimations();
-  }
-
-  setupImageHandling() {
-    if (!this.image) return;
-    
-    // Add data-enhanced attribute for global image handler
-    this.image.setAttribute('data-enhanced', '');
-    
-    // Let the global image handler manage loading states
-    // The global handler will add img--loading, img--loaded, img--error classes
   }
 
   setupAnimations() {
@@ -33,7 +19,7 @@ class FiftyFiftyComponent {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('fifty-fifty--in-view');
+            entry.target.classList.add('ast-fifty-fifty--in-view');
             observer.unobserve(entry.target);
           }
         });

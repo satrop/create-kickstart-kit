@@ -1,0 +1,193 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ImageComponent from "../../components/Image/Image.astro";
+import "../../styles/demo.scss";
+---
+
+<Layout title="Image Component">
+  <Fragment slot="main">
+    <main id="main" class="layout-main" aria-label="Main content">
+      <div class="component-demo">
+        <header class="demo-header">
+          <div class="section-grid">
+            <div class="col-full">
+              <nav class="demo-nav">
+                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
+              </nav>
+              <h1>Image Component</h1>
+              <p class="demo-subtitle">
+                Flexible and feature-rich image component with support for lazy loading, fallbacks, captions, and
+                multiple alignment options.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Basic Usage</h2>
+              <p>A simple image with caption.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview">
+                  <ImageComponent
+                    src="/images/image1.jpg"
+                    alt="Beautiful landscape with mountains and sky"
+                    caption="A breathtaking mountain landscape at golden hour"
+                  />
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;Image
+  src="/images/image1.jpg"
+  alt="Beautiful landscape with mountains and sky"
+  caption="A breathtaking mountain landscape at golden hour"
+/&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Size Variants</h2>
+              <p>Different size presets for various use cases.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview">
+                  <h3>Auto (Default)</h3>
+                  <ImageComponent
+                    src="/images/image1.jpg"
+                    alt="Auto size image example"
+                    caption="Auto size - fills available space (default)"
+                  />
+
+                  <h3>Small</h3>
+                  <ImageComponent
+                    src="/images/image2.jpg"
+                    alt="Small image example"
+                    size="small"
+                    caption="Small image (max-width: 200px)"
+                  />
+
+                  <h3>Medium</h3>
+                  <ImageComponent
+                    src="/images/image3.jpg"
+                    alt="Medium image example"
+                    size="medium"
+                    caption="Medium image (max-width: 400px)"
+                  />
+
+                  <h3>Large</h3>
+                  <ImageComponent
+                    src="/images/image4.jpg"
+                    alt="Large image example"
+                    size="large"
+                    caption="Large image (max-width: 600px)"
+                  />
+
+                  <h3>Center Aligned</h3>
+                  <ImageComponent
+                    src="/images/image5.jpg"
+                    alt="Center aligned image example"
+                    align="center"
+                    size="medium"
+                    caption="Center aligned image"
+                  />
+                </div>
+
+                <div class="demo-code">
+                  <pre><code>&lt;Image src="/images/image1.jpg" alt="Auto image" /&gt; &lt;!-- Default: auto --&gt;
+&lt;Image src="/images/image2.jpg" alt="Small image" size="small" /&gt;
+&lt;Image src="/images/image3.jpg" alt="Medium image" size="medium" /&gt;
+&lt;Image src="/images/image4.jpg" alt="Large image" size="large" /&gt;
+&lt;Image src="/images/image5.jpg" alt="Center image" align="center" /&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Props Reference</h2>
+
+              <div class="props-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Prop</th>
+                      <th>Type</th>
+                      <th>Default</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>src</code></td>
+                      <td><code>string</code></td>
+                      <td>Required</td>
+                      <td>Source URL for the image</td>
+                    </tr>
+                    <tr>
+                      <td><code>alt</code></td>
+                      <td><code>string</code></td>
+                      <td>Required</td>
+                      <td>Alt text for the image (accessibility)</td>
+                    </tr>
+                    <tr>
+                      <td><code>align</code></td>
+                      <td><code>"left" | "right" | "center"</code></td>
+                      <td><code>"left"</code></td>
+                      <td>Image alignment (float left/right, or center)</td>
+                    </tr>
+                    <tr>
+                      <td><code>size</code></td>
+                      <td><code>"small" | "medium" | "large" | "auto"</code></td>
+                      <td><code>"auto"</code></td>
+                      <td>Predefined size constraints</td>
+                    </tr>
+                    <tr>
+                      <td><code>caption</code></td>
+                      <td><code>string</code></td>
+                      <td><code>undefined</code></td>
+                      <td>Optional caption text</td>
+                    </tr>
+                    <tr>
+                      <td><code>lazy</code></td>
+                      <td><code>boolean</code></td>
+                      <td><code>true</code></td>
+                      <td>Whether to lazy load the image</td>
+                    </tr>
+                    <tr>
+                      <td><code>priority</code></td>
+                      <td><code>boolean</code></td>
+                      <td><code>false</code></td>
+                      <td>Override lazy loading for critical images</td>
+                    </tr>
+                    <tr>
+                      <td><code>width</code></td>
+                      <td><code>number</code></td>
+                      <td><code>400</code></td>
+                      <td>Image width</td>
+                    </tr>
+                    <tr>
+                      <td><code>height</code></td>
+                      <td><code>number</code></td>
+                      <td><code>300</code></td>
+                      <td>Image height</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </Fragment>
+</Layout>

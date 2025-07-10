@@ -30,14 +30,14 @@ const contentOrder = imagePosition === "left" ? "order-2" : "order-1";
 const imageOrder = imagePosition === "left" ? "order-1" : "order-2";
 ---
 
-<section class={`fifty-fifty fifty-fifty--${variant}`}>
+<section class={`ast-fifty-fifty ast-fifty-fifty--${variant}`}>
   <div class="section-grid">
-    <div class={`col-4 md:col-4 lg:col-6 fifty-fifty__image ${imageOrder}`}>
-      <div class="fifty-fifty__image-wrapper">
+    <div class={`col-4 md:col-4 lg:col-6 ast-fifty-fifty__image ${imageOrder}`}>
+      <div class="ast-fifty-fifty__image-wrapper">
         <Image
           src={asset(imageSrc)}
           alt={imageAlt}
-          class="fifty-fifty__img"
+          class="ast-fifty-fifty__img"
           loading={priority ? "eager" : lazy ? "lazy" : "eager"}
           width={600}
           height={400}
@@ -46,16 +46,17 @@ const imageOrder = imagePosition === "left" ? "order-1" : "order-2";
       </div>
     </div>
 
-    <div class={`col-4 md:col-4 lg:col-6 fifty-fifty__content fifty-fifty__content--${alignment} ${contentOrder}`}>
-      <div class="fifty-fifty__content-wrapper">
-        {subtitle && <p class="fifty-fifty__subtitle">{subtitle}</p>}
-        <h2 class="fifty-fifty__title">{title}</h2>
-        <div class="fifty-fifty__body">
+    <div
+      class={`col-4 md:col-4 lg:col-6 ast-fifty-fifty__content ast-fifty-fifty__content--${alignment} ${contentOrder}`}>
+      <div class="ast-fifty-fifty__content-wrapper">
+        {subtitle && <p class="ast-fifty-fifty__subtitle">{subtitle}</p>}
+        <h2 class="ast-fifty-fifty__title">{title}</h2>
+        <div class="ast-fifty-fifty__body">
           <slot />
         </div>
         {
           Astro.slots.has("actions") && (
-            <div class="fifty-fifty__actions">
+            <div class="ast-fifty-fifty__actions">
               <slot name="actions" />
             </div>
           )

@@ -3,7 +3,7 @@
 @use "../tokens/grid/grid-vars" as *;
 
 @each $breakpoint, $value in $main-margins {
-  @include respond-to(#{$breakpoint}) {
+  @include break(#{$breakpoint}) {
     :root {
       --main-margins: #{$value};
     }
@@ -11,7 +11,7 @@
 }
 
 @each $breakpoint, $value in $outer-margins {
-  @include respond-to(#{$breakpoint}) {
+  @include break(#{$breakpoint}) {
     :root {
       --outer-margins: #{$value};
     }
@@ -30,12 +30,12 @@
   column-gap: map.get($grid-gaps, sm);
   grid-template-columns: repeat(#{map.get($grid-columns, sm)}, 1fr);
 
-  @include respond-to(md) {
+  @include break(md) {
     column-gap: map.get($grid-gaps, md);
     grid-template-columns: repeat(#{map.get($grid-columns, md)}, 1fr);
   }
 
-  @include respond-to(lg) {
+  @include break(lg) {
     column-gap: map.get($grid-gaps, lg);
     grid-template-columns: repeat(#{map.get($grid-columns, lg)}, 1fr);
   }
@@ -66,7 +66,7 @@
 .layout-wide {
   grid-column: outer-start / outer-end;
 
-  @include respond-to(md) {
+  @include break(md) {
     grid-column: wide-start / wide-end;
   }
 }
@@ -78,7 +78,7 @@
 .layout-main {
   grid-column: wide-start / wide-end;
 
-  @include respond-to(md) {
+  @include break(md) {
     grid-column: main-start / main-end;
   }
 }
@@ -86,7 +86,7 @@
 .layout-breakout-left {
   grid-column: outer-start / wide-end;
 
-  @include respond-to(md) {
+  @include break(md) {
     grid-column: outer-start / main-end;
   }
 }
@@ -94,7 +94,7 @@
 .layout-breakout-right {
   grid-column: wide-start / outer-end;
 
-  @include respond-to(md) {
+  @include break(md) {
     grid-column: main-start / outer-end;
   }
 }
