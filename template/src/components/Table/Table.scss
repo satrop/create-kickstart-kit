@@ -1,0 +1,111 @@
+// !important
+// All tables styles MUST be defined inside its wrapping class
+// to avoid conflicts within the CMS. Do NOT use class names
+// on the table itself
+@use "@/styles/core/breakpoint.core" as *;
+
+.ast-table-wrapper {
+  position: relative;
+
+  .ast-table-scroll-container {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+
+      &:hover {
+        background: #999;
+      }
+    }
+  }
+
+  .ast-table-scroll-indicator {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 8px 16px;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+    color: #666;
+    text-align: center;
+
+    &.visible {
+      display: flex;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      color: #666;
+      flex-shrink: 0;
+    }
+
+    span {
+      white-space: nowrap;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 1px solid #ddd;
+    min-width: 600px; // Ensure table has a minimum width to trigger scroll
+
+    th,
+    td {
+      padding: 0.75rem;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid #ddd;
+      white-space: nowrap; // Prevent text wrapping to trigger horizontal scroll
+    }
+
+    th {
+      background-color: #f8f9fa;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #e9ecef;
+    }
+  }
+
+  // Responsive breakpoints
+  @include break-from(md) {
+    .ast-table-scroll-indicator {
+      font-size: 0.75rem;
+      padding: 6px 12px;
+      margin-bottom: 6px;
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+}

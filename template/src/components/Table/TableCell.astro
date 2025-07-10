@@ -1,0 +1,7 @@
+---
+const { class: className, colspan, rowspan, scope, headers, ...rest } = Astro.props;
+---
+
+<td class={className} colspan={colspan} rowspan={rowspan} scope={scope} headers={headers} {...rest}>
+  <slot />
+</td>

@@ -1,3 +1,12 @@
+// !important
+// This pointer-events: none;
+// is necessary to prevent pointer events on the button's children,
+// allowing the button to be clickable and avoiding issues within the CMS.
+
+.bth > * {
+  pointer-events: none;
+}
+
 .btn {
   /* Base styles - minimal and functional */
   display: inline-flex;

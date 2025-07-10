@@ -4,18 +4,18 @@
 // - Proper semantic structure
 // - Screen reader support
 
-import { asset } from "../utils/assets";
+import { asset } from "@/utils/assets";
 
 interface Props {
   title?: string;
 }
 
 const { title = "Kickstart" } = Astro.props as Props;
-import "../styles/main.scss";
-import "../styles/swiper-imports.css";
+import "@/styles/main.scss";
+import "@/styles/swiper-imports.css";
 
 // Remove from the final build
-import "../styles/demo.scss";
+import "@/styles/demo.scss";
 ---
 
 <!doctype html>

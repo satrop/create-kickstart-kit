@@ -4,7 +4,7 @@
  */
 
 // Import global utilities
-import '../src/utils/imageHandler.js';
+import '../utils/imageHandler.js';
 
 // Import component init functions
 import { initButton } from '../components/Button/Button.js';
@@ -21,6 +21,7 @@ import { initMobileNavigation } from '../components/MegaNavigation/MobileNavigat
 import { initRadioGroup } from '../components/RadioGroup/RadioGroup.js';
 import { initSelect } from '../components/Select/Select.js';
 import { initMainSlider } from '../components/Slider/Slider.js';
+import { initTable } from '../components/Table/Table.js';
 import { initTextarea } from '../components/Textarea/Textarea.js';
 
 // Initialize all components
@@ -39,8 +40,8 @@ function initializeApp() {
   initRadioGroup();
   initSelect();
   initMainSlider();
+  initTable();
   initTextarea();
-
 }
 
 document.addEventListener('DOMContentLoaded', initializeApp);

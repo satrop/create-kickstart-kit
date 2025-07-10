@@ -1,6 +1,6 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Card from "../../components/Card/Card.astro";
+import Layout from "@/layouts/Layout.astro";
+import Card from "@/components/Card/Card.astro";
 import {
   getColorEntries,
   getColorName,
@@ -8,7 +8,7 @@ import {
   getTextExamples,
   getExampleColor,
   getCSSExampleColors,
-} from "../../styles/core/colors-data.core";
+} from "@/styles/core/colors-data.core";
 
 const colorEntries = getColorEntries();
 const backgroundExamples = getBackgroundExamples();
@@ -165,7 +165,7 @@ const cssExamples = getCSSExampleColors();
 </Layout>
 
 <style lang="scss">
-  @use "../../styles/core/owl.core";
+  @use "@/styles/core/owl.core";
 
   .colors-page {
     padding: 2rem 0;

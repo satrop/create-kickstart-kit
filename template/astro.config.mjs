@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config'
 import siteConfig from './site.config.js'
 import { astPrefixIntegration } from './scripts/ast-prefix-integration.js'
+import path from 'path';
 
 // Determine base path from configuration
 const getBasePath = () => {
@@ -49,6 +50,7 @@ export default defineConfig({
     plugins: [],
     resolve: {
       alias: {
+        '@': path.resolve('./src'),
         '@components': '/src/components',
         '@layouts': '/src/layouts',
         '@styles': '/src/styles',

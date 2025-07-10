@@ -1,0 +1,27 @@
+---
+const { class: className } = Astro.props;
+---
+
+<div class={className ?? "ast-table-wrapper"} data-table-responsive>
+  <div class="ast-table-scroll-indicator" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 18l-6-6 6-6"></path>
+    </svg>
+    <span>Scroll to see more</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18l6-6-6-6"></path>
+    </svg>
+  </div>
+
+  <div class="ast-table-scroll-container">
+    <table>
+      <thead>
+        <slot name="header" />
+      </thead>
+      <tbody>
+        <slot name="body" />
+      </tbody>
+      <slot name="footer" />
+    </table>
+  </div>
+</div>
