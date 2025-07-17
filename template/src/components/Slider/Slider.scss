@@ -5,17 +5,32 @@
   margin: 0 auto;
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+  // box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
   background: #fff;
 }
 
 .swiper .swiper-slide {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  height: 360px;
+  min-height: 360px;
+  height: auto;
   background: #f8fafc;
   padding: 0;
+
+  // Ensure cards fill the full height of the slide
+  .card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // For image-only slides, maintain aspect ratio
+  &:not(:has(.card)) {
+    height: 360px;
+    align-items: center;
+  }
 }
 
 .swiper img {
@@ -27,4 +42,42 @@
   aspect-ratio: 3/2;
   background: #e5e7eb;
   display: block;
+}
+
+// Enhanced styles for cards in sliders
+.swiper .swiper-slide .card {
+  margin: 0;
+  box-shadow: none; // Remove default card shadow since slider has its own
+  border-radius: 0; // Match slider border radius
+
+  .card__body {
+    flex: 1; // Allow content area to grow
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card__content {
+    flex: 1; // Allow main content to expand
+  }
+
+  .card__footer {
+    margin-top: auto; // Push footer to bottom
+  }
+}
+
+// Ensure consistent image sizing in slider cards
+.swiper .swiper-slide .card .card__image {
+  .card__image-element {
+    height: 200px; // Fixed height for consistency
+    object-fit: cover;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .swiper .swiper-slide .card .card__image {
+    .card__image-element {
+      height: 150px; // Smaller on mobile
+    }
+  }
 }

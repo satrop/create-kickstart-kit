@@ -1,0 +1,570 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import TabsComponent from "@/components/Tabs/Tabs.astro";
+
+import "@/styles/demo.scss";
+
+const basicTabs = [
+  {
+    id: "overview",
+    label: "Overview",
+    content: "This is a simple text content tab. Perfect for basic information and descriptions.",
+  },
+  {
+    id: "features",
+    label: "Key Features",
+    htmlContent: `
+      <h3>Key Features</h3>
+      <ul>
+        <li><strong>Accessibility:</strong> Full ARIA support and keyboard navigation</li>
+        <li><strong>Responsive:</strong> Works on all device sizes</li>
+        <li><strong>Flexible:</strong> Supports any content type</li>
+        <li><strong>Customizable:</strong> Multiple variants and orientations</li>
+      </ul>
+    `,
+  },
+  {
+    id: "gallery",
+    label: "Image Gallery",
+    htmlContent: `
+      <h3>Image Gallery</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 16px;">
+        <figure style="margin: 0;">
+          <img src="/images/image1.jpg" alt="Sample image 1" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;" />
+          <figcaption style="padding: 8px 0; font-size: 14px; color: #666;">Sample Image 1</figcaption>
+        </figure>
+        <figure style="margin: 0;">
+          <img src="/images/image2.jpg" alt="Sample image 2" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;" />
+          <figcaption style="padding: 8px 0; font-size: 14px; color: #666;">Sample Image 2</figcaption>
+        </figure>
+        <figure style="margin: 0;">
+          <img src="/images/image3.jpg" alt="Sample image 3" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;" />
+          <figcaption style="padding: 8px 0; font-size: 14px; color: #666;">Sample Image 3</figcaption>
+        </figure>
+      </div>
+    `,
+  },
+  {
+    id: "mobile-demo",
+    label: "Mobile Scrolling",
+    htmlContent: `
+      <h3>Mobile-Responsive Design</h3>
+      <p>On mobile devices, tabs automatically become horizontally scrollable when they don't fit.</p>
+      <ul>
+        <li>Smooth horizontal scrolling</li>
+        <li>Scroll indicators (fade effects)</li>
+        <li>Active tab auto-scrolls into view</li>
+        <li>Touch-friendly interaction</li>
+      </ul>
+      <p><strong>Try it:</strong> Resize your browser window or view on mobile to see the scrolling behavior!</p>
+    `,
+  },
+];
+
+const complexTabs = [
+  {
+    id: "interactive",
+    label: "Interactive Elements",
+    htmlContent: `
+      <h3>Interactive Content</h3>
+      <p>This tab demonstrates various interactive elements within tabs:</p>
+      
+      <div style="margin: 20px 0;">
+        <h4>Contact Form</h4>
+        <form style="max-width: 400px;">
+          <div style="margin-bottom: 16px;">
+            <label for="name" style="display: block; margin-bottom: 4px; font-weight: 500;">Name:</label>
+            <input type="text" id="name" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+          </div>
+          <div style="margin-bottom: 16px;">
+            <label for="email" style="display: block; margin-bottom: 4px; font-weight: 500;">Email:</label>
+            <input type="email" id="email" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+          </div>
+          <div style="margin-bottom: 16px;">
+            <label for="message" style="display: block; margin-bottom: 4px; font-weight: 500;">Message:</label>
+            <textarea id="message" rows="4" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; resize: vertical;"></textarea>
+          </div>
+        </form>
+      </div>
+      
+      <div style="margin: 20px 0;">
+        <h4>Action Buttons</h4>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <button type="button" class="btn btn--primary">Primary Action</button>
+          <button type="button" class="btn btn--secondary">Secondary Action</button>
+          <button type="button" class="btn btn--outline">Outline Button</button>
+        </div>
+      </div>
+    `,
+  },
+  {
+    id: "lists",
+    label: "Lists & Data",
+    htmlContent: `
+      <h3>Different List Types</h3>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-top: 16px;">
+        <div>
+          <h4>Unordered List</h4>
+          <ul>
+            <li>First item in the list</li>
+            <li>Second item with more details</li>
+            <li>Third item
+              <ul>
+                <li>Nested item A</li>
+                <li>Nested item B</li>
+              </ul>
+            </li>
+            <li>Fourth item</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4>Ordered List</h4>
+          <ol>
+            <li>Step one: Getting started</li>
+            <li>Step two: Configuration</li>
+            <li>Step three: Implementation</li>
+            <li>Step four: Testing</li>
+            <li>Step five: Deployment</li>
+          </ol>
+        </div>
+        
+        <div>
+          <h4>Definition List</h4>
+          <dl>
+            <dt style="font-weight: 600; margin-top: 8px;">HTML</dt>
+            <dd style="margin-left: 16px;">HyperText Markup Language</dd>
+            <dt style="font-weight: 600; margin-top: 8px;">CSS</dt>
+            <dd style="margin-left: 16px;">Cascading Style Sheets</dd>
+            <dt style="font-weight: 600; margin-top: 8px;">JS</dt>
+            <dd style="margin-left: 16px;">JavaScript</dd>
+          </dl>
+        </div>
+      </div>
+    `,
+  },
+  {
+    id: "media",
+    label: "Rich Media",
+    htmlContent: `
+      <h3>Multimedia Content</h3>
+      
+      <div style="margin: 20px 0;">
+        <h4>Video Content</h4>
+        <div style="aspect-ratio: 16/9; background: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+          <div style="text-align: center; color: #666;">
+            <div style="font-size: 48px; margin-bottom: 8px;">🎥</div>
+            <p>Video placeholder<br><small>Responsive video would go here</small></p>
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin: 20px 0;">
+        <h4>Code Example</h4>
+        <pre style="background: #f8f9fa; padding: 16px; border-radius: 8px; overflow-x: auto; border-left: 4px solid #007bff;"><code>// JavaScript example
+const tabs = document.querySelector('[data-tabs]');
+tabs.addEventListener('tabchange', (event) => {
+  console.log('Active tab:', event.detail.activeTab);
+});
+
+// Programmatic tab switching
+tabs.tabsInstance.setActiveTab('newTab');</code></pre>
+      </div>
+      
+      <div style="margin: 20px 0;">
+        <h4>Expandable Content</h4>
+        <details style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px;">
+          <summary style="cursor: pointer; font-weight: 500; margin-bottom: 12px;">Click to expand additional information</summary>
+          <p>This is additional content that was initially hidden. It demonstrates that interactive elements work perfectly within tab panels.</p>
+          <p>You can include any type of content here, including more complex layouts and interactive elements.</p>
+        </details>
+      </div>
+    `,
+  },
+];
+
+const verticalTabs = [
+  {
+    id: "docs",
+    label: "Documentation",
+    htmlContent: `
+      <h3>Component Documentation</h3>
+      <p>This demonstrates vertical tab orientation, which is great for sidebars and complex interfaces.</p>
+      
+      <h4>Installation</h4>
+      <pre style="background: #f8f9fa; color: #444444; padding: 12px; border-radius: 4px; font-size: 14px;"><code>import Tabs from '../components/Tabs/Tabs.astro';</code></pre>
+      
+      <h4>Basic Usage</h4>
+      <p>Simply pass an array of tab items to the component:</p>
+      <pre style="background: #f8f9fa; color: #444444; padding: 12px; border-radius: 4px; font-size: 14px;"><code>&lt;Tabs items={tabItems} /&gt;</code></pre>
+    `,
+  },
+  {
+    id: "api",
+    label: "API Reference",
+    htmlContent: `
+      <h3>API Reference</h3>
+      
+      <h4>Props</h4>
+     <div class="ast-table-wrapper" data-table-responsive="">
+  <div class="ast-table-scroll-indicator" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 18l-6-6 6-6"></path>
+    </svg>
+    <span>Scroll to see more</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18l6-6-6-6"></path>
+    </svg>
+  </div>
+
+  <div class="ast-table-scroll-container">
+    <table>
+      <thead>
+        
+                      <tr>
+  
+                        <th scope="col">
+  Name
+</th>
+                        <th scope="col">
+  Age
+</th>
+                        <th scope="col">
+  Location
+</th>
+                        <th scope="col">
+  Department
+</th>
+                        <th scope="col">
+  Position
+</th>
+                        <th scope="col">
+  Start Date
+</th>
+                        <th scope="col">
+  Salary
+</th>
+                        <th scope="col">
+  Status
+</th>
+                      
+</tr>
+                    
+      </thead>
+      <tbody>
+        
+                      <tr>
+  
+                        <td>
+  Alice Johnson
+</td>
+                        <td>
+  32
+</td>
+                        <td>
+  New York
+</td>
+                        <td>
+  Engineering
+</td>
+                        <td>
+  Senior Developer
+</td>
+                        <td>
+  2020-03-15
+</td>
+                        <td>
+  $95,000
+</td>
+                        <td>
+  Active
+</td>
+                      
+</tr>
+                      <tr>
+  
+                        <td>
+  Bob Smith
+</td>
+                        <td>
+  45
+</td>
+                        <td>
+  London
+</td>
+                        <td>
+  Marketing
+</td>
+                        <td>
+  Marketing Manager
+</td>
+                        <td>
+  2018-07-22
+</td>
+                        <td>
+  $78,000
+</td>
+                        <td>
+  Active
+</td>
+                      
+</tr>
+                      <tr>
+  
+                        <td>
+  Charlie Brown
+</td>
+                        <td>
+  29
+</td>
+                        <td>
+  San Francisco
+</td>
+                        <td>
+  Design
+</td>
+                        <td>
+  UX Designer
+</td>
+                        <td>
+  2021-11-08
+</td>
+                        <td>
+  $72,000
+</td>
+                        <td>
+  Active
+</td>
+                      
+</tr>
+                      <tr>
+  
+                        <td>
+  Diana Prince
+</td>
+                        <td>
+  38
+</td>
+                        <td>
+  Washington DC
+</td>
+                        <td>
+  Operations
+</td>
+                        <td>
+  Operations Director
+</td>
+                        <td>
+  2019-02-14
+</td>
+                        <td>
+  $105,000
+</td>
+                        <td>
+  Active
+</td>
+                      
+</tr>
+                      </tbody><tfoot>
+  
+                        <tr>
+  
+                          <td colspan="7">
+  Total Employees
+</td>
+                          <td>
+  4
+</td>
+                        
+</tr>
+                      
+</tfoot>
+                    
+      
+      
+    </table>
+  </div>
+</div>
+    `,
+  },
+  {
+    id: "examples",
+    label: "More Examples",
+    htmlContent: `
+      <h3>Additional Examples</h3>
+      
+      <h4>Blockquote</h4>
+      <blockquote style="border-left: 4px solid #007bff; padding-left: 16px; margin: 16px 0; font-style: italic; color: #555;">
+        "The best user interfaces are invisible. They're intuitive, accessible, and just work."
+        <footer style="margin-top: 8px; font-style: normal; font-size: 14px;">— UX Design Principle</footer>
+      </blockquote>
+      
+      <h4>Mixed Content</h4>
+      <p>Here's a paragraph with <strong>bold text</strong>, <em>italic text</em>, and a <a href="#" style="color: #007bff;">sample link</a>.</p>
+      
+      <div style="background: #e7f3ff; padding: 16px; border-radius: 8px; border: 1px solid #b8daff; margin: 16px 0;">
+        <strong>💡 Pro Tip:</strong> You can nest any components or HTML elements within tab content, making it extremely flexible for complex layouts.
+      </div>
+    `,
+  },
+];
+
+// Demo with many tabs to show mobile scrolling
+const mobileScrollTabs = [
+  { id: "tab1", label: "First Tab", content: "Content for the first tab" },
+  { id: "tab2", label: "Second Tab", content: "Content for the second tab" },
+  { id: "tab3", label: "Third Tab", content: "Content for the third tab" },
+  { id: "tab4", label: "Fourth Tab", content: "Content for the fourth tab" },
+  { id: "tab5", label: "Fifth Tab", content: "Content for the fifth tab" },
+  { id: "tab6", label: "Sixth Tab", content: "Content for the sixth tab" },
+  { id: "tab7", label: "Seventh Tab", content: "Content for the seventh tab" },
+  { id: "tab8", label: "Eighth Tab", content: "Content for the eighth tab" },
+  { id: "tab9", label: "Ninth Tab", content: "Content for the ninth tab" },
+  { id: "tab10", label: "Tenth Tab", content: "Content for the tenth tab" },
+];
+---
+
+<Layout title="Tabs Component Demo">
+  <Fragment slot="main">
+    <main id="main" class="layout-main" aria-label="Tabls Component Demo">
+      <div class="component-demo">
+        <header class="demo-header">
+          <div class="section-grid">
+            <div class="col-full">
+              <nav class="demo-nav">
+                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
+              </nav>
+              <h1>Tabs Component Demo</h1>
+              <p style="font-size: 18px; color: #666; margin-top: 16px;">
+                A fully accessible tab component supporting various content types and layouts
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Basic Tabs (Default Style)</h2>
+              <p style="margin-bottom: 24px;">Basic horizontal tabs with text, lists, and images.</p>
+              <TabsComponent items={basicTabs} activeTab="overview" />
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Complex Content (Underline Style)</h2>
+              <p style="margin-bottom: 24px;">Tabs with interactive elements, forms, buttons, and rich media.</p>
+              <TabsComponent items={complexTabs} variant="underline" activeTab="interactive" />
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Pills Style (Horizontal)</h2>
+              <p style="margin-bottom: 24px;">The same content as above but with the pills variant styling.</p>
+              <TabsComponent items={complexTabs} variant="pills" activeTab="lists" />
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <h2>Vertical Orientation</h2>
+          <p style="margin-bottom: 24px;">
+            Perfect for sidebars and documentation layouts. Automatically switches to horizontal on mobile.
+          </p>
+          <TabsComponent items={verticalTabs} orientation="vertical" variant="default" activeTab="docs" />
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>📱 Mobile Scrolling Demo</h2>
+              <p style="margin-bottom: 24px;">
+                This demo shows how tabs behave on mobile devices with horizontal scrolling. Try resizing your browser
+                window or viewing on mobile!
+              </p>
+              <TabsComponent items={mobileScrollTabs} variant="pills" activeTab="tab5" />
+              <div
+                style="margin-top: 16px; padding: 16px; background: #e3f2fd; border-radius: 8px; border-left: 4px solid #2196f3;">
+                <strong>💡 Mobile Features:</strong>
+                <ul style="margin: 8px 0 0 20px;">
+                  <li>Horizontal scrolling when tabs don't fit</li>
+                  <li>Scroll indicators (fade effects) show when content is scrollable</li>
+                  <li>Active tab automatically scrolls into view</li>
+                  <li>Touch-friendly with smooth scrolling</li>
+                  <li>Keyboard navigation works with scrolling</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>♿️ Accessibility Features</h2>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="col-full">
+              <div class="guidelines-grid">
+                <div class="guideline-item">
+                  <h4>⌨️ Keyboard Navigation</h4>
+                  <ul>
+                    <li>
+                      <kbd style="background: #e9ecef; padding: 2px 6px; border-radius: 3px; font-family: monospace;"
+                        >←</kbd
+                      > /
+                      <kbd style="background: #e9ecef; padding: 2px 6px; border-radius: 3px; font-family: monospace;"
+                        >→</kbd
+                      > Navigate tabs (horizontal)
+                    </li>
+                    <li>
+                      <kbd style="background: #e9ecef; padding: 2px 6px; border-radius: 3px; font-family: monospace;"
+                        >↑</kbd
+                      > /
+                      <kbd style="background: #e9ecef; padding: 2px 6px; border-radius: 3px; font-family: monospace;"
+                        >↓</kbd
+                      > Navigate tabs (vertical)
+                    </li>
+                    <li>
+                      <kbd style="background: #e9ecef; padding: 2px 6px; border-radius: 3px; font-family: monospace;"
+                        >Home</kbd
+                      >
+                      /
+                      <kbd style="background: #e9ecef; padding: 2px 6px; border-radius: 3px; font-family: monospace;"
+                        >End</kbd
+                      > Jump to first/last tab
+                    </li>
+                    <li>
+                      <kbd style="background: #e9ecef; padding: 2px 6px; border-radius: 3px; font-family: monospace;"
+                        >Enter</kbd
+                      > /
+                      <kbd style="background: #e9ecef; padding: 2px 6px; border-radius: 3px; font-family: monospace;"
+                        >Space</kbd
+                      > Activate focused tab
+                    </li>
+                    <li>
+                      <kbd style="background: #e9ecef; padding: 2px 6px; border-radius: 3px; font-family: monospace;"
+                        >Tab</kbd
+                      > Move focus to/from tab list
+                    </li>
+                  </ul>
+                  <h4 style="margin-top: 24px;">ARIA Support</h4>
+                  <p>Full ARIA implementation with proper roles, states, and properties for screen readers.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </Fragment>
+</Layout>

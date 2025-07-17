@@ -1,0 +1,58 @@
+---
+export interface TabItem {
+  id: string;
+  label: string;
+  content?: string; // Optional plain text content
+  htmlContent?: string; // Optional HTML content instead of plain text
+}
+
+export interface Props {
+  items: TabItem[];
+  activeTab?: string; // ID of the initially active tab
+  variant?: "default" | "underline" | "pills";
+  orientation?: "horizontal" | "vertical";
+}
+
+const { items, activeTab = items[0]?.id || "", variant = "default", orientation = "horizontal" } = Astro.props;
+
+// Generate unique IDs for this tab instance
+const uniqueId = Math.random().toString(36).substr(2, 9);
+---
+
+<div class={`tabs tabs--${variant} tabs--${orientation}`} data-tabs data-active-tab={activeTab}>
+  <div class="tabs__list" role="tablist" aria-orientation={orientation}>
+    {
+      items.map((item, index) => (
+        <button
+          class="tabs__tab"
+          role="tab"
+          type="button"
+          id={`tab-${uniqueId}-${item.id}`}
+          aria-controls={`tabpanel-${uniqueId}-${item.id}`}
+          aria-selected={item.id === activeTab}
+          tabindex={item.id === activeTab ? 0 : -1}
+          data-tab-trigger={item.id}>
+          {item.label}
+        </button>
+      ))
+    }
+  </div>
+
+  <div class="tabs__panels">
+    {
+      items.map((item, index) => (
+        <div
+          class="tabs__panel"
+          role="tabpanel"
+          id={`tabpanel-${uniqueId}-${item.id}`}
+          aria-labelledby={`tab-${uniqueId}-${item.id}`}
+          hidden={item.id !== activeTab}
+          data-tab-panel={item.id}>
+          {item.htmlContent ? <Fragment set:html={item.htmlContent} /> : <p>{item.content}</p>}
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script src="./Tabs.js"></script>

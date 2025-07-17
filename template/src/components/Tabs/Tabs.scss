@@ -1,0 +1,372 @@
+.tabs {
+  /* Base container styles */
+  width: 100%;
+
+  /* Tab list styles */
+  &__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+
+    &[aria-orientation="vertical"] {
+      flex-direction: column;
+      border-bottom: none;
+      border-right: 1px solid #e0e0e0;
+      width: 200px;
+    }
+
+    /* Scroll indicators for mobile */
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 20px;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Show indicators when scrollable on mobile */
+    @media (max-width: 768px) {
+
+      &.scrollable::before,
+      &.scrollable::after {
+        opacity: 1;
+      }
+
+      &.scroll-start::before {
+        opacity: 0;
+      }
+
+      &.scroll-end::after {
+        opacity: 0;
+      }
+    }
+  }
+
+  /* Individual tab styles */
+  &__tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 12px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+    white-space: nowrap;
+
+    &:hover {
+      color: #333;
+      background-color: #f5f5f5;
+    }
+
+    &:focus {
+      outline: 2px solid #007bff;
+      outline-offset: -2px;
+      z-index: 1;
+    }
+
+    &--active,
+    &[aria-selected="true"] {
+      color: #007bff;
+      background-color: #fff;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+
+      &:hover {
+        color: #666;
+        background-color: transparent;
+      }
+    }
+  }
+
+  /* Panel container */
+  &__panels {
+    position: relative;
+  }
+
+  /* Individual panel styles */
+  &__panel {
+    padding: 20px 0;
+
+    &[hidden] {
+      display: none;
+    }
+
+    /* Ensure content inside panels has proper spacing */
+    >*:first-child {
+      margin-top: 0;
+    }
+
+    >*:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  /* Variant: Default (already defined above) */
+  &--default {
+    .tabs__tab {
+
+      &--active,
+      &[aria-selected="true"] {
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background-color: #007bff;
+        }
+      }
+    }
+
+    &.tabs--vertical {
+      display: flex;
+
+      .tabs__list {
+        flex-shrink: 0;
+      }
+
+      .tabs__panels {
+        flex: 1;
+        padding-left: 20px;
+      }
+
+      .tabs__tab {
+
+        &--active,
+        &[aria-selected="true"] {
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: -1px;
+            left: auto;
+            width: 2px;
+            height: auto;
+            background-color: #007bff;
+          }
+        }
+      }
+    }
+  }
+
+  /* Variant: Underline */
+  &--underline {
+    .tabs__list {
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .tabs__tab {
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+
+      &--active,
+      &[aria-selected="true"] {
+        border-bottom-color: #007bff;
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+
+    &.tabs--vertical {
+      .tabs__list {
+        border-bottom: none;
+        border-right: 2px solid #e0e0e0;
+      }
+
+      .tabs__tab {
+        border-bottom: none;
+        border-right: 2px solid transparent;
+        margin-bottom: 0;
+        margin-right: -2px;
+
+        &--active,
+        &[aria-selected="true"] {
+          border-right-color: #007bff;
+        }
+      }
+    }
+  }
+
+  /* Variant: Pills */
+  &--pills {
+    .tabs__list {
+      border-bottom: none;
+      gap: 4px;
+      padding: 4px;
+      background-color: #f5f5f5;
+      border-radius: 6px;
+    }
+
+    .tabs__tab {
+      border-radius: 4px;
+
+      &--active,
+      &[aria-selected="true"] {
+        background-color: #007bff;
+        color: #fff;
+
+        &:hover {
+          background-color: #0056b3;
+          color: #fff;
+        }
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+
+    &.tabs--vertical {
+      .tabs__list {
+        border-right: none;
+        width: auto;
+        min-width: 150px;
+      }
+    }
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+
+    /* Horizontal tabs on mobile */
+    .tabs__list {
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #ccc transparent;
+
+      /* Hide scrollbar on mobile for cleaner look */
+      &::-webkit-scrollbar {
+        height: 3px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 3px;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: #999;
+      }
+    }
+
+    .tabs__tab {
+      flex-shrink: 0;
+      min-width: fit-content;
+      padding: 12px 20px;
+      /* Slightly more horizontal padding on mobile */
+    }
+
+    /* Vertical tabs become horizontal scrolling on mobile */
+    &--vertical {
+      flex-direction: column;
+
+      .tabs__list {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+
+        &[aria-orientation="vertical"] {
+          flex-direction: row;
+          overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+
+          .tabs__tab {
+            flex-shrink: 0;
+            min-width: fit-content;
+          }
+        }
+      }
+
+      .tabs__panels {
+        padding-left: 0;
+        padding-top: 20px;
+      }
+    }
+  }
+
+  /* Extra small devices */
+  @media (max-width: 480px) {
+    .tabs__tab {
+      padding: 10px 16px;
+      /* Reduce padding on very small screens */
+      font-size: 13px;
+    }
+  }
+
+  /* Animation for smooth transitions */
+  &__panel {
+    animation: fadeIn 0.2s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .tabs {
+    &__tab {
+      border: 1px solid transparent;
+
+      &:focus {
+        outline: 3px solid;
+      }
+
+      &--active,
+      &[aria-selected="true"] {
+        border-color: currentColor;
+      }
+    }
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .tabs {
+    &__tab {
+      transition: none;
+    }
+
+    &__panel {
+      animation: none;
+    }
+  }
+}

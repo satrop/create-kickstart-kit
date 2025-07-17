@@ -175,6 +175,8 @@ let globalImageHandler;
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
     globalImageHandler = new GlobalImageHandler();
+    // Make it available globally for other components
+    window.globalImageHandler = globalImageHandler;
   });
 }
 

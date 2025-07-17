@@ -3,12 +3,10 @@
 
 .ast-img--loading {
   opacity: 0.6;
-  background: linear-gradient(
-    90deg,
-    var(--gray-100, #f0f0f0) 25%,
-    var(--gray-200, #e0e0e0) 50%,
-    var(--gray-100, #f0f0f0) 75%
-  );
+  background: linear-gradient(90deg,
+      var(--gray-100, #f0f0f0) 25%,
+      var(--gray-200, #e0e0e0) 50%,
+      var(--gray-100, #f0f0f0) 75%);
   background-size: 200% 100%;
   animation: loading-shimmer 1.5s infinite;
 }
@@ -62,13 +60,14 @@
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
 }
 
 /* Enhanced loading experience for lazy images */
-img[loading="lazy"] {
+img[loading="lazy"][data-enhanced] {
   opacity: 0;
   transition: opacity 0.3s ease, transform 0.6s ease;
 

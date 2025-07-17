@@ -20,6 +20,7 @@ class MainSlider {
       loop,
       slidesPerView: 1,
       spaceBetween: 24,
+      autoHeight: true, // This allows the slider to adapt to content height
       navigation: {
         nextEl: this.element.querySelector('.swiper-button-next'),
         prevEl: this.element.querySelector('.swiper-button-prev'),
@@ -29,6 +30,22 @@ class MainSlider {
         clickable: true,
       },
       breakpoints: SLIDER_BREAKPOINTS,
+    });
+
+    // Enhance images in slider for better loading experience
+    this.enhanceSliderImages();
+  }
+
+  enhanceSliderImages() {
+    const images = this.element.querySelectorAll('img:not([data-enhanced])');
+    images.forEach(img => {
+      // Add data-enhanced attribute so imageHandler can manage it
+      img.setAttribute('data-enhanced', '');
+      
+      // If globalImageHandler is available, use it to enhance the image
+      if (window.globalImageHandler && window.globalImageHandler.enhanceNewImage) {
+        window.globalImageHandler.enhanceNewImage(img);
+      }
     });
   }
 }
