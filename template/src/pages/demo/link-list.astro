@@ -1,0 +1,62 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import LinkListComponent from "@/components/LinkList/LinkList.astro";
+
+import "@/styles/demo.scss";
+
+const companyLinks = [
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+  { href: "/privacy", label: "Privacy Policy" },
+];
+---
+
+<Layout title="Link List Component">
+  <Fragment slot="main">
+    <main id="main" class="layout-main" aria-label="Main content">
+      <div class="component-demo">
+        <header class="demo-header">
+          <div class="section-grid">
+            <div class="col-full">
+              <nav class="demo-nav">
+                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
+              </nav>
+              <h1>Link List Component</h1>
+              <p class="demo-subtitle">
+                A component for displaying a list of links with optional grouping and styling.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Basic Usage</h2>
+              <p>Link lists can be displayed in a vertical or horizontal layout.</p>
+
+              <div class="demo-example">
+                <div class="demo-preview">
+                  <LinkListComponent links={companyLinks} navLabel="Company links" />
+                  <LinkListComponent links={companyLinks} direction="horizontal" class="new-class-name" />
+                  <LinkListComponent links={companyLinks} />
+                </div>
+                <div class="demo-code">
+                  <pre><code>const companyLinks = [
+  &#123; href: "/about", label: "About" &#125;,
+  &#123; href: "/contact", label: "Contact" &#125;,
+  &#123; href: "/privacy", label: "Privacy Policy" &#125;,
+];
+
+&lt;LinkListComponent links=&#123;companyLinks&#125; navLabel="Company links" /&gt;
+&lt;LinkListComponent links=&#123;companyLinks&#125; direction="horizontal" class="new-class-name" /&gt;
+&lt;LinkListComponent links=&#123;companyLinks&#125; /&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </Fragment>
+</Layout>

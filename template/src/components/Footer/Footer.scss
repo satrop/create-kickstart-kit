@@ -1,0 +1,14 @@
+.ast-footer {
+  display: grid;
+  gap: 2rem;
+
+  &--content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2em;
+
+    &__lower {
+      justify-content: space-between;
+    }
+  }
+}

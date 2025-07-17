@@ -1,0 +1,38 @@
+---
+import LinkListComponent from "@/components/LinkList/LinkList.astro";
+import ImageComponent from "@/components/Image/Image.astro";
+
+const companyLinks = [
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+  { href: "/privacy", label: "Privacy Policy" },
+];
+
+const socialLinks = [
+  { href: "https://twitter.com", label: "Twitter" },
+  { href: "https://facebook.com", label: "Facebook" },
+  { href: "https://instagram.com", label: "Instagram" },
+];
+---
+
+<footer class="ast-footer" aria-label="Footer">
+  <div class="ast-footer--content ast-footer--content__upper">
+    <section>
+      <ImageComponent src="/images/Logoipsum.svg" alt="Company Logo" width={150} height={50} class="ast-footer-logo" />
+    </section>
+
+    <section>
+      <h2>Title</h2>
+      <LinkListComponent links={companyLinks} class="ast-footer-links" />
+    </section>
+
+    <section>
+      <h2>Follow Us</h2>
+      <LinkListComponent links={socialLinks} class="ast-footer-links" />
+    </section>
+  </div>
+  <div class="ast-footer--content ast-footer--content__lower">
+    <p>&copy; {new Date().getFullYear()} Your Company Name. All rights reserved.</p>
+    <p class="ast-text--right">Powered by <a href="https://astro.build" target="_blank">Astro</a></p>
+  </div>
+</footer>

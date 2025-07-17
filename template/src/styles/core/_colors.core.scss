@@ -24,7 +24,7 @@
       background-color: var(--#{$group}-#{$shade});
     }
 
-    .text-#{$group}-#{$shade} {
+    .ast-text--#{$group}-#{$shade} {
       color: var(--#{$group}-#{$shade});
     }
   }
@@ -34,7 +34,7 @@
 // .bg-red-300 {
 //   background-color: var(--red-300);
 // }
-// .text-yellow-500 {
+// .ast-text--yellow-500 {
 //   color: var(--yellow-500);
 // }
 

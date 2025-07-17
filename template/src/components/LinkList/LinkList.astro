@@ -1,0 +1,39 @@
+---
+const { links = [], class: className, direction = "vertical", navLabel } = Astro.props;
+
+const isExternal = (href) => href.startsWith("http");
+---
+
+{
+  navLabel ? (
+    <nav aria-label={navLabel} class:list={{ "ast-link-list": true, [className]: !!className }}>
+      <ul class={`ast-link-list ast-link-list--${direction}${className ? ` ${className}` : ""}`}>
+        {links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              target={isExternal(link.href) ? "_blank" : undefined}
+              rel={isExternal(link.href) ? "noopener noreferrer" : undefined}>
+              {link.label}
+              {isExternal(link.href) && <span class="sr-only"> (opens in a new tab)</span>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  ) : (
+    <ul class={`ast-link-list ast-link-list--${direction}${className ? ` ${className}` : ""}`}>
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            target={isExternal(link.href) ? "_blank" : undefined}
+            rel={isExternal(link.href) ? "noopener noreferrer" : undefined}>
+            {link.label}
+            {isExternal(link.href) && <span class="sr-only"> (opens in a new tab)</span>}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}

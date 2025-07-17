@@ -1,0 +1,44 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import FooterComponent from "@/components/Footer/Footer.astro";
+
+import "@/styles/demo.scss";
+---
+
+<Layout title="Footer Component">
+  <Fragment slot="main">
+    <main id="main" class="layout-main" aria-label="Main content">
+      <div class="component-demo">
+        <header class="demo-header">
+          <div class="section-grid">
+            <div class="col-full">
+              <nav class="demo-nav">
+                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
+              </nav>
+              <h1>Footer Component</h1>
+              <p class="demo-subtitle">
+                A component for displaying the footer with navigation links and social media icons.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <section class="demo-section">
+          <div class="section-grid">
+            <div class="col-full">
+              <h2>Basic Usage</h2>
+
+              <div class="demo-example">
+                <div class="demo-preview"><FooterComponent /></div>
+
+                <div class="demo-code">
+                  <pre><code /></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </Fragment>
+</Layout>

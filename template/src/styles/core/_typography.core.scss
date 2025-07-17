@@ -38,21 +38,21 @@
 
 // Font weight utilities
 @each $name, $weight in $font-weights {
-  .font-#{$name} {
+  .ast-font-#{$name} {
     font-weight: var(--font-weight-#{$name});
   }
 }
 
 // Font size utilities
 @each $name, $size in $font-sizes {
-  .text-#{$name} {
+  .ast-text--#{$name} {
     font-size: var(--font-size-#{$name});
   }
 }
 
 // Line height utilities
 @each $name, $height in $line-heights {
-  .leading-#{$name} {
+  .ast-leading-#{$name} {
     line-height: var(--line-height-#{$name});
   }
 }
@@ -65,54 +65,54 @@
 }
 
 // Text alignment utilities
-.text-left {
+.ast-text--left {
   text-align: left;
 }
-.text-center {
+.ast-text--center {
   text-align: center;
 }
-.text-right {
+.ast-text--right {
   text-align: right;
 }
-.text-justify {
+.ast-text--justify {
   text-align: justify;
 }
 
 // Text transform utilities
-.uppercase {
+.ast-uppercase {
   text-transform: uppercase;
 }
-.lowercase {
+.ast-lowercase {
   text-transform: lowercase;
 }
-.capitalize {
+.ast-capitalize {
   text-transform: capitalize;
 }
-.normal-case {
+.ast-normal-case {
   text-transform: none;
 }
 
 // Text decoration utilities
-.underline {
+.ast-underline {
   text-decoration: underline;
 }
-.line-through {
+.ast-line-through {
   text-decoration: line-through;
 }
-.no-underline {
+.ast-no-underline {
   text-decoration: none;
 }
 
 // Font style utilities
-.italic {
+.ast-italic {
   font-style: italic;
 }
-.not-italic {
+.ast-not-italic {
   font-style: normal;
 }
 
 // Predefined text styles for common use cases
-.heading-1 {
+.ast-heading-1 {
   font-family: var(--font-display);
   font-size: var(--font-size-5xl);
   font-weight: var(--font-weight-700);
@@ -120,7 +120,7 @@
   letter-spacing: var(--letter-spacing-tight);
 }
 
-.heading-2 {
+.ast-heading-2 {
   font-family: var(--font-display);
   font-size: var(--font-size-4xl);
   font-weight: var(--font-weight-600);
@@ -128,60 +128,60 @@
   letter-spacing: var(--letter-spacing-tight);
 }
 
-.heading-3 {
+.ast-heading-3 {
   font-family: var(--font-display);
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-600);
   line-height: var(--line-height-snug);
 }
 
-.heading-4 {
+.ast-heading-4 {
   font-family: var(--font-sans);
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-500);
   line-height: var(--line-height-snug);
 }
 
-.heading-5 {
+.ast-heading-5 {
   font-family: var(--font-sans);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-500);
   line-height: var(--line-height-normal);
 }
 
-.heading-6 {
+.ast-heading-6 {
   font-family: var(--font-sans);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-500);
   line-height: var(--line-height-normal);
 }
 
-.body-large {
+.ast-body-large {
   font-family: var(--font-sans);
   font-size: var(--font-size-lg);
   line-height: var(--line-height-relaxed);
 }
 
-.body-normal {
+.ast-body-normal {
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
 }
 
-.body-small {
+.ast-body-small {
   font-family: var(--font-sans);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-normal);
 }
 
-.caption {
+.ast-caption {
   font-family: var(--font-sans);
   font-size: var(--font-size-xs);
   line-height: var(--line-height-tight);
   color: #666;
 }
 
-.code {
+.ast-code {
   font-family: var(--font-mono);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-normal);

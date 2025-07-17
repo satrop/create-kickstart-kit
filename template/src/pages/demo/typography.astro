@@ -37,7 +37,7 @@ import "@/styles/demo/typography.scss";
                     <h3>Sans Serif</h3>
                   </Fragment>
                   <div class="font-example">
-                    <div class="font-sans text-4xl font-400">The quick brown fox jumps over the lazy dog</div>
+                    <div class="font-sans ast-text-4xl font-400">The quick brown fox jumps over the lazy dog</div>
                     <div class="font-details">
                       <p><strong>Class:</strong> <code>.font-sans</code></p>
                       <p><strong>Stack:</strong> Inter, system-ui, sans-serif</p>
@@ -51,7 +51,7 @@ import "@/styles/demo/typography.scss";
                     <h3>Display</h3>
                   </Fragment>
                   <div class="font-example">
-                    <div class="font-display text-4xl font-400">The quick brown fox jumps over the lazy dog</div>
+                    <div class="font-display ast-text-4xl font-400">The quick brown fox jumps over the lazy dog</div>
                     <div class="font-details">
                       <p><strong>Class:</strong> <code>.font-display</code></p>
                       <p><strong>Stack:</strong> Cabin, system-ui, sans-serif</p>
@@ -65,7 +65,7 @@ import "@/styles/demo/typography.scss";
                     <h3>Serif</h3>
                   </Fragment>
                   <div class="font-example">
-                    <div class="font-serif text-4xl font-400">The quick brown fox jumps over the lazy dog</div>
+                    <div class="font-serif ast-text-4xl font-400">The quick brown fox jumps over the lazy dog</div>
                     <div class="font-details">
                       <p><strong>Class:</strong> <code>.font-serif</code></p>
                       <p><strong>Stack:</strong> Georgia, Times New Roman, serif</p>
@@ -79,7 +79,7 @@ import "@/styles/demo/typography.scss";
                     <h3>Monospace</h3>
                   </Fragment>
                   <div class="font-example">
-                    <div class="font-mono text-2xl font-400">The quick brown fox jumps over the lazy dog</div>
+                    <div class="font-mono ast-text-2xl font-400">The quick brown fox jumps over the lazy dog</div>
                     <div class="font-details">
                       <p><strong>Class:</strong> <code>.font-mono</code></p>
                       <p><strong>Stack:</strong> JetBrains Mono, Consolas, monospace</p>
@@ -97,7 +97,10 @@ import "@/styles/demo/typography.scss";
           <div class="section-grid">
             <div class="col-full">
               <h2>Font Sizes</h2>
-              <p>A modular scale provides consistent sizing from <code>.text-xs</code> to <code>.text-9xl</code>:</p>
+              <p>
+                A modular scale provides consistent sizing from <code>.ast-text--xs</code> to <code>.ast-text--9xl</code
+                >:
+              </p>
 
               <div class="demo-example">
                 <div class="demo-preview">
@@ -107,12 +110,12 @@ import "@/styles/demo/typography.scss";
                         <h3>Small to Medium Sizes</h3>
                       </Fragment>
                       <div class="size-examples">
-                        <div class="text-xs">Extra Small (12px) - .text-xs</div>
-                        <div class="text-sm">Small (14px) - .text-sm</div>
-                        <div class="text-base">Base (16px) - .text-base</div>
-                        <div class="text-lg">Large (18px) - .text-lg</div>
-                        <div class="text-xl">Extra Large (20px) - .text-xl</div>
-                        <div class="text-2xl">2X Large (24px) - .text-2xl</div>
+                        <div class="ast-text--xs">Extra Small (12px) - .ast-text--xs</div>
+                        <div class="ast-text--sm">Small (14px) - .ast-text--sm</div>
+                        <div class="ast-text--base">Base (16px) - .ast-text--base</div>
+                        <div class="ast-text--lg">Large (18px) - .ast-text--lg</div>
+                        <div class="ast-text--xl">Extra Large (20px) - .ast-text--xl</div>
+                        <div class="ast-text--2xl">2X Large (24px) - .ast-text--2xl</div>
                       </div>
                     </Card>
 
@@ -121,26 +124,26 @@ import "@/styles/demo/typography.scss";
                         <h3>Large Display Sizes</h3>
                       </Fragment>
                       <div class="size-examples">
-                        <div class="text-3xl">3X Large (30px) - .text-3xl</div>
-                        <div class="text-4xl">4X Large (36px) - .text-4xl</div>
-                        <div class="text-5xl">5X Large (48px) - .text-5xl</div>
-                        <div class="text-6xl">6X Large (60px) - .text-6xl</div>
+                        <div class="ast-text--3xl">3X Large (30px) - .ast-text--3xl</div>
+                        <div class="ast-text--4xl">4X Large (36px) - .ast-text--4xl</div>
+                        <div class="ast-text--5xl">5X Large (48px) - .ast-text--5xl</div>
+                        <div class="ast-text--6xl">6X Large (60px) - .ast-text--6xl</div>
                       </div>
                     </Card>
                   </div>
                 </div>
 
                 <div class="demo-code">
-                  <pre><code>&lt;div class="text-xs"&gt;Extra Small (12px)&lt;/div&gt;
-&lt;div class="text-sm"&gt;Small (14px)&lt;/div&gt;
-&lt;div class="text-base"&gt;Base (16px)&lt;/div&gt;
-&lt;div class="text-lg"&gt;Large (18px)&lt;/div&gt;
-&lt;div class="text-xl"&gt;Extra Large (20px)&lt;/div&gt;
-&lt;div class="text-2xl"&gt;2X Large (24px)&lt;/div&gt;
-&lt;div class="text-3xl"&gt;3X Large (30px)&lt;/div&gt;
-&lt;div class="text-4xl"&gt;4X Large (36px)&lt;/div&gt;
-&lt;div class="text-5xl"&gt;5X Large (48px)&lt;/div&gt;
-&lt;div class="text-6xl"&gt;6X Large (60px)&lt;/div&gt;</code></pre>
+                  <pre><code>&lt;div class="ast-text-xs"&gt;Extra Small (12px)&lt;/div&gt;
+&lt;div class="ast-text--sm"&gt;Small (14px)&lt;/div&gt;
+&lt;div class="ast-text--base"&gt;Base (16px)&lt;/div&gt;
+&lt;div class="ast-text--lg"&gt;Large (18px)&lt;/div&gt;
+&lt;div class="ast-text--xl"&gt;Extra Large (20px)&lt;/div&gt;
+&lt;div class="ast-text--2xl"&gt;2X Large (24px)&lt;/div&gt;
+&lt;div class="ast-text--3xl"&gt;3X Large (30px)&lt;/div&gt;
+&lt;div class="ast-text--4xl"&gt;4X Large (36px)&lt;/div&gt;
+&lt;div class="ast-text--5xl"&gt;5X Large (48px)&lt;/div&gt;
+&lt;div class="ast-text--6xl"&gt;6X Large (60px)&lt;/div&gt;</code></pre>
                 </div>
               </div>
             </div>
@@ -162,14 +165,14 @@ import "@/styles/demo/typography.scss";
                         <h3>Available Weights</h3>
                       </Fragment>
                       <div class="weight-examples">
-                        <div class="text-2xl font-100">Thin (100) - .font-100</div>
-                        <div class="text-2xl font-300">Light (300) - .font-300</div>
-                        <div class="text-2xl font-400">Normal (400) - .font-400</div>
-                        <div class="text-2xl font-500">Medium (500) - .font-500</div>
-                        <div class="text-2xl font-600">Semibold (600) - .font-600</div>
-                        <div class="text-2xl font-700">Bold (700) - .font-700</div>
-                        <div class="text-2xl font-800">Extra Bold (800) - .font-800</div>
-                        <div class="text-2xl font-900">Black (900) - .font-900</div>
+                        <div class="ast-text-2xl ast-font-100">Thin (100) - .font-100</div>
+                        <div class="ast-text-2xl ast-font-300">Light (300) - .font-300</div>
+                        <div class="ast-text-2xl ast-font-400">Normal (400) - .font-400</div>
+                        <div class="ast-text-2xl ast-font-500">Medium (500) - .font-500</div>
+                        <div class="ast-text-2xl ast-font-600">Semibold (600) - .font-600</div>
+                        <div class="ast-text-2xl ast-font-700">Bold (700) - .font-700</div>
+                        <div class="ast-text-2xl ast-font-800">Extra Bold (800) - .font-800</div>
+                        <div class="ast-text-2xl ast-font-900">Black (900) - .font-900</div>
                       </div>
                     </Card>
 
@@ -178,20 +181,20 @@ import "@/styles/demo/typography.scss";
                         <h3>Line Heights</h3>
                       </Fragment>
                       <div class="line-height-examples">
-                        <div class="leading-none">
-                          Leading None (1.0) - .leading-none<br />
+                        <div class="ast-leading-none">
+                          Leading None (1.0) - .ast-leading-none<br />
                           This text has tight line spacing for compact layouts.
                         </div>
-                        <div class="leading-tight">
-                          Leading Tight (1.25) - .leading-tight<br />
+                        <div class="ast-leading-tight">
+                          Leading Tight (1.25) - .ast-leading-tight<br />
                           This text has slightly tighter line spacing.
                         </div>
-                        <div class="leading-normal">
-                          Leading Normal (1.5) - .leading-normal<br />
+                        <div class="ast-leading-normal">
+                          Leading Normal (1.5) - .ast-leading-normal<br />
                           This text uses the standard line height for readability.
                         </div>
-                        <div class="leading-relaxed">
-                          Leading Relaxed (1.625) - .leading-relaxed<br />
+                        <div class="ast-leading-relaxed">
+                          Leading Relaxed (1.625) - .ast-leading-relaxed<br />
                           This text has more generous line spacing for better readability.
                         </div>
                       </div>
@@ -201,17 +204,17 @@ import "@/styles/demo/typography.scss";
 
                 <div class="demo-code">
                   <pre><code>&lt;!-- Font weights --&gt;
-&lt;div class="font-100"&gt;Thin (100)&lt;/div&gt;
-&lt;div class="font-300"&gt;Light (300)&lt;/div&gt;
-&lt;div class="font-400"&gt;Normal (400)&lt;/div&gt;
-&lt;div class="font-700"&gt;Bold (700)&lt;/div&gt;
-&lt;div class="font-900"&gt;Black (900)&lt;/div&gt;
+&lt;div class="ast-font-100"&gt;Thin (100)&lt;/div&gt;
+&lt;div class="ast-font-300"&gt;Light (300)&lt;/div&gt;
+&lt;div class="ast-font-400"&gt;Normal (400)&lt;/div&gt;
+&lt;div class="ast-font-700"&gt;Bold (700)&lt;/div&gt;
+&lt;div class="ast-font-900"&gt;Black (900)&lt;/div&gt;
 
 &lt;!-- Line heights --&gt;
-&lt;div class="leading-none"&gt;Leading None (1.0)&lt;/div&gt;
-&lt;div class="leading-tight"&gt;Leading Tight (1.25)&lt;/div&gt;
-&lt;div class="leading-normal"&gt;Leading Normal (1.5)&lt;/div&gt;
-&lt;div class="leading-relaxed"&gt;Leading Relaxed (1.625)&lt;/div&gt;</code></pre>
+&lt;div class="ast-leading-none"&gt;Leading None (1.0)&lt;/div&gt;
+&lt;div class="ast-leading-tight"&gt;Leading Tight (1.25)&lt;/div&gt;
+&lt;div class="ast-leading-normal"&gt;Leading Normal (1.5)&lt;/div&gt;
+&lt;div class="ast-leading-relaxed"&gt;Leading Relaxed (1.625)&lt;/div&gt;</code></pre>
                 </div>
               </div>
             </div>
@@ -233,12 +236,12 @@ import "@/styles/demo/typography.scss";
                         <h3>Headings</h3>
                       </Fragment>
                       <div class="heading-examples">
-                        <h1 class="heading-1">Heading 1 Style</h1>
-                        <h2 class="heading-2">Heading 2 Style</h2>
-                        <h3 class="heading-3">Heading 3 Style</h3>
-                        <h4 class="heading-4">Heading 4 Style</h4>
-                        <h5 class="heading-5">Heading 5 Style</h5>
-                        <h6 class="heading-6">Heading 6 Style</h6>
+                        <h1 class="ast-heading-1">Heading 1 Style</h1>
+                        <h2 class="ast-heading-2">Heading 2 Style</h2>
+                        <h3 class="ast-heading-3">Heading 3 Style</h3>
+                        <h4 class="ast-heading-4">Heading 4 Style</h4>
+                        <h5 class="ast-heading-5">Heading 5 Style</h5>
+                        <h6 class="ast-heading-6">Heading 6 Style</h6>
                       </div>
                     </Card>
 
@@ -247,21 +250,21 @@ import "@/styles/demo/typography.scss";
                         <h3>Body Text</h3>
                       </Fragment>
                       <div class="body-examples">
-                        <p class="body-large">
-                          <strong>Large Body (.body-large)</strong><br />
+                        <p class="ast-body-large">
+                          <strong>Large Body (.ast-body-large)</strong><br />
                           This is large body text, perfect for introductory paragraphs or emphasis. It provides excellent
                           readability while maintaining hierarchy.
                         </p>
-                        <p class="body-normal">
-                          <strong>Normal Body (.body-normal)</strong><br />
+                        <p class="ast-body-normal">
+                          <strong>Normal Body (.ast-body-normal)</strong><br />
                           This is the standard body text size used for most content. It balances readability with efficient
                           use of space.
                         </p>
-                        <p class="body-small">
-                          <strong>Small Body (.body-small)</strong><br />
+                        <p class="ast-body-small">
+                          <strong>Small Body (.ast-body-small)</strong><br />
                           This is small body text, useful for secondary information, captions, or compact layouts.
                         </p>
-                        <p class="caption">
+                        <p class="ast-caption">
                           Caption text (.caption) - Used for image captions, footnotes, and fine print.
                         </p>
                       </div>
@@ -274,7 +277,7 @@ import "@/styles/demo/typography.scss";
                         <h3>Code and Technical Text</h3>
                       </Fragment>
                       <div class="code-examples">
-                        <p>Inline code: <code class="code">const greeting = "Hello, World!";</code></p>
+                        <p>Inline code: <code class="ast-code">const greeting = "Hello, World!";</code></p>
                         <div class="demo-code">
                           <pre><code>{`function calculateTotal(items) {
   return items.reduce((sum, item) => sum + item.price, 0);
@@ -287,17 +290,17 @@ import "@/styles/demo/typography.scss";
 
                 <div class="demo-code">
                   <pre><code>&lt;!-- Heading styles --&gt;
-&lt;h1 class="heading-1"&gt;Heading 1 Style&lt;/h1&gt;
-&lt;h2 class="heading-2"&gt;Heading 2 Style&lt;/h2&gt;
+&lt;h1 class="ast-heading-1"&gt;Heading 1 Style&lt;/h1&gt;
+&lt;h2 class="ast-heading-2"&gt;Heading 2 Style&lt;/h2&gt;
 
 &lt;!-- Body text styles --&gt;
-&lt;p class="body-large"&gt;Large body text...&lt;/p&gt;
-&lt;p class="body-normal"&gt;Normal body text...&lt;/p&gt;
-&lt;p class="body-small"&gt;Small body text...&lt;/p&gt;
-&lt;p class="caption"&gt;Caption text...&lt;/p&gt;
+&lt;p class="ast-body-large"&gt;Large body text...&lt;/p&gt;
+&lt;p class="ast-body-normal"&gt;Normal body text...&lt;/p&gt;
+&lt;p class="ast-body-small"&gt;Small body text...&lt;/p&gt;
+&lt;p class="ast-caption"&gt;Caption text...&lt;/p&gt;
 
 &lt;!-- Code styles --&gt;
-&lt;code class="code"&gt;const greeting = "Hello, World!";&lt;/code&gt;</code></pre>
+&lt;code class="ast-code"&gt;const greeting = "Hello, World!";&lt;/code&gt;</code></pre>
                 </div>
               </div>
             </div>
@@ -319,9 +322,9 @@ import "@/styles/demo/typography.scss";
                         <h3>Text Alignment</h3>
                       </Fragment>
                       <div class="utility-examples">
-                        <p class="text-left">Left aligned text (.text-left)</p>
-                        <p class="text-center">Center aligned text (.text-center)</p>
-                        <p class="text-right">Right aligned text (.text-right)</p>
+                        <p class="ast-text--left">Left aligned text (.ast-text--left)</p>
+                        <p class="ast-text--center">Center aligned text (.ast-text--center)</p>
+                        <p class="ast-text--right">Right aligned text (.ast-text--right)</p>
                       </div>
                     </Card>
 
@@ -330,9 +333,9 @@ import "@/styles/demo/typography.scss";
                         <h3>Text Transform</h3>
                       </Fragment>
                       <div class="utility-examples">
-                        <p class="uppercase">Uppercase text (.uppercase)</p>
-                        <p class="lowercase">LOWERCASE TEXT (.lowercase)</p>
-                        <p class="capitalize">capitalized text (.capitalize)</p>
+                        <p class="ast-uppercase">Uppercase text (.ast-uppercase)</p>
+                        <p class="ast-lowercase">LOWERCASE TEXT (.ast-lowercase)</p>
+                        <p class="ast-capitalize">capitalized text (.ast-capitalize)</p>
                       </div>
                     </Card>
 
@@ -341,9 +344,9 @@ import "@/styles/demo/typography.scss";
                         <h3>Text Decoration</h3>
                       </Fragment>
                       <div class="utility-examples">
-                        <p class="underline">Underlined text (.underline)</p>
-                        <p class="line-through">Strikethrough text (.line-through)</p>
-                        <p class="italic">Italic text (.italic)</p>
+                        <p class="ast-underline">Underlined text (.ast-underline)</p>
+                        <p class="ast-line-through">Strikethrough text (.ast-line-through)</p>
+                        <p class="ast-italic">Italic text (.ast-italic)</p>
                       </div>
                     </Card>
                   </div>
@@ -351,19 +354,19 @@ import "@/styles/demo/typography.scss";
 
                 <div class="demo-code">
                   <pre><code>&lt;!-- Alignment --&gt;
-&lt;p class="text-left"&gt;Left aligned&lt;/p&gt;
-&lt;p class="text-center"&gt;Center aligned&lt;/p&gt;
-&lt;p class="text-right"&gt;Right aligned&lt;/p&gt;
+&lt;p class="ast-text--left"&gt;Left aligned&lt;/p&gt;
+&lt;p class="ast-text--center"&gt;Center aligned&lt;/p&gt;
+&lt;p class="ast-text--right"&gt;Right aligned&lt;/p&gt;
 
 &lt;!-- Text transform --&gt;
-&lt;p class="uppercase"&gt;Uppercase text&lt;/p&gt;
-&lt;p class="lowercase"&gt;LOWERCASE TEXT&lt;/p&gt;
-&lt;p class="capitalize"&gt;capitalized text&lt;/p&gt;
+&lt;p class="ast-uppercase"&gt;Uppercase text&lt;/p&gt;
+&lt;p class="ast-lowercase"&gt;LOWERCASE TEXT&lt;/p&gt;
+&lt;p class="ast-capitalize"&gt;capitalized text&lt;/p&gt;
 
 &lt;!-- Decoration --&gt;
-&lt;p class="underline"&gt;Underlined text&lt;/p&gt;
-&lt;p class="line-through"&gt;Strikethrough text&lt;/p&gt;
-&lt;p class="italic"&gt;Italic text&lt;/p&gt;</code></pre>
+&lt;p class="ast-underline"&gt;Underlined text&lt;/p&gt;
+&lt;p class="ast-line-through"&gt;Strikethrough text&lt;/p&gt;
+&lt;p class="ast-italic"&gt;Italic text&lt;/p&gt;</code></pre>
                 </div>
               </div>
             </div>

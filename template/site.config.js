@@ -17,12 +17,12 @@ const SITE_CONFIG = {
   // Use '/' for root deployment
   basePath: {
     development: '/',                    // Local development (usually root)
-    production: '/html_templates/ksp/'   // Production/staging server path
+    production: '/html_templates/ksk/'   // Production/staging server path
   },
   
   // Alternative: Use a single path for all environments
   // Uncomment the line below and comment out the basePath object above
-  // basePath: '/html_templates/ksp/',
+  // basePath: '/html_templates/ksk/',
   
   // Project info (optional - for documentation)
   project: {

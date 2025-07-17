@@ -5,6 +5,7 @@ import { Image as AstroImage } from "astro:assets";
 export interface Props {
   src: string;
   alt: string;
+  caption?: string;
   align?: "left" | "right" | "center";
   size?: "small" | "medium" | "large" | "auto";
   lazy?: boolean;
@@ -20,6 +21,7 @@ export interface Props {
 const {
   src,
   alt,
+  caption,
   align = "left",
   size = "auto",
   lazy = true,
@@ -32,19 +34,20 @@ const {
   wrapperClass = "",
 } = Astro.props;
 
-const alignClass = `ast-image--${align}`;
-const sizeClass = `ast-image--${size}`;
+const alignClass = `ast-figure--${align}`;
+const sizeClass = `ast-figure--${size}`;
+const captionClass = caption ? "ast-figure--with-caption" : "";
 
 // Handle asset optimization
 const optimizedSrc = asset(src);
 const fallbackSrc = fallback ? asset(fallback) : undefined;
 
-const imgClasses = ["ast-image__img", className].filter(Boolean).join(" ");
+const imgClasses = ["ast-figure__img", className].filter(Boolean).join(" ");
 
-const wrapperClasses = ["ast-image", alignClass, sizeClass, wrapperClass].filter(Boolean).join(" ");
+const wrapperClasses = ["ast-figure", alignClass, sizeClass, captionClass, wrapperClass].filter(Boolean).join(" ");
 ---
 
-<div class={wrapperClasses}>
+<figure class={wrapperClasses}>
   <AstroImage
     src={optimizedSrc}
     alt={alt}
@@ -56,4 +59,5 @@ const wrapperClasses = ["ast-image", alignClass, sizeClass, wrapperClass].filter
     {...fallbackSrc && { "data-fallback": fallbackSrc }}
     {...placeholder !== undefined && { "data-placeholder": placeholder.toString() }}
   />
-</div>
+  {caption && <figcaption class="ast-figure__caption">{caption}</figcaption>}
+</figure>
