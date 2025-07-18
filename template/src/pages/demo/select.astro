@@ -2,55 +2,61 @@
 import Layout from "@/layouts/Layout.astro";
 import SelectComponent from "@/components/Select/Select.astro";
 import Button from "@/components/Button/Button.astro";
+
+import DemoNavigation from "../../components/DemoNavigation/DemoNavigation.astro";
+import { getFormComponentNavigation } from "../../utils/demoNavigation";
 import "@/styles/demo.scss";
+
+// Get navigation items with current page marked as active
+const navigationItems = getFormComponentNavigation("select");
 ---
 
 <Layout title="Select Component">
   <Fragment slot="main">
     <main id="main" class="layout-main" aria-label="Main content">
-      <div class="component-demo">
-        <header class="demo-header">
-          <div class="section-grid">
-            <div class="col-full">
-              <nav class="demo-nav">
-                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
-              </nav>
-              <h1>Select Component</h1>
-              <p class="demo-subtitle">
-                Enhanced select dropdown component with search, multiple selection, and accessibility features.
-              </p>
-            </div>
-          </div>
-        </header>
-
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Basic Usage</h2>
-              <p>A simple select dropdown with options.</p>
-
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <form class="demo-form">
-                    <SelectComponent
-                      name="country"
-                      label="Country"
-                      placeholder="Select your country"
-                      options={[
-                        { value: "us", label: "United States" },
-                        { value: "ca", label: "Canada" },
-                        { value: "uk", label: "United Kingdom" },
-                        { value: "au", label: "Australia" },
-                        { value: "de", label: "Germany" },
-                        { value: "fr", label: "France" },
-                        { value: "jp", label: "Japan" },
-                      ]}
-                    />
-                  </form>
+      <div class="section-grid owl-32">
+        <DemoNavigation title="Form Components" items={navigationItems} />
+        <div class="col-4 md:col-4 lg:col-9">
+          <div class="component-demo">
+            <header class="demo-header">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h1>Select Component</h1>
+                  <p class="demo-subtitle">
+                    Enhanced select dropdown component with search, multiple selection, and accessibility features.
+                  </p>
                 </div>
+              </div>
+            </header>
 
-                <div class="demo-code">
-                  <pre><code>&lt;SelectComponent
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Basic Usage</h2>
+                  <p>A simple select dropdown with options.</p>
+
+                  <div class="demo-example">
+                    <div class="demo-preview contain-floats">
+                      <form class="demo-form">
+                        <SelectComponent
+                          name="country"
+                          label="Country"
+                          placeholder="Select your country"
+                          options={[
+                            { value: "us", label: "United States" },
+                            { value: "ca", label: "Canada" },
+                            { value: "uk", label: "United Kingdom" },
+                            { value: "au", label: "Australia" },
+                            { value: "de", label: "Germany" },
+                            { value: "fr", label: "France" },
+                            { value: "jp", label: "Japan" },
+                          ]}
+                        />
+                      </form>
+                    </div>
+
+                    <div class="demo-code">
+                      <pre><code>&lt;SelectComponent
   name="country"
   label="Country"
   placeholder="Select your country"
@@ -61,38 +67,38 @@ import "@/styles/demo.scss";
     { value: "au", label: "Australia" }
   ]}
 /&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>With Help Text</h2>
-              <p>Select component with additional guidance.</p>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>With Help Text</h2>
+                  <p>Select component with additional guidance.</p>
 
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <form class="demo-form">
-                    <SelectComponent
-                      name="priority"
-                      label="Priority Level"
-                      helpText="Choose the urgency level for your support request"
-                      value="medium"
-                      options={[
-                        { value: "low", label: "Low - General inquiry" },
-                        { value: "medium", label: "Medium - Standard support" },
-                        { value: "high", label: "High - Urgent issue" },
-                        { value: "critical", label: "Critical - System down" },
-                      ]}
-                    />
-                  </form>
-                </div>
+                  <div class="demo-example">
+                    <div class="demo-preview contain-floats">
+                      <form class="demo-form">
+                        <SelectComponent
+                          name="priority"
+                          label="Priority Level"
+                          helpText="Choose the urgency level for your support request"
+                          value="medium"
+                          options={[
+                            { value: "low", label: "Low - General inquiry" },
+                            { value: "medium", label: "Medium - Standard support" },
+                            { value: "high", label: "High - Urgent issue" },
+                            { value: "critical", label: "Critical - System down" },
+                          ]}
+                        />
+                      </form>
+                    </div>
 
-                <div class="demo-code">
-                  <pre><code>&lt;SelectComponent
+                    <div class="demo-code">
+                      <pre><code>&lt;SelectComponent
   name="priority"
   label="Priority Level"
   helpText="Choose the urgency level for your support request"
@@ -104,40 +110,40 @@ import "@/styles/demo.scss";
     { value: "critical", label: "Critical - System down" }
   ]}
 /&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Required Field</h2>
-              <p>Select component with required validation.</p>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Required Field</h2>
+                  <p>Select component with required validation.</p>
 
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <form class="demo-form">
-                    <SelectComponent
-                      name="category"
-                      label="Product Category"
-                      placeholder="Choose a category"
-                      required={true}
-                      options={[
-                        { value: "electronics", label: "Electronics" },
-                        { value: "clothing", label: "Clothing & Accessories" },
-                        { value: "home", label: "Home & Garden" },
-                        { value: "sports", label: "Sports & Recreation" },
-                        { value: "books", label: "Books & Media" },
-                        { value: "health", label: "Health & Beauty" },
-                      ]}
-                    />
-                  </form>
-                </div>
+                  <div class="demo-example">
+                    <div class="demo-preview contain-floats">
+                      <form class="demo-form">
+                        <SelectComponent
+                          name="category"
+                          label="Product Category"
+                          placeholder="Choose a category"
+                          required={true}
+                          options={[
+                            { value: "electronics", label: "Electronics" },
+                            { value: "clothing", label: "Clothing & Accessories" },
+                            { value: "home", label: "Home & Garden" },
+                            { value: "sports", label: "Sports & Recreation" },
+                            { value: "books", label: "Books & Media" },
+                            { value: "health", label: "Health & Beauty" },
+                          ]}
+                        />
+                      </form>
+                    </div>
 
-                <div class="demo-code">
-                  <pre><code>&lt;SelectComponent
+                    <div class="demo-code">
+                      <pre><code>&lt;SelectComponent
   name="category"
   label="Product Category"
   placeholder="Choose a category"
@@ -148,39 +154,39 @@ import "@/styles/demo.scss";
     { value: "home", label: "Home & Garden" }
   ]}
 /&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>With Disabled Options</h2>
-              <p>Select with some options disabled.</p>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>With Disabled Options</h2>
+                  <p>Select with some options disabled.</p>
 
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <form class="demo-form">
-                    <SelectComponent
-                      name="plan"
-                      label="Subscription Plan"
-                      helpText="Premium plans are currently at capacity"
-                      value="basic"
-                      options={[
-                        { value: "free", label: "Free - Limited features" },
-                        { value: "basic", label: "Basic - $9/month" },
-                        { value: "pro", label: "Pro - $19/month" },
-                        { value: "premium", label: "Premium - $39/month", disabled: true },
-                        { value: "enterprise", label: "Enterprise - Contact sales", disabled: true },
-                      ]}
-                    />
-                  </form>
-                </div>
+                  <div class="demo-example">
+                    <div class="demo-preview contain-floats">
+                      <form class="demo-form">
+                        <SelectComponent
+                          name="plan"
+                          label="Subscription Plan"
+                          helpText="Premium plans are currently at capacity"
+                          value="basic"
+                          options={[
+                            { value: "free", label: "Free - Limited features" },
+                            { value: "basic", label: "Basic - $9/month" },
+                            { value: "pro", label: "Pro - $19/month" },
+                            { value: "premium", label: "Premium - $39/month", disabled: true },
+                            { value: "enterprise", label: "Enterprise - Contact sales", disabled: true },
+                          ]}
+                        />
+                      </form>
+                    </div>
 
-                <div class="demo-code">
-                  <pre><code>&lt;SelectComponent
+                    <div class="demo-code">
+                      <pre><code>&lt;SelectComponent
   name="plan"
   label="Subscription Plan"
   helpText="Premium plans are currently at capacity"
@@ -192,44 +198,44 @@ import "@/styles/demo.scss";
     { value: "premium", label: "Premium - $39/month", disabled: true }
   ]}
 /&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Multiple Selection</h2>
-              <p>Select component allowing multiple choices.</p>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Multiple Selection</h2>
+                  <p>Select component allowing multiple choices.</p>
 
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <form class="demo-form">
-                    <SelectComponent
-                      name="skills"
-                      label="Technical Skills"
-                      helpText="Select all skills that apply to you"
-                      multiple={true}
-                      options={[
-                        { value: "javascript", label: "JavaScript" },
-                        { value: "typescript", label: "TypeScript" },
-                        { value: "react", label: "React" },
-                        { value: "vue", label: "Vue.js" },
-                        { value: "angular", label: "Angular" },
-                        { value: "node", label: "Node.js" },
-                        { value: "python", label: "Python" },
-                        { value: "java", label: "Java" },
-                        { value: "csharp", label: "C#" },
-                        { value: "php", label: "PHP" },
-                      ]}
-                    />
-                  </form>
-                </div>
+                  <div class="demo-example">
+                    <div class="demo-preview contain-floats">
+                      <form class="demo-form">
+                        <SelectComponent
+                          name="skills"
+                          label="Technical Skills"
+                          helpText="Select all skills that apply to you"
+                          multiple={true}
+                          options={[
+                            { value: "javascript", label: "JavaScript" },
+                            { value: "typescript", label: "TypeScript" },
+                            { value: "react", label: "React" },
+                            { value: "vue", label: "Vue.js" },
+                            { value: "angular", label: "Angular" },
+                            { value: "node", label: "Node.js" },
+                            { value: "python", label: "Python" },
+                            { value: "java", label: "Java" },
+                            { value: "csharp", label: "C#" },
+                            { value: "php", label: "PHP" },
+                          ]}
+                        />
+                      </form>
+                    </div>
 
-                <div class="demo-code">
-                  <pre><code>&lt;SelectComponent
+                    <div class="demo-code">
+                      <pre><code>&lt;SelectComponent
   name="skills"
   label="Technical Skills"
   helpText="Select all skills that apply to you"
@@ -241,43 +247,43 @@ import "@/styles/demo.scss";
     { value: "vue", label: "Vue.js" }
   ]}
 /&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Error State</h2>
-              <p>Select component with validation error.</p>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Error State</h2>
+                  <p>Select component with validation error.</p>
 
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <form class="demo-form">
-                    <SelectComponent
-                      name="timezone"
-                      label="Time Zone"
-                      placeholder="Select your timezone"
-                      required={true}
-                      error="Please select your time zone to complete your profile"
-                      options={[
-                        { value: "utc-12", label: "(UTC-12:00) International Date Line West" },
-                        { value: "utc-11", label: "(UTC-11:00) Coordinated Universal Time-11" },
-                        { value: "utc-10", label: "(UTC-10:00) Hawaii" },
-                        { value: "utc-9", label: "(UTC-09:00) Alaska" },
-                        { value: "utc-8", label: "(UTC-08:00) Pacific Time (US & Canada)" },
-                        { value: "utc-7", label: "(UTC-07:00) Mountain Time (US & Canada)" },
-                        { value: "utc-6", label: "(UTC-06:00) Central Time (US & Canada)" },
-                        { value: "utc-5", label: "(UTC-05:00) Eastern Time (US & Canada)" },
-                      ]}
-                    />
-                  </form>
-                </div>
+                  <div class="demo-example">
+                    <div class="demo-preview contain-floats">
+                      <form class="demo-form">
+                        <SelectComponent
+                          name="timezone"
+                          label="Time Zone"
+                          placeholder="Select your timezone"
+                          required={true}
+                          error="Please select your time zone to complete your profile"
+                          options={[
+                            { value: "utc-12", label: "(UTC-12:00) International Date Line West" },
+                            { value: "utc-11", label: "(UTC-11:00) Coordinated Universal Time-11" },
+                            { value: "utc-10", label: "(UTC-10:00) Hawaii" },
+                            { value: "utc-9", label: "(UTC-09:00) Alaska" },
+                            { value: "utc-8", label: "(UTC-08:00) Pacific Time (US & Canada)" },
+                            { value: "utc-7", label: "(UTC-07:00) Mountain Time (US & Canada)" },
+                            { value: "utc-6", label: "(UTC-06:00) Central Time (US & Canada)" },
+                            { value: "utc-5", label: "(UTC-05:00) Eastern Time (US & Canada)" },
+                          ]}
+                        />
+                      </form>
+                    </div>
 
-                <div class="demo-code">
-                  <pre><code>&lt;SelectComponent
+                    <div class="demo-code">
+                      <pre><code>&lt;SelectComponent
   name="timezone"
   label="Time Zone"
   placeholder="Select your timezone"
@@ -289,38 +295,38 @@ import "@/styles/demo.scss";
     { value: "utc-6", label: "(UTC-06:00) Central Time (US & Canada)" }
   ]}
 /&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Disabled State</h2>
-              <p>Select component in a disabled state.</p>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Disabled State</h2>
+                  <p>Select component in a disabled state.</p>
 
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <form class="demo-form">
-                    <SelectComponent
-                      name="shipping-method"
-                      label="Shipping Method"
-                      value="standard"
-                      disabled={true}
-                      helpText="Shipping method is determined by your location"
-                      options={[
-                        { value: "standard", label: "Standard Shipping - $5.99" },
-                        { value: "express", label: "Express Shipping - $12.99" },
-                        { value: "overnight", label: "Overnight Shipping - $24.99" },
-                      ]}
-                    />
-                  </form>
-                </div>
+                  <div class="demo-example">
+                    <div class="demo-preview contain-floats">
+                      <form class="demo-form">
+                        <SelectComponent
+                          name="shipping-method"
+                          label="Shipping Method"
+                          value="standard"
+                          disabled={true}
+                          helpText="Shipping method is determined by your location"
+                          options={[
+                            { value: "standard", label: "Standard Shipping - $5.99" },
+                            { value: "express", label: "Express Shipping - $12.99" },
+                            { value: "overnight", label: "Overnight Shipping - $24.99" },
+                          ]}
+                        />
+                      </form>
+                    </div>
 
-                <div class="demo-code">
-                  <pre><code>&lt;SelectComponent
+                    <div class="demo-code">
+                      <pre><code>&lt;SelectComponent
   name="shipping-method"
   label="Shipping Method"
   value="standard"
@@ -331,77 +337,77 @@ import "@/styles/demo.scss";
     { value: "express", label: "Express Shipping - $12.99" }
   ]}
 /&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Complete Form Example</h2>
-              <p>Select components used within a complete form context.</p>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Complete Form Example</h2>
+                  <p>Select components used within a complete form context.</p>
 
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <form class="demo-form demo-form--complete">
-                    <div class="form-section">
-                      <h3>Account Settings</h3>
+                  <div class="demo-example">
+                    <div class="demo-preview contain-floats">
+                      <form class="demo-form demo-form--complete">
+                        <div class="form-section">
+                          <h3>Account Settings</h3>
 
-                      <div class="form-row">
-                        <SelectComponent
-                          name="language"
-                          label="Preferred Language"
-                          value="en"
-                          options={[
-                            { value: "en", label: "English" },
-                            { value: "es", label: "Español" },
-                            { value: "fr", label: "Français" },
-                            { value: "de", label: "Deutsch" },
-                            { value: "it", label: "Italiano" },
-                            { value: "pt", label: "Portuguese" },
-                          ]}
-                        />
+                          <div class="form-row">
+                            <SelectComponent
+                              name="language"
+                              label="Preferred Language"
+                              value="en"
+                              options={[
+                                { value: "en", label: "English" },
+                                { value: "es", label: "Español" },
+                                { value: "fr", label: "Français" },
+                                { value: "de", label: "Deutsch" },
+                                { value: "it", label: "Italiano" },
+                                { value: "pt", label: "Portuguese" },
+                              ]}
+                            />
 
-                        <SelectComponent
-                          name="currency"
-                          label="Currency"
-                          value="usd"
-                          options={[
-                            { value: "usd", label: "USD - US Dollar" },
-                            { value: "eur", label: "EUR - Euro" },
-                            { value: "gbp", label: "GBP - British Pound" },
-                            { value: "cad", label: "CAD - Canadian Dollar" },
-                            { value: "aud", label: "AUD - Australian Dollar" },
-                          ]}
-                        />
-                      </div>
+                            <SelectComponent
+                              name="currency"
+                              label="Currency"
+                              value="usd"
+                              options={[
+                                { value: "usd", label: "USD - US Dollar" },
+                                { value: "eur", label: "EUR - Euro" },
+                                { value: "gbp", label: "GBP - British Pound" },
+                                { value: "cad", label: "CAD - Canadian Dollar" },
+                                { value: "aud", label: "AUD - Australian Dollar" },
+                              ]}
+                            />
+                          </div>
 
-                      <SelectComponent
-                        name="notifications"
-                        label="Email Notifications"
-                        helpText="Choose which email notifications you'd like to receive"
-                        multiple={true}
-                        options={[
-                          { value: "account", label: "Account updates" },
-                          { value: "security", label: "Security alerts" },
-                          { value: "newsletter", label: "Newsletter" },
-                          { value: "promotions", label: "Promotions & offers" },
-                          { value: "product", label: "Product updates" },
-                        ]}
-                      />
+                          <SelectComponent
+                            name="notifications"
+                            label="Email Notifications"
+                            helpText="Choose which email notifications you'd like to receive"
+                            multiple={true}
+                            options={[
+                              { value: "account", label: "Account updates" },
+                              { value: "security", label: "Security alerts" },
+                              { value: "newsletter", label: "Newsletter" },
+                              { value: "promotions", label: "Promotions & offers" },
+                              { value: "product", label: "Product updates" },
+                            ]}
+                          />
+                        </div>
+
+                        <div class="form-actions">
+                          <Button variant="secondary" type="button">Reset</Button>
+                          <Button variant="primary" type="submit">Save Settings</Button>
+                        </div>
+                      </form>
                     </div>
 
-                    <div class="form-actions">
-                      <Button variant="secondary" type="button">Reset</Button>
-                      <Button variant="primary" type="submit">Save Settings</Button>
-                    </div>
-                  </form>
-                </div>
-
-                <div class="demo-code">
-                  <pre><code>&lt;form&gt;
+                    <div class="demo-code">
+                      <pre><code>&lt;form&gt;
   &lt;SelectComponent
     name="language"
     label="Preferred Language"
@@ -415,226 +421,228 @@ import "@/styles/demo.scss";
   
   &lt;Button type="submit"&gt;Save Settings&lt;/Button&gt;
 &lt;/form&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Props Reference</h2>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Props Reference</h2>
 
-              <div class="props-table">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Prop</th>
-                      <th>Type</th>
-                      <th>Default</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>name</code></td>
-                      <td><code>string</code></td>
-                      <td>Required</td>
-                      <td>The name attribute for the select element</td>
-                    </tr>
-                    <tr>
-                      <td><code>label</code></td>
-                      <td><code>string</code></td>
-                      <td><code>undefined</code></td>
-                      <td>The label text for the select field</td>
-                    </tr>
-                    <tr>
-                      <td><code>options</code></td>
-                      <td><code>SelectOption[]</code></td>
-                      <td>Required</td>
-                      <td>Array of select options</td>
-                    </tr>
-                    <tr>
-                      <td><code>value</code></td>
-                      <td><code>string</code></td>
-                      <td><code>undefined</code></td>
-                      <td>The currently selected value</td>
-                    </tr>
-                    <tr>
-                      <td><code>placeholder</code></td>
-                      <td><code>string</code></td>
-                      <td><code>undefined</code></td>
-                      <td>Placeholder text for empty select</td>
-                    </tr>
-                    <tr>
-                      <td><code>multiple</code></td>
-                      <td><code>boolean</code></td>
-                      <td><code>false</code></td>
-                      <td>Allow multiple selections</td>
-                    </tr>
-                    <tr>
-                      <td><code>required</code></td>
-                      <td><code>boolean</code></td>
-                      <td><code>false</code></td>
-                      <td>Whether selection is required</td>
-                    </tr>
-                    <tr>
-                      <td><code>disabled</code></td>
-                      <td><code>boolean</code></td>
-                      <td><code>false</code></td>
-                      <td>Whether the select is disabled</td>
-                    </tr>
-                    <tr>
-                      <td><code>searchable</code></td>
-                      <td><code>boolean</code></td>
-                      <td><code>false</code></td>
-                      <td>Enable search functionality</td>
-                    </tr>
-                    <tr>
-                      <td><code>clearable</code></td>
-                      <td><code>boolean</code></td>
-                      <td><code>false</code></td>
-                      <td>Show clear button when value is selected</td>
-                    </tr>
-                    <tr>
-                      <td><code>helpText</code></td>
-                      <td><code>string</code></td>
-                      <td><code>undefined</code></td>
-                      <td>Additional help text</td>
-                    </tr>
-                    <tr>
-                      <td><code>error</code></td>
-                      <td><code>string</code></td>
-                      <td><code>undefined</code></td>
-                      <td>Error message to display</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                  <div class="props-table">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Prop</th>
+                          <th>Type</th>
+                          <th>Default</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><code>name</code></td>
+                          <td><code>string</code></td>
+                          <td>Required</td>
+                          <td>The name attribute for the select element</td>
+                        </tr>
+                        <tr>
+                          <td><code>label</code></td>
+                          <td><code>string</code></td>
+                          <td><code>undefined</code></td>
+                          <td>The label text for the select field</td>
+                        </tr>
+                        <tr>
+                          <td><code>options</code></td>
+                          <td><code>SelectOption[]</code></td>
+                          <td>Required</td>
+                          <td>Array of select options</td>
+                        </tr>
+                        <tr>
+                          <td><code>value</code></td>
+                          <td><code>string</code></td>
+                          <td><code>undefined</code></td>
+                          <td>The currently selected value</td>
+                        </tr>
+                        <tr>
+                          <td><code>placeholder</code></td>
+                          <td><code>string</code></td>
+                          <td><code>undefined</code></td>
+                          <td>Placeholder text for empty select</td>
+                        </tr>
+                        <tr>
+                          <td><code>multiple</code></td>
+                          <td><code>boolean</code></td>
+                          <td><code>false</code></td>
+                          <td>Allow multiple selections</td>
+                        </tr>
+                        <tr>
+                          <td><code>required</code></td>
+                          <td><code>boolean</code></td>
+                          <td><code>false</code></td>
+                          <td>Whether selection is required</td>
+                        </tr>
+                        <tr>
+                          <td><code>disabled</code></td>
+                          <td><code>boolean</code></td>
+                          <td><code>false</code></td>
+                          <td>Whether the select is disabled</td>
+                        </tr>
+                        <tr>
+                          <td><code>searchable</code></td>
+                          <td><code>boolean</code></td>
+                          <td><code>false</code></td>
+                          <td>Enable search functionality</td>
+                        </tr>
+                        <tr>
+                          <td><code>clearable</code></td>
+                          <td><code>boolean</code></td>
+                          <td><code>false</code></td>
+                          <td>Show clear button when value is selected</td>
+                        </tr>
+                        <tr>
+                          <td><code>helpText</code></td>
+                          <td><code>string</code></td>
+                          <td><code>undefined</code></td>
+                          <td>Additional help text</td>
+                        </tr>
+                        <tr>
+                          <td><code>error</code></td>
+                          <td><code>string</code></td>
+                          <td><code>undefined</code></td>
+                          <td>Error message to display</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
 
-              <h3>SelectOption Interface</h3>
-              <div class="props-table">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Property</th>
-                      <th>Type</th>
-                      <th>Required</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>value</code></td>
-                      <td><code>string</code></td>
-                      <td>Yes</td>
-                      <td>The value of the select option</td>
-                    </tr>
-                    <tr>
-                      <td><code>label</code></td>
-                      <td><code>string</code></td>
-                      <td>Yes</td>
-                      <td>The display text for the option</td>
-                    </tr>
-                    <tr>
-                      <td><code>disabled</code></td>
-                      <td><code>boolean</code></td>
-                      <td>No</td>
-                      <td>Whether this option is disabled</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Accessibility Features</h2>
-              <p class="section-intro">Built-in accessibility support for inclusive user experiences.</p>
-            </div>
-          </div>
-
-          <div class="section-grid">
-            <div class="col-full">
-              <div class="accessibility-grid">
-                <div class="accessibility-item">
-                  <h4>Keyboard Navigation</h4>
-                  <ul>
-                    <li><kbd>Tab</kbd> - Focus select element</li>
-                    <li><kbd>Arrow Keys</kbd> - Navigate through options</li>
-                    <li><kbd>Enter</kbd> / <kbd>Space</kbd> - Open dropdown</li>
-                    <li><kbd>Escape</kbd> - Close dropdown</li>
-                    <li><kbd>Type</kbd> - Type-ahead search</li>
-                  </ul>
-                </div>
-
-                <div class="accessibility-item">
-                  <h4>Screen Reader Support</h4>
-                  <ul>
-                    <li>Native select element for best compatibility</li>
-                    <li>Proper label-input association</li>
-                    <li>Help text linked with <code>aria-describedby</code></li>
-                    <li>Error state indicated with <code>aria-invalid</code></li>
-                    <li>Required field announcements</li>
-                  </ul>
-                </div>
-
-                <div class="accessibility-item">
-                  <h4>Visual Indicators</h4>
-                  <ul>
-                    <li>Clear focus indicators</li>
-                    <li>Selected option highlighting</li>
-                    <li>Disabled state styling</li>
-                    <li>Error state visual feedback</li>
-                    <li>Loading states for dynamic options</li>
-                  </ul>
+                  <h3>SelectOption Interface</h3>
+                  <div class="props-table">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Property</th>
+                          <th>Type</th>
+                          <th>Required</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><code>value</code></td>
+                          <td><code>string</code></td>
+                          <td>Yes</td>
+                          <td>The value of the select option</td>
+                        </tr>
+                        <tr>
+                          <td><code>label</code></td>
+                          <td><code>string</code></td>
+                          <td>Yes</td>
+                          <td>The display text for the option</td>
+                        </tr>
+                        <tr>
+                          <td><code>disabled</code></td>
+                          <td><code>boolean</code></td>
+                          <td>No</td>
+                          <td>Whether this option is disabled</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Design Guidelines</h2>
-              <p class="section-intro">Best practices for using select components in your interface.</p>
-            </div>
-          </div>
-
-          <div class="section-grid">
-            <div class="col-full">
-              <div class="guidelines-grid">
-                <div class="guideline-item">
-                  <h4>✅ Do</h4>
-                  <ul>
-                    <li>Use for 8+ options to save space</li>
-                    <li>Order options logically (alphabetical, frequency)</li>
-                    <li>Provide helpful placeholder text</li>
-                    <li>Group related options when possible</li>
-                    <li>Show default selections when appropriate</li>
-                  </ul>
-                </div>
-
-                <div class="guideline-item">
-                  <h4>❌ Don't</h4>
-                  <ul>
-                    <li>Use for 2-7 options (use radio buttons instead)</li>
-                    <li>Use multiple selection without clear indication</li>
-                    <li>Hide important context in lengthy option lists</li>
-                    <li>Use unclear or ambiguous option labels</li>
-                    <li>Disable options without explanation</li>
-                  </ul>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Accessibility Features</h2>
+                  <p class="section-intro">Built-in accessibility support for inclusive user experiences.</p>
                 </div>
               </div>
-            </div>
+
+              <div class="section-grid">
+                <div class="col-full">
+                  <div class="accessibility-grid">
+                    <div class="accessibility-item">
+                      <h4>Keyboard Navigation</h4>
+                      <ul>
+                        <li><kbd>Tab</kbd> - Focus select element</li>
+                        <li><kbd>Arrow Keys</kbd> - Navigate through options</li>
+                        <li><kbd>Enter</kbd> / <kbd>Space</kbd> - Open dropdown</li>
+                        <li><kbd>Escape</kbd> - Close dropdown</li>
+                        <li><kbd>Type</kbd> - Type-ahead search</li>
+                      </ul>
+                    </div>
+
+                    <div class="accessibility-item">
+                      <h4>Screen Reader Support</h4>
+                      <ul>
+                        <li>Native select element for best compatibility</li>
+                        <li>Proper label-input association</li>
+                        <li>Help text linked with <code>aria-describedby</code></li>
+                        <li>Error state indicated with <code>aria-invalid</code></li>
+                        <li>Required field announcements</li>
+                      </ul>
+                    </div>
+
+                    <div class="accessibility-item">
+                      <h4>Visual Indicators</h4>
+                      <ul>
+                        <li>Clear focus indicators</li>
+                        <li>Selected option highlighting</li>
+                        <li>Disabled state styling</li>
+                        <li>Error state visual feedback</li>
+                        <li>Loading states for dynamic options</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Design Guidelines</h2>
+                  <p class="section-intro">Best practices for using select components in your interface.</p>
+                </div>
+              </div>
+
+              <div class="section-grid">
+                <div class="col-full">
+                  <div class="guidelines-grid">
+                    <div class="guideline-item">
+                      <h4>✅ Do</h4>
+                      <ul>
+                        <li>Use for 8+ options to save space</li>
+                        <li>Order options logically (alphabetical, frequency)</li>
+                        <li>Provide helpful placeholder text</li>
+                        <li>Group related options when possible</li>
+                        <li>Show default selections when appropriate</li>
+                      </ul>
+                    </div>
+
+                    <div class="guideline-item">
+                      <h4>❌ Don't</h4>
+                      <ul>
+                        <li>Use for 2-7 options (use radio buttons instead)</li>
+                        <li>Use multiple selection without clear indication</li>
+                        <li>Hide important context in lengthy option lists</li>
+                        <li>Use unclear or ambiguous option labels</li>
+                        <li>Disable options without explanation</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
+        </div>
       </div>
     </main>
-  </Fragment>
-</Layout>
+  </Fragment></Layout
+>

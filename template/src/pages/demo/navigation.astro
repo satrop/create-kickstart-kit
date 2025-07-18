@@ -73,6 +73,13 @@ const logo = {
   alt: "Company Logo",
   href: "/",
 };
+
+import DemoNavigation from "@/components/DemoNavigation/DemoNavigation.astro";
+import { getFormComponentNavigation } from "@/utils/demoNavigation";
+import "@/styles/demo.scss";
+
+// Get navigation items with current page marked as active
+const navigationItems = getFormComponentNavigation("navigation");
 ---
 
 <Layout title="Navigation Demo">
@@ -80,39 +87,44 @@ const logo = {
     <!-- Navigation Component -->
     <StandardNavigation items={standardNavData} mobileAnimation="left" logo={logo} />
 
-    <!-- Demo Content -->
-    <div class="navigation-demo">
-      <div class="demo-container">
-        <header class="demo-header">
-          <h1>Standard Navigation Demo</h1>
-          <p class="demo-description">
-            This page demonstrates the standard dropdown navigation component. Hover over items with children to see the
-            dropdown menus in action.
-          </p>
-        </header>
+    <div class="section-grid owl-32">
+      <DemoNavigation title="Form Components" items={navigationItems} />
+      <div class="col-4 md:col-4 lg:col-9">
+        <!-- Demo Content -->
+        <div class="navigation-demo">
+          <div class="demo-container">
+            <header class="demo-header">
+              <h1>Standard Navigation Demo</h1>
+              <p class="demo-description">
+                This page demonstrates the standard dropdown navigation component. Hover over items with children to see
+                the dropdown menus in action.
+              </p>
+            </header>
 
-        <section class="demo-features">
-          <h2>Features</h2>
-          <ul>
-            <li>Simple dropdown menus</li>
-            <li>Mobile-friendly responsive design</li>
-            <li>Keyboard navigation support</li>
-            <li>ARIA accessibility compliance</li>
-            <li>Touch-friendly interface</li>
-            <li>Smooth animations</li>
-          </ul>
-        </section>
+            <section class="demo-features">
+              <h2>Features</h2>
+              <ul>
+                <li>Simple dropdown menus</li>
+                <li>Mobile-friendly responsive design</li>
+                <li>Keyboard navigation support</li>
+                <li>ARIA accessibility compliance</li>
+                <li>Touch-friendly interface</li>
+                <li>Smooth animations</li>
+              </ul>
+            </section>
 
-        <section class="demo-usage">
-          <h2>How to Test</h2>
-          <ol>
-            <li>Hover over "Products" or "Services" to see the dropdown menus</li>
-            <li>Use keyboard navigation (Tab, Enter, Escape, Arrow keys)</li>
-            <li>Resize the window to test mobile responsiveness</li>
-            <li>Test with screen readers for accessibility</li>
-          </ol>
-        </section>
+            <section class="demo-usage">
+              <h2>How to Test</h2>
+              <ol>
+                <li>Hover over "Products" or "Services" to see the dropdown menus</li>
+                <li>Use keyboard navigation (Tab, Enter, Escape, Arrow keys)</li>
+                <li>Resize the window to test mobile responsiveness</li>
+                <li>Test with screen readers for accessibility</li>
+              </ol>
+            </section>
+          </div>
+        </div>
       </div>
     </div>
-  </main>
-</Layout>
+  </main></Layout
+>

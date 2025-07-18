@@ -1,0 +1,305 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import MegaNavComp from "@/components/MegaNavigation/MegaNavigation.astro";
+import MobileNav from "@/components/MegaNavigation/MobileNavigation.astro";
+
+// Import demo-specific styles (not included in production builds)
+import "@/styles/demo/complete-navigation.scss";
+
+const title = "Complete Navigation Demo";
+
+// Extended navigation data for comprehensive testing
+const completeNavData = [
+  { label: "Home", href: "/" },
+  {
+    label: "Products",
+    href: "/products",
+    description:
+      "Comprehensive digital solutions to transform your business and drive growth in the modern marketplace.",
+    image: "/images/image1.jpg",
+    children: [
+      {
+        label: "Web Development",
+        href: "/products/web-development",
+        children: [
+          { label: "Frontend Development", href: "/products/web-development/frontend" },
+          { label: "Backend Development", href: "/products/web-development/backend" },
+          { label: "Full Stack Solutions", href: "/products/web-development/fullstack" },
+          { label: "E-commerce Platforms", href: "/products/web-development/ecommerce" },
+        ],
+      },
+      {
+        label: "Mobile Apps",
+        href: "/products/mobile-apps",
+        children: [
+          { label: "iOS Development", href: "/products/mobile-apps/ios" },
+          { label: "Android Development", href: "/products/mobile-apps/android" },
+          { label: "Cross-platform Apps", href: "/products/mobile-apps/cross-platform" },
+          { label: "Progressive Web Apps", href: "/products/mobile-apps/pwa" },
+        ],
+      },
+      {
+        label: "Design Services",
+        href: "/products/design",
+        children: [
+          { label: "UI/UX Design", href: "/products/design/ui-ux" },
+          { label: "Brand Identity", href: "/products/design/branding" },
+          { label: "Graphic Design", href: "/products/design/graphics" },
+          { label: "Prototyping", href: "/products/design/prototyping" },
+        ],
+      },
+      {
+        label: "Consulting",
+        href: "/products/consulting",
+      },
+    ],
+  },
+  {
+    label: "Services",
+    href: "/services",
+    description: "Expert services tailored to your specific needs and business objectives.",
+    image: "/images/image2.jpg",
+    children: [
+      {
+        label: "Strategy & Planning",
+        href: "/services/strategy",
+        children: [
+          { label: "Digital Strategy", href: "/services/strategy/digital" },
+          { label: "Business Analysis", href: "/services/strategy/analysis" },
+          { label: "Market Research", href: "/services/strategy/research" },
+        ],
+      },
+      {
+        label: "Implementation",
+        href: "/services/implementation",
+        children: [
+          { label: "Project Management", href: "/services/implementation/pm" },
+          { label: "Technical Support", href: "/services/implementation/support" },
+          { label: "Training", href: "/services/implementation/training" },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Resources",
+    href: "/resources",
+    description: "Valuable resources to help you stay informed and make better decisions.",
+    image: "/images/image3.jpg",
+    children: [
+      { label: "Blog", href: "/resources/blog" },
+      { label: "Documentation", href: "/resources/docs" },
+      { label: "Case Studies", href: "/resources/case-studies" },
+      { label: "White Papers", href: "/resources/white-papers" },
+      { label: "Webinars", href: "/resources/webinars" },
+    ],
+  },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+
+import DemoNavigation from "../../components/DemoNavigation/DemoNavigation.astro";
+import { getFormComponentNavigation } from "../../utils/demoNavigation";
+import "@/styles/demo.scss";
+
+// Get navigation items with current page marked as active
+const navigationItems = getFormComponentNavigation("mega-nav");
+---
+
+<Layout title={title}>
+  <main>
+    <!-- Desktop Navigation (hidden on mobile) -->
+    <div class="desktop-navigation">
+      <MegaNavComp
+        items={completeNavData}
+        logo={{
+          src: "favicon.svg",
+          alt: "Company Logo",
+          href: "/",
+        }}
+      />
+    </div>
+
+    <!-- Mobile Navigation (hidden on desktop) -->
+    <div class="mobile-navigation">
+      <MobileNav
+        items={completeNavData}
+        mobileAnimation="left"
+        logo={{
+          src: "favicon.svg",
+          alt: "Company Logo",
+          href: "/",
+        }}
+      />
+    </div>
+
+    <div class="section-grid owl-32">
+      <DemoNavigation title="Form Components" items={navigationItems} />
+      <div class="col-4 md:col-4 lg:col-9">
+        <!-- Page Content -->
+        <div class="demo-content">
+          <div class="demo-container">
+            <header class="demo-header">
+              <h1>Complete Navigation System</h1>
+              <p class="demo-description">
+                This demo showcases a complete navigation system with both desktop mega menu and mobile accordion
+                navigation. The system automatically switches between mobile and desktop versions based on screen size.
+              </p>
+            </header>
+
+            <section class="demo-features">
+              <h2>System Features</h2>
+
+              <div class="feature-grid">
+                <div class="feature-card">
+                  <h3>📱 Mobile Navigation</h3>
+                  <ul>
+                    <li>Touch-friendly accordion menu</li>
+                    <li>Smooth slide animations</li>
+                    <li>Proper focus management</li>
+                    <li>Deep nesting support</li>
+                    <li>Overlay for better UX</li>
+                  </ul>
+                </div>
+
+                <div class="feature-card">
+                  <h3>🖥️ Desktop Mega Menu</h3>
+                  <ul>
+                    <li>Grid-based layout system</li>
+                    <li>Rich content with images</li>
+                    <li>CMS-friendly markup</li>
+                    <li>Hover and keyboard navigation</li>
+                    <li>Professional styling</li>
+                  </ul>
+                </div>
+
+                <div class="feature-card">
+                  <h3>♿ Full Accessibility</h3>
+                  <ul>
+                    <li>ARIA attributes throughout</li>
+                    <li>Keyboard navigation support</li>
+                    <li>Screen reader friendly</li>
+                    <li>Focus management</li>
+                    <li>High contrast support</li>
+                  </ul>
+                </div>
+
+                <div class="feature-card">
+                  <h3>⚡ Performance</h3>
+                  <ul>
+                    <li>Component-based architecture</li>
+                    <li>Tree-shaking friendly</li>
+                    <li>Minimal JavaScript</li>
+                    <li>CSS-only animations</li>
+                    <li>Optimized bundle sizes</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section class="demo-usage">
+              <h2>How It Works</h2>
+
+              <div class="usage-steps">
+                <div class="usage-step">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <h3>Responsive Detection</h3>
+                    <p>
+                      CSS media queries automatically show/hide the appropriate navigation based on screen size (768px
+                      breakpoint).
+                    </p>
+                  </div>
+                </div>
+
+                <div class="usage-step">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <h3>Component Isolation</h3>
+                    <p>
+                      Each navigation variant is completely separate, ensuring only the required code is loaded for each
+                      use case.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="usage-step">
+                  <div class="step-number">3</div>
+                  <div class="step-content">
+                    <h3>Shared Data Structure</h3>
+                    <p>
+                      Both navigation types use the same data structure, making it easy to maintain and update
+                      navigation content.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="usage-step">
+                  <div class="step-number">4</div>
+                  <div class="step-content">
+                    <h3>CMS Integration</h3>
+                    <p>Markup-based content structure makes it easy to integrate with any CMS or data source.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="demo-code">
+              <h2>Implementation Example</h2>
+              <pre
+                class="code-block"><code>---
+import MegaNav from './components/MegaNavigation/MegaNavigation.astro';
+import MobileNav from './components/MegaNavigation/MobileNavigation.astro';
+---
+
+&lt;!-- Desktop Navigation --&gt;
+&lt;div class="desktop-navigation"&gt;
+  &lt;MegaNav items=&#123;navigationData&#125; logo=&#123;logoConfig&#125; /&gt;
+&lt;/div&gt;
+
+&lt;!-- Mobile Navigation --&gt;
+&lt;div class="mobile-navigation"&gt;
+  &lt;MobileNav items=&#123;navigationData&#125; logo=&#123;logoConfig&#125; /&gt;
+&lt;/div&gt;
+
+&lt;!-- Responsive behavior is automatically handled by component styles --&gt;</code></pre>
+            </section>
+
+            <!-- Test Content for Scrolling -->
+            <section class="demo-test-content">
+              <h2>Test Content</h2>
+              <p>
+                This section provides content to test navigation behavior while scrolling and interacting with the page.
+              </p>
+
+              <div class="test-cards">
+                <div class="test-card">
+                  <h3>Desktop Testing</h3>
+                  <p>
+                    On desktop, hover over navigation items to see the mega menu in action. Use keyboard navigation with
+                    Tab and Enter keys.
+                  </p>
+                </div>
+
+                <div class="test-card">
+                  <h3>Mobile Testing</h3>
+                  <p>
+                    On mobile, tap the menu button to open the navigation. Test the accordion functionality and smooth
+                    animations.
+                  </p>
+                </div>
+
+                <div class="test-card">
+                  <h3>Accessibility Testing</h3>
+                  <p>
+                    Use screen readers and keyboard-only navigation to verify accessibility features work properly
+                    across both versions.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main></Layout
+>

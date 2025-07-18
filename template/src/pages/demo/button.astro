@@ -1,263 +1,285 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import ButtonComponent from "@/components/Button/Button.astro";
+
+import DemoNavigation from "@/components/DemoNavigation/DemoNavigation.astro";
+import { getFormComponentNavigation } from "@/utils/demoNavigation";
 import "@/styles/demo.scss";
+
+// Get navigation items with current page marked as active
+const navigationItems = getFormComponentNavigation("button");
 ---
 
 <Layout title="Button Component">
   <Fragment slot="main">
     <main id="main" class="layout-main" aria-label="Main content">
-      <div class="component-demo">
-        <header class="demo-header">
-          <div class="section-grid">
-            <div class="col-full">
-              <nav class="demo-nav">
-                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
-              </nav>
-              <h1>Button Component</h1>
-              <p class="demo-subtitle">
-                Flexible button component with multiple variants, sizes, and states for all your interface needs.
-              </p>
-            </div>
-          </div>
-        </header>
+      <Layout title="Button Component">
+        <Fragment slot="main">
+          <main id="main" class="layout-main" aria-label="Main content">
+            <div class="section-grid owl-32">
+              <DemoNavigation
+                title="Form Components"
+                items={navigationItems}
+                backLink={{
+                  url: "./components.html",
+                  text: "Back to Components",
+                }}
+              />
+              <div class="col-4 md:col-4 lg:col-9">
+                <div class="component-demo">
+                  <header class="demo-header">
+                    <div class="section-grid">
+                      <div class="col-full">
+                        <h1>Button Component</h1>
+                        <p class="demo-subtitle">
+                          Flexible button component with multiple variants, sizes, and states for all your interface
+                          needs.
+                        </p>
+                      </div>
+                    </div>
+                  </header>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Button Variants</h2>
-              <p>Different visual styles for various use cases and hierarchy levels.</p>
+                  <section class="demo-section">
+                    <div class="section-grid">
+                      <div class="col-full">
+                        <h2>Button Variants</h2>
+                        <p>Different visual styles for various use cases and hierarchy levels.</p>
 
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-                    <ButtonComponent variant="primary">Primary Button</ButtonComponent>
-                    <ButtonComponent variant="primary" disabled>Disabled Primary</ButtonComponent>
-                  </div>
-                </div>
+                        <div class="demo-example">
+                          <div class="demo-preview">
+                            <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                              <ButtonComponent variant="primary">Primary Button</ButtonComponent>
+                              <ButtonComponent variant="primary" disabled>Disabled Primary</ButtonComponent>
+                            </div>
+                          </div>
 
-                <div class="demo-code">
-                  <pre><code>&lt;Button variant="primary"&gt;Primary Button&lt;/Button&gt;
+                          <div class="demo-code">
+                            <pre><code>&lt;Button variant="primary"&gt;Primary Button&lt;/Button&gt;
 &lt;Button variant="primary" disabled&gt;Disabled Primary&lt;/Button&gt;</code></pre>
-                </div>
-              </div>
+                          </div>
+                        </div>
 
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-                    <ButtonComponent variant="secondary">Secondary Button</ButtonComponent>
-                    <ButtonComponent variant="secondary" disabled>Disabled Secondary</ButtonComponent>
-                  </div>
-                </div>
+                        <div class="demo-example">
+                          <div class="demo-preview">
+                            <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                              <ButtonComponent variant="secondary">Secondary Button</ButtonComponent>
+                              <ButtonComponent variant="secondary" disabled>Disabled Secondary</ButtonComponent>
+                            </div>
+                          </div>
 
-                <div class="demo-code">
-                  <pre><code>&lt;Button variant="secondary"&gt;Secondary Button&lt;/Button&gt;
+                          <div class="demo-code">
+                            <pre><code>&lt;Button variant="secondary"&gt;Secondary Button&lt;/Button&gt;
 &lt;Button variant="secondary" disabled&gt;Disabled Secondary&lt;/Button&gt;</code></pre>
-                </div>
-              </div>
+                          </div>
+                        </div>
 
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-                    <ButtonComponent variant="outline">Outline Button</ButtonComponent>
-                    <ButtonComponent variant="outline" disabled>Disabled Outline</ButtonComponent>
-                  </div>
-                </div>
+                        <div class="demo-example">
+                          <div class="demo-preview">
+                            <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                              <ButtonComponent variant="outline">Outline Button</ButtonComponent>
+                              <ButtonComponent variant="outline" disabled>Disabled Outline</ButtonComponent>
+                            </div>
+                          </div>
 
-                <div class="demo-code">
-                  <pre><code>&lt;Button variant="outline"&gt;Outline Button&lt;/Button&gt;
+                          <div class="demo-code">
+                            <pre><code>&lt;Button variant="outline"&gt;Outline Button&lt;/Button&gt;
 &lt;Button variant="outline" disabled&gt;Disabled Outline&lt;/Button&gt;</code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Button Sizes</h2>
-              <p>Multiple size options to fit different contexts and layouts.</p>
+                  <section class="demo-section">
+                    <div class="section-grid">
+                      <div class="col-full">
+                        <h2>Button Sizes</h2>
+                        <p>Multiple size options to fit different contexts and layouts.</p>
 
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-                    <ButtonComponent variant="primary" size="small">Small Button</ButtonComponent>
-                    <ButtonComponent variant="primary" size="medium">Medium Button</ButtonComponent>
-                    <ButtonComponent variant="primary" size="large">Large Button</ButtonComponent>
-                  </div>
-                </div>
+                        <div class="demo-example">
+                          <div class="demo-preview">
+                            <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                              <ButtonComponent variant="primary" size="small">Small Button</ButtonComponent>
+                              <ButtonComponent variant="primary" size="medium">Medium Button</ButtonComponent>
+                              <ButtonComponent variant="primary" size="large">Large Button</ButtonComponent>
+                            </div>
+                          </div>
 
-                <div class="demo-code">
-                  <pre><code>&lt;Button variant="primary" size="small"&gt;Small Button&lt;/Button&gt;
+                          <div class="demo-code">
+                            <pre><code>&lt;Button variant="primary" size="small"&gt;Small Button&lt;/Button&gt;
 &lt;Button variant="primary" size="medium"&gt;Medium Button&lt;/Button&gt;
 &lt;Button variant="primary" size="large"&gt;Large Button&lt;/Button&gt;</code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Button Types</h2>
-              <p>Different button types for forms and interactions.</p>
+                  <section class="demo-section">
+                    <div class="section-grid">
+                      <div class="col-full">
+                        <h2>Button Types</h2>
+                        <p>Different button types for forms and interactions.</p>
 
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-                    <ButtonComponent type="button" variant="primary">Button Type</ButtonComponent>
-                    <ButtonComponent type="submit" variant="secondary">Submit Type</ButtonComponent>
-                    <ButtonComponent type="reset" variant="outline">Reset Type</ButtonComponent>
-                  </div>
-                </div>
+                        <div class="demo-example">
+                          <div class="demo-preview">
+                            <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                              <ButtonComponent type="button" variant="primary">Button Type</ButtonComponent>
+                              <ButtonComponent type="submit" variant="secondary">Submit Type</ButtonComponent>
+                              <ButtonComponent type="reset" variant="outline">Reset Type</ButtonComponent>
+                            </div>
+                          </div>
 
-                <div class="demo-code">
-                  <pre><code>&lt;Button type="button" variant="primary"&gt;Button Type&lt;/Button&gt;
+                          <div class="demo-code">
+                            <pre><code>&lt;Button type="button" variant="primary"&gt;Button Type&lt;/Button&gt;
 &lt;Button type="submit" variant="secondary"&gt;Submit Type&lt;/Button&gt;
 &lt;Button type="reset" variant="outline"&gt;Reset Type&lt;/Button&gt;</code></pre>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="demo-section">
+                    <div class="section-grid">
+                      <div class="col-full">
+                        <h2>Props Reference</h2>
+                        <div class="props-table">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Prop</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><code>variant</code></td>
+                                <td><code>"primary" | "secondary" | "outline"</code></td>
+                                <td><code>"primary"</code></td>
+                                <td>The button variant, which determines the visual style and hierarchy</td>
+                              </tr>
+                              <tr>
+                                <td><code>size</code></td>
+                                <td><code>"small" | "medium" | "large"</code></td>
+                                <td><code>"medium"</code></td>
+                                <td>The size of the button, affecting padding and font size</td>
+                              </tr>
+                              <tr>
+                                <td><code>type</code></td>
+                                <td><code>"button" | "submit" | "reset"</code></td>
+                                <td><code>"button"</code></td>
+                                <td>The HTML button type, determines form interaction behavior</td>
+                              </tr>
+                              <tr>
+                                <td><code>disabled</code></td>
+                                <td><code>boolean</code></td>
+                                <td><code>false</code></td>
+                                <td>Whether the button is disabled and non-interactive</td>
+                              </tr>
+                              <tr>
+                                <td><code>class</code></td>
+                                <td><code>string</code></td>
+                                <td><code>undefined</code></td>
+                                <td>Additional CSS classes to apply to the button element</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- Accessibility Features -->
+                  <section class="demo-section">
+                    <div class="section-grid">
+                      <div class="col-full">
+                        <h2>Accessibility Features</h2>
+                        <p class="section-intro">Built-in accessibility support for inclusive user experiences.</p>
+                      </div>
+                    </div>
+
+                    <div class="section-grid">
+                      <div class="col-full">
+                        <div class="accessibility-grid">
+                          <div class="accessibility-item">
+                            <h4>Keyboard Navigation</h4>
+                            <ul>
+                              <li><kbd>Tab</kbd> - Move focus to button</li>
+                              <li><kbd>Enter</kbd> / <kbd>Space</kbd> - Activate button</li>
+                              <li><kbd>Shift + Tab</kbd> - Move focus backwards</li>
+                            </ul>
+                          </div>
+
+                          <div class="accessibility-item">
+                            <h4>Screen Reader Support</h4>
+                            <ul>
+                              <li>Proper button role and semantics</li>
+                              <li>Disabled state announced correctly</li>
+                              <li>Button text content read aloud</li>
+                              <li>Form submission context provided</li>
+                            </ul>
+                          </div>
+
+                          <div class="accessibility-item">
+                            <h4>Visual Indicators</h4>
+                            <ul>
+                              <li>Clear focus outline for keyboard navigation</li>
+                              <li>Distinct hover and active states</li>
+                              <li>Disabled state with reduced opacity</li>
+                              <li>High contrast mode support</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- Design Guidelines -->
+                  <section class="demo-section">
+                    <div class="section-grid">
+                      <div class="col-full">
+                        <h2>Design Guidelines</h2>
+                        <p class="section-intro">Best practices for using buttons in your interface.</p>
+                      </div>
+                    </div>
+
+                    <div class="section-grid">
+                      <div class="col-full">
+                        <div class="guidelines-grid">
+                          <div class="guideline-item">
+                            <h4>✅ Do</h4>
+                            <ul>
+                              <li>Use clear, action-oriented text</li>
+                              <li>Limit to one primary button per view</li>
+                              <li>Provide adequate spacing around buttons</li>
+                              <li>Use consistent button sizes within sections</li>
+                              <li>Group related actions together</li>
+                            </ul>
+                          </div>
+
+                          <div class="guideline-item">
+                            <h4>❌ Don't</h4>
+                            <ul>
+                              <li>Use vague labels like "Click here" or "Submit"</li>
+                              <li>Make buttons too small (minimum 44px touch target)</li>
+                              <li>Use too many button variants in one view</li>
+                              <li>Disable buttons without explanation</li>
+                              <li>Use buttons for navigation (use links instead)</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Props Reference</h2>
-              <div class="props-table">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Prop</th>
-                      <th>Type</th>
-                      <th>Default</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>variant</code></td>
-                      <td><code>"primary" | "secondary" | "outline"</code></td>
-                      <td><code>"primary"</code></td>
-                      <td>The button variant, which determines the visual style and hierarchy</td>
-                    </tr>
-                    <tr>
-                      <td><code>size</code></td>
-                      <td><code>"small" | "medium" | "large"</code></td>
-                      <td><code>"medium"</code></td>
-                      <td>The size of the button, affecting padding and font size</td>
-                    </tr>
-                    <tr>
-                      <td><code>type</code></td>
-                      <td><code>"button" | "submit" | "reset"</code></td>
-                      <td><code>"button"</code></td>
-                      <td>The HTML button type, determines form interaction behavior</td>
-                    </tr>
-                    <tr>
-                      <td><code>disabled</code></td>
-                      <td><code>boolean</code></td>
-                      <td><code>false</code></td>
-                      <td>Whether the button is disabled and non-interactive</td>
-                    </tr>
-                    <tr>
-                      <td><code>class</code></td>
-                      <td><code>string</code></td>
-                      <td><code>undefined</code></td>
-                      <td>Additional CSS classes to apply to the button element</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Accessibility Features -->
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Accessibility Features</h2>
-              <p class="section-intro">Built-in accessibility support for inclusive user experiences.</p>
-            </div>
-          </div>
-
-          <div class="section-grid">
-            <div class="col-full">
-              <div class="accessibility-grid">
-                <div class="accessibility-item">
-                  <h4>Keyboard Navigation</h4>
-                  <ul>
-                    <li><kbd>Tab</kbd> - Move focus to button</li>
-                    <li><kbd>Enter</kbd> / <kbd>Space</kbd> - Activate button</li>
-                    <li><kbd>Shift + Tab</kbd> - Move focus backwards</li>
-                  </ul>
-                </div>
-
-                <div class="accessibility-item">
-                  <h4>Screen Reader Support</h4>
-                  <ul>
-                    <li>Proper button role and semantics</li>
-                    <li>Disabled state announced correctly</li>
-                    <li>Button text content read aloud</li>
-                    <li>Form submission context provided</li>
-                  </ul>
-                </div>
-
-                <div class="accessibility-item">
-                  <h4>Visual Indicators</h4>
-                  <ul>
-                    <li>Clear focus outline for keyboard navigation</li>
-                    <li>Distinct hover and active states</li>
-                    <li>Disabled state with reduced opacity</li>
-                    <li>High contrast mode support</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Design Guidelines -->
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Design Guidelines</h2>
-              <p class="section-intro">Best practices for using buttons in your interface.</p>
-            </div>
-          </div>
-
-          <div class="section-grid">
-            <div class="col-full">
-              <div class="guidelines-grid">
-                <div class="guideline-item">
-                  <h4>✅ Do</h4>
-                  <ul>
-                    <li>Use clear, action-oriented text</li>
-                    <li>Limit to one primary button per view</li>
-                    <li>Provide adequate spacing around buttons</li>
-                    <li>Use consistent button sizes within sections</li>
-                    <li>Group related actions together</li>
-                  </ul>
-                </div>
-
-                <div class="guideline-item">
-                  <h4>❌ Don't</h4>
-                  <ul>
-                    <li>Use vague labels like "Click here" or "Submit"</li>
-                    <li>Make buttons too small (minimum 44px touch target)</li>
-                    <li>Use too many button variants in one view</li>
-                    <li>Disable buttons without explanation</li>
-                    <li>Use buttons for navigation (use links instead)</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </main>
-  </Fragment>
-</Layout>
+          </main>
+        </Fragment>
+      </Layout>
+    </main></Fragment
+  ></Layout
+>

@@ -15,361 +15,373 @@ const backgroundExamples = getBackgroundExamples();
 const textExamples = getTextExamples();
 const exampleColor = getExampleColor();
 const cssExamples = getCSSExampleColors();
+
+import DemoNavigation from "../../components/DemoNavigation/DemoNavigation.astro";
+import { getFormComponentNavigation } from "../../utils/demoNavigation";
+import "@/styles/demo.scss";
+
+// Get navigation items with current page marked as active
+const navigationItems = getFormComponentNavigation("colors");
 ---
 
 <Layout title="Color System - Astro Kickstart">
   <Fragment slot="main">
     <main id="main" class="layout-main owl-32" aria-label="Main content">
-      <div class="colors-page">
-        <section class="page-header">
-          <div class="section-grid">
-            <div class="col-full">
-              <div class="page-intro">
-                <h1>Color System</h1>
-                <p>
-                  Explore the color palette and utility classes available in the Astro Kickstart theme. Each color is
-                  available as CSS custom properties and utility classes for easy use throughout your project.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="color-showcase">
-          <div class="section-grid owl-32">
-            <div class="col-full">
-              <h2 class="section-title">Color Palette</h2>
-              <p>
-                All colors are available as CSS custom properties (e.g., <code
-                  >var(--{exampleColor.colorName}-{exampleColor.shade})</code
-                >) and utility classes (e.g., <code>.bg-{exampleColor.colorName}-{exampleColor.shade}</code>, <code
-                  >.ast-text--{exampleColor.colorName}-{exampleColor.shade}</code
-                >).
-              </p>
-            </div>
-
-            {
-              colorEntries.map(([colorName, shades]) => {
-                return (
-                  <div class="col-full">
-                    <Card variant="bordered">
-                      <Fragment slot="header">
-                        <h3>{getColorName(colorName)}</h3>
-                      </Fragment>
-                      <div class="color-group">
-                        <div class="color-swatches-row">
-                          {Object.entries(shades)
-                            .sort((a, b) => {
-                              // Sort shades from dark to light (higher numbers first)
-                              const numA = parseInt(a[0]);
-                              const numB = parseInt(b[0]);
-                              return isNaN(numA) || isNaN(numB) ? 0 : numB - numA;
-                            })
-                            .map(([shade, value]) => {
-                              return (
-                                <div class="color-swatch">
-                                  <div
-                                    class={`color-preview bg-${colorName}-${shade}`}
-                                    style={`background-color: ${value}`}
-                                  />
-                                  <div class="color-info">
-                                    <div class="color-name">{shade}</div>
-                                    <div class="color-value">{value}</div>
-                                  </div>
-                                </div>
-                              );
-                            })}
-                        </div>
-                        <div class="color-usage">
-                          <div class="usage-title">Usage:</div>
-                          <div class="usage-examples">
-                            <code>--{colorName}-[shade]</code>
-                            <code>.bg-{colorName}-[shade]</code>
-                            <code>.ast-text--{colorName}-[shade]</code>
-                          </div>
-                        </div>
-                      </div>
-                    </Card>
+      <div class="section-grid owl-32">
+        <DemoNavigation title="Form Components" items={navigationItems} />
+        <div class="col-4 md:col-4 lg:col-9">
+          <div class="colors-page">
+            <section class="page-header">
+              <div class="section-grid">
+                <div class="col-full">
+                  <div class="page-intro">
+                    <h1>Color System</h1>
+                    <p>
+                      Explore the color palette and utility classes available in the Astro Kickstart theme. Each color
+                      is available as CSS custom properties and utility classes for easy use throughout your project.
+                    </p>
                   </div>
-                );
-              })
-            }
-          </div>
-        </section>
-
-        <section class="usage-examples">
-          <div class="section-grid owl-32">
-            <div class="col-full">
-              <h2 class="section-title">Usage Examples</h2>
-              <p>Here are some examples of how to use the color system in your components:</p>
-            </div>
-
-            <div class="col-full lg:col-6">
-              <Card variant="bordered">
-                <Fragment slot="header">
-                  <h3>Background Colors</h3>
-                </Fragment>
-                <div class="usage-example">
-                  {
-                    backgroundExamples.map((example) => (
-                      <div
-                        class={`example-item ${example.className}`}
-                        style={`background-color: ${example.value}; color: #333;`}>
-                        <code>.{example.className}</code>
-                      </div>
-                    ))
-                  }
                 </div>
-              </Card>
-            </div>
+              </div>
+            </section>
 
-            <div class="col-full lg:col-6">
-              <Card variant="bordered">
-                <Fragment slot="header">
-                  <h3>Text Colors</h3>
-                </Fragment>
-                <div class="usage-example">
-                  {
-                    textExamples.map((example) => (
-                      <div class={`example-item ${example.className}`} style={`color: ${example.value}`}>
-                        <code>.{example.className}</code> - {example.displayName} text example
-                      </div>
-                    ))
-                  }
+            <section class="color-showcase">
+              <div class="section-grid owl-32">
+                <div class="col-full">
+                  <h2 class="section-title">Color Palette</h2>
+                  <p>
+                    All colors are available as CSS custom properties (e.g., <code
+                      >var(--{exampleColor.colorName}-{exampleColor.shade})</code
+                    >) and utility classes (e.g., <code>.bg-{exampleColor.colorName}-{exampleColor.shade}</code>, <code
+                      >.ast-text--{exampleColor.colorName}-{exampleColor.shade}</code
+                    >).
+                  </p>
                 </div>
-              </Card>
-            </div>
 
-            <div class="col-full">
-              <Card variant="bordered">
-                <Fragment slot="header">
-                  <h3>CSS Custom Properties</h3>
-                </Fragment>
-                <div class="usage-example">
-                  <p>You can also use CSS custom properties directly in your stylesheets:</p>
-                  <div class="demo-code">
-                    <pre><code>{`.my-component {
+                {
+                  colorEntries.map(([colorName, shades]) => {
+                    return (
+                      <div class="col-full">
+                        <Card variant="bordered">
+                          <Fragment slot="header">
+                            <h3>{getColorName(colorName)}</h3>
+                          </Fragment>
+                          <div class="color-group">
+                            <div class="color-swatches-row">
+                              {Object.entries(shades)
+                                .sort((a, b) => {
+                                  // Sort shades from dark to light (higher numbers first)
+                                  const numA = parseInt(a[0]);
+                                  const numB = parseInt(b[0]);
+                                  return isNaN(numA) || isNaN(numB) ? 0 : numB - numA;
+                                })
+                                .map(([shade, value]) => {
+                                  return (
+                                    <div class="color-swatch">
+                                      <div
+                                        class={`color-preview bg-${colorName}-${shade}`}
+                                        style={`background-color: ${value}`}
+                                      />
+                                      <div class="color-info">
+                                        <div class="color-name">{shade}</div>
+                                        <div class="color-value">{value}</div>
+                                      </div>
+                                    </div>
+                                  );
+                                })}
+                            </div>
+                            <div class="color-usage">
+                              <div class="usage-title">Usage:</div>
+                              <div class="usage-examples">
+                                <code>--{colorName}-[shade]</code>
+                                <code>.bg-{colorName}-[shade]</code>
+                                <code>.ast-text--{colorName}-[shade]</code>
+                              </div>
+                            </div>
+                          </div>
+                        </Card>
+                      </div>
+                    );
+                  })
+                }
+              </div>
+            </section>
+
+            <section class="usage-examples">
+              <div class="section-grid owl-32">
+                <div class="col-full">
+                  <h2 class="section-title">Usage Examples</h2>
+                  <p>Here are some examples of how to use the color system in your components:</p>
+                </div>
+
+                <div class="col-full lg:col-6">
+                  <Card variant="bordered">
+                    <Fragment slot="header">
+                      <h3>Background Colors</h3>
+                    </Fragment>
+                    <div class="usage-example">
+                      {
+                        backgroundExamples.map((example) => (
+                          <div
+                            class={`example-item ${example.className}`}
+                            style={`background-color: ${example.value}; color: #333;`}>
+                            <code>.{example.className}</code>
+                          </div>
+                        ))
+                      }
+                    </div>
+                  </Card>
+                </div>
+
+                <div class="col-full lg:col-6">
+                  <Card variant="bordered">
+                    <Fragment slot="header">
+                      <h3>Text Colors</h3>
+                    </Fragment>
+                    <div class="usage-example">
+                      {
+                        textExamples.map((example) => (
+                          <div class={`example-item ${example.className}`} style={`color: ${example.value}`}>
+                            <code>.{example.className}</code> - {example.displayName} text example
+                          </div>
+                        ))
+                      }
+                    </div>
+                  </Card>
+                </div>
+
+                <div class="col-full">
+                  <Card variant="bordered">
+                    <Fragment slot="header">
+                      <h3>CSS Custom Properties</h3>
+                    </Fragment>
+                    <div class="usage-example">
+                      <p>You can also use CSS custom properties directly in your stylesheets:</p>
+                      <div class="demo-code">
+                        <pre><code>{`.my-component {
   background-color: var(--${cssExamples[0]?.colorName}-${cssExamples[0]?.shade});
   color: var(--${cssExamples[1]?.colorName}-${cssExamples[1]?.shade});
   border: 1px solid var(--${cssExamples[2]?.colorName}-${cssExamples[2]?.shade});
 }`}</code></pre>
-                  </div>
+                      </div>
+                    </div>
+                  </Card>
                 </div>
-              </Card>
-            </div>
+              </div>
+            </section>
           </div>
-        </section>
+        </div>
       </div>
     </main>
-  </Fragment>
-</Layout>
 
-<style lang="scss">
-  @use "@/styles/core/owl.core";
+    <style lang="scss">
+      @use "@/styles/core/owl.core";
 
-  .colors-page {
-    padding: 2rem 0;
-  }
+      .colors-page {
+        padding: 2rem 0;
+      }
 
-  .page-header {
-    margin-bottom: 3rem;
-  }
+      .page-header {
+        margin-bottom: 3rem;
+      }
 
-  .page-intro {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
+      .page-intro {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #333;
-      font-weight: 700;
-    }
+        h1 {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+          color: #333;
+          font-weight: 700;
+        }
 
-    p {
-      font-size: 1.25rem;
-      color: #666;
-      line-height: 1.6;
-    }
-  }
+        p {
+          font-size: 1.25rem;
+          color: #666;
+          line-height: 1.6;
+        }
+      }
 
-  .color-showcase {
-    margin-bottom: 4rem;
+      .color-showcase {
+        margin-bottom: 4rem;
 
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #333;
-    }
+        h2 {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          color: #333;
+        }
 
-    p {
-      margin-bottom: 2rem;
-      color: #666;
-      line-height: 1.6;
-    }
+        p {
+          margin-bottom: 2rem;
+          color: #666;
+          line-height: 1.6;
+        }
 
-    code {
-      background-color: #f5f5f5;
-      padding: 0.2rem 0.4rem;
-      border-radius: 3px;
-      font-family: "Courier New", monospace;
-      font-size: 0.9rem;
-    }
-  }
+        code {
+          background-color: #f5f5f5;
+          padding: 0.2rem 0.4rem;
+          border-radius: 3px;
+          font-family: "Courier New", monospace;
+          font-size: 0.9rem;
+        }
+      }
 
-  .color-group {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
+      .color-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
 
-  // New horizontal layout for color swatches
-  .color-swatches-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
+      // New horizontal layout for color swatches
+      .color-swatches-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
 
-  .color-swatch {
-    flex: 0 0 100px;
-    margin-bottom: 0.5rem;
-  }
+      .color-swatch {
+        flex: 0 0 100px;
+        margin-bottom: 0.5rem;
+      }
 
-  .color-preview {
-    width: 100%;
-    height: 80px;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
-    margin-bottom: 0.5rem;
-  }
+      .color-preview {
+        width: 100%;
+        height: 80px;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+        margin-bottom: 0.5rem;
+      }
 
-  .color-info {
-    text-align: center;
-  }
+      .color-info {
+        text-align: center;
+      }
 
-  .color-name {
-    font-weight: 600;
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 0.25rem;
-  }
+      .color-name {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #333;
+        margin-bottom: 0.25rem;
+      }
 
-  .color-value {
-    font-family: "Courier New", monospace;
-    font-size: 0.85rem;
-    color: #666;
-  }
-
-  .color-usage {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid #eee;
-
-    .usage-title {
-      font-weight: 600;
-      min-width: 80px;
-    }
-
-    .usage-examples {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-
-      code {
-        background-color: #f0f0f0;
-        padding: 0.2rem 0.4rem;
-        border-radius: 3px;
+      .color-value {
+        font-family: "Courier New", monospace;
         font-size: 0.85rem;
-      }
-    }
-  }
-
-  .usage-examples {
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #333;
-    }
-
-    p {
-      margin-bottom: 2rem;
-      color: #666;
-      line-height: 1.6;
-    }
-  }
-
-  .usage-example {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .example-item {
-    padding: 1rem;
-    border-radius: 6px;
-    font-family: "Courier New", monospace;
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-
-  // Added demo-code styles directly to ensure consistent appearance
-  .demo-code {
-    padding: 1rem;
-    background: #1e293b;
-    border-radius: 6px;
-
-    pre {
-      margin: 0;
-
-      code {
-        color: #e2e8f0;
-        font-family: "Monaco", "Menlo", monospace;
-        font-size: 0.875rem;
-        line-height: 1.6;
-      }
-    }
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .page-intro {
-      h1 {
-        font-size: 2rem;
+        color: #666;
       }
 
-      p {
-        font-size: 1.125rem;
+      .color-usage {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid #eee;
+
+        .usage-title {
+          font-weight: 600;
+          min-width: 80px;
+        }
+
+        .usage-examples {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+
+          code {
+            background-color: #f0f0f0;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+          }
+        }
       }
-    }
 
-    .color-showcase {
-      h2 {
-        font-size: 2rem;
+      .usage-examples {
+        h2 {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          color: #333;
+        }
+
+        p {
+          margin-bottom: 2rem;
+          color: #666;
+          line-height: 1.6;
+        }
       }
-    }
 
-    .usage-examples {
-      h2 {
-        font-size: 2rem;
+      .usage-example {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
       }
-    }
 
-    .color-swatches-row {
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+      .example-item {
+        padding: 1rem;
+        border-radius: 6px;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
 
-    .color-swatch {
-      flex: 0 0 80px;
-    }
+      // Added demo-code styles directly to ensure consistent appearance
+      .demo-code {
+        padding: 1rem;
+        background: #1e293b;
+        border-radius: 6px;
 
-    .color-usage {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-  }
-</style>
+        pre {
+          margin: 0;
+
+          code {
+            color: #e2e8f0;
+            font-family: "Monaco", "Menlo", monospace;
+            font-size: 0.875rem;
+            line-height: 1.6;
+          }
+        }
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .page-intro {
+          h1 {
+            font-size: 2rem;
+          }
+
+          p {
+            font-size: 1.125rem;
+          }
+        }
+
+        .color-showcase {
+          h2 {
+            font-size: 2rem;
+          }
+        }
+
+        .usage-examples {
+          h2 {
+            font-size: 2rem;
+          }
+        }
+
+        .color-swatches-row {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .color-swatch {
+          flex: 0 0 80px;
+        }
+
+        .color-usage {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+      }
+    </style>
+  </Fragment></Layout
+>

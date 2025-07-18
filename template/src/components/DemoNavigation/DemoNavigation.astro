@@ -1,0 +1,38 @@
+---
+import type { NavItem } from "../../utils/demoNavigation";
+
+interface Props {
+  title: string;
+  items: NavItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="col-4 md:col-4 lg:col-3 col--left">
+  {
+    (
+      <nav class="demo-nav-back">
+        <a href="../index.html" class="btn btn--outline btn--small">
+          ← Back to Home
+        </a>
+      </nav>
+    )
+  }
+
+  <ul class="demo-nav-list">
+    {
+      items.map((item) => (
+        <li>
+          {item.isHeader ? (
+            <h3 class="nav-header">{item.name}</h3>
+          ) : (
+            <a href={item.url} class={item.isActive ? "active" : ""}>
+              {item.name}
+            </a>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</div>

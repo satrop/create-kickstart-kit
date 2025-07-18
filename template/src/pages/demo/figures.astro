@@ -3,267 +3,275 @@ import "@/styles/demo.scss";
 
 import Layout from "@/layouts/Layout.astro";
 import Figure from "@/components/Figure/Figure.astro";
-import ImageComponent from "@/components/Image/Image.astro";
+
+import DemoNavigation from "../../components/DemoNavigation/DemoNavigation.astro";
+import { getFormComponentNavigation } from "../../utils/demoNavigation";
+import "@/styles/demo.scss";
+
+// Get navigation items with current page marked as active
+const navigationItems = getFormComponentNavigation("figures");
 ---
 
 <Layout title="Figures Demo - Components">
   <Fragment slot="main">
     <main id="main" class="layout-main" aria-label="Main content">
-      <div class="component-demo">
-        <header class="demo-header">
-          <div class="section-grid">
-            <div class="col-full">
-              <nav class="demo-nav">
-                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
-              </nav>
-              <h1>Figure Components</h1>
-              <p class="demo-subtitle">
-                Showcase of the Figure component with semantic HTML structure, captions, and various configurations.
-              </p>
-            </div>
-          </div>
-        </header>
-
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>When to Use Figure vs Image</h2>
-              <p>
-                The <strong>Figure component</strong> uses semantic HTML (<code>&lt;figure&gt;</code> and <code
-                  >&lt;figcaption&gt;</code
-                >) and should be used when you need to associate descriptive text with an image. The <strong
-                  >Image component</strong
-                >
-                is for standalone images without captions or decorative images.
-              </p>
-
-              <div class="guidelines-grid">
-                <div class="guideline-item">
-                  <h3>✅ Use Figure When:</h3>
-                  <ul>
-                    <li>Image needs a caption or description</li>
-                    <li>Image should be referenced in text (e.g., "See Figure 1")</li>
-                    <li>Providing attribution or additional context</li>
-                    <li>Part of articles, documentation, or content</li>
-                  </ul>
-                </div>
-                <div class="guideline-item">
-                  <h3>✅ Use Image When:</h3>
-                  <ul>
-                    <li>Standalone image without caption</li>
-                    <li>Decorative or functional images (icons, logos)</li>
-                    <li>Layout or design elements</li>
-                    <li>Simple image placement in content</li>
-                  </ul>
+      <div class="section-grid owl-32">
+        <DemoNavigation title="Form Components" items={navigationItems} />
+        <div class="col-4 md:col-4 lg:col-9">
+          <div class="component-demo">
+            <header class="demo-header">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h1>Figure Components</h1>
+                  <p class="demo-subtitle">
+                    Showcase of the Figure component with semantic HTML structure, captions, and various configurations.
+                  </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </header>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Basic Figure with Caption</h2>
-              <p>A figure with a descriptive caption that provides additional context about the image content.</p>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>When to Use Figure vs Image</h2>
+                  <p>
+                    The <strong>Figure component</strong> uses semantic HTML (<code>&lt;figure&gt;</code> and <code
+                      >&lt;figcaption&gt;</code
+                    >) and should be used when you need to associate descriptive text with an image. The <strong
+                      >Image component</strong
+                    >
+                    is for standalone images without captions or decorative images.
+                  </p>
 
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <Figure
-                    src="/images/image1.jpg"
-                    alt="Beautiful landscape with mountains and sky"
-                    caption="Figure 1: A serene mountain landscape showcasing the natural beauty of the highlands during golden hour."
-                    size="medium"
-                    align="center"
-                  />
+                  <div class="guidelines-grid">
+                    <div class="guideline-item">
+                      <h3>✅ Use Figure When:</h3>
+                      <ul>
+                        <li>Image needs a caption or description</li>
+                        <li>Image should be referenced in text (e.g., "See Figure 1")</li>
+                        <li>Providing attribution or additional context</li>
+                        <li>Part of articles, documentation, or content</li>
+                      </ul>
+                    </div>
+                    <div class="guideline-item">
+                      <h3>✅ Use Image When:</h3>
+                      <ul>
+                        <li>Standalone image without caption</li>
+                        <li>Decorative or functional images (icons, logos)</li>
+                        <li>Layout or design elements</li>
+                        <li>Simple image placement in content</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-                <div class="demo-code">
-                  <pre><code>&lt;Figure
+              </div>
+            </section>
+
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Basic Figure with Caption</h2>
+                  <p>A figure with a descriptive caption that provides additional context about the image content.</p>
+
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <Figure
+                        src="/images/image1.jpg"
+                        alt="Beautiful landscape with mountains and sky"
+                        caption="Figure 1: A serene mountain landscape showcasing the natural beauty of the highlands during golden hour."
+                        size="medium"
+                        align="center"
+                      />
+                    </div>
+                    <div class="demo-code">
+                      <pre><code>&lt;Figure
   src="/images/image1.jpg"
   alt="Beautiful landscape with mountains and sky"
   caption="Figure 1: A serene mountain landscape showcasing the natural beauty of the highlands during golden hour."
   size="medium"
   align="center"
 /&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Inline Figures with Text Flow</h2>
-              <p>
-                Figures can be aligned within text content, just like regular images, but with the added semantic
-                meaning and caption support.
-              </p>
-
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Inline Figures with Text Flow</h2>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.
+                    Figures can be aligned within text content, just like regular images, but with the added semantic
+                    meaning and caption support.
                   </p>
 
-                  <Figure
-                    src="/images/image2.jpg"
-                    alt="Team collaboration in a modern office"
-                    caption="Figure 2: Effective teamwork drives innovation and productivity in modern workplaces."
-                    align="left"
-                    size="small"
-                  />
+                  <div class="demo-example">
+                    <div class="demo-preview contain-floats">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.
+                      </p>
 
-                  <p>
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                    anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                    doloremque laudantium, totam rem aperiam.
-                  </p>
+                      <Figure
+                        src="/images/image2.jpg"
+                        alt="Team collaboration in a modern office"
+                        caption="Figure 2: Effective teamwork drives innovation and productivity in modern workplaces."
+                        align="left"
+                        size="small"
+                      />
 
-                  <p>
-                    Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-                    magni dolores eos qui ratione voluptatem sequi nesciunt.
-                  </p>
+                      <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                        accusantium doloremque laudantium, totam rem aperiam.
+                      </p>
 
-                  <Figure
-                    src="/images/image3.jpg"
-                    alt="Technology and innovation concept"
-                    caption="Figure 3: Digital transformation reshaping how we work and collaborate across industries."
-                    align="right"
-                    size="medium"
-                  />
+                      <p>
+                        Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+                        explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                      </p>
 
-                  <p>
-                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
-                    quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-                    Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-                    aliquid ex ea commodi consequatur.
-                  </p>
+                      <Figure
+                        src="/images/image3.jpg"
+                        alt="Technology and innovation concept"
+                        caption="Figure 3: Digital transformation reshaping how we work and collaborate across industries."
+                        align="right"
+                        size="medium"
+                      />
 
-                  <p>
-                    Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-                    consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. At vero eos et accusamus
-                    et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.
-                  </p>
+                      <p>
+                        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+                        sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
+                        voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
+                        laboriosam, nisi ut aliquid ex ea commodi consequatur.
+                      </p>
+
+                      <p>
+                        Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae
+                        consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. At vero eos et
+                        accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
+                        corrupti.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Figure Sizes</h2>
-              <p>Different size options for figures, useful for controlling the visual hierarchy and layout.</p>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Figure Sizes</h2>
+                  <p>Different size options for figures, useful for controlling the visual hierarchy and layout.</p>
 
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <h3>Small Figure</h3>
-                  <Figure
-                    src="/images/image4.jpg"
-                    alt="Small example image"
-                    caption="A small figure, perfect for inline references or thumbnails."
-                    size="small"
-                    align="center"
-                  />
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <h3>Small Figure</h3>
+                      <Figure
+                        src="/images/image4.jpg"
+                        alt="Small example image"
+                        caption="A small figure, perfect for inline references or thumbnails."
+                        size="small"
+                        align="center"
+                      />
 
-                  <h3>Medium Figure</h3>
-                  <Figure
-                    src="/images/image5.jpg"
-                    alt="Medium example image"
-                    caption="Medium figures work well for most content scenarios, providing good balance."
-                    size="medium"
-                    align="center"
-                  />
+                      <h3>Medium Figure</h3>
+                      <Figure
+                        src="/images/image5.jpg"
+                        alt="Medium example image"
+                        caption="Medium figures work well for most content scenarios, providing good balance."
+                        size="medium"
+                        align="center"
+                      />
 
-                  <h3>Large Figure</h3>
-                  <Figure
-                    src="/images/image6.jpg"
-                    alt="Large example image"
-                    caption="Large figures make a strong visual impact and are ideal for showcasing important content."
-                    size="large"
-                    align="center"
-                  />
+                      <h3>Large Figure</h3>
+                      <Figure
+                        src="/images/image6.jpg"
+                        alt="Large example image"
+                        caption="Large figures make a strong visual impact and are ideal for showcasing important content."
+                        size="large"
+                        align="center"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Figure Without Caption</h2>
-              <p>
-                Sometimes you may want the semantic meaning of a figure without a visible caption. This still uses the <code
-                  >&lt;figure&gt;</code
-                > element for better semantics than a plain image.
-              </p>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Figure Without Caption</h2>
+                  <p>
+                    Sometimes you may want the semantic meaning of a figure without a visible caption. This still uses
+                    the <code>&lt;figure&gt;</code> element for better semantics than a plain image.
+                  </p>
 
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <Figure
-                    src="/images/image7.jpg"
-                    alt="Architectural detail of modern building"
-                    size="medium"
-                    align="center"
-                  />
-                </div>
-                <div class="demo-code">
-                  <pre><code>&lt;Figure
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <Figure
+                        src="/images/image7.jpg"
+                        alt="Architectural detail of modern building"
+                        size="medium"
+                        align="center"
+                      />
+                    </div>
+                    <div class="demo-code">
+                      <pre><code>&lt;Figure
   src="/images/image7.jpg"
   alt="Architectural detail of modern building"
   size="medium"
   align="center"
 /&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Best Practices</h2>
-              <div class="guidelines-grid">
-                <div class="guideline-item">
-                  <h3>📝 Caption Guidelines</h3>
-                  <ul>
-                    <li>Keep captions concise but descriptive</li>
-                    <li>Include attribution when necessary</li>
-                    <li>Use "Figure X:" prefix for numbered references</li>
-                    <li>Describe what's important in the image</li>
-                  </ul>
-                </div>
-                <div class="guideline-item">
-                  <h3>♿ Accessibility</h3>
-                  <ul>
-                    <li>Always provide meaningful alt text</li>
-                    <li>Caption complements, doesn't repeat alt text</li>
-                    <li>Use figures for content, not decoration</li>
-                    <li>Ensure sufficient color contrast</li>
-                  </ul>
-                </div>
-                <div class="guideline-item">
-                  <h3>📱 Responsive Design</h3>
-                  <ul>
-                    <li>Left/right alignment becomes center on mobile</li>
-                    <li>Size constraints adapt to viewport</li>
-                    <li>Captions remain readable at all sizes</li>
-                    <li>Touch-friendly hover effects</li>
-                  </ul>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Best Practices</h2>
+                  <div class="guidelines-grid">
+                    <div class="guideline-item">
+                      <h3>📝 Caption Guidelines</h3>
+                      <ul>
+                        <li>Keep captions concise but descriptive</li>
+                        <li>Include attribution when necessary</li>
+                        <li>Use "Figure X:" prefix for numbered references</li>
+                        <li>Describe what's important in the image</li>
+                      </ul>
+                    </div>
+                    <div class="guideline-item">
+                      <h3>♿ Accessibility</h3>
+                      <ul>
+                        <li>Always provide meaningful alt text</li>
+                        <li>Caption complements, doesn't repeat alt text</li>
+                        <li>Use figures for content, not decoration</li>
+                        <li>Ensure sufficient color contrast</li>
+                      </ul>
+                    </div>
+                    <div class="guideline-item">
+                      <h3>📱 Responsive Design</h3>
+                      <ul>
+                        <li>Left/right alignment becomes center on mobile</li>
+                        <li>Size constraints adapt to viewport</li>
+                        <li>Captions remain readable at all sizes</li>
+                        <li>Touch-friendly hover effects</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
-        </section>
+        </div>
       </div>
     </main>
-  </Fragment>
-</Layout>
+  </Fragment></Layout
+>

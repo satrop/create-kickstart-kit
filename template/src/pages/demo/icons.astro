@@ -1,347 +1,355 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import "@/styles/demo.scss";
 import "@/styles/demo/icons.scss";
+
+import DemoNavigation from "@/components/DemoNavigation/DemoNavigation.astro";
+import { getFormComponentNavigation } from "@/utils/demoNavigation";
+import "@/styles/demo.scss";
+
+// Get navigation items with current page marked as active
+const navigationItems = getFormComponentNavigation("icon-font");
 ---
 
 <Layout title="Icon Font - Kickstart">
   <Fragment slot="main">
     <main id="main" class="layout-main" aria-label="Main content">
-      <div class="component-demo">
-        <header class="demo-header">
-          <div class="section-grid">
-            <div class="col-full">
-              <nav class="demo-nav">
-                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
-              </nav>
-              <h1>Icon Font System</h1>
-              <p class="demo-subtitle">
-                Custom icon font generated from SVG files. These icons are scalable, lightweight, and can be styled with
-                CSS just like regular text.
-              </p>
-            </div>
-          </div>
-        </header>
-
-        <!-- Available Icons -->
-        <section class="showcase__section">
-          <h2>Available Icons</h2>
-          <div class="icon-grid">
-            <div class="icon-item">
-              <i class="icon icon-add-user"></i>
-              <h3>Add User</h3>
-              <code>.icon-add-user</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-book"></i>
-              <h3>Book</h3>
-              <code>.icon-book</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-documents"></i>
-              <h3>Documents</h3>
-              <code>.icon-documents</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-download"></i>
-              <h3>Download</h3>
-              <code>.icon-download</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-facebook"></i>
-              <h3>Facebook</h3>
-              <code>.icon-facebook</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-health"></i>
-              <h3>Health</h3>
-              <code>.icon-health</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-instagram"></i>
-              <h3>Instagram</h3>
-              <code>.icon-instagram</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-left-arrow"></i>
-              <h3>Left Arrow</h3>
-              <code>.icon-left-arrow</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-mail"></i>
-              <h3>Mail</h3>
-              <code>.icon-mail</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-menu-close"></i>
-              <h3>Menu Close</h3>
-              <code>.icon-menu-close</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-menu-open"></i>
-              <h3>Menu Open</h3>
-              <code>.icon-menu-open</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-phone"></i>
-              <h3>Phone</h3>
-              <code>.icon-phone</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-play"></i>
-              <h3>Play</h3>
-              <code>.icon-play</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-right-arrow"></i>
-              <h3>Right Arrow</h3>
-              <code>.icon-right-arrow</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-search"></i>
-              <h3>Search</h3>
-              <code>.icon-search</code>
-            </div>
-            <div class="icon-item">
-              <i class="icon icon-youtube"></i>
-              <h3>Youtube</h3>
-              <code>.icon-youtube</code>
-            </div>
-          </div>
-        </section>
-
-        <!-- Size Variations -->
-        <section class="showcase__section">
-          <h2>Size Variations</h2>
-          <div class="size-demo">
-            <div class="size-row">
-              <span class="size-label">Normal:</span>
-              <i class="icon icon-add-user"></i>
-              <i class="icon icon-book"></i>
-              <i class="icon icon-documents"></i>
-              <i class="icon icon-download"></i>
-              <i class="icon icon-facebook"></i>
-              <i class="icon icon-health"></i>
-              <i class="icon icon-instagram"></i>
-              <i class="icon icon-left-arrow"></i>
-              <i class="icon icon-mail"></i>
-              <i class="icon icon-menu-close"></i>
-              <i class="icon icon-menu-open"></i>
-              <i class="icon icon-phone"></i>
-              <i class="icon icon-play"></i>
-              <i class="icon icon-right-arrow"></i>
-              <i class="icon icon-search"></i>
-              <i class="icon icon-youtube"></i>
-            </div>
-            <div class="size-row">
-              <span class="size-label">Large (2x):</span>
-              <i class="icon icon-add-user icon-2x"></i>
-              <i class="icon icon-book icon-2x"></i>
-              <i class="icon icon-documents icon-2x"></i>
-              <i class="icon icon-download icon-2x"></i>
-              <i class="icon icon-facebook icon-2x"></i>
-              <i class="icon icon-health icon-2x"></i>
-              <i class="icon icon-instagram icon-2x"></i>
-              <i class="icon icon-left-arrow icon-2x"></i>
-              <i class="icon icon-mail icon-2x"></i>
-              <i class="icon icon-menu-close icon-2x"></i>
-              <i class="icon icon-menu-open icon-2x"></i>
-              <i class="icon icon-phone icon-2x"></i>
-              <i class="icon icon-play icon-2x"></i>
-              <i class="icon icon-right-arrow icon-2x"></i>
-              <i class="icon icon-search icon-2x"></i>
-              <i class="icon icon-youtube icon-2x"></i>
-            </div>
-            <div class="size-row">
-              <span class="size-label">Extra Large (3x):</span>
-              <i class="icon icon-add-user icon-3x"></i>
-              <i class="icon icon-book icon-3x"></i>
-              <i class="icon icon-documents icon-3x"></i>
-              <i class="icon icon-download icon-3x"></i>
-              <i class="icon icon-facebook icon-3x"></i>
-              <i class="icon icon-health icon-3x"></i>
-              <i class="icon icon-instagram icon-3x"></i>
-              <i class="icon icon-left-arrow icon-3x"></i>
-              <i class="icon icon-mail icon-3x"></i>
-              <i class="icon icon-menu-close icon-3x"></i>
-              <i class="icon icon-menu-open icon-3x"></i>
-              <i class="icon icon-phone icon-3x"></i>
-              <i class="icon icon-play icon-3x"></i>
-              <i class="icon icon-right-arrow icon-3x"></i>
-              <i class="icon icon-search icon-3x"></i>
-              <i class="icon icon-youtube icon-3x"></i>
-            </div>
-            <div class="size-row">
-              <span class="size-label">Huge (4x):</span>
-              <i class="icon icon-add-user icon-4x"></i>
-              <i class="icon icon-book icon-4x"></i>
-              <i class="icon icon-documents icon-4x"></i>
-              <i class="icon icon-download icon-4x"></i>
-              <i class="icon icon-facebook icon-4x"></i>
-              <i class="icon icon-health icon-4x"></i>
-              <i class="icon icon-instagram icon-4x"></i>
-              <i class="icon icon-left-arrow icon-4x"></i>
-              <i class="icon icon-mail icon-4x"></i>
-              <i class="icon icon-menu-close icon-4x"></i>
-              <i class="icon icon-menu-open icon-4x"></i>
-              <i class="icon icon-phone icon-4x"></i>
-              <i class="icon icon-play icon-4x"></i>
-              <i class="icon icon-right-arrow icon-4x"></i>
-              <i class="icon icon-search icon-4x"></i>
-              <i class="icon icon-youtube icon-4x"></i>
-            </div>
-          </div>
-        </section>
-
-        <!-- Color Styling -->
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Color Styling</h2>
-              <p>Icons can be styled with any color using standard CSS color properties.</p>
-
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <div class="color-demo">
-                    <i class="icon icon-download icon-3x" style="color: #007bff;"></i>
-                    <i class="icon icon-download icon-3x" style="color: #28a745;"></i>
-                    <i class="icon icon-download icon-3x" style="color: #dc3545;"></i>
-                    <i class="icon icon-download icon-3x" style="color: #ffc107;"></i>
-                    <i class="icon icon-download icon-3x" style="color: #6f42c1;"></i>
-                  </div>
+      <div class="section-grid owl-32">
+        <DemoNavigation title="Form Components" items={navigationItems} />
+        <div class="col-4 md:col-4 lg:col-9">
+          <div class="component-demo">
+            <header class="demo-header">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h1>Icon Font System</h1>
+                  <p class="demo-subtitle">
+                    Custom icon font generated from SVG files. These icons are scalable, lightweight, and can be styled
+                    with CSS just like regular text.
+                  </p>
                 </div>
-                <div class="demo-code">
-                  <pre><code>&lt;i class="icon icon-download" style="color: #007bff;"&gt;&lt;/i&gt;
+              </div>
+            </header>
+
+            <!-- Available Icons -->
+            <section class="showcase__section">
+              <h2>Available Icons</h2>
+              <div class="icon-grid">
+                <div class="icon-item">
+                  <i class="icon icon-add-user"></i>
+                  <h3>Add User</h3>
+                  <code>.icon-add-user</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-book"></i>
+                  <h3>Book</h3>
+                  <code>.icon-book</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-documents"></i>
+                  <h3>Documents</h3>
+                  <code>.icon-documents</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-download"></i>
+                  <h3>Download</h3>
+                  <code>.icon-download</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-facebook"></i>
+                  <h3>Facebook</h3>
+                  <code>.icon-facebook</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-health"></i>
+                  <h3>Health</h3>
+                  <code>.icon-health</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-instagram"></i>
+                  <h3>Instagram</h3>
+                  <code>.icon-instagram</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-left-arrow"></i>
+                  <h3>Left Arrow</h3>
+                  <code>.icon-left-arrow</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-mail"></i>
+                  <h3>Mail</h3>
+                  <code>.icon-mail</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-menu-close"></i>
+                  <h3>Menu Close</h3>
+                  <code>.icon-menu-close</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-menu-open"></i>
+                  <h3>Menu Open</h3>
+                  <code>.icon-menu-open</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-phone"></i>
+                  <h3>Phone</h3>
+                  <code>.icon-phone</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-play"></i>
+                  <h3>Play</h3>
+                  <code>.icon-play</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-right-arrow"></i>
+                  <h3>Right Arrow</h3>
+                  <code>.icon-right-arrow</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-search"></i>
+                  <h3>Search</h3>
+                  <code>.icon-search</code>
+                </div>
+                <div class="icon-item">
+                  <i class="icon icon-youtube"></i>
+                  <h3>Youtube</h3>
+                  <code>.icon-youtube</code>
+                </div>
+              </div>
+            </section>
+
+            <!-- Size Variations -->
+            <section class="showcase__section">
+              <h2>Size Variations</h2>
+              <div class="size-demo">
+                <div class="size-row">
+                  <span class="size-label">Normal:</span>
+                  <i class="icon icon-add-user"></i>
+                  <i class="icon icon-book"></i>
+                  <i class="icon icon-documents"></i>
+                  <i class="icon icon-download"></i>
+                  <i class="icon icon-facebook"></i>
+                  <i class="icon icon-health"></i>
+                  <i class="icon icon-instagram"></i>
+                  <i class="icon icon-left-arrow"></i>
+                  <i class="icon icon-mail"></i>
+                  <i class="icon icon-menu-close"></i>
+                  <i class="icon icon-menu-open"></i>
+                  <i class="icon icon-phone"></i>
+                  <i class="icon icon-play"></i>
+                  <i class="icon icon-right-arrow"></i>
+                  <i class="icon icon-search"></i>
+                  <i class="icon icon-youtube"></i>
+                </div>
+                <div class="size-row">
+                  <span class="size-label">Large (2x):</span>
+                  <i class="icon icon-add-user icon-2x"></i>
+                  <i class="icon icon-book icon-2x"></i>
+                  <i class="icon icon-documents icon-2x"></i>
+                  <i class="icon icon-download icon-2x"></i>
+                  <i class="icon icon-facebook icon-2x"></i>
+                  <i class="icon icon-health icon-2x"></i>
+                  <i class="icon icon-instagram icon-2x"></i>
+                  <i class="icon icon-left-arrow icon-2x"></i>
+                  <i class="icon icon-mail icon-2x"></i>
+                  <i class="icon icon-menu-close icon-2x"></i>
+                  <i class="icon icon-menu-open icon-2x"></i>
+                  <i class="icon icon-phone icon-2x"></i>
+                  <i class="icon icon-play icon-2x"></i>
+                  <i class="icon icon-right-arrow icon-2x"></i>
+                  <i class="icon icon-search icon-2x"></i>
+                  <i class="icon icon-youtube icon-2x"></i>
+                </div>
+                <div class="size-row">
+                  <span class="size-label">Extra Large (3x):</span>
+                  <i class="icon icon-add-user icon-3x"></i>
+                  <i class="icon icon-book icon-3x"></i>
+                  <i class="icon icon-documents icon-3x"></i>
+                  <i class="icon icon-download icon-3x"></i>
+                  <i class="icon icon-facebook icon-3x"></i>
+                  <i class="icon icon-health icon-3x"></i>
+                  <i class="icon icon-instagram icon-3x"></i>
+                  <i class="icon icon-left-arrow icon-3x"></i>
+                  <i class="icon icon-mail icon-3x"></i>
+                  <i class="icon icon-menu-close icon-3x"></i>
+                  <i class="icon icon-menu-open icon-3x"></i>
+                  <i class="icon icon-phone icon-3x"></i>
+                  <i class="icon icon-play icon-3x"></i>
+                  <i class="icon icon-right-arrow icon-3x"></i>
+                  <i class="icon icon-search icon-3x"></i>
+                  <i class="icon icon-youtube icon-3x"></i>
+                </div>
+                <div class="size-row">
+                  <span class="size-label">Huge (4x):</span>
+                  <i class="icon icon-add-user icon-4x"></i>
+                  <i class="icon icon-book icon-4x"></i>
+                  <i class="icon icon-documents icon-4x"></i>
+                  <i class="icon icon-download icon-4x"></i>
+                  <i class="icon icon-facebook icon-4x"></i>
+                  <i class="icon icon-health icon-4x"></i>
+                  <i class="icon icon-instagram icon-4x"></i>
+                  <i class="icon icon-left-arrow icon-4x"></i>
+                  <i class="icon icon-mail icon-4x"></i>
+                  <i class="icon icon-menu-close icon-4x"></i>
+                  <i class="icon icon-menu-open icon-4x"></i>
+                  <i class="icon icon-phone icon-4x"></i>
+                  <i class="icon icon-play icon-4x"></i>
+                  <i class="icon icon-right-arrow icon-4x"></i>
+                  <i class="icon icon-search icon-4x"></i>
+                  <i class="icon icon-youtube icon-4x"></i>
+                </div>
+              </div>
+            </section>
+
+            <!-- Color Styling -->
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Color Styling</h2>
+                  <p>Icons can be styled with any color using standard CSS color properties.</p>
+
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <div class="color-demo">
+                        <i class="icon icon-download icon-3x" style="color: #007bff;"></i>
+                        <i class="icon icon-download icon-3x" style="color: #28a745;"></i>
+                        <i class="icon icon-download icon-3x" style="color: #dc3545;"></i>
+                        <i class="icon icon-download icon-3x" style="color: #ffc107;"></i>
+                        <i class="icon icon-download icon-3x" style="color: #6f42c1;"></i>
+                      </div>
+                    </div>
+                    <div class="demo-code">
+                      <pre><code>&lt;i class="icon icon-download" style="color: #007bff;"&gt;&lt;/i&gt;
 &lt;i class="icon icon-download" style="color: #28a745;"&gt;&lt;/i&gt;
 &lt;i class="icon icon-download" style="color: #dc3545;"&gt;&lt;/i&gt;
 &lt;i class="icon icon-download" style="color: #ffc107;"&gt;&lt;/i&gt;
 &lt;i class="icon icon-download" style="color: #6f42c1;"&gt;&lt;/i&gt;</code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Usage Examples -->
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Usage Examples</h2>
-              <p>Common patterns for using icons in your interface.</p>
-
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <h3>In Buttons</h3>
-                  <div class="button-examples">
-                    <button class="btn btn-primary">
-                      <i class="icon icon-add-user"></i>
-                      Download File
-                    </button>
-                    <button class="btn btn-secondary">
-                      <i class="icon icon-book"></i>
-                      Settings
-                    </button>
-                    <button class="btn btn-outline">
-                      <i class="icon icon-documents"></i>
-                      Go Back
-                    </button>
+                    </div>
                   </div>
                 </div>
-                <div class="demo-code">
-                  <pre><code>&lt;button class="btn btn-primary"&gt;
+              </div>
+            </section>
+
+            <!-- Usage Examples -->
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Usage Examples</h2>
+                  <p>Common patterns for using icons in your interface.</p>
+
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <h3>In Buttons</h3>
+                      <div class="button-examples">
+                        <button class="btn btn-primary">
+                          <i class="icon icon-add-user"></i>
+                          Download File
+                        </button>
+                        <button class="btn btn-secondary">
+                          <i class="icon icon-book"></i>
+                          Settings
+                        </button>
+                        <button class="btn btn-outline">
+                          <i class="icon icon-documents"></i>
+                          Go Back
+                        </button>
+                      </div>
+                    </div>
+                    <div class="demo-code">
+                      <pre><code>&lt;button class="btn btn-primary"&gt;
   &lt;i class="icon icon-download"&gt;&lt;/i&gt;
   Download File
 &lt;/button&gt;</code></pre>
-                </div>
-              </div>
+                    </div>
+                  </div>
 
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <h3>In Text</h3>
-                  <p>
-                    Click the <i class="icon icon-download"></i> icon to download your report, use <i
-                      class="icon icon-search"></i> to search, or <i class="icon icon-left-arrow"></i> to go back to the
-                    previous page.
-                  </p>
-                </div>
-                <div class="demo-code">
-                  <pre><code>Click the &lt;i class="icon icon-download"&gt;&lt;/i&gt; icon to download...</code></pre>
-                </div>
-              </div>
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <h3>In Text</h3>
+                      <p>
+                        Click the <i class="icon icon-download"></i> icon to download your report, use <i
+                          class="icon icon-search"></i> to search, or <i class="icon icon-left-arrow"></i> to go back to
+                        the previous page.
+                      </p>
+                    </div>
+                    <div class="demo-code">
+                      <pre><code>Click the &lt;i class="icon icon-download"&gt;&lt;/i&gt; icon to download...</code></pre>
+                    </div>
+                  </div>
 
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <h3>As List Items</h3>
-                  <ul class="icon-list">
-                    <li><i class="icon icon-add-user"></i> Add User</li>
-                    <li><i class="icon icon-book"></i> Book</li>
-                    <li><i class="icon icon-documents"></i> Documents</li>
-                    <li><i class="icon icon-download"></i> Download</li>
-                    <li><i class="icon icon-facebook"></i> Facebook</li>
-                    <li><i class="icon icon-health"></i> Health</li>
-                    <li><i class="icon icon-instagram"></i> Instagram</li>
-                    <li><i class="icon icon-left-arrow"></i> Left Arrow</li>
-                    <li><i class="icon icon-mail"></i> Mail</li>
-                    <li><i class="icon icon-menu-close"></i> Menu Close</li>
-                    <li><i class="icon icon-menu-open"></i> Menu Open</li>
-                    <li><i class="icon icon-phone"></i> Phone</li>
-                    <li><i class="icon icon-play"></i> Play</li>
-                    <li><i class="icon icon-right-arrow"></i> Right Arrow</li>
-                    <li><i class="icon icon-search"></i> Search</li>
-                    <li><i class="icon icon-youtube"></i> Youtube</li>
-                  </ul>
-                </div>
-                <div class="demo-code">
-                  <pre><code>&lt;ul class="icon-list"&gt;
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <h3>As List Items</h3>
+                      <ul class="icon-list">
+                        <li><i class="icon icon-add-user"></i> Add User</li>
+                        <li><i class="icon icon-book"></i> Book</li>
+                        <li><i class="icon icon-documents"></i> Documents</li>
+                        <li><i class="icon icon-download"></i> Download</li>
+                        <li><i class="icon icon-facebook"></i> Facebook</li>
+                        <li><i class="icon icon-health"></i> Health</li>
+                        <li><i class="icon icon-instagram"></i> Instagram</li>
+                        <li><i class="icon icon-left-arrow"></i> Left Arrow</li>
+                        <li><i class="icon icon-mail"></i> Mail</li>
+                        <li><i class="icon icon-menu-close"></i> Menu Close</li>
+                        <li><i class="icon icon-menu-open"></i> Menu Open</li>
+                        <li><i class="icon icon-phone"></i> Phone</li>
+                        <li><i class="icon icon-play"></i> Play</li>
+                        <li><i class="icon icon-right-arrow"></i> Right Arrow</li>
+                        <li><i class="icon icon-search"></i> Search</li>
+                        <li><i class="icon icon-youtube"></i> Youtube</li>
+                      </ul>
+                    </div>
+                    <div class="demo-code">
+                      <pre><code>&lt;ul class="icon-list"&gt;
   &lt;li&gt;&lt;i class="icon icon-add-user"&gt;&lt;/i&gt; Add User&lt;/li&gt;
   &lt;li&gt;&lt;i class="icon icon-book"&gt;&lt;/i&gt; Book&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </section>
+
+            <!-- Technical Info -->
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Technical Information</h2>
+                  <p>Details about the icon font implementation and how to add new icons.</p>
+
+                  <div class="info-grid">
+                    <div class="info-item">
+                      <h4>Font Family</h4>
+                      <code>font-icons</code>
+                    </div>
+                    <div class="info-item">
+                      <h4>Formats</h4>
+                      <code>WOFF2, WOFF</code>
+                    </div>
+                    <div class="info-item">
+                      <h4>Base Class</h4>
+                      <code>.icon</code>
+                    </div>
+                    <div class="info-item">
+                      <h4>CSS File</h4>
+                      <code>/icons/font/font-icons.css</code>
+                    </div>
+                  </div>
+
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <h4>Adding New Icons</h4>
+                      <ol class="numbered-steps">
+                        <li>Add your SVG files to <code>public/_icons/raw/</code></li>
+                        <li>Run <code>pnpm run icons</code> to regenerate the font</li>
+                        <li>The new icons will be available as <code>.icon-your-filename</code></li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
-
-        <!-- Technical Info -->
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Technical Information</h2>
-              <p>Details about the icon font implementation and how to add new icons.</p>
-
-              <div class="info-grid">
-                <div class="info-item">
-                  <h4>Font Family</h4>
-                  <code>font-icons</code>
-                </div>
-                <div class="info-item">
-                  <h4>Formats</h4>
-                  <code>WOFF2, WOFF</code>
-                </div>
-                <div class="info-item">
-                  <h4>Base Class</h4>
-                  <code>.icon</code>
-                </div>
-                <div class="info-item">
-                  <h4>CSS File</h4>
-                  <code>/icons/font/font-icons.css</code>
-                </div>
-              </div>
-
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <h4>Adding New Icons</h4>
-                  <ol class="numbered-steps">
-                    <li>Add your SVG files to <code>public/_icons/raw/</code></li>
-                    <li>Run <code>pnpm run icons</code> to regenerate the font</li>
-                    <li>The new icons will be available as <code>.icon-your-filename</code></li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        </div>
       </div>
     </main>
-  </Fragment>
-</Layout>
+  </Fragment></Layout
+>

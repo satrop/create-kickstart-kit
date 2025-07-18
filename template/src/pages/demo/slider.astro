@@ -5,79 +5,84 @@ import SliderItem from "@/components/Slider/SliderItem.astro";
 import Card from "@/components/Card/Card.astro";
 import Button from "@/components/Button/Button.astro";
 
+import DemoNavigation from "@/components/DemoNavigation/DemoNavigation.astro";
+import { getFormComponentNavigation } from "@/utils/demoNavigation";
 import "@/styles/demo.scss";
+
+// Get navigation items with current page marked as active
+const navigationItems = getFormComponentNavigation("slider");
 ---
 
 <Layout title="Showcase Slider Demo">
   <Fragment slot="main">
     <main id="main" class="layout-main" aria-label="Showcase Slider Demo">
-      <div class="component-demo">
-        <header class="demo-header">
-          <div class="section-grid">
-            <div class="col-full">
-              <nav class="demo-nav">
-                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
-              </nav>
-              <h1>Slider Component</h1>
-              <p class="demo-subtitle">
-                This page demonstrates a simple image slider using Swiper.js. The slider uses local images and the same
-                base styling as other demo pages.
-              </p>
-            </div>
-          </div>
-        </header>
-
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Basic Usage</h2>
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <MainSlider loop={false}>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image1.jpg"
-                        imageAlt="Team collaborating in a modern office"
-                        width={600}
-                        height={400}
-                      />
-                    </div>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image2.jpg"
-                        imageAlt="Closeup of hands typing on a laptop"
-                        width={600}
-                        height={400}
-                      />
-                    </div>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image3.jpg"
-                        imageAlt="Team brainstorming ideas on a whiteboard"
-                        width={600}
-                        height={400}
-                      />
-                    </div>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image4.jpg"
-                        imageAlt="Closeup of a smartphone with a graph on the screen"
-                        width={600}
-                        height={400}
-                      />
-                    </div>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image5.jpg"
-                        imageAlt="A person holding a tablet with a digital interface"
-                        width={600}
-                        height={400}
-                      />
-                    </div>
-                  </MainSlider>
+      <div class="section-grid owl-32">
+        <DemoNavigation title="Form Components" items={navigationItems} />
+        <div class="col-4 md:col-4 lg:col-9">
+          <div class="component-demo">
+            <header class="demo-header">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h1>Slider Component</h1>
+                  <p class="demo-subtitle">
+                    This page demonstrates a simple image slider using Swiper.js. The slider uses local images and the
+                    same base styling as other demo pages.
+                  </p>
                 </div>
-                <div class="demo-code">
-                  <pre><code>{`<MainSlider loop={false}>
+              </div>
+            </header>
+
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Basic Usage</h2>
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <MainSlider loop={false}>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image1.jpg"
+                            imageAlt="Team collaborating in a modern office"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image2.jpg"
+                            imageAlt="Closeup of hands typing on a laptop"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image3.jpg"
+                            imageAlt="Team brainstorming ideas on a whiteboard"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image4.jpg"
+                            imageAlt="Closeup of a smartphone with a graph on the screen"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image5.jpg"
+                            imageAlt="A person holding a tablet with a digital interface"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                      </MainSlider>
+                    </div>
+                    <div class="demo-code">
+                      <pre><code>{`<MainSlider loop={false}>
   <div class="swiper-slide">
     <SliderItem
       imageSrc=\"/images/image1.jpg\"
@@ -119,57 +124,57 @@ import "@/styles/demo.scss";
     />
   </div>
 </MainSlider>`}</code></pre>
-                </div>
-              </div>
+                    </div>
+                  </div>
 
-              <h2>Slider Without Pagination</h2>
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <MainSlider showPagination={false}>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image1.jpg"
-                        imageAlt="Team collaborating in a modern office"
-                        width={600}
-                        height={400}
-                      />
+                  <h2>Slider Without Pagination</h2>
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <MainSlider showPagination={false}>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image1.jpg"
+                            imageAlt="Team collaborating in a modern office"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image2.jpg"
+                            imageAlt="Closeup of hands typing on a laptop"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image3.jpg"
+                            imageAlt="Team brainstorming ideas on a whiteboard"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image4.jpg"
+                            imageAlt="Closeup of a smartphone with a graph on the screen"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image5.jpg"
+                            imageAlt="A person holding a tablet with a digital interface"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                      </MainSlider>
                     </div>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image2.jpg"
-                        imageAlt="Closeup of hands typing on a laptop"
-                        width={600}
-                        height={400}
-                      />
-                    </div>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image3.jpg"
-                        imageAlt="Team brainstorming ideas on a whiteboard"
-                        width={600}
-                        height={400}
-                      />
-                    </div>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image4.jpg"
-                        imageAlt="Closeup of a smartphone with a graph on the screen"
-                        width={600}
-                        height={400}
-                      />
-                    </div>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image5.jpg"
-                        imageAlt="A person holding a tablet with a digital interface"
-                        width={600}
-                        height={400}
-                      />
-                    </div>
-                  </MainSlider>
-                </div>
-                <div class="demo-code">
-                  <pre><code>{`<MainSlider showPagination={false}>
+                    <div class="demo-code">
+                      <pre><code>{`<MainSlider showPagination={false}>
   <div class="swiper-slide">
     <SliderItem
       imageSrc=\"/images/image1.jpg\"
@@ -211,57 +216,57 @@ import "@/styles/demo.scss";
     />
   </div>
 </MainSlider>`}</code></pre>
-                </div>
-              </div>
+                    </div>
+                  </div>
 
-              <h2>Slider With Pagination Only</h2>
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <MainSlider showControls={false}>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image1.jpg"
-                        imageAlt="Team collaborating in a modern office"
-                        width={600}
-                        height={400}
-                      />
+                  <h2>Slider With Pagination Only</h2>
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <MainSlider showControls={false}>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image1.jpg"
+                            imageAlt="Team collaborating in a modern office"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image2.jpg"
+                            imageAlt="Closeup of hands typing on a laptop"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image3.jpg"
+                            imageAlt="Team brainstorming ideas on a whiteboard"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image4.jpg"
+                            imageAlt="Closeup of a smartphone with a graph on the screen"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                        <div class="swiper-slide">
+                          <SliderItem
+                            imageSrc="/images/image5.jpg"
+                            imageAlt="A person holding a tablet with a digital interface"
+                            width={600}
+                            height={400}
+                          />
+                        </div>
+                      </MainSlider>
                     </div>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image2.jpg"
-                        imageAlt="Closeup of hands typing on a laptop"
-                        width={600}
-                        height={400}
-                      />
-                    </div>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image3.jpg"
-                        imageAlt="Team brainstorming ideas on a whiteboard"
-                        width={600}
-                        height={400}
-                      />
-                    </div>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image4.jpg"
-                        imageAlt="Closeup of a smartphone with a graph on the screen"
-                        width={600}
-                        height={400}
-                      />
-                    </div>
-                    <div class="swiper-slide">
-                      <SliderItem
-                        imageSrc="/images/image5.jpg"
-                        imageAlt="A person holding a tablet with a digital interface"
-                        width={600}
-                        height={400}
-                      />
-                    </div>
-                  </MainSlider>
-                </div>
-                <div class="demo-code">
-                  <pre><code>{`<MainSlider showControls={false}>
+                    <div class="demo-code">
+                      <pre><code>{`<MainSlider showControls={false}>
   <div class="swiper-slide">
     <SliderItem
       imageSrc=\"/images/image1.jpg\"
@@ -303,107 +308,108 @@ import "@/styles/demo.scss";
     />
   </div>
 </MainSlider>`}</code></pre>
-                </div>
-              </div>
+                    </div>
+                  </div>
 
-              <h2>Card Slider - Full Featured Cards</h2>
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <MainSlider loop={true} showPagination={false}>
-                    <div class="swiper-slide">
-                      <Card
-                        variant="default"
-                        imageSrc="/images/image1.jpg"
-                        imageAlt="Team collaborating in a modern office"
-                        interactive={true}>
-                        <Fragment slot="header">
-                          <h3>Team Collaboration</h3>
-                        </Fragment>
-                        <p>
-                          Discover how modern teams work together effectively using cutting-edge collaboration tools and
-                          methodologies. Our comprehensive approach ensures seamless communication and productivity.
-                        </p>
-                        <Fragment slot="footer">
-                          <Button variant="primary" size="medium">Learn More</Button>
-                        </Fragment>
-                      </Card>
+                  <h2>Card Slider - Full Featured Cards</h2>
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <MainSlider loop={true} showPagination={false}>
+                        <div class="swiper-slide">
+                          <Card
+                            variant="default"
+                            imageSrc="/images/image1.jpg"
+                            imageAlt="Team collaborating in a modern office"
+                            interactive={true}>
+                            <Fragment slot="header">
+                              <h3>Team Collaboration</h3>
+                            </Fragment>
+                            <p>
+                              Discover how modern teams work together effectively using cutting-edge collaboration tools
+                              and methodologies. Our comprehensive approach ensures seamless communication and
+                              productivity.
+                            </p>
+                            <Fragment slot="footer">
+                              <Button variant="primary" size="medium">Learn More</Button>
+                            </Fragment>
+                          </Card>
+                        </div>
+                        <div class="swiper-slide">
+                          <Card
+                            variant="default"
+                            imageSrc="/images/image2.jpg"
+                            imageAlt="Closeup of hands typing on a laptop"
+                            interactive={true}>
+                            <Fragment slot="header">
+                              <h3>Digital Workspace</h3>
+                            </Fragment>
+                            <p>
+                              Transform your workspace with digital-first solutions that boost productivity and enable
+                              remote collaboration. Experience the future of work today.
+                            </p>
+                            <Fragment slot="footer">
+                              <Button variant="secondary" size="medium">Get Started</Button>
+                            </Fragment>
+                          </Card>
+                        </div>
+                        <div class="swiper-slide">
+                          <Card
+                            variant="default"
+                            imageSrc="/images/image3.jpg"
+                            imageAlt="Team brainstorming ideas on a whiteboard"
+                            interactive={true}>
+                            <Fragment slot="header">
+                              <h3>Creative Solutions</h3>
+                            </Fragment>
+                            <p>
+                              Unlock your team's creative potential with structured brainstorming sessions and
+                              innovative problem-solving techniques that drive real results.
+                            </p>
+                            <Fragment slot="footer">
+                              <Button variant="outline" size="medium">Explore</Button>
+                            </Fragment>
+                          </Card>
+                        </div>
+                        <div class="swiper-slide">
+                          <Card
+                            variant="default"
+                            imageSrc="/images/image4.jpg"
+                            imageAlt="Closeup of a smartphone with a graph on the screen"
+                            interactive={true}>
+                            <Fragment slot="header">
+                              <h3>Data Analytics</h3>
+                            </Fragment>
+                            <p>
+                              Make informed decisions with powerful analytics tools that turn raw data into actionable
+                              insights for your business growth.
+                            </p>
+                            <Fragment slot="footer">
+                              <Button variant="primary" size="medium">View Demo</Button>
+                            </Fragment>
+                          </Card>
+                        </div>
+                        <div class="swiper-slide">
+                          <Card
+                            variant="default"
+                            imageSrc="/images/image5.jpg"
+                            imageAlt="A person holding a tablet with a digital interface"
+                            interactive={true}>
+                            <Fragment slot="header">
+                              <h3>Mobile Experience</h3>
+                            </Fragment>
+                            <p>
+                              Deliver exceptional mobile experiences with responsive design and intuitive interfaces
+                              that work seamlessly across all devices.
+                            </p>
+                            <Fragment slot="footer">
+                              <Button variant="secondary" size="medium">Try Now</Button>
+                            </Fragment>
+                          </Card>
+                        </div>
+                      </MainSlider>
                     </div>
-                    <div class="swiper-slide">
-                      <Card
-                        variant="default"
-                        imageSrc="/images/image2.jpg"
-                        imageAlt="Closeup of hands typing on a laptop"
-                        interactive={true}>
-                        <Fragment slot="header">
-                          <h3>Digital Workspace</h3>
-                        </Fragment>
-                        <p>
-                          Transform your workspace with digital-first solutions that boost productivity and enable
-                          remote collaboration. Experience the future of work today.
-                        </p>
-                        <Fragment slot="footer">
-                          <Button variant="secondary" size="medium">Get Started</Button>
-                        </Fragment>
-                      </Card>
-                    </div>
-                    <div class="swiper-slide">
-                      <Card
-                        variant="default"
-                        imageSrc="/images/image3.jpg"
-                        imageAlt="Team brainstorming ideas on a whiteboard"
-                        interactive={true}>
-                        <Fragment slot="header">
-                          <h3>Creative Solutions</h3>
-                        </Fragment>
-                        <p>
-                          Unlock your team's creative potential with structured brainstorming sessions and innovative
-                          problem-solving techniques that drive real results.
-                        </p>
-                        <Fragment slot="footer">
-                          <Button variant="outline" size="medium">Explore</Button>
-                        </Fragment>
-                      </Card>
-                    </div>
-                    <div class="swiper-slide">
-                      <Card
-                        variant="default"
-                        imageSrc="/images/image4.jpg"
-                        imageAlt="Closeup of a smartphone with a graph on the screen"
-                        interactive={true}>
-                        <Fragment slot="header">
-                          <h3>Data Analytics</h3>
-                        </Fragment>
-                        <p>
-                          Make informed decisions with powerful analytics tools that turn raw data into actionable
-                          insights for your business growth.
-                        </p>
-                        <Fragment slot="footer">
-                          <Button variant="primary" size="medium">View Demo</Button>
-                        </Fragment>
-                      </Card>
-                    </div>
-                    <div class="swiper-slide">
-                      <Card
-                        variant="bordered"
-                        imageSrc="/images/image5.jpg"
-                        imageAlt="A person holding a tablet with a digital interface"
-                        interactive={true}>
-                        <Fragment slot="header">
-                          <h3>Mobile Experience</h3>
-                        </Fragment>
-                        <p>
-                          Deliver exceptional mobile experiences with responsive design and intuitive interfaces that
-                          work seamlessly across all devices.
-                        </p>
-                        <Fragment slot="footer">
-                          <Button variant="secondary" size="medium">Try Now</Button>
-                        </Fragment>
-                      </Card>
-                    </div>
-                  </MainSlider>
-                </div>
-                <div class="demo-code">
-                  <pre><code>{`<MainSlider loop={true} showPagination={false}>
+                    <div class="demo-code">
+                      <pre><code>{`<MainSlider loop={true} showPagination={false}>
   <div class="swiper-slide" >
     <Card
       variant="elevated"
@@ -422,12 +428,14 @@ import "@/styles/demo.scss";
   </div>
   <!-- More slides... -->
 </MainSlider>`}</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
-        </section>
+        </div>
       </div>
     </main>
-  </Fragment>
-</Layout>
+  </Fragment></Layout
+>

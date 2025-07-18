@@ -7,105 +7,110 @@ import TableCell from "@/components/Table/TableCell.astro";
 import TableHeaderCell from "@/components/Table/TableHeaderCell.astro";
 import TableFooter from "@/components/Table/TableFooter.astro";
 
+import DemoNavigation from "@/components/DemoNavigation/DemoNavigation.astro";
+import { getFormComponentNavigation } from "@/utils/demoNavigation";
 import "@/styles/demo.scss";
+
+// Get navigation items with current page marked as active
+const navigationItems = getFormComponentNavigation("table");
 ---
 
 <Layout title="Table Component Demo">
   <Fragment slot="main">
     <main id="main" class="layout-main" aria-label="Table Component Demo">
-      <div class="component-demo">
-        <header class="demo-header">
-          <div class="section-grid">
-            <div class="col-full">
-              <nav class="demo-nav">
-                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
-              </nav>
-              <h1>Table Component</h1>
-              <p class="demo-subtitle">
-                Table components are used to display tabular data in a structured format. They can include headers,
-                footers, and body sections, allowing for clear organization of information. The table includes
-                responsive scrolling with visual indicators when content overflows.
-              </p>
-            </div>
-          </div>
-        </header>
+      <div class="section-grid owl-32">
+        <DemoNavigation title="Form Components" items={navigationItems} />
+        <div class="col-4 md:col-4 lg:col-9">
+          <div class="component-demo">
+            <header class="demo-header">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h1>Table Component</h1>
+                  <p class="demo-subtitle">
+                    Table components are used to display tabular data in a structured format. They can include headers,
+                    footers, and body sections, allowing for clear organization of information. The table includes
+                    responsive scrolling with visual indicators when content overflows.
+                  </p>
+                </div>
+              </div>
+            </header>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Basic Usage</h2>
-              <p>
-                Its very important to style tables within their wrapping class to avoid conflicts within the CMS. Do not
-                use class names on the table itself.
-              </p>
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <TableComponent>
-                    <Fragment slot="header">
-                      <TableRow>
-                        <TableHeaderCell>Name</TableHeaderCell>
-                        <TableHeaderCell>Age</TableHeaderCell>
-                        <TableHeaderCell>Location</TableHeaderCell>
-                        <TableHeaderCell>Department</TableHeaderCell>
-                        <TableHeaderCell>Position</TableHeaderCell>
-                        <TableHeaderCell>Start Date</TableHeaderCell>
-                        <TableHeaderCell>Salary</TableHeaderCell>
-                        <TableHeaderCell>Status</TableHeaderCell>
-                      </TableRow>
-                    </Fragment>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Basic Usage</h2>
+                  <p>
+                    Its very important to style tables within their wrapping class to avoid conflicts within the CMS. Do
+                    not use class names on the table itself.
+                  </p>
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <TableComponent>
+                        <Fragment slot="header">
+                          <TableRow>
+                            <TableHeaderCell>Name</TableHeaderCell>
+                            <TableHeaderCell>Age</TableHeaderCell>
+                            <TableHeaderCell>Location</TableHeaderCell>
+                            <TableHeaderCell>Department</TableHeaderCell>
+                            <TableHeaderCell>Position</TableHeaderCell>
+                            <TableHeaderCell>Start Date</TableHeaderCell>
+                            <TableHeaderCell>Salary</TableHeaderCell>
+                            <TableHeaderCell>Status</TableHeaderCell>
+                          </TableRow>
+                        </Fragment>
 
-                    <Fragment slot="body">
-                      <TableRow>
-                        <TableCell>Alice Johnson</TableCell>
-                        <TableCell>32</TableCell>
-                        <TableCell>New York</TableCell>
-                        <TableCell>Engineering</TableCell>
-                        <TableCell>Senior Developer</TableCell>
-                        <TableCell>2020-03-15</TableCell>
-                        <TableCell>$95,000</TableCell>
-                        <TableCell>Active</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>Bob Smith</TableCell>
-                        <TableCell>45</TableCell>
-                        <TableCell>London</TableCell>
-                        <TableCell>Marketing</TableCell>
-                        <TableCell>Marketing Manager</TableCell>
-                        <TableCell>2018-07-22</TableCell>
-                        <TableCell>$78,000</TableCell>
-                        <TableCell>Active</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>Charlie Brown</TableCell>
-                        <TableCell>29</TableCell>
-                        <TableCell>San Francisco</TableCell>
-                        <TableCell>Design</TableCell>
-                        <TableCell>UX Designer</TableCell>
-                        <TableCell>2021-11-08</TableCell>
-                        <TableCell>$72,000</TableCell>
-                        <TableCell>Active</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>Diana Prince</TableCell>
-                        <TableCell>38</TableCell>
-                        <TableCell>Washington DC</TableCell>
-                        <TableCell>Operations</TableCell>
-                        <TableCell>Operations Director</TableCell>
-                        <TableCell>2019-02-14</TableCell>
-                        <TableCell>$105,000</TableCell>
-                        <TableCell>Active</TableCell>
-                      </TableRow>
-                      <TableFooter>
-                        <TableRow>
-                          <TableCell colspan="7">Total Employees</TableCell>
-                          <TableCell>4</TableCell>
-                        </TableRow>
-                      </TableFooter>
-                    </Fragment>
-                  </TableComponent>
+                        <Fragment slot="body">
+                          <TableRow>
+                            <TableCell>Alice Johnson</TableCell>
+                            <TableCell>32</TableCell>
+                            <TableCell>New York</TableCell>
+                            <TableCell>Engineering</TableCell>
+                            <TableCell>Senior Developer</TableCell>
+                            <TableCell>2020-03-15</TableCell>
+                            <TableCell>$95,000</TableCell>
+                            <TableCell>Active</TableCell>
+                          </TableRow>
+                          <TableRow>
+                            <TableCell>Bob Smith</TableCell>
+                            <TableCell>45</TableCell>
+                            <TableCell>London</TableCell>
+                            <TableCell>Marketing</TableCell>
+                            <TableCell>Marketing Manager</TableCell>
+                            <TableCell>2018-07-22</TableCell>
+                            <TableCell>$78,000</TableCell>
+                            <TableCell>Active</TableCell>
+                          </TableRow>
+                          <TableRow>
+                            <TableCell>Charlie Brown</TableCell>
+                            <TableCell>29</TableCell>
+                            <TableCell>San Francisco</TableCell>
+                            <TableCell>Design</TableCell>
+                            <TableCell>UX Designer</TableCell>
+                            <TableCell>2021-11-08</TableCell>
+                            <TableCell>$72,000</TableCell>
+                            <TableCell>Active</TableCell>
+                          </TableRow>
+                          <TableRow>
+                            <TableCell>Diana Prince</TableCell>
+                            <TableCell>38</TableCell>
+                            <TableCell>Washington DC</TableCell>
+                            <TableCell>Operations</TableCell>
+                            <TableCell>Operations Director</TableCell>
+                            <TableCell>2019-02-14</TableCell>
+                            <TableCell>$105,000</TableCell>
+                            <TableCell>Active</TableCell>
+                          </TableRow>
+                          <TableFooter>
+                            <TableRow>
+                              <TableCell colspan="7">Total Employees</TableCell>
+                              <TableCell>4</TableCell>
+                            </TableRow>
+                          </TableFooter>
+                        </Fragment>
+                      </TableComponent>
 
-                  <div class="demo-code">
-                    <pre>
+                      <div class="demo-code">
+                        <pre>
                       <code>
 &lt;TableComponent&gt;
   &lt;Fragment slot="header"&gt;
@@ -171,13 +176,15 @@ import "@/styles/demo.scss";
   &lt;/Fragment&gt;
 &lt;/TableComponent&gt;</code>
                     </pre>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
-        </section>
+        </div>
       </div>
     </main>
-  </Fragment>
-</Layout>
+  </Fragment></Layout
+>

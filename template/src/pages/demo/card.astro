@@ -4,56 +4,65 @@ import "@/styles/demo.scss";
 import Layout from "@/layouts/Layout.astro";
 import CardComponent from "@/components/Card/Card.astro";
 import Button from "@/components/Button/Button.astro";
+import DemoNavigation from "../../components/DemoNavigation/DemoNavigation.astro";
+import { getFormComponentNavigation } from "../../utils/demoNavigation";
+import "@/styles/demo.scss";
+
+// Get navigation items with current page marked as active
+const navigationItems = getFormComponentNavigation("card");
 ---
 
 <Layout title="Card Component">
   <Fragment slot="main">
     <main id="main" class="layout-main" aria-label="Main content">
-      <div class="component-demo">
-        <header class="demo-header">
-          <div class="section-grid">
-            <div class="col-full">
-              <nav class="demo-nav">
-                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
-              </nav>
-              <h1>Card Component</h1>
-              <p class="demo-subtitle">
-                Flexible card component for grouping related content with headers, actions, and multiple variants.
-              </p>
-            </div>
-          </div>
-        </header>
-
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Basic Cards</h2>
-              <p>Cards come in three variants: default, bordered, and elevated.</p>
-
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <div class="cards-grid">
-                    <CardComponent variant="default">
-                      <h3>Default Card</h3>
-                      <p>
-                        This is a basic card with default styling. It provides a clean container for related content.
-                      </p>
-                    </CardComponent>
-
-                    <CardComponent variant="bordered">
-                      <h3>Bordered Card</h3>
-                      <p>This card has a visible border, making it stand out more distinctly from the background.</p>
-                    </CardComponent>
-
-                    <CardComponent variant="elevated">
-                      <h3>Elevated Card</h3>
-                      <p>This card has a shadow effect, giving it a raised appearance above the page.</p>
-                    </CardComponent>
-                  </div>
+      <div class="section-grid owl-32">
+        <DemoNavigation title="Form Components" items={navigationItems} />
+        <div class="col-4 md:col-4 lg:col-9">
+          <div class="component-demo">
+            <header class="demo-header">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h1>Card Component</h1>
+                  <p class="demo-subtitle">
+                    Flexible card component for grouping related content with headers, actions, and multiple variants.
+                  </p>
                 </div>
+              </div>
+            </header>
 
-                <div class="demo-code">
-                  <pre><code>&lt;Card variant="default"&gt;
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Basic Cards</h2>
+                  <p>Cards come in three variants: default, bordered, and elevated.</p>
+
+                  <div class="demo-example">
+                    <div class="demo-preview contain-floats">
+                      <div class="cards-grid">
+                        <CardComponent variant="default">
+                          <h3>Default Card</h3>
+                          <p>
+                            This is a basic card with default styling. It provides a clean container for related
+                            content.
+                          </p>
+                        </CardComponent>
+
+                        <CardComponent variant="bordered">
+                          <h3>Bordered Card</h3>
+                          <p>
+                            This card has a visible border, making it stand out more distinctly from the background.
+                          </p>
+                        </CardComponent>
+
+                        <CardComponent variant="elevated">
+                          <h3>Elevated Card</h3>
+                          <p>This card has a shadow effect, giving it a raised appearance above the page.</p>
+                        </CardComponent>
+                      </div>
+                    </div>
+
+                    <div class="demo-code">
+                      <pre><code>&lt;Card variant="default"&gt;
   &lt;h3&gt;Default Card&lt;/h3&gt;
   &lt;p&gt;This is a basic card with default styling.&lt;/p&gt;
 &lt;/Card&gt;
@@ -67,40 +76,40 @@ import Button from "@/components/Button/Button.astro";
   &lt;h3&gt;Elevated Card&lt;/h3&gt;
   &lt;p&gt;This card has a shadow effect.&lt;/p&gt;
 &lt;/Card&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Card with Header and Actions</h2>
-              <p>Cards can include header and action slots for more complex layouts.</p>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Card with Header and Actions</h2>
+                  <p>Cards can include header and action slots for more complex layouts.</p>
 
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <CardComponent variant="bordered">
-                    <Fragment slot="header">
-                      <h3>Project Update</h3>
-                      <span class="card-meta">2 hours ago</span>
-                    </Fragment>
+                  <div class="demo-example">
+                    <div class="demo-preview contain-floats">
+                      <CardComponent variant="bordered">
+                        <Fragment slot="header">
+                          <h3>Project Update</h3>
+                          <span class="card-meta">2 hours ago</span>
+                        </Fragment>
 
-                    <p>
-                      The design system documentation has been updated with new component guidelines and accessibility
-                      requirements.
-                    </p>
+                        <p>
+                          The design system documentation has been updated with new component guidelines and
+                          accessibility requirements.
+                        </p>
 
-                    <Fragment slot="footer">
-                      <Button variant="secondary" size="small">View Details</Button>
-                      <Button variant="primary" size="small">Mark as Read</Button>
-                    </Fragment>
-                  </CardComponent>
-                </div>
+                        <Fragment slot="footer">
+                          <Button variant="secondary" size="small">View Details</Button>
+                          <Button variant="primary" size="small">Mark as Read</Button>
+                        </Fragment>
+                      </CardComponent>
+                    </div>
 
-                <div class="demo-code">
-                  <pre><code>&lt;Card variant="bordered"&gt;
+                    <div class="demo-code">
+                      <pre><code>&lt;Card variant="bordered"&gt;
   &lt;Fragment slot="header"&gt;
     &lt;h3&gt;Project Update&lt;/h3&gt;
     &lt;span class="card-meta"&gt;2 hours ago&lt;/span&gt;
@@ -113,35 +122,35 @@ import Button from "@/components/Button/Button.astro";
     &lt;Button variant="primary" size="small"&gt;Mark as Read&lt;/Button&gt;
   &lt;/Fragment&gt;
 &lt;/Card&gt;</code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Interactive Cards</h2>
-              <p>Cards can be made interactive with hover effects and click states.</p>
-
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <div class="cards-grid">
-                    <CardComponent variant="elevated" interactive>
-                      <h3>Interactive Card</h3>
-                      <p>This card has hover effects and can be clicked.</p>
-                    </CardComponent>
-
-                    <CardComponent variant="bordered" href="/dummy-link/" interactive>
-                      <h3>Clickable Card</h3>
-                      <p>This entire card is a clickable link with proper accessibility.</p>
-                    </CardComponent>
+                    </div>
                   </div>
                 </div>
+              </div>
+            </section>
 
-                <div class="demo-code">
-                  <pre><code>&lt;Card variant="elevated" interactive&gt;
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Interactive Cards</h2>
+                  <p>Cards can be made interactive with hover effects and click states.</p>
+
+                  <div class="demo-example">
+                    <div class="demo-preview contain-floats">
+                      <div class="cards-grid">
+                        <CardComponent variant="elevated" interactive>
+                          <h3>Interactive Card</h3>
+                          <p>This card has hover effects and can be clicked.</p>
+                        </CardComponent>
+
+                        <CardComponent variant="bordered" href="/dummy-link/" interactive>
+                          <h3>Clickable Card</h3>
+                          <p>This entire card is a clickable link with proper accessibility.</p>
+                        </CardComponent>
+                      </div>
+                    </div>
+
+                    <div class="demo-code">
+                      <pre><code>&lt;Card variant="elevated" interactive&gt;
   &lt;h3&gt;Interactive Card&lt;/h3&gt;
   &lt;p&gt;This card has hover effects.&lt;/p&gt;
 &lt;/Card&gt;
@@ -150,102 +159,106 @@ import Button from "@/components/Button/Button.astro";
   &lt;h3&gt;Clickable Card&lt;/h3&gt;
   &lt;p&gt;This entire card is a clickable link.&lt;/p&gt;
 &lt;/Card&gt;</code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Padding Variations</h2>
-              <p>Control the internal spacing with different padding options.</p>
-
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <div class="cards-grid">
-                    <CardComponent variant="bordered" padding="none">
-                      <div style="padding: 0.5rem; background: #f1f5f9; margin: -1px;">
-                        <strong>No Padding</strong>
-                        <p style="margin: 0.5rem 0 0;">Useful when you need full control over spacing.</p>
-                      </div>
-                    </CardComponent>
-
-                    <CardComponent variant="bordered" padding="small">
-                      <strong>Small Padding</strong>
-                      <p>Compact spacing for dense layouts.</p>
-                    </CardComponent>
-
-                    <CardComponent variant="bordered" padding="medium">
-                      <strong>Medium Padding</strong>
-                      <p>Default comfortable spacing.</p>
-                    </CardComponent>
-
-                    <CardComponent variant="bordered" padding="large">
-                      <strong>Large Padding</strong>
-                      <p>Generous spacing for featured content.</p>
-                    </CardComponent>
+                    </div>
                   </div>
                 </div>
+              </div>
+            </section>
 
-                <div class="demo-code">
-                  <pre><code>&lt;Card variant="bordered" padding="none"&gt;...&lt;/Card&gt;
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Padding Variations</h2>
+                  <p>Control the internal spacing with different padding options.</p>
+
+                  <div class="demo-example">
+                    <div class="demo-preview contain-floats">
+                      <div class="cards-grid">
+                        <CardComponent variant="bordered" padding="none">
+                          <div style="padding: 0.5rem; background: #f1f5f9; margin: -1px;">
+                            <strong>No Padding</strong>
+                            <p style="margin: 0.5rem 0 0;">Useful when you need full control over spacing.</p>
+                          </div>
+                        </CardComponent>
+
+                        <CardComponent variant="bordered" padding="small">
+                          <strong>Small Padding</strong>
+                          <p>Compact spacing for dense layouts.</p>
+                        </CardComponent>
+
+                        <CardComponent variant="bordered" padding="medium">
+                          <strong>Medium Padding</strong>
+                          <p>Default comfortable spacing.</p>
+                        </CardComponent>
+
+                        <CardComponent variant="bordered" padding="large">
+                          <strong>Large Padding</strong>
+                          <p>Generous spacing for featured content.</p>
+                        </CardComponent>
+                      </div>
+                    </div>
+
+                    <div class="demo-code">
+                      <pre><code>&lt;Card variant="bordered" padding="none"&gt;...&lt;/Card&gt;
 &lt;Card variant="bordered" padding="small"&gt;...&lt;/Card&gt;
 &lt;Card variant="bordered" padding="medium"&gt;...&lt;/Card&gt;
 &lt;Card variant="bordered" padding="large"&gt;...&lt;/Card&gt;</code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Cards with Images</h2>
-              <p>Cards can include images positioned at the top, left, or right of the content.</p>
-
-              <div class="demo-example">
-                <div class="demo-preview contain-floats">
-                  <div class="cards-grid">
-                    <CardComponent
-                      variant="bordered"
-                      imageSrc="/images/image1.jpg"
-                      imageAlt="Sample image"
-                      imagePosition="top">
-                      <h3>Top Image Card</h3>
-                      <p>This card displays an image at the top, perfect for featured content or article previews.</p>
-                      <Fragment slot="footer">
-                        <Button variant="primary" size="small">Read More</Button>
-                      </Fragment>
-                    </CardComponent>
-
-                    <CardComponent
-                      variant="elevated"
-                      imageSrc="/images/image2.jpg"
-                      imageAlt="Profile image"
-                      imagePosition="left">
-                      <h3>Left Image Card</h3>
-                      <p>
-                        This layout works well for profiles, product listings, or when you want the image to complement
-                        the text content.
-                      </p>
-                    </CardComponent>
-
-                    <CardComponent
-                      variant="bordered"
-                      imageSrc="/images/image3.jpg"
-                      imageAlt="Featured image"
-                      imagePosition="right">
-                      <h3>Right Image Card</h3>
-                      <p>Right-positioned images create visual interest while maintaining focus on the text content.</p>
-                    </CardComponent>
+                    </div>
                   </div>
                 </div>
+              </div>
+            </section>
 
-                <div class="demo-code">
-                  <pre><code>&lt;Card variant="bordered" imageSrc="/images/image1.jpg" imageAlt="Sample image" imagePosition="top"&gt;
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Cards with Images</h2>
+                  <p>Cards can include images positioned at the top, left, or right of the content.</p>
+
+                  <div class="demo-example">
+                    <div class="demo-preview contain-floats">
+                      <div class="cards-grid">
+                        <CardComponent
+                          variant="bordered"
+                          imageSrc="/images/image1.jpg"
+                          imageAlt="Sample image"
+                          imagePosition="top">
+                          <h3>Top Image Card</h3>
+                          <p>
+                            This card displays an image at the top, perfect for featured content or article previews.
+                          </p>
+                          <Fragment slot="footer">
+                            <Button variant="primary" size="small">Read More</Button>
+                          </Fragment>
+                        </CardComponent>
+
+                        <CardComponent
+                          variant="elevated"
+                          imageSrc="/images/image2.jpg"
+                          imageAlt="Profile image"
+                          imagePosition="left">
+                          <h3>Left Image Card</h3>
+                          <p>
+                            This layout works well for profiles, product listings, or when you want the image to
+                            complement the text content.
+                          </p>
+                        </CardComponent>
+
+                        <CardComponent
+                          variant="bordered"
+                          imageSrc="/images/image3.jpg"
+                          imageAlt="Featured image"
+                          imagePosition="right">
+                          <h3>Right Image Card</h3>
+                          <p>
+                            Right-positioned images create visual interest while maintaining focus on the text content.
+                          </p>
+                        </CardComponent>
+                      </div>
+                    </div>
+
+                    <div class="demo-code">
+                      <pre><code>&lt;Card variant="bordered" imageSrc="/images/image1.jpg" imageAlt="Sample image" imagePosition="top"&gt;
   &lt;h3&gt;Top Image Card&lt;/h3&gt;
   &lt;p&gt;This card displays an image at the top...&lt;/p&gt;
   &lt;Fragment slot="footer"&gt;
@@ -262,141 +275,143 @@ import Button from "@/components/Button/Button.astro";
   &lt;h3&gt;Right Image Card&lt;/h3&gt;
   &lt;p&gt;Right-positioned images create visual interest...&lt;/p&gt;
 &lt;/Card&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Props Reference</h2>
-              <div class="props-table">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Slot</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>default</code></td>
-                      <td>Main content area of the card</td>
-                    </tr>
-                    <tr>
-                      <td><code>header</code></td>
-                      <td>Header area, typically for titles and metadata</td>
-                    </tr>
-                    <tr>
-                      <td><code>footer</code></td>
-                      <td>Footer area for buttons and action items</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Accessibility Features -->
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Accessibility Features</h2>
-              <p class="section-intro">Built-in accessibility support for inclusive user experiences.</p>
-            </div>
-          </div>
-
-          <div class="section-grid">
-            <div class="col-full">
-              <div class="accessibility-grid">
-                <div class="accessibility-item">
-                  <h4>Keyboard Navigation</h4>
-                  <ul>
-                    <li><kbd>Tab</kbd> - Navigate to interactive elements within cards</li>
-                    <li><kbd>Enter</kbd> - Activate card links or buttons</li>
-                    <li><kbd>Shift + Tab</kbd> - Navigate backwards</li>
-                  </ul>
-                </div>
-
-                <div class="accessibility-item">
-                  <h4>Screen Reader Support</h4>
-                  <ul>
-                    <li>Proper heading hierarchy for card content</li>
-                    <li>Link semantics for clickable cards</li>
-                    <li>Descriptive content structure</li>
-                    <li>Alternative text for card images</li>
-                  </ul>
-                </div>
-
-                <div class="accessibility-item">
-                  <h4>Visual Indicators</h4>
-                  <ul>
-                    <li>Clear focus outlines on interactive elements</li>
-                    <li>Hover states for clickable cards</li>
-                    <li>High contrast support</li>
-                    <li>Consistent visual grouping</li>
-                  </ul>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Props Reference</h2>
+                  <div class="props-table">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Slot</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><code>default</code></td>
+                          <td>Main content area of the card</td>
+                        </tr>
+                        <tr>
+                          <td><code>header</code></td>
+                          <td>Header area, typically for titles and metadata</td>
+                        </tr>
+                        <tr>
+                          <td><code>footer</code></td>
+                          <td>Footer area for buttons and action items</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <!-- Design Guidelines -->
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Design Guidelines</h2>
-              <p class="section-intro">Best practices for using cards in your interface.</p>
-            </div>
-          </div>
-
-          <div class="section-grid">
-            <div class="col-full">
-              <div class="guidelines-grid">
-                <div class="guideline-item">
-                  <h4>✅ Do</h4>
-                  <ul>
-                    <li>Group related content logically</li>
-                    <li>Use consistent card sizes in grids</li>
-                    <li>Make interactive cards clearly clickable</li>
-                    <li>Maintain proper spacing between cards</li>
-                    <li>Use appropriate heading hierarchy</li>
-                  </ul>
-                </div>
-
-                <div class="guideline-item">
-                  <h4>❌ Don't</h4>
-                  <ul>
-                    <li>Overcrowd cards with too much content</li>
-                    <li>Mix different card variants in the same grid</li>
-                    <li>Make non-interactive cards look clickable</li>
-                    <li>Use cards for single pieces of information</li>
-                    <li>Forget to provide adequate contrast</li>
-                  </ul>
+            <!-- Accessibility Features -->
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Accessibility Features</h2>
+                  <p class="section-intro">Built-in accessibility support for inclusive user experiences.</p>
                 </div>
               </div>
-            </div>
+
+              <div class="section-grid">
+                <div class="col-full">
+                  <div class="accessibility-grid">
+                    <div class="accessibility-item">
+                      <h4>Keyboard Navigation</h4>
+                      <ul>
+                        <li><kbd>Tab</kbd> - Navigate to interactive elements within cards</li>
+                        <li><kbd>Enter</kbd> - Activate card links or buttons</li>
+                        <li><kbd>Shift + Tab</kbd> - Navigate backwards</li>
+                      </ul>
+                    </div>
+
+                    <div class="accessibility-item">
+                      <h4>Screen Reader Support</h4>
+                      <ul>
+                        <li>Proper heading hierarchy for card content</li>
+                        <li>Link semantics for clickable cards</li>
+                        <li>Descriptive content structure</li>
+                        <li>Alternative text for card images</li>
+                      </ul>
+                    </div>
+
+                    <div class="accessibility-item">
+                      <h4>Visual Indicators</h4>
+                      <ul>
+                        <li>Clear focus outlines on interactive elements</li>
+                        <li>Hover states for clickable cards</li>
+                        <li>High contrast support</li>
+                        <li>Consistent visual grouping</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Design Guidelines -->
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Design Guidelines</h2>
+                  <p class="section-intro">Best practices for using cards in your interface.</p>
+                </div>
+              </div>
+
+              <div class="section-grid">
+                <div class="col-full">
+                  <div class="guidelines-grid">
+                    <div class="guideline-item">
+                      <h4>✅ Do</h4>
+                      <ul>
+                        <li>Group related content logically</li>
+                        <li>Use consistent card sizes in grids</li>
+                        <li>Make interactive cards clearly clickable</li>
+                        <li>Maintain proper spacing between cards</li>
+                        <li>Use appropriate heading hierarchy</li>
+                      </ul>
+                    </div>
+
+                    <div class="guideline-item">
+                      <h4>❌ Don't</h4>
+                      <ul>
+                        <li>Overcrowd cards with too much content</li>
+                        <li>Mix different card variants in the same grid</li>
+                        <li>Make non-interactive cards look clickable</li>
+                        <li>Use cards for single pieces of information</li>
+                        <li>Forget to provide adequate contrast</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
+        </div>
       </div>
     </main>
+
+    <style lang="scss">
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .card-meta {
+        color: #64748b;
+        font-size: 0.875rem;
+        margin-left: auto;
+      }
+    </style>
   </Fragment>
 </Layout>
-
-<style lang="scss">
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .card-meta {
-    color: #64748b;
-    font-size: 0.875rem;
-    margin-left: auto;
-  }
-</style>

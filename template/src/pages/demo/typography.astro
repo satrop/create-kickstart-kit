@@ -1,140 +1,150 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Card from "@/components/Card/Card.astro";
-import "@/styles/demo.scss";
+
 import "@/styles/demo/typography.scss";
+
+import DemoNavigation from "@/components/DemoNavigation/DemoNavigation.astro";
+import { getFormComponentNavigation } from "@/utils/demoNavigation";
+import "@/styles/demo.scss";
+
+// Get navigation items with current page marked as active
+const navigationItems = getFormComponentNavigation("typography");
 ---
 
 <Layout title="Typography System - Astro Kickstart">
   <Fragment slot="main">
     <main id="main" class="layout-main" aria-label="Main content">
-      <div class="component-demo">
-        <header class="demo-header">
-          <div class="section-grid">
-            <div class="col-full">
-              <nav class="demo-nav">
-                <a href="./components.html" class="btn btn--outline btn--small">← Back to Components</a>
-              </nav>
-              <h1>Typography System</h1>
-              <p class="demo-subtitle">
-                Explore the typography system with font families, sizes, weights, and utility classes. The system
-                provides consistent text styling throughout your project.
-              </p>
-            </div>
-          </div>
-        </header>
-
-        <!-- Font Families -->
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Font Families</h2>
-              <p>Four font stacks are available for different use cases:</p>
-
-              <div class="card-grid">
-                <Card variant="bordered">
-                  <Fragment slot="header">
-                    <h3>Sans Serif</h3>
-                  </Fragment>
-                  <div class="font-example">
-                    <div class="font-sans ast-text-4xl font-400">The quick brown fox jumps over the lazy dog</div>
-                    <div class="font-details">
-                      <p><strong>Class:</strong> <code>.font-sans</code></p>
-                      <p><strong>Stack:</strong> Inter, system-ui, sans-serif</p>
-                      <p><strong>Use:</strong> Body text, headings, UI elements</p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card variant="bordered">
-                  <Fragment slot="header">
-                    <h3>Display</h3>
-                  </Fragment>
-                  <div class="font-example">
-                    <div class="font-display ast-text-4xl font-400">The quick brown fox jumps over the lazy dog</div>
-                    <div class="font-details">
-                      <p><strong>Class:</strong> <code>.font-display</code></p>
-                      <p><strong>Stack:</strong> Cabin, system-ui, sans-serif</p>
-                      <p><strong>Use:</strong> Hero headings, featured content, branding</p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card variant="bordered">
-                  <Fragment slot="header">
-                    <h3>Serif</h3>
-                  </Fragment>
-                  <div class="font-example">
-                    <div class="font-serif ast-text-4xl font-400">The quick brown fox jumps over the lazy dog</div>
-                    <div class="font-details">
-                      <p><strong>Class:</strong> <code>.font-serif</code></p>
-                      <p><strong>Stack:</strong> Georgia, Times New Roman, serif</p>
-                      <p><strong>Use:</strong> Elegant headings, articles, quotes</p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card variant="bordered">
-                  <Fragment slot="header">
-                    <h3>Monospace</h3>
-                  </Fragment>
-                  <div class="font-example">
-                    <div class="font-mono ast-text-2xl font-400">The quick brown fox jumps over the lazy dog</div>
-                    <div class="font-details">
-                      <p><strong>Class:</strong> <code>.font-mono</code></p>
-                      <p><strong>Stack:</strong> JetBrains Mono, Consolas, monospace</p>
-                      <p><strong>Use:</strong> Code blocks, technical content</p>
-                    </div>
-                  </div>
-                </Card>
+      <div class="section-grid owl-32">
+        <DemoNavigation title="Form Components" items={navigationItems} />
+        <div class="col-4 md:col-4 lg:col-9">
+          <div class="component-demo">
+            <header class="demo-header">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h1>Typography System</h1>
+                  <p class="demo-subtitle">
+                    Explore the typography system with font families, sizes, weights, and utility classes. The system
+                    provides consistent text styling throughout your project.
+                  </p>
+                </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </header>
 
-        <!-- Font Sizes -->
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Font Sizes</h2>
-              <p>
-                A modular scale provides consistent sizing from <code>.ast-text--xs</code> to <code>.ast-text--9xl</code
-                >:
-              </p>
+            <!-- Font Families -->
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Font Families</h2>
+                  <p>Four font stacks are available for different use cases:</p>
 
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <div class="size-card-grid">
+                  <div class="card-grid">
                     <Card variant="bordered">
                       <Fragment slot="header">
-                        <h3>Small to Medium Sizes</h3>
+                        <h3>Sans Serif</h3>
                       </Fragment>
-                      <div class="size-examples">
-                        <div class="ast-text--xs">Extra Small (12px) - .ast-text--xs</div>
-                        <div class="ast-text--sm">Small (14px) - .ast-text--sm</div>
-                        <div class="ast-text--base">Base (16px) - .ast-text--base</div>
-                        <div class="ast-text--lg">Large (18px) - .ast-text--lg</div>
-                        <div class="ast-text--xl">Extra Large (20px) - .ast-text--xl</div>
-                        <div class="ast-text--2xl">2X Large (24px) - .ast-text--2xl</div>
+                      <div class="font-example">
+                        <div class="font-sans ast-text-4xl font-400">The quick brown fox jumps over the lazy dog</div>
+                        <div class="font-details">
+                          <p><strong>Class:</strong> <code>.font-sans</code></p>
+                          <p><strong>Stack:</strong> Inter, system-ui, sans-serif</p>
+                          <p><strong>Use:</strong> Body text, headings, UI elements</p>
+                        </div>
                       </div>
                     </Card>
 
                     <Card variant="bordered">
                       <Fragment slot="header">
-                        <h3>Large Display Sizes</h3>
+                        <h3>Display</h3>
                       </Fragment>
-                      <div class="size-examples">
-                        <div class="ast-text--3xl">3X Large (30px) - .ast-text--3xl</div>
-                        <div class="ast-text--4xl">4X Large (36px) - .ast-text--4xl</div>
-                        <div class="ast-text--5xl">5X Large (48px) - .ast-text--5xl</div>
-                        <div class="ast-text--6xl">6X Large (60px) - .ast-text--6xl</div>
+                      <div class="font-example">
+                        <div class="font-display ast-text-4xl font-400">
+                          The quick brown fox jumps over the lazy dog
+                        </div>
+                        <div class="font-details">
+                          <p><strong>Class:</strong> <code>.font-display</code></p>
+                          <p><strong>Stack:</strong> Cabin, system-ui, sans-serif</p>
+                          <p><strong>Use:</strong> Hero headings, featured content, branding</p>
+                        </div>
+                      </div>
+                    </Card>
+
+                    <Card variant="bordered">
+                      <Fragment slot="header">
+                        <h3>Serif</h3>
+                      </Fragment>
+                      <div class="font-example">
+                        <div class="font-serif ast-text-4xl font-400">The quick brown fox jumps over the lazy dog</div>
+                        <div class="font-details">
+                          <p><strong>Class:</strong> <code>.font-serif</code></p>
+                          <p><strong>Stack:</strong> Georgia, Times New Roman, serif</p>
+                          <p><strong>Use:</strong> Elegant headings, articles, quotes</p>
+                        </div>
+                      </div>
+                    </Card>
+
+                    <Card variant="bordered">
+                      <Fragment slot="header">
+                        <h3>Monospace</h3>
+                      </Fragment>
+                      <div class="font-example">
+                        <div class="font-mono ast-text-2xl font-400">The quick brown fox jumps over the lazy dog</div>
+                        <div class="font-details">
+                          <p><strong>Class:</strong> <code>.font-mono</code></p>
+                          <p><strong>Stack:</strong> JetBrains Mono, Consolas, monospace</p>
+                          <p><strong>Use:</strong> Code blocks, technical content</p>
+                        </div>
                       </div>
                     </Card>
                   </div>
                 </div>
+              </div>
+            </section>
 
-                <div class="demo-code">
-                  <pre><code>&lt;div class="ast-text-xs"&gt;Extra Small (12px)&lt;/div&gt;
+            <!-- Font Sizes -->
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Font Sizes</h2>
+                  <p>
+                    A modular scale provides consistent sizing from <code>.ast-text--xs</code> to <code
+                      >.ast-text--9xl</code
+                    >:
+                  </p>
+
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <div class="size-card-grid">
+                        <Card variant="bordered">
+                          <Fragment slot="header">
+                            <h3>Small to Medium Sizes</h3>
+                          </Fragment>
+                          <div class="size-examples">
+                            <div class="ast-text--xs">Extra Small (12px) - .ast-text--xs</div>
+                            <div class="ast-text--sm">Small (14px) - .ast-text--sm</div>
+                            <div class="ast-text--base">Base (16px) - .ast-text--base</div>
+                            <div class="ast-text--lg">Large (18px) - .ast-text--lg</div>
+                            <div class="ast-text--xl">Extra Large (20px) - .ast-text--xl</div>
+                            <div class="ast-text--2xl">2X Large (24px) - .ast-text--2xl</div>
+                          </div>
+                        </Card>
+
+                        <Card variant="bordered">
+                          <Fragment slot="header">
+                            <h3>Large Display Sizes</h3>
+                          </Fragment>
+                          <div class="size-examples">
+                            <div class="ast-text--3xl">3X Large (30px) - .ast-text--3xl</div>
+                            <div class="ast-text--4xl">4X Large (36px) - .ast-text--4xl</div>
+                            <div class="ast-text--5xl">5X Large (48px) - .ast-text--5xl</div>
+                            <div class="ast-text--6xl">6X Large (60px) - .ast-text--6xl</div>
+                          </div>
+                        </Card>
+                      </div>
+                    </div>
+
+                    <div class="demo-code">
+                      <pre><code>&lt;div class="ast-text-xs"&gt;Extra Small (12px)&lt;/div&gt;
 &lt;div class="ast-text--sm"&gt;Small (14px)&lt;/div&gt;
 &lt;div class="ast-text--base"&gt;Base (16px)&lt;/div&gt;
 &lt;div class="ast-text--lg"&gt;Large (18px)&lt;/div&gt;
@@ -144,66 +154,66 @@ import "@/styles/demo/typography.scss";
 &lt;div class="ast-text--4xl"&gt;4X Large (36px)&lt;/div&gt;
 &lt;div class="ast-text--5xl"&gt;5X Large (48px)&lt;/div&gt;
 &lt;div class="ast-text--6xl"&gt;6X Large (60px)&lt;/div&gt;</code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Font Weights -->
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Font Weights</h2>
-              <p>Various font weights and line heights for flexible typography:</p>
-
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <div class="size-card-grid">
-                    <Card variant="bordered">
-                      <Fragment slot="header">
-                        <h3>Available Weights</h3>
-                      </Fragment>
-                      <div class="weight-examples">
-                        <div class="ast-text-2xl ast-font-100">Thin (100) - .font-100</div>
-                        <div class="ast-text-2xl ast-font-300">Light (300) - .font-300</div>
-                        <div class="ast-text-2xl ast-font-400">Normal (400) - .font-400</div>
-                        <div class="ast-text-2xl ast-font-500">Medium (500) - .font-500</div>
-                        <div class="ast-text-2xl ast-font-600">Semibold (600) - .font-600</div>
-                        <div class="ast-text-2xl ast-font-700">Bold (700) - .font-700</div>
-                        <div class="ast-text-2xl ast-font-800">Extra Bold (800) - .font-800</div>
-                        <div class="ast-text-2xl ast-font-900">Black (900) - .font-900</div>
-                      </div>
-                    </Card>
-
-                    <Card variant="bordered">
-                      <Fragment slot="header">
-                        <h3>Line Heights</h3>
-                      </Fragment>
-                      <div class="line-height-examples">
-                        <div class="ast-leading-none">
-                          Leading None (1.0) - .ast-leading-none<br />
-                          This text has tight line spacing for compact layouts.
-                        </div>
-                        <div class="ast-leading-tight">
-                          Leading Tight (1.25) - .ast-leading-tight<br />
-                          This text has slightly tighter line spacing.
-                        </div>
-                        <div class="ast-leading-normal">
-                          Leading Normal (1.5) - .ast-leading-normal<br />
-                          This text uses the standard line height for readability.
-                        </div>
-                        <div class="ast-leading-relaxed">
-                          Leading Relaxed (1.625) - .ast-leading-relaxed<br />
-                          This text has more generous line spacing for better readability.
-                        </div>
-                      </div>
-                    </Card>
+                    </div>
                   </div>
                 </div>
+              </div>
+            </section>
 
-                <div class="demo-code">
-                  <pre><code>&lt;!-- Font weights --&gt;
+            <!-- Font Weights -->
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Font Weights</h2>
+                  <p>Various font weights and line heights for flexible typography:</p>
+
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <div class="size-card-grid">
+                        <Card variant="bordered">
+                          <Fragment slot="header">
+                            <h3>Available Weights</h3>
+                          </Fragment>
+                          <div class="weight-examples">
+                            <div class="ast-text-2xl ast-font-100">Thin (100) - .font-100</div>
+                            <div class="ast-text-2xl ast-font-300">Light (300) - .font-300</div>
+                            <div class="ast-text-2xl ast-font-400">Normal (400) - .font-400</div>
+                            <div class="ast-text-2xl ast-font-500">Medium (500) - .font-500</div>
+                            <div class="ast-text-2xl ast-font-600">Semibold (600) - .font-600</div>
+                            <div class="ast-text-2xl ast-font-700">Bold (700) - .font-700</div>
+                            <div class="ast-text-2xl ast-font-800">Extra Bold (800) - .font-800</div>
+                            <div class="ast-text-2xl ast-font-900">Black (900) - .font-900</div>
+                          </div>
+                        </Card>
+
+                        <Card variant="bordered">
+                          <Fragment slot="header">
+                            <h3>Line Heights</h3>
+                          </Fragment>
+                          <div class="line-height-examples">
+                            <div class="ast-leading-none">
+                              Leading None (1.0) - .ast-leading-none<br />
+                              This text has tight line spacing for compact layouts.
+                            </div>
+                            <div class="ast-leading-tight">
+                              Leading Tight (1.25) - .ast-leading-tight<br />
+                              This text has slightly tighter line spacing.
+                            </div>
+                            <div class="ast-leading-normal">
+                              Leading Normal (1.5) - .ast-leading-normal<br />
+                              This text uses the standard line height for readability.
+                            </div>
+                            <div class="ast-leading-relaxed">
+                              Leading Relaxed (1.625) - .ast-leading-relaxed<br />
+                              This text has more generous line spacing for better readability.
+                            </div>
+                          </div>
+                        </Card>
+                      </div>
+                    </div>
+
+                    <div class="demo-code">
+                      <pre><code>&lt;!-- Font weights --&gt;
 &lt;div class="ast-font-100"&gt;Thin (100)&lt;/div&gt;
 &lt;div class="ast-font-300"&gt;Light (300)&lt;/div&gt;
 &lt;div class="ast-font-400"&gt;Normal (400)&lt;/div&gt;
@@ -215,81 +225,81 @@ import "@/styles/demo/typography.scss";
 &lt;div class="ast-leading-tight"&gt;Leading Tight (1.25)&lt;/div&gt;
 &lt;div class="ast-leading-normal"&gt;Leading Normal (1.5)&lt;/div&gt;
 &lt;div class="ast-leading-relaxed"&gt;Leading Relaxed (1.625)&lt;/div&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <!-- Predefined Text Styles -->
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Predefined Text Styles</h2>
-              <p>Ready-to-use text styles for common content types:</p>
+            <!-- Predefined Text Styles -->
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Predefined Text Styles</h2>
+                  <p>Ready-to-use text styles for common content types:</p>
 
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <div class="size-card-grid">
-                    <Card variant="bordered">
-                      <Fragment slot="header">
-                        <h3>Headings</h3>
-                      </Fragment>
-                      <div class="heading-examples">
-                        <h1 class="ast-heading-1">Heading 1 Style</h1>
-                        <h2 class="ast-heading-2">Heading 2 Style</h2>
-                        <h3 class="ast-heading-3">Heading 3 Style</h3>
-                        <h4 class="ast-heading-4">Heading 4 Style</h4>
-                        <h5 class="ast-heading-5">Heading 5 Style</h5>
-                        <h6 class="ast-heading-6">Heading 6 Style</h6>
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <div class="size-card-grid">
+                        <Card variant="bordered">
+                          <Fragment slot="header">
+                            <h3>Headings</h3>
+                          </Fragment>
+                          <div class="heading-examples">
+                            <h1 class="ast-heading-1">Heading 1 Style</h1>
+                            <h2 class="ast-heading-2">Heading 2 Style</h2>
+                            <h3 class="ast-heading-3">Heading 3 Style</h3>
+                            <h4 class="ast-heading-4">Heading 4 Style</h4>
+                            <h5 class="ast-heading-5">Heading 5 Style</h5>
+                            <h6 class="ast-heading-6">Heading 6 Style</h6>
+                          </div>
+                        </Card>
+
+                        <Card variant="bordered">
+                          <Fragment slot="header">
+                            <h3>Body Text</h3>
+                          </Fragment>
+                          <div class="body-examples">
+                            <p class="ast-body-large">
+                              <strong>Large Body (.ast-body-large)</strong><br />
+                              This is large body text, perfect for introductory paragraphs or emphasis. It provides excellent
+                              readability while maintaining hierarchy.
+                            </p>
+                            <p class="ast-body-normal">
+                              <strong>Normal Body (.ast-body-normal)</strong><br />
+                              This is the standard body text size used for most content. It balances readability with efficient
+                              use of space.
+                            </p>
+                            <p class="ast-body-small">
+                              <strong>Small Body (.ast-body-small)</strong><br />
+                              This is small body text, useful for secondary information, captions, or compact layouts.
+                            </p>
+                            <p class="ast-caption">
+                              Caption text (.caption) - Used for image captions, footnotes, and fine print.
+                            </p>
+                          </div>
+                        </Card>
                       </div>
-                    </Card>
 
-                    <Card variant="bordered">
-                      <Fragment slot="header">
-                        <h3>Body Text</h3>
-                      </Fragment>
-                      <div class="body-examples">
-                        <p class="ast-body-large">
-                          <strong>Large Body (.ast-body-large)</strong><br />
-                          This is large body text, perfect for introductory paragraphs or emphasis. It provides excellent
-                          readability while maintaining hierarchy.
-                        </p>
-                        <p class="ast-body-normal">
-                          <strong>Normal Body (.ast-body-normal)</strong><br />
-                          This is the standard body text size used for most content. It balances readability with efficient
-                          use of space.
-                        </p>
-                        <p class="ast-body-small">
-                          <strong>Small Body (.ast-body-small)</strong><br />
-                          This is small body text, useful for secondary information, captions, or compact layouts.
-                        </p>
-                        <p class="ast-caption">
-                          Caption text (.caption) - Used for image captions, footnotes, and fine print.
-                        </p>
-                      </div>
-                    </Card>
-                  </div>
-
-                  <div class="mt-4">
-                    <Card variant="bordered">
-                      <Fragment slot="header">
-                        <h3>Code and Technical Text</h3>
-                      </Fragment>
-                      <div class="code-examples">
-                        <p>Inline code: <code class="ast-code">const greeting = "Hello, World!";</code></p>
-                        <div class="demo-code">
-                          <pre><code>{`function calculateTotal(items) {
+                      <div class="mt-4">
+                        <Card variant="bordered">
+                          <Fragment slot="header">
+                            <h3>Code and Technical Text</h3>
+                          </Fragment>
+                          <div class="code-examples">
+                            <p>Inline code: <code class="ast-code">const greeting = "Hello, World!";</code></p>
+                            <div class="demo-code">
+                              <pre><code>{`function calculateTotal(items) {
   return items.reduce((sum, item) => sum + item.price, 0);
 }`}</code></pre>
-                        </div>
+                            </div>
+                          </div>
+                        </Card>
                       </div>
-                    </Card>
-                  </div>
-                </div>
+                    </div>
 
-                <div class="demo-code">
-                  <pre><code>&lt;!-- Heading styles --&gt;
+                    <div class="demo-code">
+                      <pre><code>&lt;!-- Heading styles --&gt;
 &lt;h1 class="ast-heading-1"&gt;Heading 1 Style&lt;/h1&gt;
 &lt;h2 class="ast-heading-2"&gt;Heading 2 Style&lt;/h2&gt;
 
@@ -301,59 +311,59 @@ import "@/styles/demo/typography.scss";
 
 &lt;!-- Code styles --&gt;
 &lt;code class="ast-code"&gt;const greeting = "Hello, World!";&lt;/code&gt;</code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Utility Classes -->
-        <section class="demo-section">
-          <div class="section-grid">
-            <div class="col-full">
-              <h2>Utility Classes</h2>
-              <p>Quick and versatile classes for text customization:</p>
-
-              <div class="demo-example">
-                <div class="demo-preview">
-                  <div class="utility-card-grid">
-                    <Card variant="bordered">
-                      <Fragment slot="header">
-                        <h3>Text Alignment</h3>
-                      </Fragment>
-                      <div class="utility-examples">
-                        <p class="ast-text--left">Left aligned text (.ast-text--left)</p>
-                        <p class="ast-text--center">Center aligned text (.ast-text--center)</p>
-                        <p class="ast-text--right">Right aligned text (.ast-text--right)</p>
-                      </div>
-                    </Card>
-
-                    <Card variant="bordered">
-                      <Fragment slot="header">
-                        <h3>Text Transform</h3>
-                      </Fragment>
-                      <div class="utility-examples">
-                        <p class="ast-uppercase">Uppercase text (.ast-uppercase)</p>
-                        <p class="ast-lowercase">LOWERCASE TEXT (.ast-lowercase)</p>
-                        <p class="ast-capitalize">capitalized text (.ast-capitalize)</p>
-                      </div>
-                    </Card>
-
-                    <Card variant="bordered">
-                      <Fragment slot="header">
-                        <h3>Text Decoration</h3>
-                      </Fragment>
-                      <div class="utility-examples">
-                        <p class="ast-underline">Underlined text (.ast-underline)</p>
-                        <p class="ast-line-through">Strikethrough text (.ast-line-through)</p>
-                        <p class="ast-italic">Italic text (.ast-italic)</p>
-                      </div>
-                    </Card>
+                    </div>
                   </div>
                 </div>
+              </div>
+            </section>
 
-                <div class="demo-code">
-                  <pre><code>&lt;!-- Alignment --&gt;
+            <!-- Utility Classes -->
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Utility Classes</h2>
+                  <p>Quick and versatile classes for text customization:</p>
+
+                  <div class="demo-example">
+                    <div class="demo-preview">
+                      <div class="utility-card-grid">
+                        <Card variant="bordered">
+                          <Fragment slot="header">
+                            <h3>Text Alignment</h3>
+                          </Fragment>
+                          <div class="utility-examples">
+                            <p class="ast-text--left">Left aligned text (.ast-text--left)</p>
+                            <p class="ast-text--center">Center aligned text (.ast-text--center)</p>
+                            <p class="ast-text--right">Right aligned text (.ast-text--right)</p>
+                          </div>
+                        </Card>
+
+                        <Card variant="bordered">
+                          <Fragment slot="header">
+                            <h3>Text Transform</h3>
+                          </Fragment>
+                          <div class="utility-examples">
+                            <p class="ast-uppercase">Uppercase text (.ast-uppercase)</p>
+                            <p class="ast-lowercase">LOWERCASE TEXT (.ast-lowercase)</p>
+                            <p class="ast-capitalize">capitalized text (.ast-capitalize)</p>
+                          </div>
+                        </Card>
+
+                        <Card variant="bordered">
+                          <Fragment slot="header">
+                            <h3>Text Decoration</h3>
+                          </Fragment>
+                          <div class="utility-examples">
+                            <p class="ast-underline">Underlined text (.ast-underline)</p>
+                            <p class="ast-line-through">Strikethrough text (.ast-line-through)</p>
+                            <p class="ast-italic">Italic text (.ast-italic)</p>
+                          </div>
+                        </Card>
+                      </div>
+                    </div>
+
+                    <div class="demo-code">
+                      <pre><code>&lt;!-- Alignment --&gt;
 &lt;p class="ast-text--left"&gt;Left aligned&lt;/p&gt;
 &lt;p class="ast-text--center"&gt;Center aligned&lt;/p&gt;
 &lt;p class="ast-text--right"&gt;Right aligned&lt;/p&gt;
@@ -367,12 +377,14 @@ import "@/styles/demo/typography.scss";
 &lt;p class="ast-underline"&gt;Underlined text&lt;/p&gt;
 &lt;p class="ast-line-through"&gt;Strikethrough text&lt;/p&gt;
 &lt;p class="ast-italic"&gt;Italic text&lt;/p&gt;</code></pre>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
-        </section>
+        </div>
       </div>
     </main>
-  </Fragment>
-</Layout>
+  </Fragment></Layout
+>
