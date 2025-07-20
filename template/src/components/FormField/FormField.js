@@ -18,7 +18,7 @@ class FormFieldManager {
   }
 
   setupFormFields() {
-    const formFields = document.querySelectorAll('.form-field');
+    const formFields = document.querySelectorAll('.ast-form-field');
     
     formFields.forEach(field => {
       this.setupField(field);
@@ -26,7 +26,7 @@ class FormFieldManager {
   }
 
   setupField(fieldContainer) {
-    const input = fieldContainer.querySelector('.form-field__input');
+    const input = fieldContainer.querySelector('.ast-form-field__input');
     
     if (!input) return;
 
@@ -54,7 +54,7 @@ class FormFieldManager {
 // Auto-initialize form fields
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
-    const formFields = document.querySelectorAll('.form-field');
+    const formFields = document.querySelectorAll('.ast-form-field');
     formFields.forEach(field => {
       if (!field.formFieldManager) {
         field.formFieldManager = new FormFieldManager();
@@ -65,7 +65,7 @@ if (typeof document !== 'undefined') {
 
 // Auto-init function for manual initialization
 const initFormField = () => {
-  const formFields = document.querySelectorAll('.form-field');
+  const formFields = document.querySelectorAll('.ast-form-field');
   formFields.forEach(field => {
     if (!field.formFieldManager) {
       field.formFieldManager = new FormFieldManager();

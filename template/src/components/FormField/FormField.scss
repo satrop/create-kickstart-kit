@@ -1,21 +1,21 @@
 /* FormField Component Styles */
 
-.form-field {
+.ast-form-field {
   margin-bottom: 1rem;
 }
 
-.form-field__label {
+.ast-form-field__label {
   display: block;
   margin-bottom: 0.25rem;
   font-weight: 500;
   color: #333;
 }
 
-.form-field__required {
+.ast-form-field__required {
   color: #dc3545;
 }
 
-.form-field__input {
+.ast-form-field__input {
   width: 100%;
   padding: 0.5rem 0.75rem;
   border: 1px solid #ccc;
@@ -44,13 +44,13 @@
   }
 }
 
-.form-field__help {
+.ast-form-field__help {
   margin-top: 0.25rem;
   font-size: 0.875rem;
   color: #6c757d;
 }
 
-.form-field__error {
+.ast-form-field__error {
   margin-top: 0.25rem;
   font-size: 0.875rem;
   color: #dc3545;
@@ -58,7 +58,7 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .form-field__input:focus {
+  .ast-form-field__input:focus {
     outline: 3px solid;
     box-shadow: none;
   }
@@ -66,7 +66,7 @@
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .form-field__input {
+  .ast-form-field__input {
     transition: none;
   }
 }

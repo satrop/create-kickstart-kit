@@ -6,7 +6,7 @@
 class AlertComponent {
   constructor(element) {
     this.element = element;
-    this.closeButton = element.querySelector('.alert__close');
+    this.closeButton = element.querySelector('.ast-alert__close');
     this.isDismissed = false;
     this.init();
   }
@@ -71,12 +71,12 @@ class AlertComponent {
 
   animateIn() {
     // Add entering class for animation
-    this.element.classList.add('alert--entering');
+    this.element.classList.add('ast-alert--entering');
     
     // Use requestAnimationFrame to ensure the class is applied
     requestAnimationFrame(() => {
-      this.element.classList.remove('alert--entering');
-      this.element.classList.add('alert--entered');
+      this.element.classList.remove('ast-alert--entering');
+      this.element.classList.add('ast-alert--entered');
     });
   }
 
@@ -93,7 +93,7 @@ class AlertComponent {
     this.element.dispatchEvent(dismissEvent);
 
     // Animate out
-    this.element.classList.add('alert--exiting');
+    this.element.classList.add('ast-alert--exiting');
     
     // Remove from DOM after animation
     setTimeout(() => {
@@ -105,8 +105,8 @@ class AlertComponent {
 
   getAlertType() {
     const classes = this.element.className.split(' ');
-    const typeClass = classes.find(cls => cls.startsWith('alert--') && cls !== 'alert--entering' && cls !== 'alert--entered' && cls !== 'alert--exiting');
-    return typeClass ? typeClass.replace('alert--', '') : 'info';
+    const typeClass = classes.find(cls => cls.startsWith('ast-alert--') && cls !== 'ast-alert--entering' && cls !== 'ast-alert--entered' && cls !== 'ast-alert--exiting');
+    return typeClass ? typeClass.replace('ast-alert--', '') : 'info';
   }
 
   // Public API methods
@@ -120,7 +120,7 @@ class AlertComponent {
   }
 
   updateContent(content) {
-    const contentElement = this.element.querySelector('.alert__content') || this.element;
+    const contentElement = this.element.querySelector('.ast-alert__content') || this.element;
     if (this.closeButton) {
       // Update content while preserving close button
       const tempDiv = document.createElement('div');
@@ -165,13 +165,13 @@ class AlertManager {
     } = options;
 
     const alertElement = document.createElement('div');
-    alertElement.className = `alert alert--${type}`;
+    alertElement.className = `ast-alert ast-alert--${type}`;
     alertElement.setAttribute('role', 'alert');
     alertElement.innerHTML = message;
 
     if (dismissible) {
       const closeButton = document.createElement('button');
-      closeButton.className = 'alert__close';
+      closeButton.className = 'ast-alert__close';
       closeButton.setAttribute('aria-label', 'Close alert');
       closeButton.innerHTML = '×';
       alertElement.appendChild(closeButton);
@@ -212,7 +212,7 @@ class AlertManager {
   }
 
   dismissAll() {
-    const alerts = this.container.querySelectorAll('.alert');
+    const alerts = this.container.querySelectorAll('.ast-alert');
     alerts.forEach(alert => {
       if (alert.alertComponent) {
         alert.alertComponent.dismiss();
@@ -224,7 +224,7 @@ class AlertManager {
 // Auto-initialize existing alerts
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
-    const alerts = document.querySelectorAll('.alert');
+    const alerts = document.querySelectorAll('.ast-alert');
     alerts.forEach(alert => {
       if (!alert.alertComponent) {
         alert.alertComponent = new AlertComponent(alert);
@@ -235,7 +235,7 @@ if (typeof document !== 'undefined') {
 
 // Auto-init function for manual initialization
 const initAlert = () => {
-  const alerts = document.querySelectorAll('.alert');
+  const alerts = document.querySelectorAll('.ast-alert');
   alerts.forEach(alert => {
     if (!alert.alertComponent) {
       alert.alertComponent = new AlertComponent(alert);

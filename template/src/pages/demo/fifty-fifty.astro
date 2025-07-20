@@ -17,18 +17,6 @@ const navigationItems = getFormComponentNavigation("fifty-fifty");
         <DemoNavigation title="Form Components" items={navigationItems} />
         <div class="col-4 md:col-4 lg:col-9">
           <div class="component-demo">
-            <header class="demo-header">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h1>FiftyFifty Component</h1>
-                  <p class="demo-subtitle">
-                    Flexible 50/50 layout component for combining images with content, supporting multiple layouts,
-                    alignments, and variants.
-                  </p>
-                </div>
-              </div>
-            </header>
-
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
@@ -55,21 +43,6 @@ const navigationItems = getFormComponentNavigation("fifty-fifty");
                           <Button variant="outline">Learn More</Button>
                         </Fragment>
                       </FiftyFiftyComponent>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
-  imageSrc="/images/image1.jpg"
-  imageAlt="Beautiful landscape with mountains and sky"
-  title="Discover Amazing Places"
-  subtitle="Travel &amp; Adventure"
-&gt;
-  &lt;p&gt;Explore breathtaking destinations...&lt;/p&gt;
-  &lt;Fragment slot="actions"&gt;
-    &lt;Button variant="primary"&gt;Explore Destinations&lt;/Button&gt;
-    &lt;Button variant="outline"&gt;Learn More&lt;/Button&gt;
-  &lt;/Fragment&gt;
-&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -103,21 +76,6 @@ const navigationItems = getFormComponentNavigation("fifty-fifty");
                         </Fragment>
                       </FiftyFiftyComponent>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
-  imageSrc="/images/image2.jpg"
-  imageAlt="Modern office workspace"
-  imagePosition="right"
-  title="Modern Workspace Solutions"
-  subtitle="Productivity &amp; Design"
-&gt;
-  &lt;p&gt;Transform your work environment...&lt;/p&gt;
-  &lt;Fragment slot="actions"&gt;
-    &lt;Button variant="primary"&gt;View Solutions&lt;/Button&gt;
-  &lt;/Fragment&gt;
-&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -146,22 +104,6 @@ const navigationItems = getFormComponentNavigation("fifty-fifty");
                           <Button variant="secondary">Learn About Culture</Button>
                         </Fragment>
                       </FiftyFiftyComponent>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
-  imageSrc="/images/image3.jpg"
-  imageAlt="Team collaboration"
-  title="Build Amazing Teams"
-  subtitle="Collaboration &amp; Growth"
-  alignment="center"
-&gt;
-  &lt;p&gt;Foster collaboration and build high-performing teams...&lt;/p&gt;
-  &lt;Fragment slot="actions"&gt;
-    &lt;Button variant="primary"&gt;Join Our Team&lt;/Button&gt;
-    &lt;Button variant="secondary"&gt;Learn About Culture&lt;/Button&gt;
-  &lt;/Fragment&gt;
-&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -197,24 +139,6 @@ const navigationItems = getFormComponentNavigation("fifty-fifty");
                         </Fragment>
                       </FiftyFiftyComponent>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
-  imageSrc="/images/image4.jpg"
-  imageAlt="Product showcase"
-  title="Premium Products"
-  subtitle="Quality &amp; Innovation"
-  variant="contained"
-  imagePosition="right"
-  alignment="center"
-&gt;
-  &lt;p&gt;Experience the perfect blend of quality...&lt;/p&gt;
-  &lt;Fragment slot="actions"&gt;
-    &lt;Button variant="primary"&gt;Shop Now&lt;/Button&gt;
-    &lt;Button variant="outline"&gt;View Catalog&lt;/Button&gt;
-  &lt;/Fragment&gt;
-&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -248,22 +172,6 @@ const navigationItems = getFormComponentNavigation("fifty-fifty");
                         </Fragment>
                       </FiftyFiftyComponent>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
-  imageSrc="/images/image5.jpg"
-  imageAlt="Architectural design"
-  title="Architectural Excellence"
-  subtitle="Design &amp; Innovation"
-  variant="full-bleed"
-&gt;
-  &lt;p&gt;Witness the power of exceptional architectural design...&lt;/p&gt;
-  &lt;Fragment slot="actions"&gt;
-    &lt;Button variant="primary"&gt;View Projects&lt;/Button&gt;
-    &lt;Button variant="outline"&gt;Contact Architects&lt;/Button&gt;
-  &lt;/Fragment&gt;
-&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -295,20 +203,6 @@ const navigationItems = getFormComponentNavigation("fifty-fifty");
                         </Fragment>
                       </FiftyFiftyComponent>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
-  imageSrc="/images/image6.jpg"
-  imageAlt="Minimalist interior design"
-  title="Minimalist Living"
-  imagePosition="right"
-&gt;
-  &lt;p&gt;Embrace the beauty of simplicity...&lt;/p&gt;
-  &lt;Fragment slot="actions"&gt;
-    &lt;Button variant="primary"&gt;Explore Designs&lt;/Button&gt;
-  &lt;/Fragment&gt;
-&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -337,19 +231,6 @@ const navigationItems = getFormComponentNavigation("fifty-fifty");
                           reach when you know where to look.
                         </p>
                       </FiftyFiftyComponent>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
-  imageSrc="/images/image7.jpg"
-  imageAlt="Peaceful nature scene"
-  title="Find Your Peace"
-  subtitle="Wellness &amp; Mindfulness"
-  alignment="center"
-&gt;
-  &lt;p&gt;Discover tranquility in nature's embrace...&lt;/p&gt;
-  &lt;p&gt;Whether through meditation, outdoor adventures...&lt;/p&gt;
-&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -380,118 +261,6 @@ const navigationItems = getFormComponentNavigation("fifty-fifty");
                         </p>
                       </FiftyFiftyComponent>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;FiftyFiftylt;FiftyFiftyComponent
-  imageSrc="/images/image7.jpg"
-  imageAlt="Peaceful nature scene"
-  title="Find Your Peace"
-  subtitle="Wellness &amp; Mindfulness"
-  alignment="center"
-&gt;
-  &lt;p&gt;Discover tranquility in nature's embrace...&lt;/p&gt;
-  &lt;p&gt;Whether through meditation, outdoor adventures...&lt;/p&gt;
-&lt;/FiftyFifty&gt;lt;/FiftyFiftyComponent&lt;/FiftyFifty&gt;gt;</code></pre>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Props Reference</h2>
-
-                  <div class="props-table">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Prop</th>
-                          <th>Type</th>
-                          <th>Default</th>
-                          <th>Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><code>imageSrc</code></td>
-                          <td><code>string</code></td>
-                          <td>Required</td>
-                          <td>Source URL for the image</td>
-                        </tr>
-                        <tr>
-                          <td><code>imageAlt</code></td>
-                          <td><code>string</code></td>
-                          <td>Required</td>
-                          <td>Alt text for the image (accessibility)</td>
-                        </tr>
-                        <tr>
-                          <td><code>title</code></td>
-                          <td><code>string</code></td>
-                          <td>Required</td>
-                          <td>Main heading text</td>
-                        </tr>
-                        <tr>
-                          <td><code>subtitle</code></td>
-                          <td><code>string</code></td>
-                          <td><code>undefined</code></td>
-                          <td>Optional subtitle text</td>
-                        </tr>
-                        <tr>
-                          <td><code>imagePosition</code></td>
-                          <td><code>"left" | "right"</code></td>
-                          <td><code>"left"</code></td>
-                          <td>Position of the image relative to content</td>
-                        </tr>
-                        <tr>
-                          <td><code>alignment</code></td>
-                          <td><code>"left" | "center"</code></td>
-                          <td><code>"left"</code></td>
-                          <td>Text alignment within the content area</td>
-                        </tr>
-                        <tr>
-                          <td><code>variant</code></td>
-                          <td><code>"default" | "contained" | "full-bleed"</code></td>
-                          <td><code>"default"</code></td>
-                          <td>Visual variant of the component</td>
-                        </tr>
-                        <tr>
-                          <td><code>lazy</code></td>
-                          <td><code>boolean</code></td>
-                          <td><code>true</code></td>
-                          <td>Whether to lazy load the image</td>
-                        </tr>
-                        <tr>
-                          <td><code>priority</code></td>
-                          <td><code>boolean</code></td>
-                          <td><code>false</code></td>
-                          <td>Whether to prioritize image loading</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <h3>Slots</h3>
-                  <div class="props-table">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Slot</th>
-                          <th>Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><code>default</code></td>
-                          <td>Main content area for text, paragraphs, and other elements</td>
-                        </tr>
-                        <tr>
-                          <td><code>actions</code></td>
-                          <td>Optional slot for buttons and call-to-action elements</td>
-                        </tr>
-                      </tbody>
-                    </table>
                   </div>
                 </div>
               </div>
@@ -535,43 +304,6 @@ const navigationItems = getFormComponentNavigation("fifty-fifty");
                         <li>Clear focus indicators</li>
                         <li>Touch-friendly target sizes</li>
                         <li>Logical tab order</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Design Guidelines</h2>
-                  <p class="section-intro">Best practices for using fifty-fifty layouts in your interface.</p>
-                </div>
-              </div>
-
-              <div class="section-grid">
-                <div class="col-full">
-                  <div class="guidelines-grid">
-                    <div class="guideline-item">
-                      <h4>✅ Do</h4>
-                      <ul>
-                        <li>Use high-quality, relevant images</li>
-                        <li>Keep titles concise and impactful</li>
-                        <li>Alternate image position for visual rhythm</li>
-                        <li>Ensure proper contrast for readability</li>
-                        <li>Test layouts at different breakpoints</li>
-                      </ul>
-                    </div>
-
-                    <div class="guideline-item">
-                      <h4>❌ Don't</h4>
-                      <ul>
-                        <li>Use low-quality or irrelevant imagery</li>
-                        <li>Overcrowd sections with too much content</li>
-                        <li>Use inconsistent image aspect ratios</li>
-                        <li>Place text over complex background images</li>
-                        <li>Ignore mobile layout considerations</li>
                       </ul>
                     </div>
                   </div>

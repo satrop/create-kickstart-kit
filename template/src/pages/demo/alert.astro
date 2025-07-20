@@ -16,18 +16,6 @@ const navigationItems = getFormComponentNavigation("alert");
         <DemoNavigation title="Form Components" items={navigationItems} />
         <div class="col-4 md:col-4 lg:col-9">
           <div class="component-demo">
-            <header class="demo-header">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h1>Alert Component</h1>
-                  <p class="demo-subtitle">
-                    Notification components for success, error, warning, and info messages with optional dismissible
-                    functionality.
-                  </p>
-                </div>
-              </div>
-            </header>
-
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
@@ -52,24 +40,6 @@ const navigationItems = getFormComponentNavigation("alert");
                         <strong>Error:</strong> There was a problem processing your request.
                       </AlertComponent>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Alert type="info"&gt;
-  &lt;strong&gt;Information:&lt;/strong&gt; This is an informational alert with some details.
-&lt;/Alert&gt;
-
-&lt;Alert type="success"&gt;
-  &lt;strong&gt;Success:&lt;/strong&gt; Your action was completed successfully!
-&lt;/Alert&gt;
-
-&lt;Alert type="warning"&gt;
-  &lt;strong&gt;Warning:&lt;/strong&gt; Please review your input before proceeding.
-&lt;/Alert&gt;
-
-&lt;Alert type="error"&gt;
-  &lt;strong&gt;Error:&lt;/strong&gt; There was a problem processing your request.
-&lt;/Alert&gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -92,87 +62,6 @@ const navigationItems = getFormComponentNavigation("alert");
                         automatically.
                       </AlertComponent>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Alert type="info" dismissible&gt;
-  &lt;strong&gt;Dismissible Alert:&lt;/strong&gt; Click the × button to close this alert.
-&lt;/Alert&gt;
-
-&lt;Alert type="success" dismissible&gt;
-  &lt;strong&gt;Task Completed:&lt;/strong&gt; Your file has been uploaded successfully.
-&lt;/Alert&gt;</code></pre>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Complex Content</h2>
-                  <p>Alerts can contain any HTML content, including lists, links, and formatted text.</p>
-
-                  <div class="demo-example">
-                    <div class="demo-preview contain-floats">
-                      <AlertComponent type="warning" dismissible>
-                        <strong>Action Required:</strong>
-                        <p>Please complete the following tasks:</p>
-                        <ul>
-                          <li>Update your profile information</li>
-                          <li>Verify your email address</li>
-                          <li>Review the terms of service</li>
-                        </ul>
-                        <p><a href="#" class="btn btn--small btn--outline">Update Profile</a></p>
-                      </AlertComponent>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Alert type="warning" dismissible&gt;
-  &lt;strong&gt;Action Required:&lt;/strong&gt;
-  &lt;p&gt;Please complete the following tasks:&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;Update your profile information&lt;/li&gt;
-    &lt;li&gt;Verify your email address&lt;/li&gt;
-    &lt;li&gt;Review the terms of service&lt;/li&gt;
-  &lt;/ul&gt;
-  &lt;p&gt;&lt;a href="#" class="btn btn--small btn--outline"&gt;Update Profile&lt;/a&gt;&lt;/p&gt;
-&lt;/Alert&gt;</code></pre>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Props Reference</h2>
-                  <div class="props-table">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Prop</th>
-                          <th>Type</th>
-                          <th>Default</th>
-                          <th>Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><code>type</code></td>
-                          <td><code>"info" | "success" | "warning" | "error"</code></td>
-                          <td><code>"info"</code></td>
-                          <td>The alert variant, which determines the color scheme and semantic meaning</td>
-                        </tr>
-                        <tr>
-                          <td><code>dismissible</code></td>
-                          <td><code>boolean</code></td>
-                          <td><code>false</code></td>
-                          <td>Whether to show a close button that allows the user to dismiss the alert</td>
-                        </tr>
-                      </tbody>
-                    </table>
                   </div>
                 </div>
               </div>
@@ -216,44 +105,6 @@ const navigationItems = getFormComponentNavigation("alert");
                         <li>Focus outline on interactive elements</li>
                         <li>High contrast mode support</li>
                         <li>Icon support for visual context</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <!-- Design Guidelines -->
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Design Guidelines</h2>
-                  <p class="section-intro">Best practices for using alerts in your interface.</p>
-                </div>
-              </div>
-
-              <div class="section-grid">
-                <div class="col-full">
-                  <div class="guidelines-grid">
-                    <div class="guideline-item">
-                      <h4>✅ Do</h4>
-                      <ul>
-                        <li>Use appropriate alert types for context</li>
-                        <li>Keep messages concise and actionable</li>
-                        <li>Provide clear next steps when possible</li>
-                        <li>Use dismissible alerts for non-critical messages</li>
-                        <li>Position alerts where users expect feedback</li>
-                      </ul>
-                    </div>
-
-                    <div class="guideline-item">
-                      <h4>❌ Don't</h4>
-                      <ul>
-                        <li>Use alerts for non-urgent information</li>
-                        <li>Stack too many alerts at once</li>
-                        <li>Use error alerts for validation messages</li>
-                        <li>Make critical alerts dismissible</li>
-                        <li>Use alerts as the only form of feedback</li>
                       </ul>
                     </div>
                   </div>

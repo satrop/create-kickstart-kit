@@ -22,19 +22,6 @@ const navigationItems = getFormComponentNavigation("table");
         <DemoNavigation title="Form Components" items={navigationItems} />
         <div class="col-4 md:col-4 lg:col-9">
           <div class="component-demo">
-            <header class="demo-header">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h1>Table Component</h1>
-                  <p class="demo-subtitle">
-                    Table components are used to display tabular data in a structured format. They can include headers,
-                    footers, and body sections, allowing for clear organization of information. The table includes
-                    responsive scrolling with visual indicators when content overflows.
-                  </p>
-                </div>
-              </div>
-            </header>
-
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
@@ -108,75 +95,50 @@ const navigationItems = getFormComponentNavigation("table");
                           </TableFooter>
                         </Fragment>
                       </TableComponent>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
 
-                      <div class="demo-code">
-                        <pre>
-                      <code>
-&lt;TableComponent&gt;
-  &lt;Fragment slot="header"&gt;
-    &lt;TableRow&gt;
-      &lt;TableHeaderCell&gt;Name&lt;/TableHeaderCell&gt;
-      &lt;TableHeaderCell&gt;Age&lt;/TableHeaderCell&gt;
-      &lt;TableHeaderCell&gt;Location&lt;/TableHeaderCell&gt;
-      &lt;TableHeaderCell&gt;Department&lt;/TableHeaderCell&gt;
-      &lt;TableHeaderCell&gt;Position&lt;/TableHeaderCell&gt;
-      &lt;TableHeaderCell&gt;Start Date&lt;/TableHeaderCell&gt;
-      &lt;TableHeaderCell&gt;Salary&lt;/TableHeaderCell&gt;
-      &lt;TableHeaderCell&gt;Status&lt;/TableHeaderCell&gt;
-    &lt;/TableRow&gt;
-  &lt;/Fragment&gt;
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Accessibility Features</h2>
+                  <p>
+                    The Table component provides semantic structure and responsive features for accessible data
+                    presentation.
+                  </p>
 
-  &lt;Fragment slot="body"&gt;
-    &lt;TableRow&gt;
-      &lt;TableCell&gt;Alice Johnson&lt;/TableCell&gt;
-      &lt;TableCell&gt;32&lt;/TableCell&gt;
-      &lt;TableCell&gt;New York&lt;/TableCell&gt;
-      &lt;TableCell&gt;Engineering&lt;/TableCell&gt;
-      &lt;TableCell&gt;Senior Developer&lt;/TableCell&gt;
-      &lt;TableCell&gt;2020-03-15&lt;/TableCell&gt;
-      &lt;TableCell&gt;$95,000&lt;/TableCell&gt;
-      &lt;TableCell&gt;Active&lt;/TableCell&gt;
-    &lt;/TableRow&gt;
-    &lt;TableRow&gt;
-      &lt;TableCell&gt;Bob Smith&lt;/TableCell&gt;
-      &lt;TableCell&gt;45&lt;/TableCell&gt;
-      &lt;TableCell&gt;London&lt;/TableCell&gt;
-      &lt;TableCell&gt;Marketing&lt;/TableCell&gt;
-      &lt;TableCell&gt;Marketing Manager&lt;/TableCell&gt;
-      &lt;TableCell&gt;2018-07-22&lt;/TableCell&gt;
-      &lt;TableCell&gt;$78,000&lt;/TableCell&gt;
-      &lt;TableCell&gt;Active&lt;/TableCell&gt;
-    &lt;/TableRow&gt;
-    &lt;TableRow&gt;
-      &lt;TableCell&gt;Charlie Brown&lt;/TableCell&gt;
-      &lt;TableCell&gt;29&lt;/TableCell&gt;
-      &lt;TableCell&gt;San Francisco&lt;/TableCell&gt;
-      &lt;TableCell&gt;Design&lt;/TableCell&gt;
-      &lt;TableCell&gt;UX Designer&lt;/TableCell&gt;
-      &lt;TableCell&gt;2021-11-08&lt;/TableCell&gt;
-      &lt;TableCell&gt;$72,000&lt;/TableCell&gt;
-      &lt;TableCell&gt;Active&lt;/TableCell&gt;
-    &lt;/TableRow&gt;
-    &lt;TableRow&gt;
-      &lt;TableCell&gt;Diana Prince&lt;/TableCell&gt;
-      &lt;TableCell&gt;38&lt;/TableCell&gt;
-      &lt;TableCell&gt;Washington DC&lt;/TableCell&gt;
-      &lt;TableCell&gt;Operations&lt;/TableCell&gt;
-      &lt;TableCell&gt;Operations Director&lt;/TableCell&gt;
-      &lt;TableCell&gt;2019-02-14&lt;/TableCell&gt;
-      &lt;TableCell&gt;$105,000&lt;/TableCell&gt;
-      &lt;TableCell&gt;Active&lt;/TableCell&gt;
-    &lt;/TableRow&gt;
-    &lt;TableFooter&gt;
-      &lt;TableRow&gt;
-        &lt;TableCell colspan="7"&gt;Total Employees&lt;/TableCell&gt;
-        &lt;TableCell&gt;4&lt;/TableCell&gt;
-      &lt;/TableRow&gt;
-    &lt;/TableFooter&gt;
-  &lt;/Fragment&gt;
-&lt;/TableComponent&gt;</code>
-                    </pre>
-                      </div>
+                  <div class="accessibility-grid">
+                    <div class="accessibility-item">
+                      <h4>Semantic Structure</h4>
+                      <ul>
+                        <li>Proper <code>&lt;table&gt;</code> element usage</li>
+                        <li>
+                          <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code> structure
+                        </li>
+                        <li><code>&lt;th&gt;</code> elements with <code>scope</code> attributes</li>
+                        <li>Logical reading order maintained</li>
+                      </ul>
+                    </div>
+                    <div class="accessibility-item">
+                      <h4>Screen Reader Support</h4>
+                      <ul>
+                        <li>Column headers announced with data</li>
+                        <li>Table caption for context</li>
+                        <li>Summary information when needed</li>
+                        <li>Cell relationships clearly defined</li>
+                      </ul>
+                    </div>
+                    <div class="accessibility-item">
+                      <h4>Responsive Design</h4>
+                      <ul>
+                        <li>Horizontal scrolling for overflow</li>
+                        <li>Scroll indicators show when scrollable</li>
+                        <li>Maintains table structure on mobile</li>
+                        <li>Touch-friendly interaction areas</li>
+                      </ul>
                     </div>
                   </div>
                 </div>

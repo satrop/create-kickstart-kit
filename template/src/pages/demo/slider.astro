@@ -20,18 +20,6 @@ const navigationItems = getFormComponentNavigation("slider");
         <DemoNavigation title="Form Components" items={navigationItems} />
         <div class="col-4 md:col-4 lg:col-9">
           <div class="component-demo">
-            <header class="demo-header">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h1>Slider Component</h1>
-                  <p class="demo-subtitle">
-                    This page demonstrates a simple image slider using Swiper.js. The slider uses local images and the
-                    same base styling as other demo pages.
-                  </p>
-                </div>
-              </div>
-            </header>
-
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
@@ -81,50 +69,6 @@ const navigationItems = getFormComponentNavigation("slider");
                         </div>
                       </MainSlider>
                     </div>
-                    <div class="demo-code">
-                      <pre><code>{`<MainSlider loop={false}>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image1.jpg\"
-      imageAlt=\"Team collaborating in a modern office\"
-      width={600}
-      height={400}
-    />
-  </div>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image2.jpg\"
-      imageAlt=\"Closeup of hands typing on a laptop\"
-      width={600}
-      height={400}
-    />
-  </div>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image3.jpg\"
-      imageAlt=\"Team brainstorming ideas on a whiteboard\"
-      width={600}
-      height={400}
-    />
-  </div>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image4.jpg\"
-      imageAlt=\"Closeup of a smartphone with a graph on the screen\"
-      width={600}
-      height={400}
-    />
-  </div>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image5.jpg\"
-      imageAlt=\"A person holding a tablet with a digital interface\"
-      width={600}
-      height={400}
-    />
-  </div>
-</MainSlider>`}</code></pre>
-                    </div>
                   </div>
 
                   <h2>Slider Without Pagination</h2>
@@ -173,50 +117,6 @@ const navigationItems = getFormComponentNavigation("slider");
                         </div>
                       </MainSlider>
                     </div>
-                    <div class="demo-code">
-                      <pre><code>{`<MainSlider showPagination={false}>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image1.jpg\"
-      imageAlt=\"Team collaborating in a modern office\"
-      width={600}
-      height={400}
-    />
-  </div>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image2.jpg\"
-      imageAlt=\"Closeup of hands typing on a laptop\"
-      width={600}
-      height={400}
-    />
-  </div>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image3.jpg\"
-      imageAlt=\"Team brainstorming ideas on a whiteboard\"
-      width={600}
-      height={400}
-    />
-  </div>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image4.jpg\"
-      imageAlt=\"Closeup of a smartphone with a graph on the screen\"
-      width={600}
-      height={400}
-    />
-  </div>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image5.jpg\"
-      imageAlt=\"A person holding a tablet with a digital interface\"
-      width={600}
-      height={400}
-    />
-  </div>
-</MainSlider>`}</code></pre>
-                    </div>
                   </div>
 
                   <h2>Slider With Pagination Only</h2>
@@ -264,50 +164,6 @@ const navigationItems = getFormComponentNavigation("slider");
                           />
                         </div>
                       </MainSlider>
-                    </div>
-                    <div class="demo-code">
-                      <pre><code>{`<MainSlider showControls={false}>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image1.jpg\"
-      imageAlt=\"Team collaborating in a modern office\"
-      width={600}
-      height={400}
-    />
-  </div>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image2.jpg\"
-      imageAlt=\"Closeup of hands typing on a laptop\"
-      width={600}
-      height={400}
-    />
-  </div>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image3.jpg\"
-      imageAlt=\"Team brainstorming ideas on a whiteboard\"
-      width={600}
-      height={400}
-    />
-  </div>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image4.jpg\"
-      imageAlt=\"Closeup of a smartphone with a graph on the screen\"
-      width={600}
-      height={400}
-    />
-  </div>
-  <div class="swiper-slide">
-    <SliderItem
-      imageSrc=\"/images/image5.jpg\"
-      imageAlt=\"A person holding a tablet with a digital interface\"
-      width={600}
-      height={400}
-    />
-  </div>
-</MainSlider>`}</code></pre>
                     </div>
                   </div>
 
@@ -408,26 +264,47 @@ const navigationItems = getFormComponentNavigation("slider");
                         </div>
                       </MainSlider>
                     </div>
-                    <div class="demo-code">
-                      <pre><code>{`<MainSlider loop={true} showPagination={false}>
-  <div class="swiper-slide" >
-    <Card
-      variant="elevated"
-      imageSrc="/images/image1.jpg"
-      imageAlt="Team collaborating in a modern office"
-      interactive={true}
-    >
-      <Fragment slot="header">
-        <h3>Team Collaboration</h3>
-      </Fragment>
-      <p>Discover how modern teams work together effectively...</p>
-      <Fragment slot="footer">
-        <Button variant="primary" size="medium">Learn More</Button>
-      </Fragment>
-    </Card>
-  </div>
-  <!-- More slides... -->
-</MainSlider>`}</code></pre>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Accessibility Features</h2>
+                  <p>
+                    The Slider component includes comprehensive accessibility features to ensure usability for all
+                    users.
+                  </p>
+
+                  <div class="accessibility-grid">
+                    <div class="accessibility-item">
+                      <h4>Keyboard Navigation</h4>
+                      <ul>
+                        <li><kbd>Arrow Keys</kbd> - Navigate between slides</li>
+                        <li><kbd>Tab</kbd> - Focus navigation controls</li>
+                        <li><kbd>Enter/Space</kbd> - Activate focused controls</li>
+                        <li><kbd>Home/End</kbd> - Jump to first/last slide</li>
+                      </ul>
+                    </div>
+                    <div class="accessibility-item">
+                      <h4>Screen Reader Support</h4>
+                      <ul>
+                        <li>ARIA labels for slider regions and controls</li>
+                        <li>Live announcements for slide changes</li>
+                        <li>Current slide position announced</li>
+                        <li>Descriptive alt text for images</li>
+                      </ul>
+                    </div>
+                    <div class="accessibility-item">
+                      <h4>Visual Indicators</h4>
+                      <ul>
+                        <li>Clear focus indicators on controls</li>
+                        <li>High contrast pagination dots</li>
+                        <li>Visible navigation arrows</li>
+                        <li>Progress indication through pagination</li>
+                      </ul>
                     </div>
                   </div>
                 </div>

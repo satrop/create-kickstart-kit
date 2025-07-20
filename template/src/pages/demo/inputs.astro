@@ -24,18 +24,11 @@ const navigationItems = getFormComponentNavigation("inputs");
         <DemoNavigation title="Input Components" items={navigationItems} />
         <div class="col-4 md:col-4 lg:col-9">
           <div class="component-demo">
-            <header class="demo-header">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h1>Input Components</h1>
-                  <p class="demo-subtitle">A comprehensive collection of accessible input components.</p>
-                </div>
-              </div>
-            </header>
-
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
+                  <h2>Basic Usage</h2>
+                  <p>Input fields for text, email, and phone numbers with labels and placeholders.</p>
                   <div class="demo-example">
                     <div class="demo-preview contain-floats">
                       <form class="demo-form">
@@ -64,17 +57,6 @@ const navigationItems = getFormComponentNavigation("inputs");
                           helpText="Include country code for international numbers"
                         />
                       </form>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;FormField 
-  label="Full Name"
-  name="fullname"
-  type="text"
-  placeholder="Enter your full name"
-  required={'{'}true{'}'}
-  helpText="This will be displayed on your profile"
-/&gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -168,24 +150,6 @@ const navigationItems = getFormComponentNavigation("inputs");
                         </div>
                       </form>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;form&gt;
-  &lt;FormField label="First Name" name="firstname" required /&gt;
-  &lt;Textarea label="Description" name="description" rows={'{'}4{'}'} /&gt;
-  &lt;RadioGroupComponent name="priority" label="Priority" options={[
-    { value: "low", label: "Low Priority" },
-    { value: "medium", label: "Medium Priority" },
-    { value: "high", label: "High Priority" }
-  ]} /&gt;
-  &lt;SelectComponent name="country" label="Country" options={[
-    { value: "us", label: "United States" },
-    { value: "ca", label: "Canada" }
-  ]} /&gt;
-  &lt;Checkbox name="terms" label="I agree to terms" required /&gt;
-  &lt;Button type="submit"&gt;Submit&lt;/Button&gt;
-&lt;/form&gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -238,31 +202,12 @@ const navigationItems = getFormComponentNavigation("inputs");
                         />
                       </form>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;!-- Error state examples --&gt;
-&lt;FormField 
-  label="Invalid Input"
-  name="invalid-input"
-  error="Please enter a valid email address"
-/&gt;
-
-&lt;RadioGroupComponent
-  name="validation-radio"
-  label="Required Selection"
-  required={'{'}true{'}'}
-  error="Please select an option"
-  options={[
-    { value: "option1", label: "Option 1" },
-    { value: "option2", label: "Option 2" }
-  ]}
-/&gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
             </section>
 
+            <!-- Accessibility Features -->
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
@@ -301,43 +246,6 @@ const navigationItems = getFormComponentNavigation("inputs");
                         <li><kbd>Tab</kbd> - Move between form fields</li>
                         <li><kbd>Arrow Keys</kbd> - Navigate options</li>
                         <li>Clear focus indicators</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Design Guidelines</h2>
-                  <p class="section-intro">Best practices for using form components in your interface.</p>
-                </div>
-              </div>
-
-              <div class="section-grid">
-                <div class="col-full">
-                  <div class="guidelines-grid">
-                    <div class="guideline-item">
-                      <h4>✅ Do</h4>
-                      <ul>
-                        <li>Use clear, descriptive labels for all inputs</li>
-                        <li>Group related fields with clear visual hierarchy</li>
-                        <li>Provide help text for complex requirements</li>
-                        <li>Use consistent spacing between form elements</li>
-                        <li>Validate on blur for better user experience</li>
-                      </ul>
-                    </div>
-
-                    <div class="guideline-item">
-                      <h4>❌ Don't</h4>
-                      <ul>
-                        <li>Use placeholder text as the only label</li>
-                        <li>Hide required field indicators</li>
-                        <li>Place too many fields on a single screen</li>
-                        <li>Use unclear or technical error messages</li>
-                        <li>Forget to test with keyboard-only navigation</li>
                       </ul>
                     </div>
                   </div>

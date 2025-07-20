@@ -19,17 +19,6 @@ const navigationItems = getFormComponentNavigation("figures");
         <DemoNavigation title="Form Components" items={navigationItems} />
         <div class="col-4 md:col-4 lg:col-9">
           <div class="component-demo">
-            <header class="demo-header">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h1>Figure Components</h1>
-                  <p class="demo-subtitle">
-                    Showcase of the Figure component with semantic HTML structure, captions, and various configurations.
-                  </p>
-                </div>
-              </div>
-            </header>
-
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
@@ -82,15 +71,6 @@ const navigationItems = getFormComponentNavigation("figures");
                         size="medium"
                         align="center"
                       />
-                    </div>
-                    <div class="demo-code">
-                      <pre><code>&lt;Figure
-  src="/images/image1.jpg"
-  alt="Beautiful landscape with mountains and sky"
-  caption="Figure 1: A serene mountain landscape showcasing the natural beauty of the highlands during golden hour."
-  size="medium"
-  align="center"
-/&gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -220,14 +200,6 @@ const navigationItems = getFormComponentNavigation("figures");
                         align="center"
                       />
                     </div>
-                    <div class="demo-code">
-                      <pre><code>&lt;Figure
-  src="/images/image7.jpg"
-  alt="Architectural detail of modern building"
-  size="medium"
-  align="center"
-/&gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -236,33 +208,38 @@ const navigationItems = getFormComponentNavigation("figures");
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
-                  <h2>Best Practices</h2>
-                  <div class="guidelines-grid">
-                    <div class="guideline-item">
-                      <h3>📝 Caption Guidelines</h3>
+                  <h2>Accessibility Features</h2>
+                  <p>
+                    The Figure component provides semantic structure and accessible image presentation with proper
+                    context.
+                  </p>
+
+                  <div class="accessibility-grid">
+                    <div class="accessibility-item">
+                      <h4>Semantic Structure</h4>
                       <ul>
-                        <li>Keep captions concise but descriptive</li>
-                        <li>Include attribution when necessary</li>
-                        <li>Use "Figure X:" prefix for numbered references</li>
-                        <li>Describe what's important in the image</li>
+                        <li>Uses semantic <code>&lt;figure&gt;</code> element</li>
+                        <li><code>&lt;figcaption&gt;</code> provides image context</li>
+                        <li>Proper image-caption relationship</li>
+                        <li>Meaningful content structure</li>
                       </ul>
                     </div>
-                    <div class="guideline-item">
-                      <h3>♿ Accessibility</h3>
+                    <div class="accessibility-item">
+                      <h4>Alternative Text</h4>
                       <ul>
-                        <li>Always provide meaningful alt text</li>
+                        <li>Descriptive <code>alt</code> attributes required</li>
                         <li>Caption complements, doesn't repeat alt text</li>
-                        <li>Use figures for content, not decoration</li>
-                        <li>Ensure sufficient color contrast</li>
+                        <li>Context-appropriate descriptions</li>
+                        <li>Empty alt for decorative images</li>
                       </ul>
                     </div>
-                    <div class="guideline-item">
-                      <h3>📱 Responsive Design</h3>
+                    <div class="accessibility-item">
+                      <h4>Screen Reader Experience</h4>
                       <ul>
-                        <li>Left/right alignment becomes center on mobile</li>
-                        <li>Size constraints adapt to viewport</li>
-                        <li>Captions remain readable at all sizes</li>
-                        <li>Touch-friendly hover effects</li>
+                        <li>Figure announced as complete unit</li>
+                        <li>Caption provides additional context</li>
+                        <li>Logical reading flow maintained</li>
+                        <li>Proper heading hierarchy respected</li>
                       </ul>
                     </div>
                   </div>

@@ -3,8 +3,7 @@
 
 // Font stacks
 $font-stacks: (
-  "sans": (
-    "Inter",
+  "sans": ("Inter",
     "system-ui",
     "-apple-system",
     "BlinkMacSystemFont",
@@ -14,14 +13,12 @@ $font-stacks: (
     "Arial",
     "sans-serif",
   ),
-  "serif": (
-    "Georgia",
+  "serif": ("Georgia",
     "Times New Roman",
     "Times",
     "serif",
   ),
-  "mono": (
-    "JetBrains Mono",
+  "mono": ("JetBrains Mono",
     "Fira Code",
     "Monaco",
     "Consolas",
@@ -29,8 +26,7 @@ $font-stacks: (
     "Courier New",
     "monospace",
   ),
-  "display": (
-    "Cabin",
+  "display": ("Cabin",
     "Inter",
     "system-ui",
     "-apple-system",
@@ -110,90 +106,3 @@ $letter-spacings: (
   "wider": 0.05em,
   "widest": 0.1em,
 );
-
-// ==========================================================================
-// Usage Examples
-// ==========================================================================
-
-/*
-  HTML Usage Examples:
-  
-  <!-- Font Families -->
-  <h1 class="font-sans">System font heading</h1>
-  <h2 class="font-display">Display font (Cabin) heading</h2>
-  <p class="font-serif">Serif body text</p>
-  <code class="font-mono">Monospace code</code>
-  
-  <!-- Font Sizes (fluid, responsive) -->
-  <h1 class="text-5xl">Large heading</h1>
-  <h2 class="text-3xl">Medium heading</h2>
-  <p class="text-base">Body text</p>
-  <small class="text-sm">Small text</small>
-  
-  <!-- Font Weights -->
-  <span class="font-100">Thin text</span>
-  <span class="font-300">Light text</span>
-  <span class="font-400">Normal text</span>
-  <span class="font-500">Medium text</span>
-  <span class="font-600">Semibold text</span>
-  <span class="font-700">Bold text</span>
-  <span class="font-800">Extra bold text</span>
-  <span class="font-900">Black text</span>
-  
-  <!-- Line Heights -->
-  <p class="leading-tight">Tight line height</p>
-  <p class="leading-normal">Normal line height</p>
-  <p class="leading-relaxed">Relaxed line height</p>
-  
-  <!-- Letter Spacing -->
-  <h1 class="tracking-tight">Tight letter spacing</h1>
-  <p class="tracking-normal">Normal letter spacing</p>
-  <span class="tracking-wide">Wide letter spacing</span>
-  
-  <!-- Combinations -->
-  <h1 class="font-display text-4xl font-700 leading-tight tracking-tight">
-    Complete heading style
-  </h1>
-  
-  <!-- Predefined Styles -->
-  <h1 class="heading-1">Styled heading</h1>
-  <p class="body-normal">Styled body text</p>
-  <small class="caption">Styled caption</small>
-*/
-
-/*
-  CSS Custom Properties Usage:
-  
-  .my-custom-heading {
-    font-family: var(--font-display);
-    font-size: var(--font-size-4xl);
-    font-weight: var(--font-weight-700);
-    line-height: var(--line-height-tight);
-    letter-spacing: var(--letter-spacing-tight);
-  }
-  
-  .my-body-text {
-    font-family: var(--font-sans);
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-normal);
-    letter-spacing: var(--letter-spacing-normal);
-  }
-  
-  .my-code-block {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-sm);
-    line-height: var(--line-height-snug);
-  }
-*/
-
-/*
-  Google Font Setup:
-  Add this to your HTML <head> or import in CSS:
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&display=swap" rel="stylesheet">
-  
-  Or in CSS:
-  @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&display=swap');
-*/

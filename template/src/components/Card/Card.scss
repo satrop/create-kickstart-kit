@@ -1,4 +1,4 @@
-.card {
+.ast-card {
   background-color: white;
   border-radius: 8px;
   overflow: hidden;
@@ -14,7 +14,7 @@
   }
 
   // Interactive hover states
-  &.card--interactive {
+  &.ast-card--interactive {
     cursor: pointer;
     transform: translateY(0);
 
@@ -29,7 +29,7 @@
   }
 
   // Clickable cards (with href)
-  &.card--clickable {
+  &.ast-card--clickable {
     text-decoration: none;
     color: inherit;
 
@@ -46,29 +46,29 @@
 }
 
 // Card variants
-.card--default {
+.ast-card--default {
   /* Minimal default card */
   background-color: white;
 }
 
-.card--bordered {
+.ast-card--bordered {
   border: 1px solid #e0e0e0;
 
-  &:hover.card--interactive {
+  &:hover.ast-card--interactive {
     border-color: #007bff;
   }
 }
 
-.card--elevated {
+.ast-card--elevated {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
-  &:hover.card--interactive {
+  &:hover.ast-card--interactive {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   }
 }
 
 // Card sections
-.card__header {
+.ast-card__header {
   border-bottom: 1px solid #e0e0e0;
   flex-shrink: 0;
 
@@ -92,24 +92,29 @@
   h1 {
     font-size: 1.5rem;
   }
+
   h2 {
     font-size: 1.375rem;
   }
+
   h3 {
     font-size: 1.25rem;
   }
+
   h4 {
     font-size: 1.125rem;
   }
+
   h5 {
     font-size: 1rem;
   }
+
   h6 {
     font-size: 0.875rem;
   }
 }
 
-.card__content {
+.ast-card__content {
   flex: 1;
   min-height: 0; // Prevent overflow issues
 
@@ -137,7 +142,7 @@
   }
 }
 
-.card__footer {
+.ast-card__footer {
   border-top: 1px solid #e0e0e0;
   flex-shrink: 0;
 
@@ -158,29 +163,29 @@
 }
 
 // Card with image variations
-.card--with-image {
-  &.card--image-top {
+.ast-card--with-image {
+  &.ast-card--image-top {
     flex-direction: column;
 
-    .card__image {
+    .ast-card__image {
       order: -1;
     }
 
-    .card__body {
+    .ast-card__body {
       flex: 1;
     }
   }
 
-  &.card--image-left {
+  &.ast-card--image-left {
     flex-direction: row;
 
-    .card__image {
+    .ast-card__image {
       flex-shrink: 0;
       width: 150px; // Square width to match height
       max-width: 150px;
     }
 
-    .card__body {
+    .ast-card__body {
       flex: 1;
       min-width: 0;
     }
@@ -188,7 +193,7 @@
     @media (max-width: 768px) {
       flex-direction: column;
 
-      .card__image {
+      .ast-card__image {
         width: 100%;
         max-width: none;
         height: 200px; // Taller on mobile since it's full width
@@ -196,16 +201,16 @@
     }
   }
 
-  &.card--image-right {
+  &.ast-card--image-right {
     flex-direction: row-reverse;
 
-    .card__image {
+    .ast-card__image {
       flex-shrink: 0;
       width: 150px; // Square width to match height
       max-width: 150px;
     }
 
-    .card__body {
+    .ast-card__body {
       flex: 1;
       min-width: 0;
     }
@@ -213,7 +218,7 @@
     @media (max-width: 768px) {
       flex-direction: column;
 
-      .card__image {
+      .ast-card__image {
         width: 100%;
         max-width: none;
         height: 200px; // Taller on mobile since it's full width
@@ -224,7 +229,7 @@
 }
 
 // Card image styles
-.card__image {
+.ast-card__image {
   overflow: hidden;
   background-color: #f5f5f5;
   display: flex;
@@ -232,31 +237,31 @@
   justify-content: center;
   position: relative;
 
-  .card--image-top & {
+  .ast-card--image-top & {
     height: 200px;
   }
 
-  .card--image-left &,
-  .card--image-right & {
+  .ast-card--image-left &,
+  .ast-card--image-right & {
     height: 150px; // Fixed square height for left/right images
     aspect-ratio: 1; // Ensures square aspect ratio
   }
 }
 
-.card__image-element {
+.ast-card__image-element {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
 
-  .card--interactive:hover & {
+  .ast-card--interactive:hover & {
     transform: scale(1.05);
   }
 }
 
 // Card body wrapper for image cards
-.card__body {
+.ast-card__body {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -264,64 +269,70 @@
 }
 
 // Adjust padding for image cards
-.card--with-image {
+.ast-card--with-image {
+
   // Remove padding from main card when image is present
-  &.card--padding-none .card__body {
-    .card__header,
-    .card__content,
-    .card__footer {
+  &.ast-card--padding-none .ast-card__body {
+
+    .ast-card__header,
+    .ast-card__content,
+    .ast-card__footer {
       padding: 0;
     }
   }
 
-  &.card--padding-small .card__body {
-    .card__header,
-    .card__content,
-    .card__footer {
+  &.ast-card--padding-small .ast-card__body {
+
+    .ast-card__header,
+    .ast-card__content,
+    .ast-card__footer {
       padding: 0.75rem;
     }
   }
 
-  &.card--padding-medium .card__body {
-    .card__header,
-    .card__content,
-    .card__footer {
+  &.ast-card--padding-medium .ast-card__body {
+
+    .ast-card__header,
+    .ast-card__content,
+    .ast-card__footer {
       padding: 1rem;
     }
   }
 
-  &.card--padding-large .card__body {
-    .card__header,
-    .card__content,
-    .card__footer {
+  &.ast-card--padding-large .ast-card__body {
+
+    .ast-card__header,
+    .ast-card__content,
+    .ast-card__footer {
       padding: 1.5rem;
     }
   }
 
   // Override padding for image position layouts
-  &.card--image-left,
-  &.card--image-right {
-    &.card--padding-none .card__image {
+  &.ast-card--image-left,
+  &.ast-card--image-right {
+    &.ast-card--padding-none .ast-card__image {
       margin: 0;
     }
 
-    &.card--padding-small .card__image {
+    &.ast-card--padding-small .ast-card__image {
       margin: 0.75rem;
       margin-right: 0.75rem;
     }
 
-    &.card--padding-medium .card__image {
+    &.ast-card--padding-medium .ast-card__image {
       margin: 1rem;
     }
 
-    &.card--padding-large .card__image {
+    &.ast-card--padding-large .ast-card__image {
       margin: 1.5rem;
     }
 
     @media (max-width: 768px) {
-      &.card--padding-small .card__image,
-      &.card--padding-medium .card__image,
-      &.card--padding-large .card__image {
+
+      &.ast-card--padding-small .ast-card__image,
+      &.ast-card--padding-medium .ast-card__image,
+      &.ast-card--padding-large .ast-card__image {
         margin: 0;
       }
     }
@@ -329,52 +340,58 @@
 }
 
 /* Padding variants */
-.card--padding-none {
-  .card__header,
-  .card__content,
-  .card__footer {
+.ast-card--padding-none {
+
+  .ast-card__header,
+  .ast-card__content,
+  .ast-card__footer {
     padding: 0;
   }
 }
 
-.card--padding-small {
-  .card__header,
-  .card__content,
-  .card__footer {
+.ast-card--padding-small {
+
+  .ast-card__header,
+  .ast-card__content,
+  .ast-card__footer {
     padding: 0.75rem;
   }
 }
 
-.card--padding-medium {
-  .card__header,
-  .card__content,
-  .card__footer {
+.ast-card--padding-medium {
+
+  .ast-card__header,
+  .ast-card__content,
+  .ast-card__footer {
     padding: 1rem;
   }
 }
 
-.card--padding-large {
-  .card__header,
-  .card__content,
-  .card__footer {
+.ast-card--padding-large {
+
+  .ast-card__header,
+  .ast-card__content,
+  .ast-card__footer {
     padding: 1.5rem;
   }
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .card--padding-large {
-    .card__header,
-    .card__content,
-    .card__footer {
+  .ast-card--padding-large {
+
+    .ast-card__header,
+    .ast-card__content,
+    .ast-card__footer {
       padding: 1rem;
     }
   }
 
-  .card--padding-medium {
-    .card__header,
-    .card__content,
-    .card__footer {
+  .ast-card--padding-medium {
+
+    .ast-card__header,
+    .ast-card__content,
+    .ast-card__footer {
       padding: 0.875rem;
     }
   }
@@ -382,55 +399,55 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .card--bordered {
+  .ast-card--bordered {
     border-width: 2px;
   }
 
-  .card:focus-within {
+  .ast-card:focus-within {
     outline: 3px solid;
   }
 }
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .card {
+  .ast-card {
     transition: none;
   }
 
-  .card--interactive:hover {
+  .ast-card--interactive:hover {
     transform: none;
   }
 }
 
 /* Dark mode support */
 // @media (prefers-color-scheme: dark) {
-//   .card {
+//   .ast-card {
 //     background-color: #2d3748;
 //     color: #e2e8f0;
 //   }
 
-//   .card--bordered {
+//   .ast-card--bordered {
 //     border-color: #4a5568;
 //   }
 
-//   .card__header {
+//   .ast-card__header {
 //     border-bottom-color: #4a5568;
 //   }
 
-//   .card__footer {
+//   .ast-card__footer {
 //     border-top-color: #4a5568;
 //   }
 
-//   .card__header h1,
-//   .card__header h2,
-//   .card__header h3,
-//   .card__header h4,
-//   .card__header h5,
-//   .card__header h6 {
+//   .ast-card__header h1,
+//   .ast-card__header h2,
+//   .ast-card__header h3,
+//   .ast-card__header h4,
+//   .ast-card__header h5,
+//   .ast-card__header h6 {
 //     color: #f7fafc;
 //   }
 
-//   .card__content p {
+//   .ast-card__content p {
 //     color: #cbd5e0;
 //   }
 // }

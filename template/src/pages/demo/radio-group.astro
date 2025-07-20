@@ -18,18 +18,6 @@ const navigationItems = getFormComponentNavigation("radio-group");
         <DemoNavigation title="Form Components" items={navigationItems} />
         <div class="col-4 md:col-4 lg:col-9">
           <div class="component-demo">
-            <header class="demo-header">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h1>RadioGroup Component</h1>
-                  <p class="demo-subtitle">
-                    Accessible radio button groups for single-choice selections with customizable orientations and
-                    validation.
-                  </p>
-                </div>
-              </div>
-            </header>
-
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
@@ -51,20 +39,6 @@ const navigationItems = getFormComponentNavigation("radio-group");
                           value="email"
                         />
                       </form>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;RadioGroupComponent
-  name="preference"
-  label="What's your preferred contact method?"
-  options=&#123;[
-    &#123; value: "email", label: "Email" &#125;,
-    &#123; value: "phone", label: "Phone" &#125;,
-    &#123; value: "text", label: "Text Message" &#125;,
-    &#123; value: "mail", label: "Physical Mail" &#125;
-  ]&#125;
-  value="email"
-/&gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -96,23 +70,6 @@ const navigationItems = getFormComponentNavigation("radio-group");
                         />
                       </form>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;RadioGroupComponent
-  name="size"
-  label="T-Shirt Size"
-  orientation="horizontal"
-  options=&#123;[
-    &#123; value: "xs", label: "XS" &#125;,
-    &#123; value: "s", label: "S" &#125;,
-    &#123; value: "m", label: "M" &#125;,
-    &#123; value: "l", label: "L" &#125;,
-    &#123; value: "xl", label: "XL" &#125;,
-    &#123; value: "xxl", label: "XXL" &#125;
-  ]&#125;
-  value="m"
-/&gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -140,20 +97,6 @@ const navigationItems = getFormComponentNavigation("radio-group");
                         />
                       </form>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;RadioGroupComponent
-  name="plan"
-  label="Choose your subscription plan"
-  helpText="You can upgrade or downgrade your plan at any time"
-  options=&#123;[
-    &#123; value: "basic", label: "Basic - $9/month" &#125;,
-    &#123; value: "pro", label: "Pro - $19/month" &#125;,
-    &#123; value: "enterprise", label: "Enterprise - $49/month" &#125;
-  ]&#125;
-  value="pro"
-/&gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -178,18 +121,6 @@ const navigationItems = getFormComponentNavigation("radio-group");
                           ]}
                         />
                       </form>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;RadioGroupComponent
-  name="agreement"
-  label="Do you agree to the terms and conditions?"
-  required={true}
-  options={[
-    { value: "yes", label: "Yes, I agree" },
-    { value: "no", label: "No, I disagree" }
-  ]}
-/&gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -219,21 +150,6 @@ const navigationItems = getFormComponentNavigation("radio-group");
                         />
                       </form>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;RadioGroupComponent
-  name="shipping"
-  label="Shipping Options"
-  helpText="Express shipping is temporarily unavailable"
-  options={[
-    { value: "standard", label: "Standard Shipping (5-7 days) - Free" },
-    { value: "priority", label: "Priority Shipping (2-3 days) - $9.99" },
-    { value: "express", label: "Express Shipping (1 day) - $19.99", disabled: true },
-    { value: "overnight", label: "Overnight Shipping - $29.99", disabled: true }
-  ]}
-  value="standard"
-/&gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -261,21 +177,6 @@ const navigationItems = getFormComponentNavigation("radio-group");
                           ]}
                         />
                       </form>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;RadioGroupComponent
-  name="priority"
-  label="Issue Priority"
-  required={true}
-  error="Please select a priority level for your support request"
-  options={[
-    { value: "low", label: "Low - General question" },
-    { value: "medium", label: "Medium - Need help with feature" },
-    { value: "high", label: "High - Service disruption" },
-    { value: "critical", label: "Critical - Complete system failure" }
-  ]}
-/&gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -328,135 +229,12 @@ const navigationItems = getFormComponentNavigation("radio-group");
                         </div>
                       </form>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;form&gt;
-  &lt;RadioGroupComponent
-    name="satisfaction"
-    label="How satisfied are you with our service?"
-    required={true}
-    options={[
-      { value: "very-dissatisfied", label: "Very Dissatisfied" },
-      { value: "dissatisfied", label: "Dissatisfied" },
-      { value: "neutral", label: "Neutral" },
-      { value: "satisfied", label: "Satisfied" },
-      { value: "very-satisfied", label: "Very Satisfied" }
-    ]}
-  /&gt;
-  
-  &lt;Button type="submit"&gt;Submit Survey&lt;/Button&gt;
-&lt;/form&gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
             </section>
 
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Props Reference</h2>
-
-                  <div class="props-table">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Prop</th>
-                          <th>Type</th>
-                          <th>Default</th>
-                          <th>Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><code>name</code></td>
-                          <td><code>string</code></td>
-                          <td>Required</td>
-                          <td>The name attribute for all radio inputs in the group</td>
-                        </tr>
-                        <tr>
-                          <td><code>label</code></td>
-                          <td><code>string</code></td>
-                          <td>Required</td>
-                          <td>The legend text for the radio group fieldset</td>
-                        </tr>
-                        <tr>
-                          <td><code>options</code></td>
-                          <td><code>RadioOption[]</code></td>
-                          <td>Required</td>
-                          <td>Array of radio button options</td>
-                        </tr>
-                        <tr>
-                          <td><code>value</code></td>
-                          <td><code>string</code></td>
-                          <td><code>undefined</code></td>
-                          <td>The currently selected value</td>
-                        </tr>
-                        <tr>
-                          <td><code>orientation</code></td>
-                          <td><code>"vertical" | "horizontal"</code></td>
-                          <td><code>"vertical"</code></td>
-                          <td>Layout orientation of radio buttons</td>
-                        </tr>
-                        <tr>
-                          <td><code>required</code></td>
-                          <td><code>boolean</code></td>
-                          <td><code>false</code></td>
-                          <td>Whether selection is required</td>
-                        </tr>
-                        <tr>
-                          <td><code>helpText</code></td>
-                          <td><code>string</code></td>
-                          <td><code>undefined</code></td>
-                          <td>Additional help text</td>
-                        </tr>
-                        <tr>
-                          <td><code>error</code></td>
-                          <td><code>string</code></td>
-                          <td><code>undefined</code></td>
-                          <td>Error message to display</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <h3>RadioOption Interface</h3>
-                  <div class="props-table">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Property</th>
-                          <th>Type</th>
-                          <th>Required</th>
-                          <th>Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><code>value</code></td>
-                          <td><code>string</code></td>
-                          <td>Yes</td>
-                          <td>The value of the radio option</td>
-                        </tr>
-                        <tr>
-                          <td><code>label</code></td>
-                          <td><code>string</code></td>
-                          <td>Yes</td>
-                          <td>The display text for the option</td>
-                        </tr>
-                        <tr>
-                          <td><code>disabled</code></td>
-                          <td><code>boolean</code></td>
-                          <td>No</td>
-                          <td>Whether this option is disabled</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </section>
-
+            <!-- Accessibility Features -->
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
@@ -494,43 +272,6 @@ const navigationItems = getFormComponentNavigation("radio-group");
                         <li>Selected state clearly visible</li>
                         <li>Disabled state styling</li>
                         <li>Error state visual feedback</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Design Guidelines</h2>
-                  <p class="section-intro">Best practices for using radio groups in your interface.</p>
-                </div>
-              </div>
-
-              <div class="section-grid">
-                <div class="col-full">
-                  <div class="guidelines-grid">
-                    <div class="guideline-item">
-                      <h4>✅ Do</h4>
-                      <ul>
-                        <li>Use for mutually exclusive choices</li>
-                        <li>Provide clear, concise option labels</li>
-                        <li>Limit to 2-7 options when possible</li>
-                        <li>Use vertical layout for most cases</li>
-                        <li>Include help text for complex selections</li>
-                      </ul>
-                    </div>
-
-                    <div class="guideline-item">
-                      <h4>❌ Don't</h4>
-                      <ul>
-                        <li>Use for multiple selection (use checkboxes)</li>
-                        <li>Include more than 7 options without grouping</li>
-                        <li>Pre-select critical choices without user consent</li>
-                        <li>Use ambiguous or overlapping labels</li>
-                        <li>Disable options without clear explanation</li>
                       </ul>
                     </div>
                   </div>

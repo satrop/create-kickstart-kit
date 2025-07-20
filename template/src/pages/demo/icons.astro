@@ -17,18 +17,6 @@ const navigationItems = getFormComponentNavigation("icon-font");
         <DemoNavigation title="Form Components" items={navigationItems} />
         <div class="col-4 md:col-4 lg:col-9">
           <div class="component-demo">
-            <header class="demo-header">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h1>Icon Font System</h1>
-                  <p class="demo-subtitle">
-                    Custom icon font generated from SVG files. These icons are scalable, lightweight, and can be styled
-                    with CSS just like regular text.
-                  </p>
-                </div>
-              </div>
-            </header>
-
             <!-- Available Icons -->
             <section class="showcase__section">
               <h2>Available Icons</h2>
@@ -216,13 +204,6 @@ const navigationItems = getFormComponentNavigation("icon-font");
                         <i class="icon icon-download icon-3x" style="color: #6f42c1;"></i>
                       </div>
                     </div>
-                    <div class="demo-code">
-                      <pre><code>&lt;i class="icon icon-download" style="color: #007bff;"&gt;&lt;/i&gt;
-&lt;i class="icon icon-download" style="color: #28a745;"&gt;&lt;/i&gt;
-&lt;i class="icon icon-download" style="color: #dc3545;"&gt;&lt;/i&gt;
-&lt;i class="icon icon-download" style="color: #ffc107;"&gt;&lt;/i&gt;
-&lt;i class="icon icon-download" style="color: #6f42c1;"&gt;&lt;/i&gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -253,12 +234,6 @@ const navigationItems = getFormComponentNavigation("icon-font");
                         </button>
                       </div>
                     </div>
-                    <div class="demo-code">
-                      <pre><code>&lt;button class="btn btn-primary"&gt;
-  &lt;i class="icon icon-download"&gt;&lt;/i&gt;
-  Download File
-&lt;/button&gt;</code></pre>
-                    </div>
                   </div>
 
                   <div class="demo-example">
@@ -269,9 +244,6 @@ const navigationItems = getFormComponentNavigation("icon-font");
                           class="icon icon-search"></i> to search, or <i class="icon icon-left-arrow"></i> to go back to
                         the previous page.
                       </p>
-                    </div>
-                    <div class="demo-code">
-                      <pre><code>Click the &lt;i class="icon icon-download"&gt;&lt;/i&gt; icon to download...</code></pre>
                     </div>
                   </div>
 
@@ -297,52 +269,6 @@ const navigationItems = getFormComponentNavigation("icon-font");
                         <li><i class="icon icon-youtube"></i> Youtube</li>
                       </ul>
                     </div>
-                    <div class="demo-code">
-                      <pre><code>&lt;ul class="icon-list"&gt;
-  &lt;li&gt;&lt;i class="icon icon-add-user"&gt;&lt;/i&gt; Add User&lt;/li&gt;
-  &lt;li&gt;&lt;i class="icon icon-book"&gt;&lt;/i&gt; Book&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <!-- Technical Info -->
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Technical Information</h2>
-                  <p>Details about the icon font implementation and how to add new icons.</p>
-
-                  <div class="info-grid">
-                    <div class="info-item">
-                      <h4>Font Family</h4>
-                      <code>font-icons</code>
-                    </div>
-                    <div class="info-item">
-                      <h4>Formats</h4>
-                      <code>WOFF2, WOFF</code>
-                    </div>
-                    <div class="info-item">
-                      <h4>Base Class</h4>
-                      <code>.icon</code>
-                    </div>
-                    <div class="info-item">
-                      <h4>CSS File</h4>
-                      <code>/icons/font/font-icons.css</code>
-                    </div>
-                  </div>
-
-                  <div class="demo-example">
-                    <div class="demo-preview">
-                      <h4>Adding New Icons</h4>
-                      <ol class="numbered-steps">
-                        <li>Add your SVG files to <code>public/_icons/raw/</code></li>
-                        <li>Run <code>pnpm run icons</code> to regenerate the font</li>
-                        <li>The new icons will be available as <code>.icon-your-filename</code></li>
-                      </ol>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -351,5 +277,5 @@ const navigationItems = getFormComponentNavigation("icon-font");
         </div>
       </div>
     </main>
-  </Fragment></Layout
->
+  </Fragment>
+</Layout>

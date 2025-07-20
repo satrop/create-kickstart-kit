@@ -9,6 +9,6 @@ export interface Props {
 const { variant = "primary", size = "medium", disabled = false, type = "button" } = Astro.props;
 ---
 
-<button class={`btn btn--${variant} btn--${size}`} {disabled} {type} {...Astro.props}>
+<button class={`ast-btn ast-btn--${variant} ast-btn--${size}`} {disabled} {type} {...Astro.props}>
   <slot />
 </button>

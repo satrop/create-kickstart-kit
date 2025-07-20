@@ -23,18 +23,6 @@ const navigationItems = getFormComponentNavigation("dialog");
         <DemoNavigation title="Form Components" items={navigationItems} />
         <div class="col-4 md:col-4 lg:col-9">
           <div class="component-demo">
-            <header class="demo-header">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h1>Dialog Component</h1>
-                  <p class="demo-subtitle">
-                    Accessible modal dialogs with focus management, keyboard navigation, and multiple variants for
-                    different use cases.
-                  </p>
-                </div>
-              </div>
-            </header>
-
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
@@ -65,28 +53,6 @@ const navigationItems = getFormComponentNavigation("dialog");
                           </Button>
                         </Fragment>
                       </DialogComponent>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Button variant="primary" data-dialog-trigger="basic-dialog"&gt;
-  Open Basic Dialog
-&lt;/Button&gt;
-
-&lt;DialogComponent
-  id="basic-dialog"
-  title="Welcome to Our Platform"
-  size="medium"
-&gt;
-  &lt;p&gt;Thank you for joining our platform!&lt;/p&gt;
-  &lt;Fragment slot="actions"&gt;
-    &lt;Button variant="secondary" type="button" data-dialog-close="basic-dialog"&gt;
-      Maybe Later
-    &lt;/Button&gt;
-    &lt;Button variant="primary" type="button" data-dialog-close="basic-dialog"&gt;
-      Get Started
-    &lt;/Button&gt;
-  &lt;/Fragment&gt;
-&lt;/DialogComponent&gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -119,27 +85,6 @@ const navigationItems = getFormComponentNavigation("dialog");
                           </Button>
                         </Fragment>
                       </DialogComponent>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Button variant="primary" data-dialog-trigger="alert-dialog"&gt;
-  Show Alert Dialog
-&lt;/Button&gt;
-
-&lt;DialogComponent
-  id="alert-dialog"
-  title="Important Notice"
-  variant="alert"
-  size="small"
-&gt;
-  &lt;p&gt;&lt;strong&gt;Your session is about to expire.&lt;/strong&gt;&lt;/p&gt;
-  &lt;p&gt;To continue using the application...&lt;/p&gt;
-  &lt;Fragment slot="actions"&gt;
-    &lt;Button variant="primary" type="button" data-dialog-close="alert-dialog"&gt;
-      I Understand
-    &lt;/Button&gt;
-  &lt;/Fragment&gt;
-&lt;/DialogComponent&gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -179,30 +124,6 @@ const navigationItems = getFormComponentNavigation("dialog");
                           </Button>
                         </Fragment>
                       </DialogComponent>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Button variant="primary" data-dialog-trigger="confirmation-dialog"&gt;
-  Delete Account
-&lt;/Button&gt;
-
-&lt;DialogComponent
-  id="confirmation-dialog"
-  title="Delete Account"
-  variant="confirmation"
-  size="small"
-&gt;
-  &lt;p&gt;&lt;strong&gt;Are you sure you want to delete your account?&lt;/strong&gt;&lt;/p&gt;
-  &lt;p&gt;This action cannot be undone...&lt;/p&gt;
-  &lt;Fragment slot="actions"&gt;
-    &lt;Button variant="outline" type="button" data-dialog-close="confirmation-dialog"&gt;
-      Cancel
-    &lt;/Button&gt;
-    &lt;Button variant="primary" type="button" data-dialog-close="confirmation-dialog"&gt;
-      Delete Account
-    &lt;/Button&gt;
-  &lt;/Fragment&gt;
-&lt;/DialogComponent&gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -287,44 +208,6 @@ const navigationItems = getFormComponentNavigation("dialog");
                         </Fragment>
                       </DialogComponent>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Button variant="primary" data-dialog-trigger="large-dialog"&gt;
-  Open Large Dialog
-&lt;/Button&gt;
-
-&lt;DialogComponent
-  id="large-dialog"
-  title="Contact Information"
-  size="large"
-&gt;
-  &lt;form class="dialog-form"&gt;
-    &lt;FormField
-      label="Email Address"
-      name="email"
-      type="email"
-      required={true}
-    /&gt;
-    
-    &lt;Textarea
-      label="Message"
-      name="message"
-      required={true}
-      placeholder="Tell us how we can help you..."
-    /&gt;
-    &lt;!-- More form fields... --&gt;
-  &lt;/form&gt;
-  
-  &lt;Fragment slot="actions"&gt;
-    &lt;Button variant="outline" type="button" data-dialog-close="large-dialog"&gt;
-      Cancel
-    &lt;/Button&gt;
-    &lt;Button variant="primary" type="button" data-dialog-close="large-dialog"&gt;
-      Send Message
-    &lt;/Button&gt;
-  &lt;/Fragment&gt;
-&lt;/DialogComponent&gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -371,143 +254,6 @@ const navigationItems = getFormComponentNavigation("dialog");
                         </Fragment>
                       </DialogComponent>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;DialogComponent
-  id="no-close-dialog"
-  title="Terms and Conditions"
-  size="medium"
-  showCloseButton={false}
-  closeOnOutsideClick={false}
-  closeOnEscape={false}
-&gt;
-  &lt;p&gt;Before you can continue, you must read and accept...&lt;/p&gt;
-  
-  &lt;Fragment slot="actions"&gt;
-    &lt;Button variant="outline" type="button" data-dialog-close="no-close-dialog"&gt;
-      Decline
-    &lt;/Button&gt;
-    &lt;Button variant="primary" type="button" data-dialog-close="no-close-dialog"&gt;
-      Accept Terms
-    &lt;/Button&gt;
-  &lt;/Fragment&gt;
-&lt;/DialogComponent&gt;</code></pre>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Props Reference</h2>
-
-                  <div class="props-table">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Prop</th>
-                          <th>Type</th>
-                          <th>Default</th>
-                          <th>Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><code>id</code></td>
-                          <td><code>string</code></td>
-                          <td>Required</td>
-                          <td>Unique identifier for the dialog</td>
-                        </tr>
-                        <tr>
-                          <td><code>title</code></td>
-                          <td><code>string</code></td>
-                          <td><code>undefined</code></td>
-                          <td>Dialog title text</td>
-                        </tr>
-                        <tr>
-                          <td><code>size</code></td>
-                          <td><code>"small" | "medium" | "large" | "fullscreen"</code></td>
-                          <td><code>"medium"</code></td>
-                          <td>Dialog size variant</td>
-                        </tr>
-                        <tr>
-                          <td><code>variant</code></td>
-                          <td><code>"default" | "alert" | "confirmation"</code></td>
-                          <td><code>"default"</code></td>
-                          <td>Visual style variant</td>
-                        </tr>
-                        <tr>
-                          <td><code>closeOnOutsideClick</code></td>
-                          <td><code>boolean</code></td>
-                          <td><code>true</code></td>
-                          <td>Whether clicking outside closes the dialog</td>
-                        </tr>
-                        <tr>
-                          <td><code>closeOnEscape</code></td>
-                          <td><code>boolean</code></td>
-                          <td><code>true</code></td>
-                          <td>Whether pressing Escape closes the dialog</td>
-                        </tr>
-                        <tr>
-                          <td><code>showCloseButton</code></td>
-                          <td><code>boolean</code></td>
-                          <td><code>true</code></td>
-                          <td>Whether to show the close (X) button</td>
-                        </tr>
-                        <tr>
-                          <td><code>class</code></td>
-                          <td><code>string</code></td>
-                          <td><code>undefined</code></td>
-                          <td>Additional CSS classes</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <h3>Slots</h3>
-                  <div class="props-table">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Slot</th>
-                          <th>Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><code>default</code></td>
-                          <td>Main content area of the dialog</td>
-                        </tr>
-                        <tr>
-                          <td><code>actions</code></td>
-                          <td>Footer area for buttons and actions</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <h3>Data Attributes</h3>
-                  <div class="props-table">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Attribute</th>
-                          <th>Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><code>data-dialog-trigger="[id]"</code></td>
-                          <td>Add to button/element to open a dialog</td>
-                        </tr>
-                        <tr>
-                          <td><code>type="button" data-dialog-close="[id]"</code></td>
-                          <td>Add to button/element to close a dialog</td>
-                        </tr>
-                      </tbody>
-                    </table>
                   </div>
                 </div>
               </div>
@@ -551,45 +297,6 @@ const navigationItems = getFormComponentNavigation("dialog");
                         <li>Backdrop overlay shows modal context</li>
                         <li>Multiple close options available</li>
                         <li>Consistent button styling and placement</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Design Guidelines</h2>
-                  <p class="section-intro">Best practices for using dialogs in your interface.</p>
-                </div>
-              </div>
-
-              <div class="section-grid">
-                <div class="col-full">
-                  <div class="guidelines-grid">
-                    <div class="guideline-item">
-                      <h4>✅ Do</h4>
-                      <ul>
-                        <li>Use for critical actions and confirmations</li>
-                        <li>Provide clear, descriptive titles</li>
-                        <li>Keep content concise and focused</li>
-                        <li>Include multiple ways to close</li>
-                        <li>Use appropriate size for content</li>
-                        <li>Test with keyboard navigation</li>
-                      </ul>
-                    </div>
-
-                    <div class="guideline-item">
-                      <h4>❌ Don't</h4>
-                      <ul>
-                        <li>Stack multiple dialogs at once</li>
-                        <li>Use for non-critical information</li>
-                        <li>Include complex navigation flows</li>
-                        <li>Make dialogs the only way to access features</li>
-                        <li>Use overly large dialogs for simple tasks</li>
-                        <li>Forget to handle mobile constraints</li>
                       </ul>
                     </div>
                   </div>

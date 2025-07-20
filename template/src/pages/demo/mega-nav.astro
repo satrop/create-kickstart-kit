@@ -105,10 +105,10 @@ import "@/styles/demo.scss";
 const navigationItems = getFormComponentNavigation("mega-nav");
 ---
 
-<Layout title={title}>
+<Layout title="Mega Navigation Demo" pageClass="demo-nav-spacer">
   <main>
     <!-- Desktop Navigation (hidden on mobile) -->
-    <div class="desktop-navigation">
+    <div class="ast-desktop-navigation">
       <MegaNavComp
         items={completeNavData}
         logo={{
@@ -120,7 +120,7 @@ const navigationItems = getFormComponentNavigation("mega-nav");
     </div>
 
     <!-- Mobile Navigation (hidden on desktop) -->
-    <div class="mobile-navigation">
+    <div class="ast-mobile-navigation">
       <MobileNav
         items={completeNavData}
         mobileAnimation="left"

@@ -17,17 +17,6 @@ const navigationItems = getFormComponentNavigation("images");
         <DemoNavigation title="Form Components" items={navigationItems} />
         <div class="col-4 md:col-4 lg:col-9">
           <div class="component-demo">
-            <header class="demo-header">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h1>Image Components</h1>
-                  <p class="demo-subtitle">
-                    Showcase of the InlineImage components with various configurations and use cases.
-                  </p>
-                </div>
-              </div>
-            </header>
-
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
@@ -106,24 +95,6 @@ const navigationItems = getFormComponentNavigation("images");
                         minus in corrupti ut. Ducimus quo accusamus praesentium excepturi.
                       </p>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>
-&lt;ImageComponent
-  src="/images/image1.jpg"
-  alt="Beautiful landscape with mountains and sky"
-  size="small"
-/&gt;
-
-&lt;ImageComponent
-  src="/images/image2.jpg"
-  alt="Sample image 2"
-  align="right"
-  size="medium"
-/&gt;
-
-</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -161,30 +132,6 @@ const navigationItems = getFormComponentNavigation("images");
                         align="center"
                       />
                     </div>
-                    <div class="demo-code">
-                      <pre><code>
-&lt;ImageComponent
-  src="/images/image5.jpg"
-  alt="Landscape photography example"
-  size="small"
-  align="center"
-/&gt;
-
-&lt;ImageComponent
-  src="/images/image6.jpg"
-  alt="Architecture photography"
-  size="medium"
-  align="center"
-/&gt;
-
-&lt;ImageComponent
-  src="/images/image7.jpg"
-  alt="Landscape photography example"
-  size="large"
-  align="center"
-/&gt;
-                  </code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -212,91 +159,6 @@ const navigationItems = getFormComponentNavigation("images");
                         </div>
                       </div>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>
-&lt;ImageComponent
-  src="/images/broken-image-test.jpg"
-  alt="Broken image test"
-/&gt;
-
-&lt;ImageComponent
-  src="/images/image4.jpg"
-  alt="Lazy loaded image"
-  lazy={true}
-/&gt;
-</code></pre>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Props Reference</h2>
-                </div>
-              </div>
-
-              <div class="section-grid">
-                <div class="col-full">
-                  <h3>Image Props</h3>
-                  <div class="props-table">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Prop</th>
-                          <th>Type</th>
-                          <th>Default</th>
-                          <th>Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><code>src</code></td>
-                          <td><code>string</code></td>
-                          <td><code>required</code></td>
-                          <td>The image source URL or path</td>
-                        </tr>
-                        <tr>
-                          <td><code>alt</code></td>
-                          <td><code>string</code></td>
-                          <td><code>required</code></td>
-                          <td>Alternative text for accessibility</td>
-                        </tr>
-                        <tr>
-                          <td><code>align</code></td>
-                          <td><code>"left" | "right"</code></td>
-                          <td><code>"left"</code></td>
-                          <td>How the image aligns with surrounding text</td>
-                        </tr>
-                        <tr>
-                          <td><code>size</code></td>
-                          <td><code>"small" | "medium" | "large" | "auto"</code></td>
-                          <td><code>"medium"</code></td>
-                          <td>Predefined size or auto for natural dimensions</td>
-                        </tr>
-                        <tr>
-                          <td><code>caption</code></td>
-                          <td><code>string</code></td>
-                          <td><code>undefined</code></td>
-                          <td>Optional caption text displayed below the image</td>
-                        </tr>
-                        <tr>
-                          <td><code>lazy</code></td>
-                          <td><code>boolean</code></td>
-                          <td><code>true</code></td>
-                          <td>Whether to lazy load the image</td>
-                        </tr>
-                        <tr>
-                          <td><code>priority</code></td>
-                          <td><code>boolean</code></td>
-                          <td><code>false</code></td>
-                          <td>High priority loading for above-the-fold images</td>
-                        </tr>
-                      </tbody>
-                    </table>
                   </div>
                 </div>
               </div>
@@ -338,44 +200,6 @@ const navigationItems = getFormComponentNavigation("images");
                         <li>High contrast mode support</li>
                         <li>Responsive sizing for all device types</li>
                         <li>Consistent spacing and alignment</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <!-- Design Guidelines -->
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Design Guidelines</h2>
-                  <p class="section-intro">Best practices for using image components in your interface.</p>
-                </div>
-              </div>
-
-              <div class="section-grid">
-                <div class="col-full">
-                  <div class="guidelines-grid">
-                    <div class="guideline-item">
-                      <h4>✅ Do</h4>
-                      <ul>
-                        <li>Always provide meaningful alt text</li>
-                        <li>Use captions to add context and value</li>
-                        <li>Choose appropriate sizes for the content</li>
-                        <li>Optimize images for web delivery</li>
-                        <li>Use fallback images for better reliability</li>
-                      </ul>
-                    </div>
-
-                    <div class="guideline-item">
-                      <h4>❌ Don't</h4>
-                      <ul>
-                        <li>Use images without alt text</li>
-                        <li>Overuse large images that slow page loading</li>
-                        <li>Ignore responsive design considerations</li>
-                        <li>Use decorative images without semantic purpose</li>
-                        <li>Forget to test fallback scenarios</li>
                       </ul>
                     </div>
                   </div>

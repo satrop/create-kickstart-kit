@@ -8,6 +8,7 @@ import { asset } from "@/utils/assets";
 
 interface Props {
   title?: string;
+  pageClass?: string;
 }
 
 const { title = "Kickstart" } = Astro.props as Props;
@@ -37,7 +38,7 @@ import "@/styles/demo.scss";
       rel="stylesheet"
     />
   </head>
-  <body class="site-wrapper owl-32">
+  <body class:list={`site-wrapper owl-32${Astro.props.pageClass ? ` ${Astro.props.pageClass}` : ""}`}>
     <!-- Skip Link for Accessibility -->
     <a href="#main" class="skip-link">Skip to main content</a>
 

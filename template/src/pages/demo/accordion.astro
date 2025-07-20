@@ -66,18 +66,6 @@ const navigationItems = getFormComponentNavigation("accordion");
         <DemoNavigation title="Form Components" items={navigationItems} />
         <div class="col-4 md:col-4 lg:col-9">
           <div class="component-demo">
-            <header class="demo-header">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h1>Accordion Component</h1>
-                  <p class="demo-subtitle">
-                    Collapsible content sections for organizing information hierarchically with smooth animations and
-                    full keyboard accessibility.
-                  </p>
-                </div>
-              </div>
-            </header>
-
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
@@ -87,20 +75,6 @@ const navigationItems = getFormComponentNavigation("accordion");
                   <div class="demo-example">
                     <div class="demo-preview contain-floats">
                       <AccordionComponent items={basicItems} />
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Accordion items={'{'}items{'}'} /&gt;
-
-// Example items structure:
-const items = [
-  {'{'}
-    id: "item1",
-    title: "What is this component library?",
-    content: "This is a comprehensive collection..."
-  {'}'},
-  // ... more items
-];</code></pre>
                     </div>
                   </div>
                 </div>
@@ -116,10 +90,6 @@ const items = [
                   <div class="demo-example">
                     <div class="demo-preview contain-floats">
                       <AccordionComponent items={multipleItems} allowMultiple={true} />
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Accordion items={'{'}items{'}'} allowMultiple={'{'}true{'}'} /&gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -151,97 +121,12 @@ const items = [
                         </div>
                       </div>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Accordion items={'{'}items{'}'} variant="default" /&gt;
-&lt;Accordion items={'{'}items{'}'} variant="bordered" /&gt;
-&lt;Accordion items={'{'}items{'}'} variant="flush" /&gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
             </section>
 
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Props Reference</h2>
-                  <div class="props-table">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Prop</th>
-                          <th>Type</th>
-                          <th>Default</th>
-                          <th>Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><code>items</code></td>
-                          <td><code>AccordionItem[]</code></td>
-                          <td>Required</td>
-                          <td>Array of accordion items with id, title, and content</td>
-                        </tr>
-                        <tr>
-                          <td><code>allowMultiple</code></td>
-                          <td><code>boolean</code></td>
-                          <td><code>false</code></td>
-                          <td>Whether multiple sections can be open simultaneously</td>
-                        </tr>
-                        <tr>
-                          <td><code>variant</code></td>
-                          <td><code>"default" | "bordered" | "flush"</code></td>
-                          <td><code>"default"</code></td>
-                          <td>The visual style variant of the accordion</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <h3>AccordionItem Interface</h3>
-                  <div class="props-table">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Property</th>
-                          <th>Type</th>
-                          <th>Required</th>
-                          <th>Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><code>id</code></td>
-                          <td><code>string</code></td>
-                          <td>Yes</td>
-                          <td>Unique identifier for the accordion item</td>
-                        </tr>
-                        <tr>
-                          <td><code>title</code></td>
-                          <td><code>string</code></td>
-                          <td>Yes</td>
-                          <td>The title text displayed in the accordion header</td>
-                        </tr>
-                        <tr>
-                          <td><code>content</code></td>
-                          <td><code>string</code></td>
-                          <td>No</td>
-                          <td>Plain text content for the accordion body</td>
-                        </tr>
-                        <tr>
-                          <td><code>htmlContent</code></td>
-                          <td><code>string</code></td>
-                          <td>No</td>
-                          <td>HTML string content for the accordion body</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </section>
-
+            <!-- Accessibility -->
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
@@ -279,43 +164,6 @@ const items = [
                         <li>Expanded/collapsed state icons</li>
                         <li>Smooth animations with motion preferences</li>
                         <li>Consistent visual hierarchy</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Design Guidelines</h2>
-                  <p class="section-intro">Best practices for using accordions in your interface.</p>
-                </div>
-              </div>
-
-              <div class="section-grid">
-                <div class="col-full">
-                  <div class="guidelines-grid">
-                    <div class="guideline-item">
-                      <h4>✅ Do</h4>
-                      <ul>
-                        <li>Use for organizing related content sections</li>
-                        <li>Provide descriptive, scannable header titles</li>
-                        <li>Keep content within sections focused</li>
-                        <li>Consider logical information order</li>
-                        <li>Use consistent content formatting</li>
-                      </ul>
-                    </div>
-
-                    <div class="guideline-item">
-                      <h4>❌ Don't</h4>
-                      <ul>
-                        <li>Nest accordions more than one level deep</li>
-                        <li>Hide critical information users expect to see</li>
-                        <li>Use overly long titles that wrap awkwardly</li>
-                        <li>Mix different content types inconsistently</li>
-                        <li>Auto-expand sections without user action</li>
                       </ul>
                     </div>
                   </div>

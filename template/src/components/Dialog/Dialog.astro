@@ -22,11 +22,13 @@ const {
   ...rest
 } = Astro.props;
 
-const dialogClasses = ["dialog", `dialog--${size}`, `dialog--${variant}`, className].filter(Boolean).join(" ");
+const dialogClasses = ["ast-dialog", `ast-dialog--${size}`, `ast-dialog--${variant}`, className]
+  .filter(Boolean)
+  .join(" ");
 ---
 
 <!-- Dialog Backdrop -->
-<div class="dialog-backdrop" aria-hidden="true" data-dialog-backdrop={id}>
+<div class="ast-dialog-backdrop" aria-hidden="true" data-dialog-backdrop={id}>
   <!-- Dialog Container -->
   <div
     class={dialogClasses}
@@ -43,14 +45,14 @@ const dialogClasses = ["dialog", `dialog--${size}`, `dialog--${variant}`, classN
     <!-- Dialog Header -->
     {
       (title || showCloseButton) && (
-        <header class="dialog__header">
+        <header class="ast-dialog__header">
           {title && (
-            <h2 class="dialog__title" id={`${id}-title`}>
+            <h2 class="ast-dialog__title" id={`${id}-title`}>
               {title}
             </h2>
           )}
           {showCloseButton && (
-            <button class="dialog__close" type="button" aria-label="Close dialog" data-dialog-close={id}>
+            <button class="ast-dialog__close" type="button" aria-label="Close dialog" data-dialog-close={id}>
               <svg
                 width="24"
                 height="24"
@@ -71,14 +73,14 @@ const dialogClasses = ["dialog", `dialog--${size}`, `dialog--${variant}`, classN
     }
 
     <!-- Dialog Content -->
-    <div class="dialog__content" id={`${id}-content`}>
+    <div class="ast-dialog__content" id={`${id}-content`}>
       <slot />
     </div>
 
     <!-- Dialog Actions (if provided) -->
     {
       Astro.slots.has("actions") && (
-        <footer class="dialog__actions">
+        <footer class="ast-dialog__actions">
           <slot name="actions" />
         </footer>
       )

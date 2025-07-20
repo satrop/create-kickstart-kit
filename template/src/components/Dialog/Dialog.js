@@ -262,14 +262,14 @@ class DialogManager {
   lockDialog() {
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
-    document.documentElement.classList.add('dialog-open');
+    document.documentElement.classList.add('ast-dialog-open');
     document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
     document.documentElement.style.paddingRight = `${scrollbarWidth}px`;
     document.body.style.overflow = 'hidden';
   }
 
   unlockDialog() {
-    document.documentElement.classList.remove('dialog-open');
+    document.documentElement.classList.remove('ast-dialog-open');
     document.documentElement.style.removeProperty('--scrollbar-width');
     document.documentElement.style.paddingRight = '';
     document.body.style.overflow = '';
@@ -281,9 +281,9 @@ class DialogManager {
     announcement.setAttribute('aria-live', 'polite');
     announcement.setAttribute('aria-atomic', 'true');
     announcement.className = 'sr-only';
-    
-    const title = dialog.querySelector('.dialog__title');
-    const announcementText = title 
+
+    const title = dialog.querySelector('.ast-dialog__title');
+    const announcementText = title
       ? `Dialog opened: ${title.textContent}`
       : 'Dialog opened';
     

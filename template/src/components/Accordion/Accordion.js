@@ -24,11 +24,11 @@ class AccordionManager {
           if (mutation.type === 'childList') {
             mutation.addedNodes.forEach((node) => {
             if (node.nodeType === Node.ELEMENT_NODE) {
-              if (node.matches('.accordion')) {
+              if (node.matches('.ast-accordion')) {
                 this.setupAccordion(node);
               }
               // Check for accordions in added subtree
-              const accordions = node.querySelectorAll('.accordion');
+              const accordions = node.querySelectorAll('.ast-accordion');
               accordions.forEach(accordion => this.setupAccordion(accordion));
             }
           });
@@ -44,7 +44,7 @@ class AccordionManager {
   }
 
   setupAccordions() {
-    const accordions = document.querySelectorAll('.accordion');
+    const accordions = document.querySelectorAll('.ast-accordion');
     accordions.forEach(accordion => this.setupAccordion(accordion));
   }
 
@@ -91,6 +91,21 @@ class AccordionInstance {
     this.triggers = accordion.querySelectorAll("[data-accordion-trigger]");
     this.contents = accordion.querySelectorAll("[data-accordion-content]");
 
+    // Validate that we have matching triggers and contents
+    if (this.triggers.length !== this.contents.length) {
+      console.warn(`Accordion: Mismatch between triggers (${this.triggers.length}) and contents (${this.contents.length})`);
+    }
+
+    if (this.triggers.length === 0) {
+      console.warn('Accordion: No triggers found with [data-accordion-trigger] attribute');
+      return;
+    }
+
+    if (this.contents.length === 0) {
+      console.warn('Accordion: No contents found with [data-accordion-content] attribute');
+      return;
+    }
+
     // Store instance reference for public API
     this.accordion._accordionInstance = this;
 
@@ -114,8 +129,20 @@ class AccordionInstance {
   }
 
   handleClick(index) {
+    // Safety check for valid index
+    if (index < 0 || index >= this.triggers.length) {
+      console.warn(`Accordion: Invalid index ${index}. Valid range is 0-${this.triggers.length - 1}`);
+      return;
+    }
+
     const trigger = this.triggers[index];
     const content = this.contents[index];
+    
+    if (!trigger || !content) {
+      console.warn(`Accordion: Cannot handle click for index ${index}. Element not found.`);
+      return;
+    }
+
     const isExpanded = trigger.getAttribute("aria-expanded") === "true";
 
     if (!this.allowMultiple) {
@@ -166,6 +193,12 @@ class AccordionInstance {
     const trigger = this.triggers[index];
     const content = this.contents[index];
     
+    // Safety check to prevent errors with undefined elements
+    if (!trigger || !content) {
+      console.warn(`Accordion: Cannot expand item at index ${index}. Trigger or content element not found.`);
+      return;
+    }
+    
     trigger.setAttribute("aria-expanded", "true");
     content.setAttribute("data-expanded", "true");
 
@@ -174,7 +207,7 @@ class AccordionInstance {
     content.style.maxHeight = `${scrollHeight}px`;
 
     // Trigger custom event
-    const itemId = content.id.replace('accordion-content-', '');
+    const itemId = content.id.replace('ast-accordion-content-', '');
     this.accordion.dispatchEvent(new CustomEvent('accordion:expand', {
       detail: { itemId, index },
       bubbles: true
@@ -185,12 +218,18 @@ class AccordionInstance {
     const trigger = this.triggers[index];
     const content = this.contents[index];
     
+    // Safety check to prevent errors with undefined elements
+    if (!trigger || !content) {
+      console.warn(`Accordion: Cannot collapse item at index ${index}. Trigger or content element not found.`);
+      return;
+    }
+    
     trigger.setAttribute("aria-expanded", "false");
     content.setAttribute("data-expanded", "false");
     content.style.maxHeight = "0";
 
     // Trigger custom event
-    const itemId = content.id.replace('accordion-content-', '');
+    const itemId = content.id.replace('ast-accordion-content-', '');
     this.accordion.dispatchEvent(new CustomEvent('accordion:collapse', {
       detail: { itemId, index },
       bubbles: true
@@ -209,7 +248,7 @@ class AccordionInstance {
 
   // Public API methods for external control
   expandItem(itemId) {
-    const content = this.accordion.querySelector(`#accordion-content-${itemId}`);
+    const content = this.accordion.querySelector(`#ast-accordion-content-${itemId}`);
     if (content) {
       const index = Array.from(this.contents).indexOf(content);
       if (index !== -1) {
@@ -219,7 +258,7 @@ class AccordionInstance {
   }
 
   collapseItem(itemId) {
-    const content = this.accordion.querySelector(`#accordion-content-${itemId}`);
+    const content = this.accordion.querySelector(`#ast-accordion-content-${itemId}`);
     if (content) {
       const index = Array.from(this.contents).indexOf(content);
       if (index !== -1) {
@@ -243,7 +282,7 @@ class AccordionInstance {
   }
 
   isExpanded(itemId) {
-    const content = this.accordion.querySelector(`#accordion-content-${itemId}`);
+    const content = this.accordion.querySelector(`#ast-accordion-content-${itemId}`);
     return content && content.getAttribute('data-expanded') === 'true';
   }
 }
@@ -251,10 +290,10 @@ class AccordionInstance {
 // Auto-initialize accordions
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
-    const accordions = document.querySelectorAll('.accordion');
+    const accordions = document.querySelectorAll('.ast-accordion');
     accordions.forEach(accordion => {
-      if (!accordion.accordionInstance) {
-        accordion.accordionInstance = new AccordionInstance(accordion);
+      if (!accordion._accordionInstance) {
+        new AccordionInstance(accordion);
       }
     });
   });
@@ -262,10 +301,10 @@ if (typeof document !== 'undefined') {
 
 // Auto-init function for manual initialization
 const initAccordion = () => {
-  const accordions = document.querySelectorAll('.accordion');
+  const accordions = document.querySelectorAll('.ast-accordion');
   accordions.forEach(accordion => {
-    if (!accordion.accordionInstance) {
-      accordion.accordionInstance = new AccordionInstance(accordion);
+    if (!accordion._accordionInstance) {
+      new AccordionInstance(accordion);
     }
   });
 };

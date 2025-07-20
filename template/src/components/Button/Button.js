@@ -105,7 +105,7 @@ class ButtonComponent {
 // Auto-initialize buttons
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.btn');
+    const buttons = document.querySelectorAll('.ast-btn');
     buttons.forEach(button => {
       if (!button.buttonComponent) {
         button.buttonComponent = new ButtonComponent(button);
@@ -116,7 +116,7 @@ if (typeof document !== 'undefined') {
 
 // Auto-init (optional)
 const initButton = () => {
-  const buttons = document.querySelectorAll('.btn');
+  const buttons = document.querySelectorAll('.ast-btn');
   buttons.forEach((el) => {
     if (!el.buttonComponent) {
       el.buttonComponent = new ButtonComponent(el);

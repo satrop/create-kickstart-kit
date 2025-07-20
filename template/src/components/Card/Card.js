@@ -6,8 +6,8 @@
 class CardComponent {
   constructor(element) {
     this.element = element;
-    this.isInteractive = element.classList.contains('card--interactive');
-    this.isClickable = element.classList.contains('card--clickable');
+    this.isInteractive = element.classList.contains('ast-card--interactive');
+    this.isClickable = element.classList.contains('ast-card--clickable');
     this.init();
   }
 
@@ -59,7 +59,7 @@ class CardComponent {
 
     // Add proper ARIA labels for clickable cards
     if (this.isClickable && !this.element.getAttribute('aria-label')) {
-      const header = this.element.querySelector('.card__header h1, .card__header h2, .card__header h3, .card__header h4, .card__header h5, .card__header h6');
+      const header = this.element.querySelector('.ast-card__header h1, .ast-card__header h2, .ast-card__header h3, .ast-card__header h4, .ast-card__header h5, .ast-card__header h6');
       if (header) {
         this.element.setAttribute('aria-label', `Navigate to ${header.textContent.trim()}`);
       }
@@ -67,11 +67,11 @@ class CardComponent {
 
     // Ensure proper focus management
     this.element.addEventListener('focus', () => {
-      this.element.classList.add('card--focused');
+      this.element.classList.add('ast-card--focused');
     });
 
     this.element.addEventListener('blur', () => {
-      this.element.classList.remove('card--focused');
+      this.element.classList.remove('ast-card--focused');
     });
   }
 
@@ -91,7 +91,7 @@ class CardComponent {
 
   handleActivation(event) {
     // Custom event for card activation
-    const activationEvent = new CustomEvent('card:activate', {
+    const activationEvent = new CustomEvent('ast-card:activate', {
       detail: {
         element: this.element,
         title: this.getCardTitle(),
@@ -108,7 +108,7 @@ class CardComponent {
   }
 
   handleHoverStart() {
-    const hoverEvent = new CustomEvent('card:hover:start', {
+    const hoverEvent = new CustomEvent('ast-card:hover:start', {
       detail: {
         element: this.element,
         title: this.getCardTitle(),
@@ -121,7 +121,7 @@ class CardComponent {
   }
 
   handleHoverEnd() {
-    const hoverEvent = new CustomEvent('card:hover:end', {
+    const hoverEvent = new CustomEvent('ast-card:hover:end', {
       detail: {
         element: this.element,
         title: this.getCardTitle(),
@@ -141,7 +141,7 @@ class CardComponent {
     const x = event.clientX - rect.left - size / 2;
     const y = event.clientY - rect.top - size / 2;
     
-    ripple.className = 'card__ripple';
+    ripple.className = 'ast-card__ripple';
     ripple.style.cssText = `
       width: ${size}px;
       height: ${size}px;
@@ -160,14 +160,14 @@ class CardComponent {
   }
 
   getCardTitle() {
-    const header = this.element.querySelector('.card__header h1, .card__header h2, .card__header h3, .card__header h4, .card__header h5, .card__header h6');
+    const header = this.element.querySelector('.ast-card__header h1, .ast-card__header h2, .ast-card__header h3, .ast-card__header h4, .ast-card__header h5, .ast-card__header h6');
     return header ? header.textContent.trim() : null;
   }
 
   getCardType() {
     const classes = this.element.className.split(' ');
-    const variantClass = classes.find(cls => cls.startsWith('card--') && !cls.includes('padding') && !cls.includes('interactive') && !cls.includes('clickable'));
-    return variantClass ? variantClass.replace('card--', '') : 'default';
+    const variantClass = classes.find(cls => cls.startsWith('ast-card--') && !cls.includes('padding') && !cls.includes('interactive') && !cls.includes('clickable'));
+    return variantClass ? variantClass.replace('ast-card--', '') : 'default';
   }
 
   trackInteraction(action, event) {
@@ -182,7 +182,7 @@ class CardComponent {
     }
 
     // Custom analytics event
-    const analyticsEvent = new CustomEvent('card:analytics', {
+    const analyticsEvent = new CustomEvent('ast-card:analytics', {
       detail: {
         action: action,
         title: this.getCardTitle(),
@@ -207,11 +207,11 @@ class CardComponent {
 
   setInteractive(interactive) {
     if (interactive) {
-      this.element.classList.add('card--interactive');
+      this.element.classList.add('ast-card--interactive');
       this.element.setAttribute('tabindex', '0');
       this.element.setAttribute('role', 'button');
     } else {
-      this.element.classList.remove('card--interactive');
+      this.element.classList.remove('ast-card--interactive');
       this.element.removeAttribute('tabindex');
       this.element.removeAttribute('role');
     }
@@ -219,7 +219,7 @@ class CardComponent {
   }
 
   updateContent(section, content) {
-    const sectionElement = this.element.querySelector(`.card__${section}`);
+    const sectionElement = this.element.querySelector(`.ast-card__${section}`);
     if (sectionElement) {
       sectionElement.innerHTML = content;
     }
@@ -272,7 +272,7 @@ if (typeof document !== 'undefined') {
       position: relative;
     }
     
-    .card__ripple {
+    .ast-card__ripple {
       position: absolute;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.5);
@@ -289,7 +289,7 @@ if (typeof document !== 'undefined') {
       }
     }
     
-    .card--focused {
+    .ast-card--focused {
       outline: 2px solid #007bff;
       outline-offset: 2px;
     }

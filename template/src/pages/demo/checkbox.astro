@@ -13,27 +13,9 @@ const navigationItems = getFormComponentNavigation("checkbox");
   <Fragment slot="main">
     <main id="main" class="layout-main" aria-label="Main content">
       <div class="section-grid owl-32">
-        <DemoNavigation
-          title="Components"
-          items={navigationItems}
-          backLink={{
-            url: "./components.html",
-            text: "Back to Components",
-          }}
-        />
+        <DemoNavigation title="Components" items={navigationItems} />
         <div class="col-4 md:col-4 lg:col-9">
           <div class="component-demo">
-            <header class="demo-header">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h1>Checkbox Component</h1>
-                  <p class="demo-subtitle">
-                    Accessible checkbox component with labels, help text, error states, and full keyboard navigation
-                    support.
-                  </p>
-                </div>
-              </div>
-            </header>
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
@@ -48,16 +30,6 @@ const navigationItems = getFormComponentNavigation("checkbox");
                         <CheckboxComponent name="basic3" label="Disabled checkbox" disabled={true} />
                         <CheckboxComponent name="basic4" label="Disabled checked" checked={true} disabled={true} />
                       </div>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Checkbox name="basic1" label="Default checkbox" /&gt;
-
-&lt;Checkbox name="basic2" label="Checked checkbox" checked={true} /&gt;
-
-&lt;Checkbox name="basic3" label="Disabled checkbox" disabled={true} /&gt;
-
-&lt;Checkbox name="basic4" label="Disabled checked" checked={true} disabled={true} /&gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -76,12 +48,6 @@ const navigationItems = getFormComponentNavigation("checkbox");
                         <CheckboxComponent name="required1" label="Accept terms and conditions" required={true} />
                         <CheckboxComponent name="required2" label="Subscribe to newsletter" required={true} />
                       </div>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Checkbox name="required1" label="Accept terms and conditions" required={true} /&gt;
-
-&lt;Checkbox name="required2" label="Subscribe to newsletter" required={true} /&gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -110,21 +76,6 @@ const navigationItems = getFormComponentNavigation("checkbox");
                         />
                       </div>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Checkbox
-  name="help1"
-  label="Enable notifications"
-  helpText="You'll receive updates about your account and new features."
-/&gt;
-
-&lt;Checkbox
-  name="help2"
-  label="Two-factor authentication"
-  helpText="Add an extra layer of security to your account using SMS or authenticator apps."
-  required={true}
-/&gt;</code></pre>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -152,22 +103,6 @@ const navigationItems = getFormComponentNavigation("checkbox");
                           error="Please confirm you are 18 years or older."
                         />
                       </div>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Checkbox
-  name="error1"
-  label="Accept privacy policy"
-  required={true}
-  error="You must accept the privacy policy to continue."
-/&gt;
-
-&lt;Checkbox
-  name="error2"
-  label="Confirm your age"
-  required={true}
-  error="Please confirm you are 18 years or older."
-/&gt;</code></pre>
                     </div>
                   </div>
                 </div>
@@ -217,107 +152,6 @@ const navigationItems = getFormComponentNavigation("checkbox");
                         </div>
                       </fieldset>
                     </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;fieldset class="checkbox-fieldset"&gt;
-  &lt;legend class="checkbox-fieldset__legend"&gt;Select your interests:&lt;/legend&gt;
-  &lt;div class="checkbox-grid"&gt;
-    &lt;Checkbox name="interests" value="technology" label="Technology" /&gt;
-    &lt;Checkbox name="interests" value="design" label="Design" /&gt;
-    &lt;Checkbox name="interests" value="business" label="Business" /&gt;
-    &lt;Checkbox name="interests" value="marketing" label="Marketing" /&gt;
-  &lt;/div&gt;
-&lt;/fieldset&gt;
-
-&lt;fieldset class="checkbox-fieldset"&gt;
-  &lt;legend class="checkbox-fieldset__legend"&gt;Account preferences:&lt;/legend&gt;
-  &lt;div class="checkbox-grid"&gt;
-    &lt;Checkbox
-      name="preferences"
-      value="email-updates"
-      label="Email updates"
-      helpText="Receive weekly digest emails"
-    /&gt;
-    &lt;Checkbox
-      name="preferences"
-      value="push-notifications"
-      label="Push notifications"
-      helpText="Browser and mobile app notifications"
-      checked={true}
-    /&gt;
-  &lt;/div&gt;
-&lt;/fieldset&gt;</code></pre>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Props Reference</h2>
-                  <div class="props-table">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Prop</th>
-                          <th>Type</th>
-                          <th>Default</th>
-                          <th>Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><code>name</code></td>
-                          <td><code>string</code></td>
-                          <td>-</td>
-                          <td>Required. Input name attribute for form submission</td>
-                        </tr>
-                        <tr>
-                          <td><code>value</code></td>
-                          <td><code>string</code></td>
-                          <td><code>undefined</code></td>
-                          <td>Input value attribute, useful for checkbox groups</td>
-                        </tr>
-                        <tr>
-                          <td><code>checked</code></td>
-                          <td><code>boolean</code></td>
-                          <td><code>false</code></td>
-                          <td>Whether the checkbox is initially checked</td>
-                        </tr>
-                        <tr>
-                          <td><code>disabled</code></td>
-                          <td><code>boolean</code></td>
-                          <td><code>false</code></td>
-                          <td>Whether the checkbox is disabled and non-interactive</td>
-                        </tr>
-                        <tr>
-                          <td><code>required</code></td>
-                          <td><code>boolean</code></td>
-                          <td><code>false</code></td>
-                          <td>Whether the checkbox is required for form submission</td>
-                        </tr>
-                        <tr>
-                          <td><code>label</code></td>
-                          <td><code>string</code></td>
-                          <td>-</td>
-                          <td>Required. The label text displayed next to the checkbox</td>
-                        </tr>
-                        <tr>
-                          <td><code>helpText</code></td>
-                          <td><code>string</code></td>
-                          <td><code>undefined</code></td>
-                          <td>Optional help text to provide additional context</td>
-                        </tr>
-                        <tr>
-                          <td><code>error</code></td>
-                          <td><code>string</code></td>
-                          <td><code>undefined</code></td>
-                          <td>Error message to display when validation fails</td>
-                        </tr>
-                      </tbody>
-                    </table>
                   </div>
                 </div>
               </div>
@@ -361,44 +195,6 @@ const navigationItems = getFormComponentNavigation("checkbox");
                         <li>Clear checked/unchecked states</li>
                         <li>Disabled state styling</li>
                         <li>Error state visual feedback</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <!-- Design Guidelines -->
-            <section class="demo-section">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h2>Design Guidelines</h2>
-                  <p class="section-intro">Best practices for using checkboxes in your interface.</p>
-                </div>
-              </div>
-
-              <div class="section-grid">
-                <div class="col-full">
-                  <div class="guidelines-grid">
-                    <div class="guideline-item">
-                      <h4>✅ Do</h4>
-                      <ul>
-                        <li>Use clear, descriptive labels</li>
-                        <li>Group related checkboxes with fieldsets</li>
-                        <li>Provide help text for complex options</li>
-                        <li>Show validation errors clearly</li>
-                        <li>Use consistent spacing and alignment</li>
-                      </ul>
-                    </div>
-
-                    <div class="guideline-item">
-                      <h4>❌ Don't</h4>
-                      <ul>
-                        <li>Use checkboxes for mutually exclusive options (use radio buttons)</li>
-                        <li>Make labels too long or complex</li>
-                        <li>Hide important information in help text</li>
-                        <li>Use unclear or negative language</li>
-                        <li>Disable checkboxes without explanation</li>
                       </ul>
                     </div>
                   </div>

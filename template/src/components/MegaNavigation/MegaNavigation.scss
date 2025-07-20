@@ -344,7 +344,7 @@
   }
 
   // Ensure content is above the overlay
-  > * {
+  >* {
     position: relative;
     z-index: 2;
   }
@@ -1239,6 +1239,7 @@
 // ==================================================
 
 @media (prefers-reduced-motion: reduce) {
+
   .navigation,
   .navigation *,
   .navigation *::before,

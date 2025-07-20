@@ -25,12 +25,12 @@ const {
 
 const Tag = href ? "a" : "div";
 const cardClasses = [
-  "card",
-  `card--${variant}`,
-  `card--padding-${padding}`,
-  interactive ? "card--interactive" : "",
-  href ? "card--clickable" : "",
-  imageSrc ? `card--with-image card--image-${imagePosition}` : "",
+  "ast-card",
+  `ast-card--${variant}`,
+  `ast-card--padding-${padding}`,
+  interactive ? "ast-card--interactive" : "",
+  href ? "ast-card--clickable" : "",
+  imageSrc ? `ast-card--with-image ast-card--image-${imagePosition}` : "",
 ]
   .filter(Boolean)
   .join(" ");
@@ -43,11 +43,11 @@ const finalClasses = additionalClasses ? `${cardClasses} ${additionalClasses}` :
 <Tag class={finalClasses} href={href} {...restProps}>
   {
     imageSrc && (
-      <div class="card__image">
+      <div class="ast-card__image">
         <Image
           src={asset(imageSrc)}
           alt={imageAlt}
-          class="card__image-element"
+          class="ast-card__image-element"
           width={400}
           height={300}
           loading="lazy"
@@ -56,22 +56,22 @@ const finalClasses = additionalClasses ? `${cardClasses} ${additionalClasses}` :
     )
   }
 
-  <div class="card__body">
+  <div class="ast-card__body">
     {
       Astro.slots.has("header") && (
-        <div class="card__header">
+        <div class="ast-card__header">
           <slot name="header" />
         </div>
       )
     }
 
-    <div class="card__content">
+    <div class="ast-card__content">
       <slot />
     </div>
 
     {
       Astro.slots.has("footer") && (
-        <div class="card__footer">
+        <div class="ast-card__footer">
           <slot name="footer" />
         </div>
       )

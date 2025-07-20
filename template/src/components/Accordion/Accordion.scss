@@ -1,15 +1,15 @@
 /* Accordion Component Styles */
 
-.accordion {
+.ast-accordion {
   border-radius: 4px;
   overflow: hidden;
 }
 
-.accordion--default {
+.ast-accordion--default {
   border: 1px solid #e0e0e0;
 }
 
-.accordion--bordered .accordion__item {
+.ast-accordion--bordered .ast-accordion__item {
   border: 1px solid #e0e0e0;
   margin-bottom: 0.5rem;
   border-radius: 4px;
@@ -20,28 +20,28 @@
   }
 }
 
-.accordion--flush {
+.ast-accordion--flush {
   border: none;
 }
 
-.accordion__item {
+.ast-accordion__item {
   position: relative;
   // Base item styles - extend as needed
 }
 
-.accordion--default .accordion__item:not(:last-child) {
+.ast-accordion--default .ast-accordion__item:not(:last-child) {
   border-bottom: 1px solid #e0e0e0;
 }
 
-.accordion--flush .accordion__item:not(:last-child) {
+.ast-accordion--flush .ast-accordion__item:not(:last-child) {
   border-bottom: 1px solid #e0e0e0;
 }
 
-.accordion__header {
+.ast-accordion__header {
   margin: 0;
 }
 
-.accordion__trigger {
+.ast-accordion__trigger {
   width: 100%;
   padding: 1rem;
   background: transparent;
@@ -69,17 +69,17 @@
   &[aria-expanded="true"] {
     background-color: #f8f9fa;
 
-    .accordion__icon {
+    .ast-accordion__icon {
       transform: rotate(45deg);
     }
   }
 }
 
-.accordion__title {
+.ast-accordion__title {
   flex: 1;
 }
 
-.accordion__icon {
+.ast-accordion__icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,17 +89,18 @@
   color: #666;
 }
 
-.accordion__content {
+.ast-accordion__content {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
 
   &[data-expanded="true"] {
-    max-height: 1000px; /* Adjust based on your content needs */
+    max-height: 1000px;
+    /* Adjust based on your content needs */
   }
 }
 
-.accordion__body {
+.ast-accordion__body {
   padding: 0 1rem 1rem 1rem;
   color: #666;
   line-height: 1.6;
@@ -115,16 +116,17 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .accordion__trigger:focus {
+  .ast-accordion__trigger:focus {
     outline: 3px solid;
   }
 }
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .accordion__trigger,
-  .accordion__icon,
-  .accordion__content {
+
+  .ast-accordion__trigger,
+  .ast-accordion__icon,
+  .ast-accordion__content {
     transition: none;
   }
 }

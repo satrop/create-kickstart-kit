@@ -14,30 +14,14 @@ const navigationItems = getFormComponentNavigation("textarea");
   <Fragment slot="main">
     <main id="main" class="layout-main" aria-label="Main content">
       <div class="section-grid owl-32">
-        <DemoNavigation
-          title="Textarea Component"
-          items={navigationItems}
-          backLink={{
-            url: "./components.html",
-            text: "Back to Components",
-          }}
-        />
+        <DemoNavigation title="Textarea Component" items={navigationItems} />
         <div class="col-4 md:col-4 lg:col-9">
           <div class="component-demo">
-            <header class="demo-header">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h1>Textarea</h1>
-                  <p class="demo-subtitle">
-                    Multi-line text input with auto-resize capabilities and character counting.
-                  </p>
-                </div>
-              </div>
-            </header>
-
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
+                  <h2>Basic Usage</h2>
+                  <p>A simple textarea for multi-line input.</p>
                   <div class="demo-example">
                     <div class="demo-preview contain-floats">
                       <form class="demo-form">
@@ -50,17 +34,6 @@ const navigationItems = getFormComponentNavigation("textarea");
                           helpText="Provide a clear description of your project goals and requirements"
                         />
                       </form>
-                    </div>
-
-                    <div class="demo-code">
-                      <pre><code>&lt;Textarea 
-  label="Project Description"
-  name="description"
-  placeholder="Describe your project in detail..."
-  rows={'{'}4{'}'}
-  maxlength={'{'}500{'}'}
-  helpText="Provide a clear description of your project goals"
-/&gt;</code></pre>
                     </div>
                   </div>
                 </div>

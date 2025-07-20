@@ -12,11 +12,11 @@ export interface Props {
 
 const { name, value, checked = false, disabled = false, required = false, label, helpText, error } = Astro.props;
 
-const id = `checkbox-${name}-${value || "default"}`;
+const id = `ast-checkbox-${name}-${value || "default"}`;
 ---
 
-<div class="checkbox-field">
-  <div class="checkbox-field__wrapper">
+<div class="ast-checkbox-field">
+  <div class="ast-checkbox-field__wrapper">
     <input
       type="checkbox"
       id={id}
@@ -25,14 +25,14 @@ const id = `checkbox-${name}-${value || "default"}`;
       checked={checked}
       disabled={disabled}
       required={required}
-      class="checkbox-field__input"
+      class="ast-checkbox-field__input"
       aria-describedby={helpText || error ? `${id}-description` : undefined}
       aria-invalid={error ? "true" : "false"}
     />
 
-    <label for={id} class="checkbox-field__label">
-      <span class="checkbox-field__box" aria-hidden="true">
-        <svg class="checkbox-field__checkmark" viewBox="0 0 16 16" fill="none">
+    <label for={id} class="ast-checkbox-field__label">
+      <span class="ast-checkbox-field__box" aria-hidden="true">
+        <svg class="ast-checkbox-field__checkmark" viewBox="0 0 16 16" fill="none">
           <path
             d="M13.5 4.5L6 12L2.5 8.5"
             stroke="currentColor"
@@ -41,16 +41,16 @@ const id = `checkbox-${name}-${value || "default"}`;
             stroke-linejoin="round"></path>
         </svg>
       </span>
-      <span class="checkbox-field__text">
+      <span class="ast-checkbox-field__text">
         {label}
-        {required && <span class="checkbox-field__required">*</span>}
+        {required && <span class="ast-checkbox-field__required">*</span>}
       </span>
     </label>
   </div>
 
   {
     helpText && (
-      <div id={`${id}-description`} class="checkbox-field__help">
+      <div id={`${id}-description`} class="ast-checkbox-field__help">
         {helpText}
       </div>
     )
@@ -58,7 +58,7 @@ const id = `checkbox-${name}-${value || "default"}`;
 
   {
     error && (
-      <div id={`${id}-description`} class="checkbox-field__error" role="alert">
+      <div id={`${id}-description`} class="ast-checkbox-field__error" role="alert">
         {error}
       </div>
     )

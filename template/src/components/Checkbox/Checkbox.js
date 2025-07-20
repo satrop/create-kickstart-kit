@@ -6,11 +6,11 @@
 class CheckboxComponent {
   constructor(element) {
     this.element = element;
-    this.input = element.querySelector('.checkbox-field__input');
-    this.label = element.querySelector('.checkbox-field__label');
-    this.box = element.querySelector('.checkbox-field__box');
-    this.errorElement = element.querySelector('.checkbox-field__error');
-    this.helpElement = element.querySelector('.checkbox-field__help');
+    this.input = element.querySelector('.ast-checkbox-field__input');
+    this.label = element.querySelector('.ast-checkbox-field__label');
+    this.box = element.querySelector('.ast-checkbox-field__box');
+    this.errorElement = element.querySelector('.ast-checkbox-field__error');
+    this.helpElement = element.querySelector('.ast-checkbox-field__help');
     this.init();
   }
 
@@ -34,11 +34,11 @@ class CheckboxComponent {
 
     // Focus events for custom styling
     this.input.addEventListener('focus', () => {
-      this.element.classList.add('checkbox-field--focused');
+      this.element.classList.add('ast-checkbox-field--focused');
     });
 
     this.input.addEventListener('blur', () => {
-      this.element.classList.remove('checkbox-field--focused');
+      this.element.classList.remove('ast-checkbox-field--focused');
       this.validateInput();
     });
 
@@ -89,15 +89,15 @@ class CheckboxComponent {
     }
 
     // Handle group accessibility
-    const group = this.element.closest('.checkbox-group');
+    const group = this.element.closest('.ast-checkbox-group');
     if (group && !group.getAttribute('role')) {
       group.setAttribute('role', 'group');
       
       // Add group label if available
-      const groupLabel = group.querySelector('.checkbox-group__label');
+      const groupLabel = group.querySelector('.ast-checkbox-group__label');
       if (groupLabel && !group.getAttribute('aria-labelledby')) {
         if (!groupLabel.id) {
-          groupLabel.id = `checkbox-group-${Date.now()}`;
+          groupLabel.id = `ast-checkbox-group-${Date.now()}`;
         }
         group.setAttribute('aria-labelledby', groupLabel.id);
       }
@@ -165,10 +165,10 @@ class CheckboxComponent {
   }
 
   handleGroupInteraction() {
-    const group = this.element.closest('.checkbox-group');
+    const group = this.element.closest('.ast-checkbox-group');
     if (!group) return;
 
-    const checkboxes = group.querySelectorAll('.checkbox-field__input');
+    const checkboxes = group.querySelectorAll('.ast-checkbox-field__input');
     const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
     const totalCount = checkboxes.length;
 
@@ -255,21 +255,21 @@ class CheckboxComponent {
     this.input.setAttribute('data-indeterminate', indeterminate.toString());
     
     if (indeterminate) {
-      this.element.classList.add('checkbox-field--indeterminate');
+      this.element.classList.add('ast-checkbox-field--indeterminate');
     } else {
-      this.element.classList.remove('checkbox-field--indeterminate');
+      this.element.classList.remove('ast-checkbox-field--indeterminate');
     }
   }
 
   setLoading(loading) {
     if (loading) {
-      this.box.classList.add('checkbox-field__box--loading');
+      this.box.classList.add('ast-checkbox-field__box--loading');
       this.input.disabled = true;
-      this.element.classList.add('checkbox-field--loading');
+      this.element.classList.add('ast-checkbox-field--loading');
     } else {
-      this.box.classList.remove('checkbox-field__box--loading');
+      this.box.classList.remove('ast-checkbox-field__box--loading');
       this.input.disabled = this.input.hasAttribute('disabled');
-      this.element.classList.remove('checkbox-field--loading');
+      this.element.classList.remove('ast-checkbox-field--loading');
     }
   }
 
@@ -278,10 +278,10 @@ class CheckboxComponent {
       if (message) {
         this.errorElement.textContent = message;
         this.errorElement.style.display = 'block';
-        this.element.classList.add('checkbox-field--error');
+        this.element.classList.add('ast-checkbox-field--error');
       } else {
         this.errorElement.style.display = 'none';
-        this.element.classList.remove('checkbox-field--error');
+        this.element.classList.remove('ast-checkbox-field--error');
       }
     }
   }
@@ -289,9 +289,9 @@ class CheckboxComponent {
   setDisabled(disabled) {
     this.input.disabled = disabled;
     if (disabled) {
-      this.element.classList.add('checkbox-field--disabled');
+      this.element.classList.add('ast-checkbox-field--disabled');
     } else {
-      this.element.classList.remove('checkbox-field--disabled');
+      this.element.classList.remove('ast-checkbox-field--disabled');
     }
   }
 
@@ -319,7 +319,7 @@ class CheckboxGroupManager {
 
   init() {
     // Find all checkboxes in the group
-    const checkboxElements = this.group.querySelectorAll('.checkbox-field');
+    const checkboxElements = this.group.querySelectorAll('.ast-checkbox-field');
     this.checkboxes = Array.from(checkboxElements).map(element => {
       return element.checkboxComponent || new CheckboxComponent(element);
     });
@@ -341,7 +341,7 @@ class CheckboxGroupManager {
     // Update "select all" checkbox if present
     const selectAllCheckbox = this.group.querySelector('[data-select-all]');
     if (selectAllCheckbox) {
-      const selectAllComponent = selectAllCheckbox.closest('.checkbox-field').checkboxComponent;
+      const selectAllComponent = selectAllCheckbox.closest('.ast-checkbox-field').checkboxComponent;
       if (checkedCount === 0) {
         selectAllComponent.uncheck();
         selectAllComponent.setIndeterminate(false);
@@ -392,7 +392,7 @@ class CheckboxGroupManager {
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
     // Initialize individual checkboxes
-    const checkboxes = document.querySelectorAll('.checkbox-field');
+    const checkboxes = document.querySelectorAll('.ast-checkbox-field');
     checkboxes.forEach(checkbox => {
       if (!checkbox.checkboxComponent) {
         checkbox.checkboxComponent = new CheckboxComponent(checkbox);
@@ -400,7 +400,7 @@ if (typeof document !== 'undefined') {
     });
 
     // Initialize checkbox groups
-    const groups = document.querySelectorAll('.checkbox-group');
+    const groups = document.querySelectorAll('.ast-checkbox-group');
     groups.forEach(group => {
       if (!group.checkboxGroupManager) {
         group.checkboxGroupManager = new CheckboxGroupManager(group);
@@ -409,11 +409,11 @@ if (typeof document !== 'undefined') {
 
     // Handle "select all" functionality
     document.addEventListener('checkbox:change', (event) => {
-      const checkbox = event.target.closest('.checkbox-field');
-      const input = checkbox.querySelector('.checkbox-field__input');
+      const checkbox = event.target.closest('.ast-checkbox-field');
+      const input = checkbox.querySelector('.ast-checkbox-field__input');
       
       if (input.hasAttribute('data-select-all')) {
-        const group = checkbox.closest('.checkbox-group');
+        const group = checkbox.closest('.ast-checkbox-group');
         if (group && group.checkboxGroupManager) {
           if (input.checked) {
             group.checkboxGroupManager.checkAll();
@@ -429,7 +429,7 @@ if (typeof document !== 'undefined') {
 // Auto-init function for manual initialization
 const initCheckbox = () => {
   // Initialize individual checkboxes
-  const checkboxes = document.querySelectorAll('.checkbox-field');
+  const checkboxes = document.querySelectorAll('.ast-checkbox-field');
   checkboxes.forEach(checkbox => {
     if (!checkbox.checkboxComponent) {
       checkbox.checkboxComponent = new CheckboxComponent(checkbox);
@@ -437,7 +437,7 @@ const initCheckbox = () => {
   });
 
   // Initialize checkbox groups
-  const groups = document.querySelectorAll('.checkbox-group');
+  const groups = document.querySelectorAll('.ast-checkbox-group');
   groups.forEach(group => {
     if (!group.checkboxGroupManager) {
       group.checkboxGroupManager = new CheckboxGroupManager(group);

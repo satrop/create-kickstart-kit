@@ -23,17 +23,6 @@ const navigationItems = getFormComponentNavigation("link-list");
         <DemoNavigation title="Form Components" items={navigationItems} />
         <div class="col-4 md:col-4 lg:col-9">
           <div class="component-demo">
-            <header class="demo-header">
-              <div class="section-grid">
-                <div class="col-full">
-                  <h1>Link List Component</h1>
-                  <p class="demo-subtitle">
-                    A component for displaying a list of links with optional grouping and styling.
-                  </p>
-                </div>
-              </div>
-            </header>
-
             <section class="demo-section">
               <div class="section-grid">
                 <div class="col-full">
@@ -46,16 +35,46 @@ const navigationItems = getFormComponentNavigation("link-list");
                       <LinkListComponent links={companyLinks} direction="horizontal" class="new-class-name" />
                       <LinkListComponent links={companyLinks} />
                     </div>
-                    <div class="demo-code">
-                      <pre><code>const companyLinks = [
-  &#123; href: "/about", label: "About" &#125;,
-  &#123; href: "/contact", label: "Contact" &#125;,
-  &#123; href: "/privacy", label: "Privacy Policy" &#125;,
-];
+                  </div>
+                </div>
+              </div>
+            </section>
 
-&lt;LinkListComponent links=&#123;companyLinks&#125; navLabel="Company links" /&gt;
-&lt;LinkListComponent links=&#123;companyLinks&#125; direction="horizontal" class="new-class-name" /&gt;
-&lt;LinkListComponent links=&#123;companyLinks&#125; /&gt;</code></pre>
+            <section class="demo-section">
+              <div class="section-grid">
+                <div class="col-full">
+                  <h2>Accessibility Features</h2>
+                  <p>
+                    The Link List component ensures accessible navigation with proper semantics and keyboard support.
+                  </p>
+
+                  <div class="accessibility-grid">
+                    <div class="accessibility-item">
+                      <h4>Semantic Navigation</h4>
+                      <ul>
+                        <li>Uses semantic <code>&lt;nav&gt;</code> element</li>
+                        <li>Proper <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code> structure</li>
+                        <li>Descriptive <code>aria-label</code> for context</li>
+                        <li>Logical tab order maintained</li>
+                      </ul>
+                    </div>
+                    <div class="accessibility-item">
+                      <h4>Keyboard Navigation</h4>
+                      <ul>
+                        <li><kbd>Tab</kbd> - Navigate through links</li>
+                        <li><kbd>Enter</kbd> - Activate focused link</li>
+                        <li><kbd>Shift + Tab</kbd> - Navigate backwards</li>
+                        <li>Clear focus indicators on all links</li>
+                      </ul>
+                    </div>
+                    <div class="accessibility-item">
+                      <h4>Screen Reader Support</h4>
+                      <ul>
+                        <li>Links announced with their purpose</li>
+                        <li>List structure provides context</li>
+                        <li>Navigation landmark for quick access</li>
+                        <li>Clear link text without ambiguity</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
