@@ -1,0 +1,106 @@
+---
+import { asset } from "@/utils/assets";
+import { Image } from "astro:assets";
+
+export interface Props {
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
+  subtitle?: string;
+  description?: string;
+  contentLayout?: "50-50" | "70-30" | "center";
+  contentPosition?: "left" | "right" | "center";
+  verticalAlignment?: "top" | "center" | "bottom";
+  minHeight?: "very-short" | "short" | "small" | "medium" | "large" | "viewport";
+  overlay?: "none" | "light" | "dark" | "gradient";
+  textColor?: "light" | "dark" | "auto";
+  priority?: boolean;
+  lazy?: boolean;
+}
+
+const {
+  imageSrc,
+  imageAlt,
+  title,
+  subtitle,
+  description,
+  contentLayout = "center",
+  contentPosition = "center",
+  verticalAlignment = "center",
+  minHeight = "large",
+  overlay = "dark",
+  textColor = "light",
+  priority = true,
+  lazy = false,
+} = Astro.props;
+
+// Generate classes based on props
+const heroClasses = [
+  "ast-hero",
+  `ast-hero--${contentLayout}`,
+  `ast-hero--${verticalAlignment}`,
+  `ast-hero--${minHeight}`,
+  `ast-hero--overlay-${overlay}`,
+  `ast-hero--text-${textColor}`,
+].join(" ");
+
+const contentClasses = ["ast-hero__content", `ast-hero__content--${contentPosition}`].join(" ");
+
+// Define grid column spans based on layout
+let contentColumns = "";
+let contentOffset = "";
+
+if (contentLayout === "50-50") {
+  contentColumns = contentPosition === "left" ? "col-4 md:col-4 lg:col-6" : "col-4 md:col-4 lg:col-6";
+  contentOffset = contentPosition === "right" ? "md:col-start-5 lg:col-start-7" : "";
+} else if (contentLayout === "70-30") {
+  if (contentPosition === "left") {
+    contentColumns = "col-4 md:col-6 lg:col-8";
+  } else {
+    contentColumns = "col-4 md:col-3 lg:col-4";
+    contentOffset = "md:col-start-6 lg:col-start-9";
+  }
+} else {
+  // center layout
+  contentColumns = "col-4 md:col-6 lg:col-8 md:col-start-2 lg:col-start-3";
+}
+
+const finalContentClasses = `${contentClasses} ${contentColumns} ${contentOffset}`.trim();
+---
+
+<section class={heroClasses}>
+  <div class="ast-hero__background layout-full">
+    <Image
+      src={asset(imageSrc)}
+      alt={imageAlt}
+      class="ast-hero__image"
+      loading={priority ? "eager" : lazy ? "lazy" : "eager"}
+      width={1920}
+      height={1080}
+      data-enhanced=""
+    />
+    {overlay !== "none" && <div class="ast-hero__overlay" />}
+  </div>
+
+  <div class="ast-hero__container layout-full">
+    <div class="section-grid ast-hero__grid">
+      <div class={finalContentClasses}>
+        <div class="ast-hero__content-wrapper">
+          {subtitle && <p class="ast-hero__subtitle">{subtitle}</p>}
+          <h1 class="ast-hero__title">{title}</h1>
+          {description && <p class="ast-hero__description">{description}</p>}
+          <div class="ast-hero__body">
+            <slot />
+          </div>
+          {
+            Astro.slots.has("actions") && (
+              <div class="ast-hero__actions">
+                <slot name="actions" />
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

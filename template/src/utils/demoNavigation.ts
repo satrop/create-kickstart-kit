@@ -19,6 +19,7 @@ export const allNavigationItems: NavItem[] = [
   
   // Content Components
   { name: "Content Components", url: "", isHeader: true },
+  { name: "Hero", url: "./hero.html" },
   { name: "Card", url: "./card.html" },
   { name: "Accordion", url: "./accordion.html" },
   { name: "50/50 Layout", url: "./fifty-fifty.html" },

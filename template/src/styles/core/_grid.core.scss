@@ -52,12 +52,7 @@
   justify-content: center;
 
   grid-template-columns:
-    [outer-start] minmax(0, var(--outer-margins))
-    [wide-start] minmax(0, var(--main-margins))
-    [main-start] minmax(0, var(--container-main-width))
-    [main-end] minmax(0, var(--main-margins))
-    [wide-end] minmax(0, var(--outer-margins))
-    [outer-end];
+    [outer-start] minmax(0, var(--outer-margins)) [wide-start] minmax(0, var(--main-margins)) [main-start] minmax(0, var(--container-main-width)) [main-end] minmax(0, var(--main-margins)) [wide-end] minmax(0, var(--outer-margins)) [outer-end];
 }
 
 // =============================================

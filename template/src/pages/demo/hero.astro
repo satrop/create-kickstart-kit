@@ -1,0 +1,435 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import HeroComponent from "../../components/Hero/Hero.astro";
+import Button from "../../components/Button/Button.astro";
+---
+
+<Layout title="Hero Component Demo">
+  <main id="main-content" class="demo-container">
+    <div class="layout-main">
+      <header class="demo-header">
+        <h1>Hero Component Demo</h1>
+        <p>Examples of the Hero component with different layouts, overlays, and content arrangements.</p>
+      </header>
+    </div>
+
+    <!-- Center Layout Hero -->
+    <HeroComponent
+      imageSrc="/images/image1.jpg"
+      imageAlt="Beautiful landscape for center layout demo"
+      title="Welcome to Our Platform"
+      subtitle="Innovation Starts Here"
+      description="Discover amazing solutions that transform the way you work and live. Our platform brings together cutting-edge technology with intuitive design."
+      contentLayout="center"
+      minHeight="large"
+      overlay="gradient"
+      textColor="light"
+      data-animate="true">
+      <p>
+        Experience the future of digital innovation with our comprehensive suite of tools designed for modern
+        businesses.
+      </p>
+
+      <Fragment slot="actions">
+        <Button variant="primary" size="large">Get Started</Button>
+        <Button variant="outline" size="large">Watch Demo</Button>
+      </Fragment>
+    </HeroComponent>
+
+    <div class="layout-main">
+      <section class="demo-section">
+        <h2>Layout Variations</h2>
+        <p>The Hero component supports multiple layout configurations for different content needs.</p>
+      </section>
+    </div>
+
+    <!-- 50/50 Layout - Left Content -->
+    <HeroComponent
+      imageSrc="/images/image2.jpg"
+      imageAlt="Technology background for 50/50 left layout"
+      title="50/50 Split Layout"
+      subtitle="Left Aligned Content"
+      description="This layout splits the content evenly, with text positioned on the left side of the hero area."
+      contentLayout="50-50"
+      contentPosition="left"
+      verticalAlignment="center"
+      minHeight="medium"
+      overlay="dark"
+      textColor="light">
+      <ul>
+        <li>Perfect for feature highlights</li>
+        <li>Balanced visual composition</li>
+        <li>Great for storytelling</li>
+      </ul>
+
+      <Fragment slot="actions">
+        <Button variant="primary">Learn More</Button>
+      </Fragment>
+    </HeroComponent>
+
+    <!-- 50/50 Layout - Right Content -->
+    <HeroComponent
+      imageSrc="/images/image3.jpg"
+      imageAlt="Business background for 50/50 right layout"
+      title="50/50 Right Aligned"
+      subtitle="Alternative Positioning"
+      description="The same layout but with content positioned on the right side for visual variety."
+      contentLayout="50-50"
+      contentPosition="right"
+      verticalAlignment="center"
+      minHeight="medium"
+      overlay="light"
+      textColor="dark">
+      <p>This variation provides a different visual flow and can be used to create engaging page rhythms.</p>
+
+      <Fragment slot="actions">
+        <Button variant="secondary">Explore Features</Button>
+      </Fragment>
+    </HeroComponent>
+
+    <!-- 70/30 Layout - Left Content -->
+    <HeroComponent
+      imageSrc="/images/image4.jpg"
+      imageAlt="Creative background for 70/30 left layout"
+      title="70/30 Asymmetric Layout"
+      subtitle="More Content Space"
+      description="This layout provides more space for content while maintaining visual balance with the background image."
+      contentLayout="70-30"
+      contentPosition="left"
+      verticalAlignment="center"
+      minHeight="medium"
+      overlay="gradient"
+      textColor="light">
+      <p>
+        Perfect for more detailed explanations, feature lists, or when you need extra content space while still
+        maintaining the visual impact of the background image.
+      </p>
+
+      <ul>
+        <li>Extended content capability</li>
+        <li>Maintains visual impact</li>
+        <li>Great for detailed features</li>
+        <li>Asymmetric design appeal</li>
+      </ul>
+
+      <Fragment slot="actions">
+        <Button variant="primary">Read More</Button>
+        <Button variant="outline">Contact Us</Button>
+      </Fragment>
+    </HeroComponent>
+
+    <!-- 70/30 Layout - Right Content -->
+    <HeroComponent
+      imageSrc="/images/image5.jpg"
+      imageAlt="Modern background for 70/30 right layout"
+      title="Compact Right Side"
+      subtitle="Focused Message"
+      description="Sometimes less is more. This layout focuses attention with a more compact content area."
+      contentLayout="70-30"
+      contentPosition="right"
+      verticalAlignment="top"
+      minHeight="medium"
+      overlay="dark"
+      textColor="light">
+      <Fragment slot="actions">
+        <Button variant="primary">Take Action</Button>
+      </Fragment>
+    </HeroComponent>
+
+    <div class="layout-main">
+      <section class="demo-section">
+        <h2>Height and Alignment Variations</h2>
+        <p>
+          Control the height and vertical positioning of your hero content. Perfect for different page types and design
+          requirements.
+        </p>
+      </section>
+    </div>
+
+    <!-- Very Short Height - Perfect for Inner Pages -->
+    <HeroComponent
+      imageSrc="/images/image6.jpg"
+      imageAlt="Very short hero for inner pages"
+      title="Very Short Hero"
+      subtitle="Perfect for Inner Pages"
+      description="Fixed 200-300px height, ideal for page headers and navigation areas."
+      contentLayout="center"
+      contentPosition="center"
+      verticalAlignment="center"
+      minHeight="very-short"
+      overlay="dark"
+      textColor="light">
+      <Fragment slot="actions">
+        <Button variant="primary" size="small">Learn More</Button>
+      </Fragment>
+    </HeroComponent>
+
+    <!-- Short Height - Compact Design -->
+    <HeroComponent
+      imageSrc="/images/image5.jpg"
+      imageAlt="Short hero for content pages"
+      title="Short & Sweet"
+      subtitle="Compact Design"
+      description="Fixed 300-400px height, great for content pages that need visual impact without overwhelming the content below."
+      contentLayout="50-50"
+      contentPosition="left"
+      verticalAlignment="center"
+      minHeight="short"
+      overlay="gradient"
+      textColor="light">
+      <ul>
+        <li>Perfect for blog headers</li>
+        <li>Product category pages</li>
+        <li>About us sections</li>
+      </ul>
+
+      <Fragment slot="actions">
+        <Button variant="outline">Explore</Button>
+      </Fragment>
+    </HeroComponent>
+
+    <!-- Small Height with Top Alignment -->
+    <HeroComponent
+      imageSrc="/images/image6.jpg"
+      imageAlt="Compact hero background"
+      title="Compact Hero"
+      subtitle="Top Aligned"
+      description="A smaller hero with content aligned to the top."
+      contentLayout="center"
+      contentPosition="center"
+      verticalAlignment="top"
+      minHeight="small"
+      overlay="gradient"
+      textColor="light">
+      <Fragment slot="actions">
+        <Button variant="outline" size="small">Small Action</Button>
+      </Fragment>
+    </HeroComponent>
+
+    <!-- Viewport Height with Bottom Alignment -->
+    <HeroComponent
+      imageSrc="/images/image7.jpg"
+      imageAlt="Full viewport hero background"
+      title="Full Viewport Hero"
+      subtitle="Bottom Aligned Content"
+      description="A full viewport height hero with content positioned at the bottom."
+      contentLayout="center"
+      contentPosition="center"
+      verticalAlignment="bottom"
+      minHeight="viewport"
+      overlay="dark"
+      textColor="light">
+      <p>Perfect for dramatic introductions and full-screen impact.</p>
+
+      <Fragment slot="actions">
+        <Button variant="primary" size="large">Explore</Button>
+      </Fragment>
+    </HeroComponent>
+
+    <div class="layout-main">
+      <section class="demo-section">
+        <h2>Overlay Options</h2>
+        <p>Different overlay styles to ensure content readability over any background image.</p>
+      </section>
+    </div>
+
+    <!-- No Overlay -->
+    <HeroComponent
+      imageSrc="/images/image1.jpg"
+      imageAlt="No overlay example"
+      title="No Overlay"
+      subtitle="Pure Image"
+      description="Sometimes the image speaks for itself. This example uses no overlay."
+      contentLayout="center"
+      minHeight="medium"
+      overlay="none"
+      textColor="dark">
+      <Fragment slot="actions">
+        <Button variant="primary">Pure Style</Button>
+      </Fragment>
+    </HeroComponent>
+
+    <div class="layout-main">
+      <section class="demo-section">
+        <h2>Height Recommendations</h2>
+        <p>Choose the right height variant based on your page type and design goals:</p>
+        <ul>
+          <li><strong>very-short (200-300px):</strong> Page headers, navigation areas, inner page titles</li>
+          <li><strong>short (300-400px):</strong> Blog headers, product category pages, about sections</li>
+          <li><strong>small (40vh):</strong> Content-focused pages where hero supports main content</li>
+          <li><strong>medium (60vh):</strong> Balanced approach for most marketing pages</li>
+          <li><strong>large (80vh):</strong> Strong visual impact for landing pages</li>
+          <li><strong>viewport (100vh):</strong> Full-screen dramatic introductions</li>
+        </ul>
+      </section>
+
+      <section class="demo-section">
+        <h2>Accessibility Features</h2>
+        <ul>
+          <li><strong>Keyboard Navigation:</strong> Use Tab, Arrow keys, Home, and End to navigate action buttons</li>
+          <li><strong>Screen Reader Support:</strong> Proper ARIA labels and semantic HTML structure</li>
+          <li><strong>Skip Links:</strong> Keyboard users can skip to main content</li>
+          <li><strong>Motion Respect:</strong> Animations respect user motion preferences</li>
+          <li><strong>High Contrast:</strong> Enhanced overlays in high contrast mode</li>
+          <li><strong>Focus Management:</strong> Visible focus indicators for all interactive elements</li>
+        </ul>
+      </section>
+
+      <section class="demo-section">
+        <h2>CMS Integration</h2>
+        <p>The Hero component is designed for seamless CMS integration:</p>
+        <ul>
+          <li><strong>Image Management:</strong> Uses actual img elements, not CSS backgrounds</li>
+          <li><strong>Dynamic Content:</strong> All text fields can be bound to CMS data</li>
+          <li><strong>Flexible Actions:</strong> Support for multiple call-to-action buttons</li>
+          <li><strong>SEO Friendly:</strong> Proper heading structure and alt text</li>
+        </ul>
+      </section>
+
+      <section class="demo-section">
+        <h2>Usage Examples</h2>
+        <details>
+          <summary>Basic Center Layout</summary>
+          <pre><code>---
+import Hero from '@/components/Hero/Hero.astro';
+import Button from '@/components/Button/Button.astro';
+---
+
+&lt;Hero
+  imageSrc="/images/hero.jpg"
+  imageAlt="Hero background"
+  title="Welcome"
+  subtitle="Start Here"
+  description="Your journey begins now."
+  contentLayout="center"
+  overlay="dark"
+&gt;
+  &lt;Fragment slot="actions"&gt;
+    &lt;Button variant="primary"&gt;Get Started&lt;/Button&gt;
+  &lt;/Fragment&gt;
+&lt;/Hero&gt;</code></pre>
+        </details>
+
+        <details>
+          <summary>Very Short Hero (Inner Pages)</summary>
+          <pre><code>&lt;Hero
+  imageSrc="/images/hero.jpg"
+  imageAlt="Page header background"
+  title="Page Title"
+  subtitle="Breadcrumb or Category"
+  minHeight="very-short"
+  contentLayout="center"
+  overlay="dark"
+&gt;
+  &lt;Fragment slot="actions"&gt;
+    &lt;Button variant="primary"&gt;Get Started&lt;/Button&gt;
+  &lt;/Fragment&gt;
+&lt;/Hero&gt;</code></pre>
+        </details>
+
+        <details>
+          <summary>Short Hero (Content Pages)</summary>
+          <pre><code>&lt;Hero
+  imageSrc="/images/hero.jpg"
+  imageAlt="Content page background"
+  title="Article Title"
+  description="Brief introduction to the content below."
+  minHeight="short"
+  contentLayout="70-30"
+  contentPosition="left"
+  overlay="gradient"
+&gt;
+  &lt;p&gt;Perfect for blog posts and article headers.&lt;/p&gt;
+&lt;/Hero&gt;</code></pre>
+        </details>
+
+        <details>
+          <summary>50/50 Split Layout</summary>
+          <pre><code>&lt;Hero
+  imageSrc="/images/hero.jpg"
+  imageAlt="Hero background"
+  title="Split Content"
+  contentLayout="50-50"
+  contentPosition="left"
+  overlay="gradient"
+&gt;
+  &lt;p&gt;Content on the left side.&lt;/p&gt;
+&lt;/Hero&gt;</code></pre>
+        </details>
+
+        <details>
+          <summary>Full Viewport with Animation</summary>
+          <pre><code>&lt;Hero
+  data-animate="true"
+  imageSrc="/images/hero.jpg"
+  imageAlt="Hero background"
+  title="Animated Hero"
+  minHeight="viewport"
+  verticalAlignment="center"
+&gt;
+  &lt;p&gt;This will animate in on scroll.&lt;/p&gt;
+&lt;/Hero&gt;</code></pre>
+        </details>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .demo-container {
+    min-height: 100vh;
+  }
+
+  .demo-header {
+    text-align: center;
+    padding: 4rem 0 2rem;
+  }
+
+  .demo-section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .demo-section:last-child {
+    border-bottom: none;
+  }
+
+  .demo-section h2 {
+    margin-bottom: 1rem;
+    color: var(--gray-900);
+  }
+
+  .demo-section ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .demo-section li {
+    margin-bottom: 0.5rem;
+  }
+
+  details {
+    margin: 1rem 0;
+    border: 1px solid var(--gray-200);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  pre {
+    background: var(--gray-50);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    font-size: 0.875rem;
+  }
+
+  code {
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+  }
+</style>
