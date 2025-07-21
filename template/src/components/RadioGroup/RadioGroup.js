@@ -1,6 +1,6 @@
 /**
  * RadioGroup JavaScript functionality
- * Handles enhanced interactions and accessibility features
+ * Handles keyboard navigation and state management
  */
 
 class RadioGroupComponent {
@@ -13,11 +13,10 @@ class RadioGroupComponent {
   init() {
     this.setupKeyboardNavigation();
     this.setupChangeHandlers();
-    this.setupAccessibility();
+    this.updateTabIndex();
   }
 
   setupKeyboardNavigation() {
-    // Enhanced keyboard navigation for radio groups
     this.radioInputs.forEach((radio, index) => {
       radio.addEventListener('keydown', (e) => {
         this.handleKeydown(e, index);
@@ -55,6 +54,7 @@ class RadioGroupComponent {
     if (targetIndex !== -1) {
       this.radioInputs[targetIndex].focus();
       this.radioInputs[targetIndex].checked = true;
+      this.updateTabIndex();
       this.dispatchChangeEvent(this.radioInputs[targetIndex]);
     }
   }
@@ -104,41 +104,23 @@ class RadioGroupComponent {
   }
 
   handleChange(event) {
-    const { target } = event;
+    this.updateTabIndex();
     
-    // Clear any previous error states when user makes a selection
-    const errorElement = this.element.querySelector('.radio-group__error');
-    if (errorElement && target.hasAttribute('aria-invalid')) {
-      target.setAttribute('aria-invalid', 'false');
-    }
-
-    // Emit custom event for external handlers
+    // Emit custom event
     this.element.dispatchEvent(new CustomEvent('radiogroup:change', {
       detail: {
-        value: target.value,
-        name: target.name,
-        element: target
+        value: event.target.value,
+        name: event.target.name,
+        element: event.target
       },
       bubbles: true
     }));
   }
 
-  setupAccessibility() {
-    // Ensure proper tabindex management
-    this.updateTabIndex();
-    
-    // Listen for focus changes to update tabindex
-    this.radioInputs.forEach(radio => {
-      radio.addEventListener('focus', () => {
-        this.updateTabIndex(radio);
-      });
-    });
-  }
-
-  updateTabIndex(focusedRadio = null) {
+  updateTabIndex() {
     // Only the checked radio (or first if none checked) should be tabbable
     const checkedRadio = Array.from(this.radioInputs).find(radio => radio.checked);
-    const tabbableRadio = focusedRadio || checkedRadio || this.radioInputs[0];
+    const tabbableRadio = checkedRadio || this.radioInputs[0];
 
     this.radioInputs.forEach(radio => {
       radio.tabIndex = radio === tabbableRadio ? 0 : -1;
@@ -146,17 +128,16 @@ class RadioGroupComponent {
   }
 
   dispatchChangeEvent(radio) {
-    // Programmatically trigger change event
     const changeEvent = new Event('change', { bubbles: true });
     radio.dispatchEvent(changeEvent);
   }
 
-  // Public methods for external control
+  // Public API methods
   setValue(value) {
     const targetRadio = Array.from(this.radioInputs).find(radio => radio.value === value);
     if (targetRadio && !targetRadio.disabled) {
       targetRadio.checked = true;
-      this.updateTabIndex(targetRadio);
+      this.updateTabIndex();
       this.dispatchChangeEvent(targetRadio);
     }
   }
@@ -164,12 +145,6 @@ class RadioGroupComponent {
   getValue() {
     const checkedRadio = Array.from(this.radioInputs).find(radio => radio.checked);
     return checkedRadio ? checkedRadio.value : null;
-  }
-
-  setError(hasError = true) {
-    this.radioInputs.forEach(radio => {
-      radio.setAttribute('aria-invalid', hasError ? 'true' : 'false');
-    });
   }
 }
 

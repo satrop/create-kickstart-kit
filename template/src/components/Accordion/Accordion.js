@@ -1,114 +1,21 @@
 /**
  * Accordion Component JavaScript
- * Handles accessibility, keyboard navigation, and expand/collapse functionality
+ * Handles expand/collapse functionality with keyboard navigation
  */
 
-class AccordionManager {
-  constructor() {
-    this.init();
-  }
-
-  init() {
-    if (typeof document !== 'undefined') {
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-          this.setupAccordions();
-        });
-      } else {
-        this.setupAccordions();
-      }
-
-      // Handle dynamic content
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          if (mutation.type === 'childList') {
-            mutation.addedNodes.forEach((node) => {
-            if (node.nodeType === Node.ELEMENT_NODE) {
-              if (node.matches('.ast-accordion')) {
-                this.setupAccordion(node);
-              }
-              // Check for accordions in added subtree
-              const accordions = node.querySelectorAll('.ast-accordion');
-              accordions.forEach(accordion => this.setupAccordion(accordion));
-            }
-          });
-        }
-      });
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-    }
-  }
-
-  setupAccordions() {
-    const accordions = document.querySelectorAll('.ast-accordion');
-    accordions.forEach(accordion => this.setupAccordion(accordion));
-  }
-
-  setupAccordion(accordion) {
-    new AccordionInstance(accordion);
-  }
-
-  // Public API methods
-  expandItem(accordionSelector, itemId) {
-    const accordion = document.querySelector(accordionSelector);
-    if (accordion) {
-      const instance = accordion._accordionInstance;
-      if (instance) {
-        instance.expandItem(itemId);
-      }
-    }
-  }
-
-  collapseItem(accordionSelector, itemId) {
-    const accordion = document.querySelector(accordionSelector);
-    if (accordion) {
-      const instance = accordion._accordionInstance;
-      if (instance) {
-        instance.collapseItem(itemId);
-      }
-    }
-  }
-
-  collapseAll(accordionSelector) {
-    const accordion = document.querySelector(accordionSelector);
-    if (accordion) {
-      const instance = accordion._accordionInstance;
-      if (instance) {
-        instance.collapseAll();
-      }
-    }
-  }
-}
-
-class AccordionInstance {
+class AccordionComponent {
   constructor(accordion) {
     this.accordion = accordion;
     this.allowMultiple = accordion.dataset.allowMultiple === "true";
     this.triggers = accordion.querySelectorAll("[data-accordion-trigger]");
     this.contents = accordion.querySelectorAll("[data-accordion-content]");
 
-    // Validate that we have matching triggers and contents
-    if (this.triggers.length !== this.contents.length) {
-      console.warn(`Accordion: Mismatch between triggers (${this.triggers.length}) and contents (${this.contents.length})`);
-    }
-
-    if (this.triggers.length === 0) {
-      console.warn('Accordion: No triggers found with [data-accordion-trigger] attribute');
+    if (this.triggers.length === 0 || this.contents.length === 0) {
       return;
     }
 
-    if (this.contents.length === 0) {
-      console.warn('Accordion: No contents found with [data-accordion-content] attribute');
-      return;
-    }
-
-    // Store instance reference for public API
-    this.accordion._accordionInstance = this;
-
+    // Store instance reference
+    this.accordion.accordionComponent = this;
     this.init();
   }
 
@@ -117,31 +24,13 @@ class AccordionInstance {
       trigger.addEventListener("click", () => this.handleClick(index));
       trigger.addEventListener("keydown", (e) => this.handleKeydown(e, index));
     });
-
-    // Trigger custom event
-    this.accordion.dispatchEvent(new CustomEvent('accordion:initialized', {
-      detail: { 
-        allowMultiple: this.allowMultiple,
-        itemCount: this.triggers.length
-      },
-      bubbles: true
-    }));
   }
 
   handleClick(index) {
-    // Safety check for valid index
-    if (index < 0 || index >= this.triggers.length) {
-      console.warn(`Accordion: Invalid index ${index}. Valid range is 0-${this.triggers.length - 1}`);
-      return;
-    }
-
     const trigger = this.triggers[index];
     const content = this.contents[index];
     
-    if (!trigger || !content) {
-      console.warn(`Accordion: Cannot handle click for index ${index}. Element not found.`);
-      return;
-    }
+    if (!trigger || !content) return;
 
     const isExpanded = trigger.getAttribute("aria-expanded") === "true";
 
@@ -149,15 +38,15 @@ class AccordionInstance {
       // Close all other items
       this.triggers.forEach((otherTrigger, otherIndex) => {
         if (otherIndex !== index) {
-          this.collapseItemByIndex(otherIndex);
+          this.collapseItem(otherIndex);
         }
       });
     }
 
     if (isExpanded) {
-      this.collapseItemByIndex(index);
+      this.collapseItem(index);
     } else {
-      this.expandItemByIndex(index);
+      this.expandItem(index);
     }
   }
 
@@ -189,49 +78,39 @@ class AccordionInstance {
     }
   }
 
-  expandItemByIndex(index) {
+  expandItem(index) {
     const trigger = this.triggers[index];
     const content = this.contents[index];
     
-    // Safety check to prevent errors with undefined elements
-    if (!trigger || !content) {
-      console.warn(`Accordion: Cannot expand item at index ${index}. Trigger or content element not found.`);
-      return;
-    }
+    if (!trigger || !content) return;
     
     trigger.setAttribute("aria-expanded", "true");
     content.setAttribute("data-expanded", "true");
 
-    // Set max-height to actual height for smooth animation
+    // Set max-height for smooth animation
     const scrollHeight = content.scrollHeight;
     content.style.maxHeight = `${scrollHeight}px`;
 
-    // Trigger custom event
-    const itemId = content.id.replace('ast-accordion-content-', '');
+    // Custom event
     this.accordion.dispatchEvent(new CustomEvent('accordion:expand', {
-      detail: { itemId, index },
+      detail: { index },
       bubbles: true
     }));
   }
 
-  collapseItemByIndex(index) {
+  collapseItem(index) {
     const trigger = this.triggers[index];
     const content = this.contents[index];
     
-    // Safety check to prevent errors with undefined elements
-    if (!trigger || !content) {
-      console.warn(`Accordion: Cannot collapse item at index ${index}. Trigger or content element not found.`);
-      return;
-    }
+    if (!trigger || !content) return;
     
     trigger.setAttribute("aria-expanded", "false");
     content.setAttribute("data-expanded", "false");
     content.style.maxHeight = "0";
 
-    // Trigger custom event
-    const itemId = content.id.replace('ast-accordion-content-', '');
+    // Custom event
     this.accordion.dispatchEvent(new CustomEvent('accordion:collapse', {
-      detail: { itemId, index },
+      detail: { index },
       bubbles: true
     }));
   }
@@ -246,68 +125,38 @@ class AccordionInstance {
     this.triggers[previousIndex].focus();
   }
 
-  // Public API methods for external control
-  expandItem(itemId) {
-    const content = this.accordion.querySelector(`#ast-accordion-content-${itemId}`);
-    if (content) {
-      const index = Array.from(this.contents).indexOf(content);
-      if (index !== -1) {
-        this.expandItemByIndex(index);
-      }
-    }
-  }
-
-  collapseItem(itemId) {
-    const content = this.accordion.querySelector(`#ast-accordion-content-${itemId}`);
-    if (content) {
-      const index = Array.from(this.contents).indexOf(content);
-      if (index !== -1) {
-        this.collapseItemByIndex(index);
-      }
-    }
-  }
-
+  // Public API methods
   collapseAll() {
     this.triggers.forEach((trigger, index) => {
-      this.collapseItemByIndex(index);
+      this.collapseItem(index);
     });
   }
 
   expandAll() {
     if (this.allowMultiple) {
       this.triggers.forEach((trigger, index) => {
-        this.expandItemByIndex(index);
+        this.expandItem(index);
       });
     }
   }
-
-  isExpanded(itemId) {
-    const content = this.accordion.querySelector(`#ast-accordion-content-${itemId}`);
-    return content && content.getAttribute('data-expanded') === 'true';
-  }
-}
-
-// Auto-initialize accordions
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    const accordions = document.querySelectorAll('.ast-accordion');
-    accordions.forEach(accordion => {
-      if (!accordion._accordionInstance) {
-        new AccordionInstance(accordion);
-      }
-    });
-  });
 }
 
 // Auto-init function for manual initialization
 const initAccordion = () => {
   const accordions = document.querySelectorAll('.ast-accordion');
   accordions.forEach(accordion => {
-    if (!accordion._accordionInstance) {
-      new AccordionInstance(accordion);
+    if (!accordion.accordionComponent) {
+      new AccordionComponent(accordion);
     }
   });
 };
 
-// Export both the classes and the init function
-export { AccordionManager, AccordionInstance, initAccordion };
+// Auto-initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAccordion);
+} else {
+  initAccordion();
+}
+
+// Export both the class and the init function
+export { AccordionComponent, initAccordion };

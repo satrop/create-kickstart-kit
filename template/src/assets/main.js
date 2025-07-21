@@ -13,7 +13,6 @@ import { initAlert } from '../components/Alert/Alert.js';
 import { initCard } from '../components/Card/Card.js';
 import { initCheckbox } from '../components/Checkbox/Checkbox.js';
 import { initDialog } from '../components/Dialog/Dialog.js';
-import { initFiftyFifty } from '../components/FiftyFifty/FiftyFifty.js';
 import { initFormField } from '../components/FormField/FormField.js';
 import { initNavigation } from '../components/StandardNavigation/Navigation.js';
 import { initMegaNavigation } from '../components/MegaNavigation/MegaNavigation.js';
@@ -32,7 +31,6 @@ function initializeApp() {
   initCard();
   initCheckbox();
   initDialog();
-  initFiftyFifty();
   initFormField();
   initNavigation();
   initMegaNavigation();

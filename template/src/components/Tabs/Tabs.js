@@ -1,13 +1,14 @@
-// Fully accessible tab component implementation
-// Follows ARIA Authoring Practices Guide for Tab Panel pattern
+/**
+ * Tabs Component JavaScript
+ * Handles tab switching with keyboard navigation
+ */
 
-class Tabs {
+class TabsComponent {
   constructor(element) {
     this.tabsContainer = element;
     this.tabList = element.querySelector('[role="tablist"]');
     this.tabs = Array.from(element.querySelectorAll('[role="tab"]'));
     this.panels = Array.from(element.querySelectorAll('[role="tabpanel"]'));
-    this.orientation = this.tabList.getAttribute('aria-orientation') || 'horizontal';
     
     this.init();
   }
@@ -20,37 +21,10 @@ class Tabs {
     });
 
     // Set initial state
-    this.updateActiveTab(this.tabsContainer.dataset.activeTab);
-
-    // Setup mobile scroll handling
-    this.setupMobileScrolling();
-  }
-
-  setupMobileScrolling() {
-    // Add scroll event listener for indicators
-    this.tabList.addEventListener('scroll', this.handleTabListScroll.bind(this));
-    
-    // Initial scroll state check
-    this.updateScrollIndicators();
-    
-    // Check on resize
-    window.addEventListener('resize', this.updateScrollIndicators.bind(this));
-  }
-
-  handleTabListScroll() {
-    this.updateScrollIndicators();
-  }
-
-  updateScrollIndicators() {
-    const { scrollLeft, scrollWidth, clientWidth } = this.tabList;
-    const isScrollable = scrollWidth > clientWidth;
-    const isAtStart = scrollLeft <= 1;
-    const isAtEnd = scrollLeft >= scrollWidth - clientWidth - 1;
-
-    // Toggle scrollable class
-    this.tabList.classList.toggle('scrollable', isScrollable);
-    this.tabList.classList.toggle('scroll-start', isAtStart);
-    this.tabList.classList.toggle('scroll-end', isAtEnd);
+    const activeTab = this.tabsContainer.dataset.activeTab || this.tabs[0]?.dataset.tabTrigger;
+    if (activeTab) {
+      this.activateTab(activeTab);
+    }
   }
 
   handleTabClick(event) {
@@ -64,35 +38,15 @@ class Tabs {
 
     switch (event.key) {
       case 'ArrowLeft':
-        if (this.orientation === 'horizontal') {
-          event.preventDefault();
-          targetIndex = currentIndex === 0 ? this.tabs.length - 1 : currentIndex - 1;
-          this.focusTab(targetIndex);
-        }
+        event.preventDefault();
+        targetIndex = currentIndex === 0 ? this.tabs.length - 1 : currentIndex - 1;
+        this.focusTab(targetIndex);
         break;
       
       case 'ArrowRight':
-        if (this.orientation === 'horizontal') {
-          event.preventDefault();
-          targetIndex = currentIndex === this.tabs.length - 1 ? 0 : currentIndex + 1;
-          this.focusTab(targetIndex);
-        }
-        break;
-      
-      case 'ArrowUp':
-        if (this.orientation === 'vertical') {
-          event.preventDefault();
-          targetIndex = currentIndex === 0 ? this.tabs.length - 1 : currentIndex - 1;
-          this.focusTab(targetIndex);
-        }
-        break;
-      
-      case 'ArrowDown':
-        if (this.orientation === 'vertical') {
-          event.preventDefault();
-          targetIndex = currentIndex === this.tabs.length - 1 ? 0 : currentIndex + 1;
-          this.focusTab(targetIndex);
-        }
+        event.preventDefault();
+        targetIndex = currentIndex === this.tabs.length - 1 ? 0 : currentIndex + 1;
+        this.focusTab(targetIndex);
         break;
       
       case 'Home':
@@ -115,10 +69,7 @@ class Tabs {
   }
 
   focusTab(index) {
-    const tab = this.tabs[index];
-    tab.focus();
-    // Ensure focused tab is visible when navigating with keyboard
-    this.scrollTabIntoView(tab);
+    this.tabs[index].focus();
   }
 
   activateTab(tabId) {
@@ -127,101 +78,54 @@ class Tabs {
       const isActive = tab.dataset.tabTrigger === tabId;
       tab.setAttribute('aria-selected', isActive);
       tab.tabIndex = isActive ? 0 : -1;
-      
-      // Add/remove active class for styling
-      if (isActive) {
-        tab.classList.add('tabs__tab--active');
-        // Scroll active tab into view on mobile
-        this.scrollTabIntoView(tab);
-      } else {
-        tab.classList.remove('tabs__tab--active');
-      }
+      tab.classList.toggle('tabs__tab--active', isActive);
     });
 
     // Update panel states
     this.panels.forEach(panel => {
       const isActive = panel.dataset.tabPanel === tabId;
       panel.hidden = !isActive;
-      
-      // Add/remove active class for styling
-      if (isActive) {
-        panel.classList.add('tabs__panel--active');
-      } else {
-        panel.classList.remove('tabs__panel--active');
-      }
+      panel.classList.toggle('tabs__panel--active', isActive);
     });
 
     // Update container state
     this.tabsContainer.dataset.activeTab = tabId;
 
-    // Dispatch custom event for external listeners
-    this.tabsContainer.dispatchEvent(new CustomEvent('tabchange', {
+    // Dispatch custom event
+    this.tabsContainer.dispatchEvent(new CustomEvent('tabs:change', {
       detail: { activeTab: tabId },
       bubbles: true
     }));
   }
 
-  scrollTabIntoView(tab) {
-    // Only scroll into view on smaller screens where scrolling is likely needed
-    if (window.innerWidth <= 768) {
-      const tabRect = tab.getBoundingClientRect();
-      const listRect = this.tabList.getBoundingClientRect();
-      
-      // Check if tab is outside the visible area
-      if (tabRect.left < listRect.left || tabRect.right > listRect.right) {
-        tab.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center'
-        });
-      }
-    }
-  }
-
-  updateActiveTab(tabId) {
-    if (tabId && this.tabs.find(tab => tab.dataset.tabTrigger === tabId)) {
-      this.activateTab(tabId);
-    }
-  }
-
   // Public API methods
   setActiveTab(tabId) {
-    this.updateActiveTab(tabId);
+    if (this.tabs.find(tab => tab.dataset.tabTrigger === tabId)) {
+      this.activateTab(tabId);
+    }
   }
 
   getActiveTab() {
     return this.tabsContainer.dataset.activeTab;
   }
-
-  addTab(tabData) {
-    // This would require more complex DOM manipulation
-    // For now, it's better to rebuild the component with new data
-    console.warn('Dynamic tab addition should be handled at the component level');
-  }
-
-  removeTab(tabId) {
-    // This would require more complex DOM manipulation
-    // For now, it's better to rebuild the component with new data
-    console.warn('Dynamic tab removal should be handled at the component level');
-  }
 }
 
-// Initialize all tab components on the page
-function initTabs() {
+// Auto-init function for manual initialization
+const initTabs = () => {
   const tabElements = document.querySelectorAll('[data-tabs]');
   tabElements.forEach(element => {
-    if (!element.tabsInstance) {
-      element.tabsInstance = new Tabs(element);
+    if (!element.tabsComponent) {
+      element.tabsComponent = new TabsComponent(element);
     }
   });
-}
+};
 
-// Initialize on DOM load
+// Auto-initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initTabs);
 } else {
   initTabs();
 }
 
-// Export for potential external use
-export { Tabs, initTabs };
+// Export for external use
+export { TabsComponent, initTabs };

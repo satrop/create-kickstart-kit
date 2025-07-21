@@ -1,6 +1,6 @@
 /**
  * Button JavaScript functionality
- * Handles click events, loading states, and accessibility enhancements
+ * Handles click events, loading states, and form submissions
  */
 
 class ButtonComponent {
@@ -13,7 +13,6 @@ class ButtonComponent {
 
   init() {
     this.setupEventListeners();
-    this.setupAccessibility();
   }
 
   setupEventListeners() {
@@ -27,47 +26,22 @@ class ButtonComponent {
       }
     }
 
-    // Handle click events with debouncing
-    let clickTimeout = null;
+    // Handle click events for confirmation dialogs
     this.element.addEventListener('click', (event) => {
       if (this.isLoading || this.element.disabled) {
         event.preventDefault();
         return;
       }
 
-      // Debounce rapid clicks
-      if (clickTimeout) {
-        clearTimeout(clickTimeout);
-      }
-      
-      clickTimeout = setTimeout(() => {
-        this.handleClick(event);
-      }, 50);
-    });
-  }
-
-  setupAccessibility() {
-    // Ensure proper keyboard navigation
-    this.element.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        if (!this.isLoading && !this.element.disabled) {
+      // Handle confirmation dialogs
+      if (this.element.getAttribute('data-confirm')) {
+        const message = this.element.getAttribute('data-confirm');
+        if (!confirm(message)) {
           event.preventDefault();
-          this.element.click();
+          return false;
         }
       }
     });
-  }
-
-  handleClick(event) {
-    // Custom click handling can be added here
-    // For now, just ensure the button behaves properly
-    if (this.element.getAttribute('data-confirm')) {
-      const message = this.element.getAttribute('data-confirm');
-      if (!confirm(message)) {
-        event.preventDefault();
-        return false;
-      }
-    }
   }
 
   setLoading(loading) {
@@ -93,28 +67,9 @@ class ButtonComponent {
   disable() {
     this.element.disabled = true;
   }
-
-  updateContent(content) {
-    this.originalContent = content;
-    if (!this.isLoading) {
-      this.element.innerHTML = content;
-    }
-  }
 }
 
-// Auto-initialize buttons
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.ast-btn');
-    buttons.forEach(button => {
-      if (!button.buttonComponent) {
-        button.buttonComponent = new ButtonComponent(button);
-      }
-    });
-  });
-}
-
-// Auto-init (optional)
+// Auto-init function
 const initButton = () => {
   const buttons = document.querySelectorAll('.ast-btn');
   buttons.forEach((el) => {
@@ -123,6 +78,13 @@ const initButton = () => {
     }
   });
 };
+
+// Auto-initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initButton);
+} else {
+  initButton();
+}
 
 // Export both the class and the init function
 export { ButtonComponent, initButton };

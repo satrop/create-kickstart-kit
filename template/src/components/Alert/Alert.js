@@ -13,7 +13,6 @@ class AlertComponent {
 
   init() {
     this.setupEventListeners();
-    this.setupAccessibility();
     this.animateIn();
   }
 
@@ -42,30 +41,6 @@ class AlertComponent {
           this.dismiss();
         }
       }, timeout);
-    }
-  }
-
-  setupAccessibility() {
-    // Ensure proper ARIA attributes
-    if (!this.element.getAttribute('role')) {
-      this.element.setAttribute('role', 'alert');
-    }
-
-    // Add live region for dynamic alerts
-    if (!this.element.getAttribute('aria-live')) {
-      this.element.setAttribute('aria-live', 'polite');
-    }
-
-    // Add atomic attribute for screen readers
-    if (!this.element.getAttribute('aria-atomic')) {
-      this.element.setAttribute('aria-atomic', 'true');
-    }
-
-    // Focus management for important alerts
-    const type = this.getAlertType();
-    if (type === 'error' && this.element.getAttribute('data-focus') === 'true') {
-      this.element.setAttribute('tabindex', '0');
-      this.element.focus();
     }
   }
 
