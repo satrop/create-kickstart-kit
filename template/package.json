@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "astro": "^5.9.1",
+    "astro": "^5.12.1",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^9.2.0",
     "sass-embedded": "^1.89.2",

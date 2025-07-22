@@ -8,10 +8,17 @@
 // =============================================
 
 .ast-hero {
+  --tall: 800px;
+  --medium: 600px;
+  --short: 400px;
+  --screen: 100vh;
+
   position: relative;
   display: grid;
   grid-template-areas: "hero";
   overflow: hidden;
+  height: 100%;
+
 
   // All child elements occupy the same grid area
   >* {
@@ -19,115 +26,48 @@
   }
 
   // Height variants
-  &--very-short {
-    min-height: 200px;
-    max-height: 300px;
-
-    @include break(md) {
-      min-height: 250px;
-      max-height: 350px;
-    }
-
-    // Constrain background and container to match hero height
-    .ast-hero__background,
-    .ast-hero__container {
-      max-height: 300px;
-
-      @include break(md) {
-        max-height: 350px;
-      }
-    }
-
-    // Ensure proper vertical centering for fixed heights
-    .ast-hero__grid {
-      min-height: 200px;
-      max-height: 300px;
-
-      @include break(md) {
-        min-height: 250px;
-        max-height: 350px;
-      }
-    }
-
-    // Reduce padding but maintain centering
-    .ast-hero__content-wrapper {
-      @include spacing(padding-inline, 16);
-      @include spacing(padding-block, 12);
-
-      @include break(md) {
-        @include spacing(padding-inline, 24);
-        @include spacing(padding-block, 16);
-      }
-    }
+  &--screen {
+    max-height: var(--screen);
   }
 
-  &--short {
-    min-height: 300px;
-    max-height: 400px;
-
-    @include break(md) {
-      min-height: 350px;
-      max-height: 450px;
-    }
-
-    // Constrain background and container to match hero height
-    .ast-hero__background,
-    .ast-hero__container {
-      max-height: 400px;
-
-      @include break(md) {
-        max-height: 450px;
-      }
-    }
-
-    // Ensure proper vertical centering for fixed heights
-    .ast-hero__grid {
-      min-height: 300px;
-      max-height: 400px;
-
-      @include break(md) {
-        min-height: 350px;
-        max-height: 450px;
-      }
-    }
-
-    // Slightly less padding for compact design
-    .ast-hero__content-wrapper {
-      @include spacing(padding-inline, 16);
-      @include spacing(padding-block, 12);
-
-      @include break(md) {
-        @include spacing(padding-inline, 24);
-        @include spacing(padding-block, 20);
-      }
-    }
-  }
-
-  &--small {
-    min-height: 40vh;
+  &--tall {
+    max-height: var(--tall);
   }
 
   &--medium {
-    min-height: 60vh;
+    max-height: var(--medium);
   }
 
-  &--large {
-    min-height: 80vh;
+  &--short {
+    max-height: var(--short);
   }
 
-  &--viewport {
-    min-height: 100vh;
-  }
 
   // Ensure proper z-index stacking
-  .ast-hero__background {
+  &__background {
     z-index: 1;
   }
 
-  .ast-hero__container {
+  &__container {
     z-index: 2;
     position: relative;
   }
+
+  // Text alignment options
+  &__text-align {
+    &--center {
+      text-align: center;
+    }
+
+    &--left {
+      text-align: left;
+    }
+
+    &--right {
+      text-align: right;
+    }
+  }
+
 }
 
 // =============================================
@@ -138,6 +78,23 @@
   position: relative;
   width: 100%;
   height: 100%;
+
+  // Height variants
+  .ast-hero--screen & {
+    max-height: var(--screen);
+  }
+
+  .ast-hero--tall & {
+    max-height: var(--tall);
+  }
+
+  .ast-hero--medium & {
+    max-height: var(--medium);
+  }
+
+  .ast-hero--short & {
+    max-height: var(--short);
+  }
 }
 
 .ast-hero__image {
@@ -154,57 +111,22 @@
 
 .ast-hero__overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1;
 }
 
-.ast-hero--overlay-light .ast-hero__overlay {
+.ast-hero__overlay--light .ast-hero__overlay {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.ast-hero--overlay-dark .ast-hero__overlay {
+.ast-hero__overlay--dark .ast-hero__overlay {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.ast-hero--overlay-gradient .ast-hero__overlay {
-  background: linear-gradient(180deg,
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(0, 0, 0, 0.2) 50%,
-      rgba(0, 0, 0, 0.8) 100%);
+.ast-hero__overlay--gradient .ast-hero__overlay {
+  background: linear-gradient(45deg, rgba(0, 0, 0, .9) 10%, rgba(0, 0, 0, 0) 100%);
 }
 
-// =============================================
-// Content Container
-// =============================================
-
-.ast-hero__container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-.ast-hero__grid {
-  width: 100%;
-  align-content: center;
-
-  // Vertical alignment variants
-  .ast-hero--top & {
-    align-content: start;
-    @include spacing(padding-top, 32);
-  }
-
-  .ast-hero--bottom & {
-    align-content: end;
-    @include spacing(padding-bottom, 32);
-  }
-
-  .ast-hero--center & {
-    align-content: center;
-  }
-}
 
 // =============================================
 // Content Styling
@@ -213,119 +135,48 @@
 .ast-hero__content {
   position: relative;
   z-index: 2;
+
+  &--top {
+    align-content: start;
+  }
+
+  &--center {
+    align-content: center;
+  }
+
+  &--bottom {
+    align-content: end;
+  }
 }
 
 .ast-hero__content-wrapper {
-  @include spacing(padding, 16);
+  @include spacing(padding, 60);
 
   @include break(md) {
     @include spacing(padding, 24);
   }
 
   @include break(lg) {
-    @include spacing(padding, 32);
+    padding: 0;
   }
-}
-
-// Content positioning
-.ast-hero__content--left .ast-hero__content-wrapper {
-  text-align: left;
-}
-
-.ast-hero__content--center .ast-hero__content-wrapper {
-  text-align: center;
-}
-
-.ast-hero__content--right .ast-hero__content-wrapper {
-  text-align: right;
 }
 
 // =============================================
 // Typography
 // =============================================
 
-.ast-hero__subtitle {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  opacity: 0.9;
-
-  @include spacing(margin-bottom, 8);
-
-  @include break(md) {
-    font-size: var(--font-size-base);
-  }
-}
-
-.ast-hero__title {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
-
-  @include spacing(margin-bottom, 16);
-
-  @include break(md) {
-    font-size: var(--font-size-4xl);
-  }
-
-  @include break(lg) {
-    font-size: var(--font-size-5xl);
-  }
-
-  @include break(xl) {
-    font-size: var(--font-size-6xl);
-  }
-}
-
-.ast-hero__description {
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-relaxed);
-  opacity: 0.95;
-
-  @include spacing(margin-bottom, 24);
-
-  @include break(lg) {
-    font-size: var(--font-size-xl);
-  }
-}
-
-.ast-hero__body {
-  @include spacing(margin-bottom, 24);
-
-  p {
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-relaxed);
-
-    @include spacing(margin-bottom, 16);
-
-    @include break(lg) {
-      font-size: var(--font-size-lg);
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-
 .ast-hero__actions {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
 
+  @include spacing(margin-block-start, 12);
   @include spacing(gap, 12);
 
-  .ast-hero__content--center & {
+  .ast-hero__text-align--center & {
     justify-content: center;
   }
 
-  .ast-hero__content--right & {
+  .ast-hero__text-align--right & {
     justify-content: flex-end;
-  }
-
-  @include break(md) {
-    @include spacing(gap, 16);
   }
 }
 
@@ -333,7 +184,7 @@
 // Text Color Variants
 // =============================================
 
-.ast-hero--text-light {
+.ast-hero__text--light {
   color: var(--white-0);
 
   .ast-hero__subtitle,
@@ -343,7 +194,7 @@
   }
 }
 
-.ast-hero--text-dark {
+.ast-hero__text--dark {
   color: var(--gray-900);
 
   .ast-hero__subtitle,
@@ -354,145 +205,15 @@
 }
 
 // Auto text color based on overlay
-.ast-hero--text-auto {
+.ast-hero__text--auto {
 
-  &.ast-hero--overlay-dark,
-  &.ast-hero--overlay-gradient {
-    @extend .ast-hero--text-light;
+  &.ast-hero__overlay--dark,
+  &.ast-hero__overlay--gradient {
+    @extend .ast-hero__text--light;
   }
 
-  &.ast-hero--overlay-light,
-  &.ast-hero--overlay-none {
-    @extend .ast-hero--text-dark;
+  &.ast-hero__overlay--light,
+  &.ast-hero__overlay--none {
+    @extend .ast-hero__text--dark;
   }
-}
-
-// =============================================
-// Layout Variants
-// =============================================
-
-// 50/50 Layout
-.ast-hero--50-50 {
-  .ast-hero__content-wrapper {
-    @include break(lg) {
-      @include spacing(padding, 40);
-    }
-  }
-}
-
-// 70/30 Layout
-.ast-hero--70-30 {
-  .ast-hero__content-wrapper {
-    @include break(lg) {
-      @include spacing(padding, 32);
-    }
-  }
-}
-
-// Center Layout
-.ast-hero--center {
-  .ast-hero__content-wrapper {
-    max-width: 800px;
-
-    @include break(lg) {
-      @include spacing(padding, 48);
-    }
-  }
-}
-
-// Typography adjustments for shorter heights
-.ast-hero--very-short {
-  .ast-hero__title {
-    font-size: var(--font-size-2xl);
-
-    @include break(md) {
-      font-size: var(--font-size-3xl);
-    }
-
-    @include break(lg) {
-      font-size: var(--font-size-4xl);
-    }
-  }
-
-  .ast-hero__subtitle {
-    font-size: var(--font-size-xs);
-
-    @include break(md) {
-      font-size: var(--font-size-sm);
-    }
-  }
-
-  .ast-hero__description {
-    font-size: var(--font-size-base);
-    @include spacing(margin-bottom, 16);
-  }
-}
-
-.ast-hero--short {
-  .ast-hero__title {
-    font-size: var(--font-size-2xl);
-
-    @include break(md) {
-      font-size: var(--font-size-3xl);
-    }
-
-    @include break(lg) {
-      font-size: var(--font-size-4xl);
-    }
-
-    @include break(xl) {
-      font-size: var(--font-size-5xl);
-    }
-  }
-
-  .ast-hero__description {
-    @include spacing(margin-bottom, 20);
-  }
-}
-
-// =============================================
-// Accessibility & Animation
-// =============================================
-
-// Respect user motion preferences
-@media (prefers-reduced-motion: no-preference) {
-  .ast-hero {
-    &[data-animate="true"] {
-      .ast-hero__content-wrapper {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 1s ease, transform 1s ease;
-      }
-
-      .ast-hero__image {
-        transform: scale(1.05);
-        transition: transform 1s ease;
-      }
-
-      &.ast-hero--in-view {
-        .ast-hero__content-wrapper {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .ast-hero__image {
-          transform: scale(1);
-        }
-      }
-    }
-  }
-}
-
-// High contrast mode support
-@media (prefers-contrast: high) {
-  .ast-hero__overlay {
-    background-color: rgba(0, 0, 0, 0.8) !important;
-    background: rgba(0, 0, 0, 0.8) !important;
-  }
-}
-
-// Focus styles for keyboard navigation
-.ast-hero__content-wrapper:focus-within {
-  outline: 2px solid var(--color-focus, #005fcc);
-  outline-offset: 4px;
 }

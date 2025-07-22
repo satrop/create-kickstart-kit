@@ -12,6 +12,10 @@
 
 .component-demo {
   padding: 2rem 0;
+
+  &.x-padding {
+    padding-inline: 2.5rem;
+  }
 }
 
 .demo-header {
@@ -72,7 +76,7 @@
 .demo-section {
   margin-bottom: 4rem;
 
-  >.section-grid>.col-full>h2:not([class]) {
+  >.section-grid h2:not([class]) {
     font-size: 2.5rem;
     color: #333;
     margin-bottom: 1rem;
@@ -80,13 +84,13 @@
     padding-bottom: 0.5rem;
   }
 
-  >.section-grid>.col-full>h3:not([class]) {
+  >.section-grid h3:not([class]) {
     font-size: 1.75rem;
     color: #444;
     margin: 2rem 0 1rem;
   }
 
-  >.section-grid>.col-full>h4:not([class]) {
+  >.section-grid h4:not([class]) {
     font-size: 1.25rem;
     color: #555;
     margin-bottom: 1rem;
