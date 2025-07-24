@@ -42,6 +42,7 @@ export const allNavigationItems: NavItem[] = [
   { name: "Grid System", url: "./grid.html" },
   { name: "Typography", url: "./typography.html" },
   { name: "Colors", url: "./colors.html" },
+  { name: "Spacing", url: "./spacing.html" },
   { name: "Icons", url: "./icons.html" },
 ];
 

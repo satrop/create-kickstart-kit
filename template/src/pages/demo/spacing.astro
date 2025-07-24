@@ -1,0 +1,317 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Card from "@/components/Card/Card.astro";
+import DemoNavigation from "../../components/DemoNavigation/DemoNavigation.astro";
+import { getFormComponentNavigation } from "../../utils/demoNavigation";
+import "@/styles/demo.scss";
+
+// Get navigation items with current page marked as active
+const navigationItems = getFormComponentNavigation("spacing");
+
+// Define our spacing tokens for demo
+const spacingTokens = [
+  { token: 4, values: { sm: "2px", md: "3px", lg: "4px" } },
+  { token: 8, values: { sm: "4px", md: "6px", lg: "8px" } },
+  { token: 12, values: { sm: "6px", md: "8px", lg: "12px" } },
+  { token: 16, values: { sm: "8px", md: "12px", lg: "16px" } },
+  { token: 20, values: { sm: "10px", md: "14px", lg: "20px" } },
+  { token: 24, values: { sm: "12px", md: "16px", lg: "24px" } },
+  { token: 32, values: { sm: "16px", md: "24px", lg: "32px" } },
+  { token: 40, values: { sm: "24px", md: "32px", lg: "40px" } },
+  { token: 48, values: { sm: "28px", md: "36px", lg: "48px" } },
+  { token: 60, values: { sm: "32px", md: "40px", lg: "60px" } },
+  { token: 80, values: { sm: "40px", md: "60px", lg: "80px" } },
+  { token: 120, values: { sm: "60px", md: "80px", lg: "120px" } },
+  { token: 160, values: { sm: "80px", md: "120px", lg: "160px" } },
+];
+---
+
+<Layout title="Spacing System - Astro Kickstart">
+  <Fragment slot="main">
+    <main id="main" class="layout-main owl-32" aria-label="Main content">
+      <div class="section-grid owl-32">
+        <DemoNavigation title="Form Components" items={navigationItems} />
+        <div class="col-4 md:col-4 lg:col-9">
+          <div class="spacing-page">
+            <section class="page-header">
+              <div class="section-grid">
+                <div class="col-full">
+                  <div class="page-intro">
+                    <h1>Spacing System</h1>
+                    <p>
+                      Explore the responsive spacing system available in the Astro Kickstart theme. The spacing tokens
+                      are available as CSS custom properties, mixins, and utility classes.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Spacing Tokens Overview -->
+            <section class="spacing-tokens">
+              <div class="section-grid owl-32">
+                <div class="col-full">
+                  <h2>Spacing Tokens</h2>
+                  <p>
+                    All spacing values are responsive and scale across three breakpoints:
+                    <code>sm</code> (small), <code>md</code> (medium), and <code>lg</code> (large).
+                  </p>
+
+                  <div class="spacing-token-grid">
+                    {
+                      spacingTokens.map(({ token, values }) => (
+                        <div class="spacing-token-item">
+                          <div class="spacing-token-label">
+                            <strong>{token}</strong>
+                          </div>
+                          <div class="spacing-token-values">
+                            <div class="spacing-value">
+                              <span class="breakpoint">sm:</span> {values.sm}
+                            </div>
+                            <div class="spacing-value">
+                              <span class="breakpoint">md:</span> {values.md}
+                            </div>
+                            <div class="spacing-value">
+                              <span class="breakpoint">lg:</span> {values.lg}
+                            </div>
+                          </div>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+  </Fragment>
+</Layout>
+
+<style lang="scss">
+  @use "@/styles/core/spacing.core" as *;
+  @use "@/styles/core/breakpoint.core" as *;
+
+  .spacing-page {
+    .page-header {
+      .page-intro {
+        @include spacing(margin-bottom, 48);
+
+        h1 {
+          @include spacing(margin-bottom, 16);
+        }
+      }
+    }
+
+    .spacing-token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      @include spacing(margin-top, 24);
+    }
+
+    .spacing-token-item {
+      border: 1px solid var(--gray-500);
+      border-radius: 8px;
+      padding: 1rem;
+      background: var(--gray-50);
+
+      .spacing-token-label {
+        @include spacing(margin-bottom, 12);
+        font-size: 1.25rem;
+        color: var(--blue-600);
+      }
+
+      .spacing-token-values {
+        @include spacing(margin-bottom, 16);
+
+        .spacing-value {
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.875rem;
+          font-family: var(--font-mono);
+
+          .breakpoint {
+            font-weight: 600;
+            color: var(--gray-600);
+          }
+        }
+      }
+
+      .spacing-visual {
+        width: 100%;
+        min-height: 8px;
+      }
+    }
+
+    .property-list {
+      @include spacing(margin-top, 16);
+
+      .property-item {
+        @include spacing(margin-bottom, 8);
+
+        code {
+          @include spacing(margin-right, 8);
+          display: inline-block;
+          font-size: 0.75rem;
+        }
+      }
+
+      .property-more {
+        @include spacing(margin-top, 16);
+        color: var(--gray-600);
+      }
+    }
+
+    .mixin-examples {
+      @include spacing(margin-top, 24);
+
+      .example-box {
+        border: 2px dashed var(--gray-300);
+        border-radius: 4px;
+
+        .inner {
+          background: var(--blue-300);
+          border-radius: 2px;
+          padding: 1rem;
+          text-align: center;
+          font-weight: 500;
+        }
+      }
+
+      .spacing-example-margin {
+        @include spacing(margin-bottom, 32);
+      }
+
+      .spacing-example-padding {
+        .inner {
+          @include spacing(padding, 24);
+        }
+      }
+    }
+
+    .owl-demo-container {
+      @include spacing(margin-top, 24);
+      border: 2px dashed var(--gray-300);
+      padding: 1rem;
+      border-radius: 4px;
+      background: var(--gray-50);
+    }
+
+    .owl-demo-item {
+      background: var(--blue-300);
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      border: 1px solid var(--blue-500);
+      text-align: center;
+
+      &:first-child {
+        background: var(--indigo-300);
+        border-color: var(--indigo-400);
+      }
+    }
+
+    .owl-class-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      @include spacing(margin-top, 16);
+
+      .owl-class {
+        background: var(--gray-100);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.875rem;
+      }
+    }
+
+    .responsive-demo {
+      @include spacing(margin-top, 24);
+    }
+
+    .responsive-example {
+      .responsive-label {
+        font-weight: 600;
+        @include spacing(margin-bottom, 16);
+      }
+
+      .responsive-box {
+        background: linear-gradient(135deg, var(--blue-300), var(--blue-500));
+        border-radius: 8px;
+        border: 2px solid var(--gray-300);
+
+        .responsive-content {
+          padding: 2rem;
+          text-align: center;
+
+          small {
+            color: var(--gray-600);
+            font-family: var(--font-mono);
+          }
+        }
+      }
+
+      .responsive-spacer {
+        text-align: center;
+        font-family: var(--font-mono);
+        font-size: 0.875rem;
+        color: var(--gray-600);
+        background: var(--yellow-100);
+        padding: 0.5rem;
+        border-radius: 4px;
+      }
+    }
+
+    .practices-grid {
+      display: grid;
+      gap: 2rem;
+
+      @include break(md) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @include spacing(margin-top, 24);
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          position: relative;
+          padding-left: 1.5rem;
+
+          &::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-500);
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  pre {
+    background: var(--gray-400);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    border: 1px solid var(--gray-200);
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+  }
+
+  code {
+    background: var(--gray-400);
+    padding: 0.125rem 0.25rem;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+</style>

@@ -42,8 +42,12 @@ const { items, allowMultiple = false, variant = "default" } = Astro.props;
           aria-labelledby={`ast-accordion-trigger-${item.id}`}
           role="region"
           data-accordion-content>
-          <div class="ast-accordion__body">
-            {item.htmlContent ? <div set:html={item.htmlContent} /> : item.content ? <p>{item.content}</p> : null}
+          <div class="ast-accordion__body" inert>
+            {item.htmlContent ? (
+              <div set:html={item.htmlContent} />
+            ) : item.content ? (
+              <p set:html={item.content} />
+            ) : null}
           </div>
         </div>
       </div>

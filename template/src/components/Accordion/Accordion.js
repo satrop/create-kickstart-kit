@@ -87,6 +87,12 @@ class AccordionComponent {
     trigger.setAttribute("aria-expanded", "true");
     content.setAttribute("data-expanded", "true");
 
+    // Remove inert attribute to allow tabbing to content
+    const body = content.querySelector('.ast-accordion__body');
+    if (body) {
+      body.removeAttribute('inert');
+    }
+
     // Set max-height for smooth animation
     const scrollHeight = content.scrollHeight;
     content.style.maxHeight = `${scrollHeight}px`;
@@ -107,6 +113,12 @@ class AccordionComponent {
     trigger.setAttribute("aria-expanded", "false");
     content.setAttribute("data-expanded", "false");
     content.style.maxHeight = "0";
+
+    // Add inert attribute to prevent tabbing to content
+    const body = content.querySelector('.ast-accordion__body');
+    if (body) {
+      body.setAttribute('inert', '');
+    }
 
     // Custom event
     this.accordion.dispatchEvent(new CustomEvent('accordion:collapse', {
