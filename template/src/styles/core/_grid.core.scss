@@ -93,3 +93,53 @@
     grid-column: main-start / outer-end;
   }
 }
+
+.expand-right {
+  position: relative;
+
+  >div {
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: calc(-1 * var(--main-margins));
+      width: var(--main-margins);
+      height: 100%;
+
+      background-color: inherit;
+      border: inherit;
+      border-radius: inherit;
+
+      border-radius: 0 4px 4px 0;
+      border-left-width: 0;
+
+      z-index: 1;
+    }
+  }
+}
+
+.expand-left {
+  position: relative;
+
+  >div {
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: calc(-1 * var(--main-margins));
+      width: var(--main-margins);
+      height: 100%;
+
+      background-color: inherit;
+      border: inherit;
+      border-radius: inherit;
+
+      border-radius: 4px 0 0 4px;
+      border-right-width: 0;
+
+      z-index: 1;
+    }
+  }
+}
