@@ -3,13 +3,15 @@
 ## 📦 What You Now Have
 
 ### 1. **Complete Migration Plan** (`migration-plan.md`)
+
 - Detailed step-by-step process
-- File organization strategy  
+- File organization strategy
 - Import path updates needed
 - Testing methodology
 - Publishing workflow
 
 ### 2. **Automated Migration Script** (`run-migration.sh`)
+
 - ✅ Executable shell script to perform the split
 - Creates proper directory structures
 - Copies files to correct locations
@@ -20,17 +22,20 @@
 ### 3. **Sample Package Files** (`sample-files/`)
 
 #### ksk-core Package Files:
+
 - `ksk-core-package.json` - Complete package.json for design system
 - Component exports configuration
 - Build scripts for icons, SCSS compilation
 - Proper npm publishing setup
 
 #### create-ksk CLI Files:
+
 - `create-ksk-package.json` - CLI package configuration
 - `create-ksk-index.js` - Full CLI implementation with prompts
 - Enhanced user experience with TypeScript/demo options
 
 #### Template Files for Generated Projects:
+
 - `template-package.json` - Dependencies on @kickstart/ksk-core
 - `template-astro-config.mjs` - Basic Astro configuration
 - `template-index.astro` - Welcome page with component examples
@@ -39,6 +44,7 @@
 ## 🏗️ Architecture After Split
 
 ### **@kickstart/ksk-core** (Design System)
+
 ```
 ksk-core/
 ├── src/
@@ -58,6 +64,7 @@ ksk-core/
 ```
 
 **Key Features:**
+
 - ✅ Publishable to npm as `@kickstart/ksk-core`
 - ✅ Clean component exports
 - ✅ SCSS system with design tokens
@@ -65,6 +72,7 @@ ksk-core/
 - ✅ Works in any Astro project
 
 ### **create-ksk** (Scaffolding CLI)
+
 ```
 create-ksk/
 ├── index.js              # CLI entry point
@@ -75,6 +83,7 @@ create-ksk/
 ```
 
 **Key Features:**
+
 - ✅ Interactive prompts for project setup
 - ✅ TypeScript support option
 - ✅ Demo pages option
@@ -84,13 +93,14 @@ create-ksk/
 ## 🚀 Usage After Migration
 
 ### For End Users:
+
 ```bash
 # Create new project
 npx create-ksk my-awesome-site
 
 # Choose options:
 # - TypeScript? (y/N)
-# - Include demos? (Y/n)  
+# - Include demos? (Y/n)
 # - Package manager? (pnpm/npm/yarn)
 
 cd my-awesome-site
@@ -98,6 +108,7 @@ npm dev
 ```
 
 ### Generated Project Structure:
+
 ```
 my-awesome-site/
 ├── src/
@@ -110,6 +121,7 @@ my-awesome-site/
 ```
 
 ### In Generated Projects:
+
 ```astro
 ---
 // Import components from npm package
@@ -129,7 +141,7 @@ import Button from '@kickstart/ksk-core/components/Button/Button.astro';
 
 ```scss
 // In main.scss
-@use '@kickstart/ksk-core/styles' as ksk;
+@use "@kickstart/ksk-core/styles" as ksk;
 
 // Custom overrides
 :root {
@@ -140,6 +152,7 @@ import Button from '@kickstart/ksk-core/components/Button/Button.astro';
 ## 🔧 Development Workflow
 
 ### Local Development Linking:
+
 ```bash
 # In ksk-core directory
 npm link
@@ -154,6 +167,7 @@ npm install @kickstart/ksk-core@latest
 ```
 
 ### Publishing Process:
+
 ```bash
 # 1. Publish ksk-core first
 cd ksk-core
@@ -162,26 +176,29 @@ npm publish --access public
 
 # 2. Publish CLI
 cd ../create-ksk
-npm version 5.0.0  
+npm version 5.0.0
 npm publish
 ```
 
 ## ⚡ Ready to Execute
 
 **Run the migration now:**
+
 ```bash
 ./run-migration.sh
 ```
 
 This will:
+
 1. ✅ Create `../ksk-core/` with complete design system
-2. ✅ Create `../create-ksk-new/` with updated CLI  
+2. ✅ Create `../create-ksk-new/` with updated CLI
 3. ✅ Set up all package.json files
 4. ✅ Create component export indices
 5. ✅ Generate README documentation
 6. ✅ Provide testing instructions
 
 **After migration:**
+
 1. Test ksk-core package locally
 2. Test CLI with sample project
 3. Fix any remaining import paths

@@ -5,6 +5,7 @@
 ### Phase 1: Create ksk-core Package
 
 #### 1.1 Setup ksk-core directory structure
+
 ```bash
 mkdir -p ../ksk-core/src/{components,layouts,pages,styles,assets,utils}
 mkdir -p ../ksk-core/scripts
@@ -13,6 +14,7 @@ mkdir -p ../ksk-core/dist
 ```
 
 #### 1.2 Copy core files to ksk-core
+
 ```bash
 # Copy source files
 cp -r template/src/components ../ksk-core/src/
@@ -33,6 +35,7 @@ cp template/public/favicon.svg ../ksk-core/public/
 ```
 
 #### 1.3 Create ksk-core package.json
+
 ```json
 {
   "name": "@kickstart/ksk-core",
@@ -54,12 +57,7 @@ cp template/public/favicon.svg ../ksk-core/public/
     "./utils/*": "./src/utils/*",
     "./public/*": "./public/*"
   },
-  "files": [
-    "src",
-    "public",
-    "scripts",
-    "dist"
-  ],
+  "files": ["src", "public", "scripts", "dist"],
   "scripts": {
     "build": "npm run icons && npm run compile",
     "icons:clean": "node scripts/clean-optimized.js",
@@ -83,13 +81,7 @@ cp template/public/favicon.svg ../ksk-core/public/
   "devDependencies": {
     "sass": "^1.70.0"
   },
-  "keywords": [
-    "astro",
-    "design-system",
-    "components",
-    "scss",
-    "kickstart"
-  ],
+  "keywords": ["astro", "design-system", "components", "scss", "kickstart"],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -101,6 +93,7 @@ cp template/public/favicon.svg ../ksk-core/public/
 ### Phase 2: Update create-ksk CLI
 
 #### 2.1 Update CLI package.json
+
 ```json
 {
   "name": "create-ksk",
@@ -114,13 +107,7 @@ cp template/public/favicon.svg ../ksk-core/public/
   "engines": {
     "node": ">=20"
   },
-  "keywords": [
-    "astro",
-    "starter",
-    "scaffold",
-    "create",
-    "kickstart"
-  ],
+  "keywords": ["astro", "starter", "scaffold", "create", "kickstart"],
   "dependencies": {
     "prompts": "^2.4.2"
   },
@@ -129,7 +116,9 @@ cp template/public/favicon.svg ../ksk-core/public/
 ```
 
 #### 2.2 Update CLI templates
+
 Create new minimal templates in create-ksk:
+
 ```
 create-ksk/
 ├── templates/
@@ -151,23 +140,29 @@ create-ksk/
 ### Phase 3: Path Updates and Imports
 
 #### 3.1 Update imports in ksk-core
+
 All internal imports in ksk-core should use relative paths:
+
 ```js
 // OLD: import { asset } from "@/utils/assets"
 // NEW: import { asset } from "../utils/assets.js"
 ```
 
 #### 3.2 Create index files for clean exports
+
 Create `src/components/index.js` in ksk-core:
+
 ```js
-export { default as Accordion } from './Accordion/Accordion.astro';
-export { default as Alert } from './Alert/Alert.astro';
-export { default as Button } from './Button/Button.astro';
+export { default as Accordion } from "./Accordion/Accordion.astro";
+export { default as Alert } from "./Alert/Alert.astro";
+export { default as Button } from "./Button/Button.astro";
 // ... etc for all components
 ```
 
 #### 3.3 Update CLI template files
+
 Template files should import from ksk-core:
+
 ```astro
 ---
 // In generated project files
@@ -179,6 +174,7 @@ import Button from '@kickstart/ksk-core/components/Button/Button.astro';
 ## File Movement Script
 
 ### Automated Migration Script
+
 ```bash
 #!/bin/bash
 # run-migration.sh
@@ -226,26 +222,28 @@ echo "4. Publish to npm"
 ## Sample Package Files
 
 ### ksk-core astro.config.mjs
+
 ```js
 // For demo/development purposes
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  publicDir: './public',
-  outDir: './dist',
+  publicDir: "./public",
+  outDir: "./dist",
   vite: {
     resolve: {
       alias: {
-        '@': './src'
-      }
-    }
-  }
+        "@": "./src",
+      },
+    },
+  },
 });
 ```
 
 ### CLI template astro.config.mjs
+
 ```js
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
 export default defineConfig({
   // Basic Astro config for generated projects
@@ -253,6 +251,7 @@ export default defineConfig({
 ```
 
 ### CLI template package.json
+
 ```json
 {
   "name": "{{PROJECT_NAME}}",
@@ -272,14 +271,16 @@ export default defineConfig({
 ```
 
 ### CLI template main.scss
+
 ```scss
 // Import the core design system
-@use '@kickstart/ksk-core/styles' as ksk;
+@use "@kickstart/ksk-core/styles" as ksk;
 
 // Your custom styles here
 ```
 
 ### CLI template index.astro
+
 ```astro
 ---
 import Layout from '@kickstart/ksk-core/layouts/Layout.astro';
@@ -290,7 +291,7 @@ import Button from '@kickstart/ksk-core/components/Button/Button.astro';
   <main>
     <h1>Welcome to your new Kickstart project!</h1>
     <p>Get started by editing this page in <code>src/pages/index.astro</code></p>
-    
+
     <Button variant="primary">Get Started</Button>
   </main>
 </Layout>
@@ -303,55 +304,56 @@ import Button from '@kickstart/ksk-core/components/Button/Button.astro';
 ## Updated CLI Logic
 
 ### Enhanced CLI prompts
+
 ```js
 #!/usr/bin/env node
 
-import prompts from 'prompts';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-import fs from 'fs/promises';
-import { execSync } from 'child_process';
+import prompts from "prompts";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+import fs from "fs/promises";
+import { execSync } from "child_process";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 async function main() {
   const response = await prompts([
     {
-      type: 'text',
-      name: 'projectName',
-      message: 'What is your project name?',
-      validate: value => value.length > 0
+      type: "text",
+      name: "projectName",
+      message: "What is your project name?",
+      validate: (value) => value.length > 0,
     },
     {
-      type: 'confirm',
-      name: 'typescript',
-      message: 'Use TypeScript?',
-      initial: false
+      type: "confirm",
+      name: "typescript",
+      message: "Use TypeScript?",
+      initial: false,
     },
     {
-      type: 'confirm',
-      name: 'includeDemos',
-      message: 'Include demo pages?',
-      initial: true
-    }
+      type: "confirm",
+      name: "includeDemos",
+      message: "Include demo pages?",
+      initial: true,
+    },
   ]);
 
-  const template = response.typescript ? 'typescript' : 'basic';
-  const templatePath = join(__dirname, 'templates', template);
+  const template = response.typescript ? "typescript" : "basic";
+  const templatePath = join(__dirname, "templates", template);
   const targetPath = join(process.cwd(), response.projectName);
 
   // Copy template
   await fs.cp(templatePath, targetPath, { recursive: true });
 
   // Update package.json with project name
-  const packagePath = join(targetPath, 'package.json');
-  const packageContent = await fs.readFile(packagePath, 'utf8');
-  const updatedPackage = packageContent.replace('{{PROJECT_NAME}}', response.projectName);
+  const packagePath = join(targetPath, "package.json");
+  const packageContent = await fs.readFile(packagePath, "utf8");
+  const updatedPackage = packageContent.replace("{{PROJECT_NAME}}", response.projectName);
   await fs.writeFile(packagePath, updatedPackage);
 
   // Install dependencies
-  console.log('Installing dependencies...');
-  execSync('pnpm install', { cwd: targetPath, stdio: 'inherit' });
+  console.log("Installing dependencies...");
+  execSync("pnpm install", { cwd: targetPath, stdio: "inherit" });
 
   console.log(`✅ Created ${response.projectName}`);
   console.log(`📁 cd ${response.projectName}`);
@@ -364,6 +366,7 @@ main().catch(console.error);
 ## Testing Strategy
 
 ### 1. Test ksk-core package
+
 ```bash
 cd ../ksk-core
 npm link
@@ -371,6 +374,7 @@ npm run build
 ```
 
 ### 2. Test CLI
+
 ```bash
 cd create-ksk
 npm link @kickstart/ksk-core
@@ -381,6 +385,7 @@ npm run dev
 ```
 
 ### 3. Verify imports work
+
 - Check all components render correctly
 - Verify styles are applied
 - Test interactive JavaScript functionality
@@ -388,6 +393,7 @@ npm run dev
 ## Publishing Workflow
 
 ### 1. Publish ksk-core first
+
 ```bash
 cd ../ksk-core
 npm version 1.0.0
@@ -395,6 +401,7 @@ npm publish --access public
 ```
 
 ### 2. Update and publish CLI
+
 ```bash
 cd create-ksk
 # Update package.json to reference published ksk-core
@@ -405,6 +412,7 @@ npm publish
 ## Local Development Linking
 
 ### Link local ksk-core
+
 ```bash
 # In ksk-core directory
 npm link
@@ -414,6 +422,7 @@ npm link @kickstart/ksk-core
 ```
 
 ### Unlink when done
+
 ```bash
 npm unlink @kickstart/ksk-core
 npm install @kickstart/ksk-core@latest
@@ -422,6 +431,7 @@ npm install @kickstart/ksk-core@latest
 ## Folder Trees After Split
 
 ### Final ksk-core structure:
+
 ```
 ksk-core/
 ├── package.json
@@ -440,6 +450,7 @@ ksk-core/
 ```
 
 ### Final create-ksk structure:
+
 ```
 create-ksk/
 ├── package.json
@@ -451,6 +462,7 @@ create-ksk/
 ```
 
 ### Generated project structure:
+
 ```
 my-new-project/
 ├── package.json           # Depends on @kickstart/ksk-core
