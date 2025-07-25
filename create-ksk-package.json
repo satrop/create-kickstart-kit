@@ -1,0 +1,33 @@
+{
+  "name": "create-ksk",
+  "version": "2.0.0",
+  "description": "Create a new project with the KSK design system",
+  "type": "module",
+  "bin": {
+    "create-ksk": "./index.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "astro",
+    "design-system",
+    "starter",
+    "template",
+    "ksk",
+    "components"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "homepage": "https://github.com/yourusername/create-ksk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/create-ksk.git"
+  },
+  "dependencies": {
+    "prompts": "^2.4.2"
+  }
+}
