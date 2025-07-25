@@ -1,6 +1,6 @@
 {
   "name": "create-ksk",
-  "version": "5.1.0",
+  "version": "8.1.0",
   "description": "CLI to scaffold Astro-based front-end starter projects",
   "bin": {
     "create-ksk": "./index.js"
